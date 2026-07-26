@@ -37,13 +37,26 @@
         "GAMEMASTER": "OWNER"
       },
       "flags": {}
+    },
+    {
+      "name": "items",
+      "label": "WC5E Items",
+      "path": "packs/items",
+      "type": "Item",
+      "system": "dnd5e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER",
+        "GAMEMASTER": "OWNER"
+      },
+      "flags": {}
     }
   ],
   "packFolders": [
     {
       "name": "Warcraft 5e",
       "sorting": "m",
-      "packs": ["monsters"]
+      "packs": ["monsters", "items"]
     }
   ],
   "url": "https://github.com/REPLACE_ME/wc5e-bestiary",

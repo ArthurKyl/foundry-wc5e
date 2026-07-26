@@ -1,0 +1,196 @@
+{
+  "_id": "2KK9ZA4DjkE7tDlK",
+  "name": "Revolver",
+  "type": "weapon",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": {
+      "value": "<p><em>Caplock firearm.</em> Reload 6, misfire 1.</p><p><em>Misfire.</em> When your attack roll's d20 is at or below this firearm's misfire score, the weapon misfires: the attack misses and the weapon can't be used again until you spend an action to repair it (DC 8 + misfire score Intelligence or Tinker's Tools check). On a failed check the weapon is broken and must be mended out of combat at a quarter of its cost.</p><p><em>Reload.</em> After the listed number of shots you must reload using an action or bonus action (your choice).</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Warcraft 5e - Heroes Handbook",
+      "book": "",
+      "page": "",
+      "license": "",
+      "revision": 1,
+      "rules": "2014"
+    },
+    "quantity": 1,
+    "weight": {
+      "value": 6,
+      "units": "lb"
+    },
+    "price": {
+      "value": 525,
+      "denomination": "gp"
+    },
+    "attunement": "",
+    "equipped": false,
+    "rarity": "",
+    "identified": true,
+    "range": {
+      "value": 120,
+      "long": 380,
+      "reach": null,
+      "units": "ft"
+    },
+    "uses": {
+      "spent": 0,
+      "max": "",
+      "recovery": []
+    },
+    "damage": {
+      "versatile": {
+        "number": null,
+        "denomination": null,
+        "bonus": "",
+        "types": [],
+        "custom": {
+          "enabled": false,
+          "formula": ""
+        },
+        "scaling": {
+          "mode": "",
+          "number": null,
+          "formula": ""
+        }
+      },
+      "base": {
+        "number": 1,
+        "denomination": 10,
+        "bonus": "",
+        "types": [
+          "piercing"
+        ],
+        "custom": {
+          "enabled": false,
+          "formula": ""
+        },
+        "scaling": {
+          "mode": "",
+          "number": null,
+          "formula": ""
+        }
+      }
+    },
+    "armor": {
+      "value": 0
+    },
+    "hp": {
+      "value": 0,
+      "max": 0,
+      "dt": null,
+      "conditions": ""
+    },
+    "properties": [
+      "amm",
+      "fir",
+      "rel"
+    ],
+    "proficient": null,
+    "type": {
+      "value": "martialR",
+      "baseItem": ""
+    },
+    "activities": {
+      "cBmtHEh2trmHeeCV": {
+        "_id": "cBmtHEh2trmHeeCV",
+        "type": "attack",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "",
+          "special": "",
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "value": "120",
+          "units": "ft",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": ""
+          },
+          "affects": {
+            "count": "",
+            "type": "",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "attack": {
+          "ability": "dex",
+          "bonus": "",
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "ranged",
+            "classification": "weapon"
+          }
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": []
+        }
+      }
+    },
+    "identifier": "",
+    "magicalBonus": null,
+    "mastery": "",
+    "ammunition": {
+      "type": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "dnd5e",
+    "systemVersion": "5.3.3"
+  },
+  "_key": "!items!2KK9ZA4DjkE7tDlK"
+}

@@ -1,15 +1,21 @@
 # Warcraft 5e — Manual of Monsters (Foundry VTT module)
 
-A Foundry VTT compendium module containing **248 monsters** from the community
-[Warcraft 5e (WC5E)](https://github.com/WC5E/Warcraft-5e-Conversion) *Manual of
-Monsters*, converted to **dnd5e** NPC actors.
+A Foundry VTT compendium module built from the community
+[Warcraft 5e (WC5E)](https://github.com/WC5E/Warcraft-5e-Conversion)
+conversion, converted to the **dnd5e** system.
 
 - **Foundry VTT:** v13–v14 (verified on v14)
 - **dnd5e system:** 5.3.3 (verified)
-- **Content:** 248 NPC actors with full stats, traits, actions, reactions and
-  legendary actions. Weapon/spell attacks are rollable with exact statblock
-  to-hit and damage. Every trait and action also carries its full descriptive
-  text.
+- **Two compendiums:**
+  - **WC5E Monsters** — 248 NPC actors (from the *Manual of Monsters*) with full
+    stats, traits, actions, reactions and legendary actions. Weapon/spell
+    attacks are rollable with exact statblock to-hit and damage; every trait and
+    action also carries its full descriptive text.
+  - **WC5E Items** — 19 Warcraft-specific weapons & gear (from the *Heroes
+    Handbook*): 7 firearms (with reload/misfire), 5 racial weapons, 3 shields
+    and 4 ammunition types. Uses dnd5e's native firearm/reload/ammunition
+    properties; the SRD-standard equipment is intentionally left out since the
+    dnd5e system already ships it.
 
 > Fan-made conversion for personal use. Warcraft is a trademark of Blizzard
 > Entertainment. This module is not affiliated with or endorsed by Blizzard or
@@ -47,9 +53,10 @@ Monsters*, converted to **dnd5e** NPC actors.
 
 ### Using the monsters
 
-Once enabled, open the **Compendium Packs** sidebar tab → **WC5E Monsters**.
-Drag any monster onto the canvas or into the Actors directory. Attacks roll from
-the character sheet like any other dnd5e NPC.
+Once enabled, open the **Compendium Packs** sidebar tab. Drag monsters from
+**WC5E Monsters** onto the canvas or into the Actors directory (attacks roll
+from the sheet like any dnd5e NPC), and drag gear from **WC5E Items** onto a
+character sheet or into the Items directory.
 
 ---
 
@@ -71,7 +78,8 @@ Individual steps:
 |---------------------|--------------------------------------------------------------------|
 | `npm run parse`     | `build/parse.py`: WC5E `.txt` statblocks → `intermediate/monsters.json` |
 | `npm run actors`    | `build/build_actors.py`: intermediate → `src/monsters/*.json` (one NPC per file) |
-| `npm run pack`      | `build/pack.mjs`: `src/monsters/*.json` → `packs/monsters/` LevelDB pack |
+| `npm run items`     | `build/build_items.py`: authors `src/items/*.json` (WC5E weapons & gear) |
+| `npm run pack`      | `build/pack.mjs`: `src/monsters/` and `src/items/` → LevelDB packs |
 
 The parser points at `../Warcraft-5e-Conversion/Manual of Monsters, Main File.txt`
 by default; pass a path as the first argument to `parse.py` to use another source.
@@ -82,10 +90,12 @@ by default; pass a path as the first argument to `parse.py` to use another sourc
 wc5e-bestiary/
 ├── module.json              # Foundry manifest (edit REPLACE_ME before publishing)
 ├── package.json             # build scripts + Foundry CLI dependency
-├── packs/monsters/          # compiled LevelDB compendium (what Foundry loads)
+├── packs/monsters/          # compiled Actor compendium (what Foundry loads)
+├── packs/items/             # compiled Item compendium
 ├── src/monsters/*.json      # human-readable actor source (edit these, then re-pack)
+├── src/items/*.json         # human-readable item source
 ├── intermediate/            # parsed statblock JSON (build artifact)
-└── build/                   # parse.py, build_actors.py, pack.mjs
+└── build/                   # parse.py, build_actors.py, build_items.py, pack.mjs
 ```
 
 To fix a single monster, edit its file in `src/monsters/`, then `npm run pack`.
