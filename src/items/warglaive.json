@@ -22,7 +22,7 @@
       "units": "lb"
     },
     "price": {
-      "value": 30,
+      "value": 25,
       "denomination": "gp"
     },
     "attunement": "",
@@ -30,9 +30,9 @@
     "rarity": "",
     "identified": true,
     "range": {
-      "value": null,
-      "long": null,
-      "reach": 5,
+      "value": 20,
+      "long": 60,
+      "reach": null,
       "units": "ft"
     },
     "uses": {
@@ -42,10 +42,12 @@
     },
     "damage": {
       "versatile": {
-        "number": null,
-        "denomination": null,
+        "number": 1,
+        "denomination": 10,
         "bonus": "",
-        "types": [],
+        "types": [
+          "slashing"
+        ],
         "custom": {
           "enabled": false,
           "formula": ""
@@ -84,7 +86,8 @@
       "conditions": ""
     },
     "properties": [
-      "lgt"
+      "thr",
+      "ver"
     ],
     "proficient": null,
     "type": {
@@ -122,7 +125,7 @@
         },
         "effects": [],
         "range": {
-          "value": "5",
+          "value": "20",
           "units": "ft",
           "special": "",
           "override": false

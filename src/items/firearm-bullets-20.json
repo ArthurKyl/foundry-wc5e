@@ -1,11 +1,11 @@
 {
-  "_id": "KxHuTf0Pd66sqvEH",
-  "name": "Scattergun Bullets (5)",
+  "_id": "7r249wucvmIGzftY",
+  "name": "Firearm Bullets (20)",
   "type": "consumable",
   "img": "icons/svg/item-bag.svg",
   "system": {
     "description": {
-      "value": "<p>Special ammunition for the scattergun.</p>",
+      "value": "<p>Ammunition for firearms.</p>",
       "chat": ""
     },
     "source": {
@@ -16,13 +16,13 @@
       "revision": 1,
       "rules": "2014"
     },
-    "quantity": 5,
+    "quantity": 20,
     "weight": {
-      "value": 3,
+      "value": 2,
       "units": "lb"
     },
     "price": {
-      "value": 8,
+      "value": 2,
       "denomination": "gp"
     },
     "attunement": "",
@@ -54,5 +54,5 @@
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_key": "!items!KxHuTf0Pd66sqvEH"
+  "_key": "!items!7r249wucvmIGzftY"
 }

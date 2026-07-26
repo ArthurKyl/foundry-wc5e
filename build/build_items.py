@@ -33,15 +33,6 @@ AMMO_ICON = "icons/svg/item-bag.svg"
 SRC = {"custom": "Warcraft 5e - Heroes Handbook", "book": "", "page": "",
        "license": "", "revision": 1, "rules": "2014"}
 
-FIREARM_RULE = (
-    "<p><em>Misfire.</em> When your attack roll's d20 is at or below this "
-    "firearm's misfire score, the weapon misfires: the attack misses and the "
-    "weapon can't be used again until you spend an action to repair it "
-    "(DC 8 + misfire score Intelligence or Tinker's Tools check). On a failed "
-    "check the weapon is broken and must be mended out of combat at a quarter "
-    "of its cost.</p><p><em>Reload.</em> After the listed number of shots you "
-    "must reload using an action or bonus action (your choice).</p>")
-
 EMPTY_DMG = {"number": None, "denomination": None, "bonus": "", "types": [],
              "custom": {"enabled": False, "formula": ""},
              "scaling": {"mode": "", "number": None, "formula": ""}}
@@ -215,69 +206,70 @@ def p(text):
     return f"<p>{text}</p>"
 
 
-def firearm_desc(category, reload_n, misfire, extra=""):
-    return (p(f"<em>{category} firearm.</em> Reload {reload_n}, misfire "
-              f"{misfire}. {extra}".strip()) + FIREARM_RULE)
-
-
 def build():
     items = []
 
-    # ---- Racial weapons (martial melee) ----
+    # ---- Exotic melee weapons (Heroes Handbook, finished edition) ----
     items.append(weapon(
-        "Kaldorei Moon Sword", 15, 4, dmg(1, 8, ["slashing"]),
-        ["ver"], "martialM", "str",
-        p("A night elf circular moon blade.") +
-        p("<em>Special.</em> Whenever you successfully grapple a creature or "
-          "win a contested grapple check while wielding this weapon, you deal "
-          "damage to the creature as if you'd hit it with a weapon attack."),
-        versatile=dmg(2, 6, ["slashing"])))
-    items.append(weapon(
-        "Kaldorei Moonglaive", 20, 3, dmg(1, 6, ["slashing"]),
-        ["fin", "lgt", "thr"], "martialM", "dex",
-        p("A crescent throwing glaive favored by night elf sentinels.") +
-        p("<em>Special.</em> When you make a ranged attack with this weapon and "
-          "miss, the weapon returns to your hand at the end of your turn."),
-        rng=(20, 60)))
-    items.append(weapon(
-        "Sin'dorei Warblade", 25, 5, dmg(1, 8, ["slashing"]),
-        ["spc"], "martialM", "str",
-        p("A blood elf double-ended warblade.") +
-        p("<em>Special.</em> Immediately after attacking an enemy with this "
-          "blade, you may make an additional attack with its second blade "
-          "using your bonus action.")))
-    items.append(weapon(
-        "Tauren Totem", 20, 45, dmg(2, 8, ["bludgeoning"]),
-        ["hvy", "two", "foc"], "martialM", "str",
+        "Battle Totem", 50, 35, dmg(2, 6, ["bludgeoning"]),
+        ["spc", "hvy", "two", "foc"], "martialM", "str",
         p("A massive tauren battle totem, capable of crushing most men.") +
         p("<em>Special.</em> If you can cast spells, you can use this weapon as "
           "a spellcasting focus while wielding or carrying it. In addition, the "
           "battle totem serves as a portable ram.")))
     items.append(weapon(
-        "Warglaive", 30, 3, dmg(1, 8, ["slashing"]),
-        ["lgt"], "martialM", "str",
-        p("A curved glaive wielded in pairs by demon hunters.")))
+        "Moon Sword", 65, 5, dmg(2, 4, ["slashing"]),
+        ["spc", "fin"], "martialM", "dex",
+        p("A night elf circular moon blade.") +
+        p("<em>Special.</em> Whenever you successfully grapple a creature or "
+          "win a contested grapple check while wielding this weapon, you deal "
+          "damage to the creature as if you'd hit it with a weapon attack.")))
+    items.append(weapon(
+        "Moonglaive", 25, 2, dmg(1, 6, ["slashing"]),
+        ["spc", "fin", "lgt", "thr"], "martialM", "dex",
+        p("A crescent throwing glaive favored by night elf sentinels.") +
+        p("<em>Special.</em> When you make a ranged attack with this weapon and "
+          "miss, the weapon returns to your hand at the end of your turn."),
+        rng=(60, 120)))
+    items.append(weapon(
+        "Twinblade", 100, 5, dmg(1, 6, ["slashing"]),
+        ["spc", "ver"], "martialM", "str",
+        p("A double-ended blade spun in a whirl of steel.") +
+        p("<em>Special.</em> When you make an attack with this weapon as part "
+          "of the Attack action on your turn, you can use a bonus action "
+          "immediately after to make an extra melee attack with it. This attack "
+          "counts as an off-hand attack for the purpose of two-weapon "
+          "fighting."),
+        versatile=dmg(1, 8, ["slashing"])))
+    items.append(weapon(
+        "Warclaw", 20, 2, dmg(1, 6, ["slashing"]),
+        ["spc", "fin", "lgt"], "martialM", "dex",
+        p("A bladed gauntlet strapped over the hand.") +
+        p("<em>Special.</em> This weapon requires an action to don or doff. "
+          "While donned, you can't be disarmed of it and your hand is "
+          "considered empty for the purpose of holding objects or creating "
+          "somatic components for spells. You can't wield a weapon or hold a "
+          "shield in the same hand that has a warclaw donned.")))
+    items.append(weapon(
+        "Warglaive", 25, 3, dmg(1, 8, ["slashing"]),
+        ["thr", "ver"], "martialM", "str",
+        p("A curved glaive wielded in pairs by demon hunters."),
+        versatile=dmg(1, 10, ["slashing"]), rng=(20, 60)))
 
-    # ---- Firearms (martial ranged) ----
-    F = [
-        ("Blunderbuss", 300, 10, dmg(2, 8, ["piercing"]), (15, 60),
-         ["amm", "fir", "rel"], "Flintlock", 1, 2, "Uses special ammunition."),
-        ("Musket", 300, 10, dmg(1, 12, ["piercing"]), (120, 480),
-         ["amm", "fir", "rel", "two"], "Flintlock", 1, 2, ""),
-        ("Pistol", 150, 3, dmg(1, 10, ["piercing"]), (60, 240),
-         ["amm", "fir", "rel"], "Flintlock", 2, 1, ""),
-        ("Pepperbox", 350, 5, dmg(2, 4, ["piercing"]), (80, 320),
-         ["amm", "fir", "rel"], "Caplock", 4, 2, ""),
-        ("Revolver", 525, 6, dmg(1, 10, ["piercing"]), (120, 380),
-         ["amm", "fir", "rel"], "Caplock", 6, 1, ""),
-        ("Rifle", 600, 10, dmg(2, 6, ["piercing"]), (300, 600),
-         ["amm", "fir", "rel", "two"], "Caplock", 8, 2, ""),
-        ("Scattergun", 400, 12, dmg(2, 10, ["piercing"]), (30, 90),
-         ["amm", "fir", "rel"], "Caplock", 1, 3, "Uses special ammunition."),
-    ]
-    for name, price, wt, base, rng, props, cat, rl, mf, extra in F:
-        items.append(weapon(name, price, wt, base, props, "martialR", "dex",
-                            firearm_desc(cat, rl, mf, extra), rng=rng))
+    # ---- Firearms (finished edition: Pistol & Rifle, ammunition + loading) ----
+    def firearm(name, price, wt, base, rng, props):
+        return weapon(name, price, wt, base, props, "martialR", "dex",
+                      p(f"An Azerothian firearm. Properties: booming, loading, "
+                        f"ammunition. <em>Booming</em> shots are thunderously "
+                        f"loud; the <em>loading</em> property means you can fire "
+                        f"only one piece of ammunition when you use an action, "
+                        f"bonus action, or reaction to fire it, regardless of "
+                        f"the number of attacks you can normally make."),
+                      rng=rng)
+    items.append(firearm("Pistol", 75, 2, dmg(1, 8, ["piercing"]),
+                         (30, 120), ["amm", "fir", "lod", "lgt"]))
+    items.append(firearm("Rifle", 75, 6, dmg(1, 12, ["piercing"]),
+                         (60, 240), ["amm", "fir", "lod", "hvy", "two"]))
 
     # ---- Shields (equipment) ----
     items.append(shield(
@@ -297,14 +289,8 @@ def build():
           "15."), strength=15, stealth_dis=True))
 
     # ---- Ammunition (consumable) ----
-    items.append(ammo("Flintlock Bullets (10)", 3, 2, 10,
-                      p("Ammunition for flintlock firearms.")))
-    items.append(ammo("Blunderbuss Bullets (5)", 5, 2, 5,
-                      p("Special ammunition for the blunderbuss.")))
-    items.append(ammo("Caplock Rifle Bullets (10)", 5, 3, 10,
-                      p("Ammunition for caplock firearms.")))
-    items.append(ammo("Scattergun Bullets (5)", 8, 3, 5,
-                      p("Special ammunition for the scattergun.")))
+    items.append(ammo("Firearm Bullets (20)", 2, 2, 20,
+                      p("Ammunition for firearms.")))
 
     # ---- Explosives (consumable, thrown, Dex save) ----
     items.append(explosive(

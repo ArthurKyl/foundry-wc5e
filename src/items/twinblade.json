@@ -1,11 +1,11 @@
 {
-  "_id": "oe8AnwSwda0BzX4K",
-  "name": "Scattergun",
+  "_id": "0WQZideNSQecjdeB",
+  "name": "Twinblade",
   "type": "weapon",
   "img": "icons/svg/sword.svg",
   "system": {
     "description": {
-      "value": "<p><em>Caplock firearm.</em> Reload 1, misfire 3. Uses special ammunition.</p><p><em>Misfire.</em> When your attack roll's d20 is at or below this firearm's misfire score, the weapon misfires: the attack misses and the weapon can't be used again until you spend an action to repair it (DC 8 + misfire score Intelligence or Tinker's Tools check). On a failed check the weapon is broken and must be mended out of combat at a quarter of its cost.</p><p><em>Reload.</em> After the listed number of shots you must reload using an action or bonus action (your choice).</p>",
+      "value": "<p>A double-ended blade spun in a whirl of steel.</p><p><em>Special.</em> When you make an attack with this weapon as part of the Attack action on your turn, you can use a bonus action immediately after to make an extra melee attack with it. This attack counts as an off-hand attack for the purpose of two-weapon fighting.</p>",
       "chat": ""
     },
     "source": {
@@ -18,11 +18,11 @@
     },
     "quantity": 1,
     "weight": {
-      "value": 12,
+      "value": 5,
       "units": "lb"
     },
     "price": {
-      "value": 400,
+      "value": 100,
       "denomination": "gp"
     },
     "attunement": "",
@@ -30,9 +30,9 @@
     "rarity": "",
     "identified": true,
     "range": {
-      "value": 30,
-      "long": 90,
-      "reach": null,
+      "value": null,
+      "long": null,
+      "reach": 5,
       "units": "ft"
     },
     "uses": {
@@ -42,10 +42,12 @@
     },
     "damage": {
       "versatile": {
-        "number": null,
-        "denomination": null,
+        "number": 1,
+        "denomination": 8,
         "bonus": "",
-        "types": [],
+        "types": [
+          "slashing"
+        ],
         "custom": {
           "enabled": false,
           "formula": ""
@@ -57,11 +59,11 @@
         }
       },
       "base": {
-        "number": 2,
-        "denomination": 10,
+        "number": 1,
+        "denomination": 6,
         "bonus": "",
         "types": [
-          "piercing"
+          "slashing"
         ],
         "custom": {
           "enabled": false,
@@ -84,18 +86,17 @@
       "conditions": ""
     },
     "properties": [
-      "amm",
-      "fir",
-      "rel"
+      "spc",
+      "ver"
     ],
     "proficient": null,
     "type": {
-      "value": "martialR",
+      "value": "martialM",
       "baseItem": ""
     },
     "activities": {
-      "S1xVo8yM7eyoKyIP": {
-        "_id": "S1xVo8yM7eyoKyIP",
+      "y5xyOlX7jsOWKQuf": {
+        "_id": "y5xyOlX7jsOWKQuf",
         "type": "attack",
         "sort": 0,
         "activation": {
@@ -124,7 +125,7 @@
         },
         "effects": [],
         "range": {
-          "value": "30",
+          "value": "5",
           "units": "ft",
           "special": "",
           "override": false
@@ -154,14 +155,14 @@
           "recovery": []
         },
         "attack": {
-          "ability": "dex",
+          "ability": "str",
           "bonus": "",
           "critical": {
             "threshold": null
           },
           "flat": false,
           "type": {
-            "value": "ranged",
+            "value": "melee",
             "classification": "weapon"
           }
         },
@@ -192,5 +193,5 @@
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_key": "!items!oe8AnwSwda0BzX4K"
+  "_key": "!items!0WQZideNSQecjdeB"
 }

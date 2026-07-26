@@ -1,11 +1,11 @@
 {
-  "_id": "qquWImLuGBrmqdhs",
-  "name": "Musket",
+  "_id": "XB8d331any3WNx2d",
+  "name": "Warclaw",
   "type": "weapon",
   "img": "icons/svg/sword.svg",
   "system": {
     "description": {
-      "value": "<p><em>Flintlock firearm.</em> Reload 1, misfire 2.</p><p><em>Misfire.</em> When your attack roll's d20 is at or below this firearm's misfire score, the weapon misfires: the attack misses and the weapon can't be used again until you spend an action to repair it (DC 8 + misfire score Intelligence or Tinker's Tools check). On a failed check the weapon is broken and must be mended out of combat at a quarter of its cost.</p><p><em>Reload.</em> After the listed number of shots you must reload using an action or bonus action (your choice).</p>",
+      "value": "<p>A bladed gauntlet strapped over the hand.</p><p><em>Special.</em> This weapon requires an action to don or doff. While donned, you can't be disarmed of it and your hand is considered empty for the purpose of holding objects or creating somatic components for spells. You can't wield a weapon or hold a shield in the same hand that has a warclaw donned.</p>",
       "chat": ""
     },
     "source": {
@@ -18,11 +18,11 @@
     },
     "quantity": 1,
     "weight": {
-      "value": 10,
+      "value": 2,
       "units": "lb"
     },
     "price": {
-      "value": 300,
+      "value": 20,
       "denomination": "gp"
     },
     "attunement": "",
@@ -30,9 +30,9 @@
     "rarity": "",
     "identified": true,
     "range": {
-      "value": 120,
-      "long": 480,
-      "reach": null,
+      "value": null,
+      "long": null,
+      "reach": 5,
       "units": "ft"
     },
     "uses": {
@@ -58,10 +58,10 @@
       },
       "base": {
         "number": 1,
-        "denomination": 12,
+        "denomination": 6,
         "bonus": "",
         "types": [
-          "piercing"
+          "slashing"
         ],
         "custom": {
           "enabled": false,
@@ -84,19 +84,18 @@
       "conditions": ""
     },
     "properties": [
-      "amm",
-      "fir",
-      "rel",
-      "two"
+      "spc",
+      "fin",
+      "lgt"
     ],
     "proficient": null,
     "type": {
-      "value": "martialR",
+      "value": "martialM",
       "baseItem": ""
     },
     "activities": {
-      "mSd0xHTKvtPvKlNL": {
-        "_id": "mSd0xHTKvtPvKlNL",
+      "SKteb9EnhgYXtS6Y": {
+        "_id": "SKteb9EnhgYXtS6Y",
         "type": "attack",
         "sort": 0,
         "activation": {
@@ -125,7 +124,7 @@
         },
         "effects": [],
         "range": {
-          "value": "120",
+          "value": "5",
           "units": "ft",
           "special": "",
           "override": false
@@ -162,7 +161,7 @@
           },
           "flat": false,
           "type": {
-            "value": "ranged",
+            "value": "melee",
             "classification": "weapon"
           }
         },
@@ -193,5 +192,5 @@
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_key": "!items!qquWImLuGBrmqdhs"
+  "_key": "!items!XB8d331any3WNx2d"
 }

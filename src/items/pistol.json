@@ -5,7 +5,7 @@
   "img": "icons/svg/sword.svg",
   "system": {
     "description": {
-      "value": "<p><em>Flintlock firearm.</em> Reload 2, misfire 1.</p><p><em>Misfire.</em> When your attack roll's d20 is at or below this firearm's misfire score, the weapon misfires: the attack misses and the weapon can't be used again until you spend an action to repair it (DC 8 + misfire score Intelligence or Tinker's Tools check). On a failed check the weapon is broken and must be mended out of combat at a quarter of its cost.</p><p><em>Reload.</em> After the listed number of shots you must reload using an action or bonus action (your choice).</p>",
+      "value": "<p>An Azerothian firearm. Properties: booming, loading, ammunition. <em>Booming</em> shots are thunderously loud; the <em>loading</em> property means you can fire only one piece of ammunition when you use an action, bonus action, or reaction to fire it, regardless of the number of attacks you can normally make.</p>",
       "chat": ""
     },
     "source": {
@@ -18,11 +18,11 @@
     },
     "quantity": 1,
     "weight": {
-      "value": 3,
+      "value": 2,
       "units": "lb"
     },
     "price": {
-      "value": 150,
+      "value": 75,
       "denomination": "gp"
     },
     "attunement": "",
@@ -30,8 +30,8 @@
     "rarity": "",
     "identified": true,
     "range": {
-      "value": 60,
-      "long": 240,
+      "value": 30,
+      "long": 120,
       "reach": null,
       "units": "ft"
     },
@@ -58,7 +58,7 @@
       },
       "base": {
         "number": 1,
-        "denomination": 10,
+        "denomination": 8,
         "bonus": "",
         "types": [
           "piercing"
@@ -86,7 +86,8 @@
     "properties": [
       "amm",
       "fir",
-      "rel"
+      "lod",
+      "lgt"
     ],
     "proficient": null,
     "type": {
@@ -124,7 +125,7 @@
         },
         "effects": [],
         "range": {
-          "value": "60",
+          "value": "30",
           "units": "ft",
           "special": "",
           "override": false

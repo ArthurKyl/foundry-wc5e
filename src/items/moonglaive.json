@@ -1,11 +1,11 @@
 {
-  "_id": "2KK9ZA4DjkE7tDlK",
-  "name": "Revolver",
+  "_id": "hslaRwT9imzt8htr",
+  "name": "Moonglaive",
   "type": "weapon",
   "img": "icons/svg/sword.svg",
   "system": {
     "description": {
-      "value": "<p><em>Caplock firearm.</em> Reload 6, misfire 1.</p><p><em>Misfire.</em> When your attack roll's d20 is at or below this firearm's misfire score, the weapon misfires: the attack misses and the weapon can't be used again until you spend an action to repair it (DC 8 + misfire score Intelligence or Tinker's Tools check). On a failed check the weapon is broken and must be mended out of combat at a quarter of its cost.</p><p><em>Reload.</em> After the listed number of shots you must reload using an action or bonus action (your choice).</p>",
+      "value": "<p>A crescent throwing glaive favored by night elf sentinels.</p><p><em>Special.</em> When you make a ranged attack with this weapon and miss, the weapon returns to your hand at the end of your turn.</p>",
       "chat": ""
     },
     "source": {
@@ -18,11 +18,11 @@
     },
     "quantity": 1,
     "weight": {
-      "value": 6,
+      "value": 2,
       "units": "lb"
     },
     "price": {
-      "value": 525,
+      "value": 25,
       "denomination": "gp"
     },
     "attunement": "",
@@ -30,8 +30,8 @@
     "rarity": "",
     "identified": true,
     "range": {
-      "value": 120,
-      "long": 380,
+      "value": 60,
+      "long": 120,
       "reach": null,
       "units": "ft"
     },
@@ -58,10 +58,10 @@
       },
       "base": {
         "number": 1,
-        "denomination": 10,
+        "denomination": 6,
         "bonus": "",
         "types": [
-          "piercing"
+          "slashing"
         ],
         "custom": {
           "enabled": false,
@@ -84,18 +84,19 @@
       "conditions": ""
     },
     "properties": [
-      "amm",
-      "fir",
-      "rel"
+      "spc",
+      "fin",
+      "lgt",
+      "thr"
     ],
     "proficient": null,
     "type": {
-      "value": "martialR",
+      "value": "martialM",
       "baseItem": ""
     },
     "activities": {
-      "cBmtHEh2trmHeeCV": {
-        "_id": "cBmtHEh2trmHeeCV",
+      "UkSNEy3Nkfoj4rPJ": {
+        "_id": "UkSNEy3Nkfoj4rPJ",
         "type": "attack",
         "sort": 0,
         "activation": {
@@ -124,7 +125,7 @@
         },
         "effects": [],
         "range": {
-          "value": "120",
+          "value": "60",
           "units": "ft",
           "special": "",
           "override": false
@@ -161,7 +162,7 @@
           },
           "flat": false,
           "type": {
-            "value": "ranged",
+            "value": "melee",
             "classification": "weapon"
           }
         },
@@ -192,5 +193,5 @@
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_key": "!items!2KK9ZA4DjkE7tDlK"
+  "_key": "!items!hslaRwT9imzt8htr"
 }

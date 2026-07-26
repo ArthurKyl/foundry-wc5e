@@ -1,11 +1,11 @@
 {
-  "_id": "anYbVue2Rb1Pvm9C",
-  "name": "Blunderbuss",
+  "_id": "Iv114tMyzqdeyt9x",
+  "name": "Battle Totem",
   "type": "weapon",
   "img": "icons/svg/sword.svg",
   "system": {
     "description": {
-      "value": "<p><em>Flintlock firearm.</em> Reload 1, misfire 2. Uses special ammunition.</p><p><em>Misfire.</em> When your attack roll's d20 is at or below this firearm's misfire score, the weapon misfires: the attack misses and the weapon can't be used again until you spend an action to repair it (DC 8 + misfire score Intelligence or Tinker's Tools check). On a failed check the weapon is broken and must be mended out of combat at a quarter of its cost.</p><p><em>Reload.</em> After the listed number of shots you must reload using an action or bonus action (your choice).</p>",
+      "value": "<p>A massive tauren battle totem, capable of crushing most men.</p><p><em>Special.</em> If you can cast spells, you can use this weapon as a spellcasting focus while wielding or carrying it. In addition, the battle totem serves as a portable ram.</p>",
       "chat": ""
     },
     "source": {
@@ -18,11 +18,11 @@
     },
     "quantity": 1,
     "weight": {
-      "value": 10,
+      "value": 35,
       "units": "lb"
     },
     "price": {
-      "value": 300,
+      "value": 50,
       "denomination": "gp"
     },
     "attunement": "",
@@ -30,9 +30,9 @@
     "rarity": "",
     "identified": true,
     "range": {
-      "value": 15,
-      "long": 60,
-      "reach": null,
+      "value": null,
+      "long": null,
+      "reach": 5,
       "units": "ft"
     },
     "uses": {
@@ -58,10 +58,10 @@
       },
       "base": {
         "number": 2,
-        "denomination": 8,
+        "denomination": 6,
         "bonus": "",
         "types": [
-          "piercing"
+          "bludgeoning"
         ],
         "custom": {
           "enabled": false,
@@ -84,18 +84,19 @@
       "conditions": ""
     },
     "properties": [
-      "amm",
-      "fir",
-      "rel"
+      "spc",
+      "hvy",
+      "two",
+      "foc"
     ],
     "proficient": null,
     "type": {
-      "value": "martialR",
+      "value": "martialM",
       "baseItem": ""
     },
     "activities": {
-      "SQTOZV0HfMwFszJx": {
-        "_id": "SQTOZV0HfMwFszJx",
+      "NPbc5qokkRe93nCY": {
+        "_id": "NPbc5qokkRe93nCY",
         "type": "attack",
         "sort": 0,
         "activation": {
@@ -124,7 +125,7 @@
         },
         "effects": [],
         "range": {
-          "value": "15",
+          "value": "5",
           "units": "ft",
           "special": "",
           "override": false
@@ -154,14 +155,14 @@
           "recovery": []
         },
         "attack": {
-          "ability": "dex",
+          "ability": "str",
           "bonus": "",
           "critical": {
             "threshold": null
           },
           "flat": false,
           "type": {
-            "value": "ranged",
+            "value": "melee",
             "classification": "weapon"
           }
         },
@@ -192,5 +193,5 @@
     "systemId": "dnd5e",
     "systemVersion": "5.3.3"
   },
-  "_key": "!items!anYbVue2Rb1Pvm9C"
+  "_key": "!items!Iv114tMyzqdeyt9x"
 }
