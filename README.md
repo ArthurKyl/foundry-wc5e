@@ -1,0 +1,127 @@
+# Warcraft 5e — Manual of Monsters (Foundry VTT module)
+
+A Foundry VTT compendium module containing **248 monsters** from the community
+[Warcraft 5e (WC5E)](https://github.com/WC5E/Warcraft-5e-Conversion) *Manual of
+Monsters*, converted to **dnd5e** NPC actors.
+
+- **Foundry VTT:** v13–v14 (verified on v14)
+- **dnd5e system:** 5.3.3 (verified)
+- **Content:** 248 NPC actors with full stats, traits, actions, reactions and
+  legendary actions. Weapon/spell attacks are rollable with exact statblock
+  to-hit and damage. Every trait and action also carries its full descriptive
+  text.
+
+> Fan-made conversion for personal use. Warcraft is a trademark of Blizzard
+> Entertainment. This module is not affiliated with or endorsed by Blizzard or
+> the WC5E team. All monster text belongs to its respective authors — see
+> *Attribution* below.
+
+---
+
+## Installing in Foundry
+
+### Option A — Install from a manifest URL (recommended once it's on GitHub)
+
+1. Create a GitHub repo (e.g. `wc5e-bestiary`) and push this folder to it.
+2. Edit **`module.json`** and replace every `REPLACE_ME` with your GitHub
+   username (three places: `url`, `manifest`, `download`).
+3. Commit & push.
+4. In Foundry: **Add-on Modules → Install Module**, paste your manifest URL into
+   the *Manifest URL* box at the bottom, and click **Install**:
+   ```
+   https://raw.githubusercontent.com/<your-username>/wc5e-bestiary/main/module.json
+   ```
+5. In your world: **Game Settings → Manage Modules**, enable
+   *Warcraft 5e — Manual of Monsters*.
+
+### Option B — Install locally (no GitHub needed)
+
+1. Copy this entire `wc5e-bestiary` folder into your Foundry data modules folder:
+   - **macOS:** `~/Library/Application Support/FoundryVTT/Data/modules/`
+   - **Windows:** `%localappdata%/FoundryVTT/Data/modules/`
+   - **Linux:** `~/.local/share/FoundryVTT/Data/modules/`
+   (You only need `module.json` and the `packs/` folder for play; the `build/`,
+   `src/` and `node_modules/` folders are just for rebuilding.)
+2. Restart Foundry, open your world, and enable the module under
+   **Manage Modules**.
+
+### Using the monsters
+
+Once enabled, open the **Compendium Packs** sidebar tab → **WC5E Monsters**.
+Drag any monster onto the canvas or into the Actors directory. Attacks roll from
+the character sheet like any other dnd5e NPC.
+
+---
+
+## Rebuilding the pack from source
+
+Everything is generated from the WC5E markdown, so you can re-run the pipeline
+(for example after a dnd5e update, or to tweak the conversion).
+
+Requirements: **Node 18+** and **Python 3**.
+
+```bash
+npm install          # installs the Foundry CLI (dev dependency)
+npm run build        # parse -> build actors -> compile pack
+```
+
+Individual steps:
+
+| Command             | What it does                                                        |
+|---------------------|--------------------------------------------------------------------|
+| `npm run parse`     | `build/parse.py`: WC5E `.txt` statblocks → `intermediate/monsters.json` |
+| `npm run actors`    | `build/build_actors.py`: intermediate → `src/monsters/*.json` (one NPC per file) |
+| `npm run pack`      | `build/pack.mjs`: `src/monsters/*.json` → `packs/monsters/` LevelDB pack |
+
+The parser points at `../Warcraft-5e-Conversion/Manual of Monsters, Main File.txt`
+by default; pass a path as the first argument to `parse.py` to use another source.
+
+### Layout
+
+```
+wc5e-bestiary/
+├── module.json              # Foundry manifest (edit REPLACE_ME before publishing)
+├── package.json             # build scripts + Foundry CLI dependency
+├── packs/monsters/          # compiled LevelDB compendium (what Foundry loads)
+├── src/monsters/*.json      # human-readable actor source (edit these, then re-pack)
+├── intermediate/            # parsed statblock JSON (build artifact)
+└── build/                   # parse.py, build_actors.py, pack.mjs
+```
+
+To fix a single monster, edit its file in `src/monsters/`, then `npm run pack`.
+
+---
+
+## Conversion notes & known limitations
+
+- **Attacks** (`Melee/Ranged Weapon/Spell Attack`) are built as rollable feat
+  activities using a *flat* to-hit and the exact damage dice from the statblock,
+  so rolls match the book regardless of ability modifiers.
+- **Non-attack actions** (Multiattack, save-or-suck abilities, etc.) are feats
+  with a utility activity so they appear in the right section and can be posted
+  to chat; the mechanics live in the description text.
+- **Spellcasting** monsters keep their full spell list in the trait description,
+  but individual spells are **not** wired as castable spell items.
+- **Saving-throw / area abilities** are not auto-converted into save activities;
+  the DCs and effects are in the description text.
+- **Damage resistances "from nonmagical attacks"** are mapped to the proper
+  physical types plus the *magical bypass* flag.
+- **Tokens** use the default placeholder art. See *Token art* below.
+
+These are deliberate trade-offs: core stats are exact and everything loads
+cleanly; the descriptive text is always complete, so nothing from the book is
+lost even where an ability isn't fully automated.
+
+## Token art
+
+This module ships with placeholder tokens. Per-monster Warcraft token art is a
+planned second phase (bundling images and wiring `img` /
+`prototypeToken.texture.src` on each actor).
+
+## Attribution
+
+Monster content is from the **Warcraft 5e Conversion — Manual of Monsters**
+(<https://github.com/WC5E/Warcraft-5e-Conversion>), created by the WC5E
+community. This module only reformats that text into Foundry actors. Please
+credit the WC5E project and respect their licensing. Built for the **dnd5e**
+system for Foundry VTT.

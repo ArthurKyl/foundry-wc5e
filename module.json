@@ -1,0 +1,52 @@
+{
+  "id": "wc5e-bestiary",
+  "title": "Warcraft 5e — Manual of Monsters",
+  "description": "A compendium of monsters from the community Warcraft 5e (WC5E) conversion's Manual of Monsters, converted to dnd5e NPC actors. Fan work; not affiliated with Blizzard Entertainment or the WC5E team.",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Converted for personal use"
+    }
+  ],
+  "compatibility": {
+    "minimum": "13",
+    "verified": "14"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "5.3.3",
+          "verified": "5.3.3"
+        }
+      }
+    ]
+  },
+  "packs": [
+    {
+      "name": "monsters",
+      "label": "WC5E Monsters",
+      "path": "packs/monsters",
+      "type": "Actor",
+      "system": "dnd5e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER",
+        "GAMEMASTER": "OWNER"
+      },
+      "flags": {}
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Warcraft 5e",
+      "sorting": "m",
+      "packs": ["monsters"]
+    }
+  ],
+  "url": "https://github.com/REPLACE_ME/wc5e-bestiary",
+  "manifest": "https://raw.githubusercontent.com/REPLACE_ME/wc5e-bestiary/main/module.json",
+  "download": "https://github.com/REPLACE_ME/wc5e-bestiary/archive/refs/heads/main.zip"
+}

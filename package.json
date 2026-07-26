@@ -1,0 +1,16 @@
+{
+  "name": "wc5e-bestiary",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Build tooling for the Warcraft 5e Manual of Monsters Foundry compendium.",
+  "type": "module",
+  "scripts": {
+    "parse": "python3 build/parse.py",
+    "actors": "python3 build/build_actors.py",
+    "pack": "node build/pack.mjs",
+    "build": "npm run parse && npm run actors && npm run pack"
+  },
+  "devDependencies": {
+    "@foundryvtt/foundryvtt-cli": "^1.0.4"
+  }
+}
