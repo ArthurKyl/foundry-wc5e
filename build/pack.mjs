@@ -11,7 +11,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.dirname(__dirname);
 
 // Each source folder under src/ compiles to a like-named pack under packs/.
-const PACKS = ["monsters", "items"];
+const PACKS = ["monsters", "items", "spells"];
 
 for ( const name of PACKS ) {
   const src = path.join(repo, "src", name);

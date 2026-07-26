@@ -8,8 +8,9 @@
     "parse": "python3 build/parse.py",
     "actors": "python3 build/build_actors.py",
     "items": "python3 build/build_items.py",
+    "spells": "python3 build/extract_spells.py && python3 build/build_spells.py",
     "pack": "node build/pack.mjs",
-    "build": "npm run parse && npm run actors && npm run items && npm run pack"
+    "build": "npm run parse && npm run actors && npm run items && npm run spells && npm run pack"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "^1.0.4"

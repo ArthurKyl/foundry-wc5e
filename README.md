@@ -6,7 +6,7 @@ conversion, converted to the **dnd5e** system.
 
 - **Foundry VTT:** v13–v14 (verified on v14)
 - **dnd5e system:** 5.3.3 (verified)
-- **Two compendiums:**
+- **Three compendiums:**
   - **WC5E Monsters** — 420 NPC actors with full stats, traits, actions,
     reactions and legendary actions. Weapon/spell attacks are rollable with
     exact statblock to-hit and damage; every trait and action also carries its
@@ -23,6 +23,12 @@ conversion, converted to the **dnd5e** system.
     Buzzbox, Firestarter, Flashlight, Glowstick, Parachute). Uses dnd5e's native
     firearm/ammunition properties; the SRD-standard equipment is intentionally
     left out since the dnd5e system already ships it.
+  - **WC5E Spells** — 27 Warcraft-specific spells (Solar Wrath, Starfire,
+    Starsurge, Shadow Bolt, Chain Heal, Lava Burst, Blizzard, Ice Nova, etc.) as
+    real dnd5e spell items with rollable attacks/saves, correct level/school/
+    components, and slot scaling. These are exactly the custom spells the
+    monsters reference (marked `✦` in the source) that don't exist in core D&D;
+    the SRD spells the monsters also use already ship with the dnd5e system.
 
 > Fan-made conversion for personal use. Warcraft is a trademark of Blizzard
 > Entertainment. This module is not affiliated with or endorsed by Blizzard or
@@ -86,7 +92,8 @@ Individual steps:
 | `npm run parse`     | `build/parse.py`: statblocks → `intermediate/monsters.json` (Main File) + `monsters_wip.json` (WIP) |
 | `npm run actors`    | `build/build_actors.py`: intermediate → `src/monsters/*.json` (Main + net-new WIP, deduped) |
 | `npm run items`     | `build/build_items.py`: authors `src/items/*.json` (WC5E weapons & gear) |
-| `npm run pack`      | `build/pack.mjs`: `src/monsters/` and `src/items/` → LevelDB packs |
+| `npm run spells`    | `build/extract_spells.py` + `build/build_spells.py`: WC5E custom spells → `src/spells/*.json` |
+| `npm run pack`      | `build/pack.mjs`: `src/monsters/`, `src/items/`, `src/spells/` → LevelDB packs |
 
 The parser points at `../Warcraft-5e-Conversion/Manual of Monsters, Main File.txt`
 by default; pass a path as the first argument to `parse.py` to use another source.
@@ -99,10 +106,12 @@ wc5e-bestiary/
 ├── package.json             # build scripts + Foundry CLI dependency
 ├── packs/monsters/          # compiled Actor compendium (what Foundry loads)
 ├── packs/items/             # compiled Item compendium
+├── packs/spells/            # compiled Spell compendium
 ├── src/monsters/*.json      # human-readable actor source (edit these, then re-pack)
 ├── src/items/*.json         # human-readable item source
-├── intermediate/            # parsed statblock JSON (build artifact)
-└── build/                   # parse.py, build_actors.py, build_items.py, pack.mjs
+├── src/spells/*.json        # human-readable spell source
+├── intermediate/            # parsed statblock / spell JSON (build artifacts)
+└── build/                   # parse.py, build_actors.py, build_items.py, build_spells.py, pack.mjs
 ```
 
 To fix a single monster, edit its file in `src/monsters/`, then `npm run pack`.
@@ -117,8 +126,12 @@ To fix a single monster, edit its file in `src/monsters/`, then `npm run pack`.
 - **Non-attack actions** (Multiattack, save-or-suck abilities, etc.) are feats
   with a utility activity so they appear in the right section and can be posted
   to chat; the mechanics live in the description text.
-- **Spellcasting** monsters keep their full spell list in the trait description,
-  but individual spells are **not** wired as castable spell items.
+- **Spellcasting** monsters keep their full spell list in the trait description
+  (with `✦` still marking the WC5E-custom spells). The custom spells are defined
+  as real items in the **WC5E Spells** compendium, but they're **not** auto-added
+  to each monster's sheet — drag one on from the compendium if you want it
+  rollable there. Core/SRD spells the monsters cite already exist in dnd5e's
+  built-in spell compendium.
 - **Saving-throw / area abilities** are not auto-converted into save activities;
   the DCs and effects are in the description text.
 - **Damage resistances "from nonmagical attacks"** are mapped to the proper

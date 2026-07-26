@@ -50,13 +50,26 @@
         "GAMEMASTER": "OWNER"
       },
       "flags": {}
+    },
+    {
+      "name": "spells",
+      "label": "WC5E Spells",
+      "path": "packs/spells",
+      "type": "Item",
+      "system": "dnd5e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER",
+        "GAMEMASTER": "OWNER"
+      },
+      "flags": {}
     }
   ],
   "packFolders": [
     {
       "name": "Warcraft 5e",
       "sorting": "m",
-      "packs": ["monsters", "items"]
+      "packs": ["monsters", "items", "spells"]
     }
   ],
   "url": "https://github.com/REPLACE_ME/wc5e-bestiary",
