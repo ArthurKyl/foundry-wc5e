@@ -7,10 +7,14 @@ conversion, converted to the **dnd5e** system.
 - **Foundry VTT:** v13–v14 (verified on v14)
 - **dnd5e system:** 5.3.3 (verified)
 - **Two compendiums:**
-  - **WC5E Monsters** — 248 NPC actors (from the *Manual of Monsters*) with full
-    stats, traits, actions, reactions and legendary actions. Weapon/spell
-    attacks are rollable with exact statblock to-hit and damage; every trait and
-    action also carries its full descriptive text.
+  - **WC5E Monsters** — 420 NPC actors with full stats, traits, actions,
+    reactions and legendary actions. Weapon/spell attacks are rollable with
+    exact statblock to-hit and damage; every trait and action also carries its
+    full descriptive text. This is 248 from the finished *Manual of Monsters*
+    plus 172 net-new draft creatures from the *WIP Manual of Monsters* (full
+    dragonflights, demons, the Scourge, dinosaurs, NPCs, and more). WIP entries
+    are tagged `Warcraft 5e - Manual of Monsters (WIP)` in their source field;
+    duplicates of finished monsters were skipped.
   - **WC5E Items** — 21 Warcraft-specific weapons & gear (from the *Heroes
     Handbook*, finished edition): 6 exotic weapons (Battle Totem, Moon Sword,
     Moonglaive, Twinblade, Warclaw, Warglaive), 2 firearms (Pistol, Rifle),
@@ -79,8 +83,8 @@ Individual steps:
 
 | Command             | What it does                                                        |
 |---------------------|--------------------------------------------------------------------|
-| `npm run parse`     | `build/parse.py`: WC5E `.txt` statblocks → `intermediate/monsters.json` |
-| `npm run actors`    | `build/build_actors.py`: intermediate → `src/monsters/*.json` (one NPC per file) |
+| `npm run parse`     | `build/parse.py`: statblocks → `intermediate/monsters.json` (Main File) + `monsters_wip.json` (WIP) |
+| `npm run actors`    | `build/build_actors.py`: intermediate → `src/monsters/*.json` (Main + net-new WIP, deduped) |
 | `npm run items`     | `build/build_items.py`: authors `src/items/*.json` (WC5E weapons & gear) |
 | `npm run pack`      | `build/pack.mjs`: `src/monsters/` and `src/items/` → LevelDB packs |
 

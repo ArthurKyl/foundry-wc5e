@@ -486,7 +486,8 @@ def build_actor(mon):
             "legres": {"value": 0, "max": 0},
             "lair": {"value": False, "initiative": None},
         },
-        "source": {"custom": "Warcraft 5e - Manual of Monsters", "book": "",
+        "source": {"custom": "Warcraft 5e - Manual of Monsters"
+                   + (" (WIP)" if mon.get("_wip") else ""), "book": "",
                    "page": "", "license": "", "revision": 1, "rules": "2014"},
     }
 
@@ -528,8 +529,23 @@ def slugify(name):
 
 
 def main():
-    monsters = json.load(open(os.path.join(REPO, "intermediate", "monsters.json"),
+    inter = os.path.join(REPO, "intermediate")
+    monsters = json.load(open(os.path.join(inter, "monsters.json"),
                               encoding="utf-8"))
+    main_names = {m["name"].lower() for m in monsters}
+
+    # Append net-new WIP monsters (skip any that duplicate the finished bestiary).
+    wip_path = os.path.join(inter, "monsters_wip.json")
+    wip_added = 0
+    if os.path.exists(wip_path):
+        for m in json.load(open(wip_path, encoding="utf-8")):
+            if m["name"].lower() in main_names:
+                continue
+            m["_wip"] = True
+            monsters.append(m)
+            main_names.add(m["name"].lower())
+            wip_added += 1
+
     out_dir = os.path.join(REPO, "src", "monsters")
     os.makedirs(out_dir, exist_ok=True)
     # clean old
@@ -551,7 +567,8 @@ def main():
             json.dump(actor, f, indent=2, ensure_ascii=False)
         count += 1
 
-    print(f"Wrote {count} actor files to {out_dir}")
+    print(f"Wrote {count} actor files to {out_dir} "
+          f"({count - wip_added} main + {wip_added} WIP)")
 
 
 if __name__ == "__main__":

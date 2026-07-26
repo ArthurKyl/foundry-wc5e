@@ -240,12 +240,14 @@ def parse_speed(text):
     """'30 ft., fly 60 ft. (hover)' -> dict of movement types."""
     t = clean_inline(text).lower()
     speeds = {'walk': 0, 'fly': 0, 'swim': 0, 'climb': 0, 'burrow': 0, 'hover': False}
+    # accept both "30 ft." and "30 feet"
+    FT = r'\s*(\d+)\s*f(?:t|eet)'
     # leading plain number is walk
-    m = re.match(r'\s*(\d+)\s*ft', t)
+    m = re.match(FT, t)
     if m:
         speeds['walk'] = int(m.group(1))
     for kind in ['fly', 'swim', 'climb', 'burrow']:
-        mm = re.search(kind + r'\s*(\d+)\s*ft', t)
+        mm = re.search(kind + FT, t)
         if mm:
             speeds[kind] = int(mm.group(1))
     if 'hover' in t:
@@ -548,35 +550,50 @@ def parse_statblock(block_lines):
 # Main
 # ---------------------------------------------------------------------------
 
+def parse_source_files(paths):
+    """Parse one or more source files; return a flat list of monster dicts,
+    each tagged with the basename of the file it came from."""
+    monsters = []
+    for src in paths:
+        with open(src, encoding='utf-8') as f:
+            text = f.read()
+        # Normalise unicode en-dash / minus-sign to ASCII hyphen so negative
+        # modifiers ("6 (–2)"), HP formulas ("1d4 – 1"), etc. parse. Em-dash
+        # (—) is left alone as it is used as punctuation / "none".
+        text = text.replace('–', '-').replace('−', '-')
+        lines = text.split('\n')
+        for block in extract_statblocks(lines):
+            mon = parse_statblock(block)
+            if mon and mon['name']:
+                mon['source_file'] = os.path.basename(src)
+                monsters.append(mon)
+    return monsters
+
+
 def main():
     here = os.path.dirname(os.path.abspath(__file__))
     repo = os.path.dirname(here)
-    default_src = os.path.join(
-        os.path.dirname(repo),
-        'Warcraft-5e-Conversion', 'Manual of Monsters, Main File.txt')
-    src = sys.argv[1] if len(sys.argv) > 1 else default_src
+    conv = os.path.join(os.path.dirname(repo), 'Warcraft-5e-Conversion')
+    inter = os.path.join(repo, 'intermediate')
+    os.makedirs(inter, exist_ok=True)
 
-    with open(src, encoding='utf-8') as f:
-        lines = f.read().split('\n')
+    # --- Main File (finished, canonical bestiary) ---
+    main_file = os.path.join(conv, 'Manual of Monsters, Main File.txt')
+    main_monsters = parse_source_files([main_file])
+    with open(os.path.join(inter, 'monsters.json'), 'w', encoding='utf-8') as f:
+        json.dump(main_monsters, f, indent=2, ensure_ascii=False)
+    print(f'Main File: parsed {len(main_monsters)} monsters -> monsters.json')
 
-    monsters = []
-    for block in extract_statblocks(lines):
-        mon = parse_statblock(block)
-        if mon and mon['name']:
-            monsters.append(mon)
-
-    out_path = os.path.join(repo, 'intermediate', 'monsters.json')
-    with open(out_path, 'w', encoding='utf-8') as f:
-        json.dump(monsters, f, indent=2, ensure_ascii=False)
-
-    print(f'Parsed {len(monsters)} monsters -> {out_path}')
-    # quick sanity summary
-    missing_actions = [m['name'] for m in monsters if not m['actions']]
-    print(f'  with legendary actions: {sum(1 for m in monsters if m["legendary"])}')
-    print(f'  with reactions        : {sum(1 for m in monsters if m["reactions"])}')
-    print(f'  without any actions    : {len(missing_actions)}')
-    if missing_actions:
-        print('   ->', ', '.join(missing_actions[:20]))
+    # --- WIP Manual of Monsters (draft/next-edition content) ---
+    wip_dir = os.path.join(conv, 'WIP Manual of Monsters')
+    skip = {'README.md'}
+    wip_files = sorted(
+        os.path.join(wip_dir, fn) for fn in os.listdir(wip_dir)
+        if os.path.isfile(os.path.join(wip_dir, fn)) and fn not in skip)
+    wip_monsters = parse_source_files(wip_files)
+    with open(os.path.join(inter, 'monsters_wip.json'), 'w', encoding='utf-8') as f:
+        json.dump(wip_monsters, f, indent=2, ensure_ascii=False)
+    print(f'WIP: parsed {len(wip_monsters)} monsters -> monsters_wip.json')
 
 
 if __name__ == '__main__':
