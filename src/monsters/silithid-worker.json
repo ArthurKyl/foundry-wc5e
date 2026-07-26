@@ -2,7 +2,7 @@
   "_id": "E2wHlqvcfwAbeho8",
   "name": "Silithid Worker",
   "type": "npc",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "modules/wc5e-bestiary/assets/default-token.svg",
   "system": {
     "abilities": {
       "str": {
@@ -369,7 +369,7 @@
       "attribute": null
     },
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "modules/wc5e-bestiary/assets/default-token.svg"
     },
     "sight": {
       "enabled": false,

@@ -106,7 +106,7 @@ To fix a single monster, edit its file in `src/monsters/`, then `npm run pack`.
   the DCs and effects are in the description text.
 - **Damage resistances "from nonmagical attacks"** are mapped to the proper
   physical types plus the *magical bypass* flag.
-- **Tokens** use the default placeholder art. See *Token art* below.
+- **Tokens** use a shared Warcraft-themed default emblem. See *Token art* below.
 
 These are deliberate trade-offs: core stats are exact and everything loads
 cleanly; the descriptive text is always complete, so nothing from the book is
@@ -114,9 +114,13 @@ lost even where an ability isn't fully automated.
 
 ## Token art
 
-This module ships with placeholder tokens. Per-monster Warcraft token art is a
-planned second phase (bundling images and wiring `img` /
-`prototypeToken.texture.src` on each actor).
+Every monster uses a single bundled default emblem
+(`assets/default-token.svg`) for both its portrait and token, so the bestiary
+looks consistent out of the box. Per-monster art was intentionally left out —
+the community source only has loosely-placed page illustrations, not tokens, so
+auto-matching them proved unreliable. To give a monster its own art, just set
+its image on the actor in Foundry (or edit `img` /
+`prototypeToken.texture.src` in its `src/monsters/*.json` and re-pack).
 
 ## Attribution
 

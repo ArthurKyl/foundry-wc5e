@@ -2,7 +2,7 @@
   "_id": "Zk6mqypqDq678jbZ",
   "name": "Arcane Golem",
   "type": "npc",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "modules/wc5e-bestiary/assets/default-token.svg",
   "system": {
     "abilities": {
       "str": {
@@ -380,7 +380,7 @@
       "attribute": null
     },
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "modules/wc5e-bestiary/assets/default-token.svg"
     },
     "sight": {
       "enabled": false,

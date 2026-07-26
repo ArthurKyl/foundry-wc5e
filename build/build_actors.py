@@ -27,6 +27,9 @@ import hashlib
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 
+# Shared default token/portrait shipped with the module.
+DEFAULT_IMG = "modules/wc5e-bestiary/assets/default-token.svg"
+
 # ---------------------------------------------------------------------------
 # Deterministic 16-char Foundry document ids (stable across rebuilds)
 # ---------------------------------------------------------------------------
@@ -497,7 +500,7 @@ def build_actor(mon):
         "displayBars": 20,
         "bar1": {"attribute": "attributes.hp"},
         "bar2": {"attribute": None},
-        "texture": {"src": "icons/svg/mystery-man.svg"},
+        "texture": {"src": DEFAULT_IMG},
         "sight": {"enabled": False, "range": 0},
     }
 
@@ -505,7 +508,7 @@ def build_actor(mon):
         "_id": actor_id,
         "name": mon["name"],
         "type": "npc",
-        "img": "icons/svg/mystery-man.svg",
+        "img": DEFAULT_IMG,
         "system": system,
         "prototypeToken": prototype,
         "items": items,
