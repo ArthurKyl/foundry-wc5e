@@ -5,7 +5,7 @@
   "img": "icons/svg/sword.svg",
   "system": {
     "description": {
-      "value": "<p>A crescent throwing glaive favored by night elf sentinels.</p>",
+      "value": "<p>A crescent throwing glaive favored by night elf sentinels.</p><p><em>Special.</em> When you make a ranged attack with this weapon and miss, the weapon returns to your hand at the end of your turn.</p>",
       "chat": ""
     },
     "source": {

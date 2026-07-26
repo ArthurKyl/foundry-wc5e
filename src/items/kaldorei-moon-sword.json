@@ -5,7 +5,7 @@
   "img": "icons/svg/sword.svg",
   "system": {
     "description": {
-      "value": "<p>A night elf circular moon blade.</p>",
+      "value": "<p>A night elf circular moon blade.</p><p><em>Special.</em> Whenever you successfully grapple a creature or win a contested grapple check while wielding this weapon, you deal damage to the creature as if you'd hit it with a weapon attack.</p>",
       "chat": ""
     },
     "source": {

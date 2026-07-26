@@ -11,11 +11,13 @@ conversion, converted to the **dnd5e** system.
     stats, traits, actions, reactions and legendary actions. Weapon/spell
     attacks are rollable with exact statblock to-hit and damage; every trait and
     action also carries its full descriptive text.
-  - **WC5E Items** — 19 Warcraft-specific weapons & gear (from the *Heroes
-    Handbook*): 7 firearms (with reload/misfire), 5 racial weapons, 3 shields
-    and 4 ammunition types. Uses dnd5e's native firearm/reload/ammunition
-    properties; the SRD-standard equipment is intentionally left out since the
-    dnd5e system already ships it.
+  - **WC5E Items** — 28 Warcraft-specific weapons & gear (from the *Heroes
+    Handbook*): 7 firearms (with reload/misfire), 5 racial weapons, 3 shields,
+    4 ammunition types, 2 explosives (Bomb, Dynamite — thrown, rollable Dex
+    save) and 7 pieces of adventuring gear (Bayonet, Beacon, Buzzbox,
+    Firestarter, Flashlight, Glowstick, Parachute). Uses dnd5e's native
+    firearm/reload/ammunition properties; the SRD-standard equipment is
+    intentionally left out since the dnd5e system already ships it.
 
 > Fan-made conversion for personal use. Warcraft is a trademark of Blizzard
 > Entertainment. This module is not affiliated with or endorsed by Blizzard or

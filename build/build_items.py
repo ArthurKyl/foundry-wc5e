@@ -79,6 +79,64 @@ def attack_activity(item_id, atk_type, ability, rng_value):
     }}
 
 
+def save_activity(item_id, ability, dc, dmg_parts, on_save, radius, rng):
+    aid = make_id(item_id, "save")
+    return {aid: {
+        "_id": aid, "type": "save", "sort": 0,
+        "activation": {"type": "action", "value": 1, "condition": "",
+                       "override": False},
+        "consumption": {"targets": [], "scaling": {"allowed": False, "max": ""},
+                        "spellSlot": True},
+        "description": {"chatFlavor": ""},
+        "duration": {"concentration": False, "value": "", "units": "inst",
+                     "special": "", "override": False},
+        "effects": [],
+        "range": {"value": str(rng), "units": "ft", "special": "",
+                  "override": False},
+        "target": {"template": {"count": "", "contiguous": False,
+                    "type": "radius", "size": str(radius), "width": "",
+                    "height": "", "units": "ft"},
+                   "affects": {"count": "", "type": "creature", "choice": False,
+                    "special": ""}, "prompt": True, "override": False},
+        "uses": {"spent": 0, "max": "", "recovery": []},
+        "save": {"ability": [ability],
+                 "dc": {"calculation": "flat", "formula": str(dc)}},
+        "damage": {"onSave": on_save, "parts": dmg_parts},
+    }}
+
+
+def explosive(name, price, weight, ability, dc, base, on_save, desc,
+              radius=5, rng=60):
+    item_id = make_id("item", name)
+    system = {
+        "description": {"value": desc, "chat": ""},
+        "source": SRC, "quantity": 1,
+        "weight": {"value": weight, "units": "lb"},
+        "price": {"value": price, "denomination": "gp"},
+        "attunement": "", "equipped": False, "rarity": "", "identified": True,
+        "uses": {"spent": 0, "max": "", "recovery": []},
+        "type": {"value": "trinket", "subtype": ""},
+        "properties": [], "identifier": "", "magicAvailable": False,
+        "activities": save_activity(item_id, ability, dc, [base], on_save,
+                                    radius, rng),
+    }
+    return _wrap(item_id, name, "consumable", AMMO_ICON, system)
+
+
+def gear(name, price, weight, desc, denom="gp"):
+    item_id = make_id("item", name)
+    system = {
+        "description": {"value": desc, "chat": ""},
+        "source": SRC, "quantity": 1,
+        "weight": {"value": weight, "units": "lb"},
+        "price": {"value": price, "denomination": denom},
+        "rarity": "", "identified": True,
+        "type": {"value": "gear", "subtype": ""},
+        "properties": [], "identifier": "",
+    }
+    return _wrap(item_id, name, "loot", AMMO_ICON, system)
+
+
 def weapon(name, price, weight, base, props, wtype, ability, desc,
            versatile=None, rng=None, reach=5):
     item_id = make_id("item", name)
@@ -169,12 +227,17 @@ def build():
     items.append(weapon(
         "Kaldorei Moon Sword", 15, 4, dmg(1, 8, ["slashing"]),
         ["ver"], "martialM", "str",
-        p("A night elf circular moon blade."),
+        p("A night elf circular moon blade.") +
+        p("<em>Special.</em> Whenever you successfully grapple a creature or "
+          "win a contested grapple check while wielding this weapon, you deal "
+          "damage to the creature as if you'd hit it with a weapon attack."),
         versatile=dmg(2, 6, ["slashing"])))
     items.append(weapon(
         "Kaldorei Moonglaive", 20, 3, dmg(1, 6, ["slashing"]),
         ["fin", "lgt", "thr"], "martialM", "dex",
-        p("A crescent throwing glaive favored by night elf sentinels."),
+        p("A crescent throwing glaive favored by night elf sentinels.") +
+        p("<em>Special.</em> When you make a ranged attack with this weapon and "
+          "miss, the weapon returns to your hand at the end of your turn."),
         rng=(20, 60)))
     items.append(weapon(
         "Sin'dorei Warblade", 25, 5, dmg(1, 8, ["slashing"]),
@@ -185,8 +248,11 @@ def build():
           "using your bonus action.")))
     items.append(weapon(
         "Tauren Totem", 20, 45, dmg(2, 8, ["bludgeoning"]),
-        ["hvy", "two"], "martialM", "str",
-        p("A massive tauren totem, capable of crushing most men.")))
+        ["hvy", "two", "foc"], "martialM", "str",
+        p("A massive tauren battle totem, capable of crushing most men.") +
+        p("<em>Special.</em> If you can cast spells, you can use this weapon as "
+          "a spellcasting focus while wielding or carrying it. In addition, the "
+          "battle totem serves as a portable ram.")))
     items.append(weapon(
         "Warglaive", 30, 3, dmg(1, 8, ["slashing"]),
         ["lgt"], "martialM", "str",
@@ -239,6 +305,61 @@ def build():
                       p("Ammunition for caplock firearms.")))
     items.append(ammo("Scattergun Bullets (5)", 8, 3, 5,
                       p("Special ammunition for the scattergun.")))
+
+    # ---- Explosives (consumable, thrown, Dex save) ----
+    items.append(explosive(
+        "Bomb", 75, 2, "dex", 12, dmg(2, 6, ["fire"]), "none",
+        p("As an action, you light this bomb and throw it at a point up to 60 "
+          "feet away. Each creature within 5 feet of that point must succeed on "
+          "a DC 12 Dexterity saving throw or take 2d6 fire damage.")))
+    items.append(explosive(
+        "Dynamite", 200, 1, "dex", 12, dmg(4, 6, ["thunder"]), "none",
+        p("As an action, you light a stick of dynamite and throw it at a point "
+          "up to 60 feet away. Each creature within 5 feet of that point must "
+          "succeed on a DC 12 Dexterity saving throw or take 4d6 thunder "
+          "damage.")))
+
+    # ---- Adventuring gear (special rules; prices from HHB gear table) ----
+    items.append(gear(
+        "Bayonet", 2, 1,
+        p("This short blade can be attached to the end of a firearm or crossbow "
+          "as an action, allowing the weapon to be used in a melee attack. A "
+          "bayonet on a ranged weapon is treated as a spear in terms of "
+          "proficiency and damage. When wielded alone, a bayonet is treated as "
+          "a dagger.")))
+    items.append(gear(
+        "Beacon", 50, 2,
+        p("A tinker's invention resembling a larger lantern. It casts bright "
+          "light in a 30-foot radius and dim light for an additional 30 feet. "
+          "As an action you turn the light on or off, or lower the hood to "
+          "reduce it to dim light in a 5-foot radius.")))
+    items.append(gear(
+        "Buzzbox", 2000, 10,
+        p("A small backpack that lets the wearer communicate with other "
+          "buzzboxes within 5 miles. Blocked by 1 foot of stone, 1 inch of "
+          "common metal, a thin sheet of lead, or 3 feet of wood or dirt.")))
+    items.append(gear(
+        "Firestarter", 25, 0,
+        p("A small container that produces a tiny flame shedding bright light "
+          "in a 5-foot radius and dim light for an additional 5 feet. Using it "
+          "to light a torch — or anything with exposed fuel — takes an action.")))
+    items.append(gear(
+        "Flashlight", 50, 2,
+        p("Casts bright light in a 60-foot cone and dim light for an additional "
+          "60 feet. As an action, you can turn the flashlight on or off.")))
+    items.append(gear(
+        "Glowstick", 5, 0,
+        p("One or more glowsticks can be lit as an action, providing bright "
+          "light in a 10-foot radius and dim light for an additional 10 feet "
+          "for 8 hours. Once lit, a glowstick cannot be extinguished."),
+        denom="cp"))
+    items.append(gear(
+        "Parachute", 30, 15,
+        p("A creature wearing this backpack-shaped gear can deploy it as a "
+          "reaction while falling. Its falling speed is reduced to 60 feet per "
+          "round until it lands, taking no damage, and it becomes one size "
+          "larger for the purpose of its space. Once used, the parachute takes "
+          "10 minutes to repack.")))
 
     return items
 

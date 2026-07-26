@@ -5,7 +5,7 @@
   "img": "icons/svg/sword.svg",
   "system": {
     "description": {
-      "value": "<p>A massive tauren totem, capable of crushing most men.</p>",
+      "value": "<p>A massive tauren battle totem, capable of crushing most men.</p><p><em>Special.</em> If you can cast spells, you can use this weapon as a spellcasting focus while wielding or carrying it. In addition, the battle totem serves as a portable ram.</p>",
       "chat": ""
     },
     "source": {
@@ -85,7 +85,8 @@
     },
     "properties": [
       "hvy",
-      "two"
+      "two",
+      "foc"
     ],
     "proficient": null,
     "type": {
