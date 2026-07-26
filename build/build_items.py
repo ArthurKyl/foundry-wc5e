@@ -259,12 +259,17 @@ def build():
     # ---- Firearms (finished edition: Pistol & Rifle, ammunition + loading) ----
     def firearm(name, price, wt, base, rng, props):
         return weapon(name, price, wt, base, props, "martialR", "dex",
-                      p(f"An Azerothian firearm. Properties: booming, loading, "
-                        f"ammunition. <em>Booming</em> shots are thunderously "
-                        f"loud; the <em>loading</em> property means you can fire "
-                        f"only one piece of ammunition when you use an action, "
-                        f"bonus action, or reaction to fire it, regardless of "
-                        f"the number of attacks you can normally make."),
+                      p("An Azerothian firearm.") +
+                      p("<em>Booming.</em> The ignition of powder in a firearm "
+                        "creates a loud noise, a flash of light, and a smell of "
+                        "burnt explosives. This weapon can be heard as far as "
+                        "200 feet away when a ranged attack roll is made with "
+                        "it.") +
+                      p("<em>Loading.</em> Because of the time required to load "
+                        "this weapon, you can fire only one piece of ammunition "
+                        "when you use an action, bonus action, or reaction to "
+                        "fire it, regardless of the number of attacks you can "
+                        "normally make."),
                       rng=rng)
     items.append(firearm("Pistol", 75, 2, dmg(1, 8, ["piercing"]),
                          (30, 120), ["amm", "fir", "lod", "lgt"]))

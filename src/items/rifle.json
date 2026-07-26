@@ -5,7 +5,7 @@
   "img": "icons/svg/sword.svg",
   "system": {
     "description": {
-      "value": "<p>An Azerothian firearm. Properties: booming, loading, ammunition. <em>Booming</em> shots are thunderously loud; the <em>loading</em> property means you can fire only one piece of ammunition when you use an action, bonus action, or reaction to fire it, regardless of the number of attacks you can normally make.</p>",
+      "value": "<p>An Azerothian firearm.</p><p><em>Booming.</em> The ignition of powder in a firearm creates a loud noise, a flash of light, and a smell of burnt explosives. This weapon can be heard as far as 200 feet away when a ranged attack roll is made with it.</p><p><em>Loading.</em> Because of the time required to load this weapon, you can fire only one piece of ammunition when you use an action, bonus action, or reaction to fire it, regardless of the number of attacks you can normally make.</p>",
       "chat": ""
     },
     "source": {
