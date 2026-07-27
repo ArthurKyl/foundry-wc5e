@@ -13,8 +13,18 @@ import os
 import re
 import hashlib
 
+import folders
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
+
+USED_SPELL_FOLDERS = set()
+
+def _level_folder(level):
+    if level == 0:
+        return "Cantrips"
+    suf = {1: "st", 2: "nd", 3: "rd"}.get(level, "th")
+    return f"{level}{suf}-Level"
 
 _B62 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
@@ -231,10 +241,12 @@ def build_spell(src):
         "activities": build_activity(spell_id, mech, activation),
         "identifier": slugify(name),
     }
+    fname = _level_folder(src["level"])
+    USED_SPELL_FOLDERS.add(fname)
     return {
         "_id": spell_id, "name": name, "type": "spell", "img": IMG,
-        "system": system, "effects": [], "folder": None, "sort": 0,
-        "ownership": {"default": 0}, "flags": {},
+        "system": system, "effects": [], "folder": folders.fid("Item", fname),
+        "sort": 0, "ownership": {"default": 0}, "flags": {},
         "_stats": {"systemId": "dnd5e", "systemVersion": "5.3.3"},
         "_key": f"!items!{spell_id}",
     }, mech["kind"]
@@ -256,6 +268,11 @@ def main():
         with open(os.path.join(out_dir, slugify(s["name"]) + ".json"), "w",
                   encoding="utf-8") as f:
             json.dump(item, f, indent=2, ensure_ascii=False)
+    for fname in USED_SPELL_FOLDERS:
+        doc = folders.folder_doc("Item", fname)
+        with open(os.path.join(out_dir, "_folder-" + slugify(fname) + ".json"),
+                  "w", encoding="utf-8") as f:
+            json.dump(doc, f, indent=2, ensure_ascii=False)
     print(f"Wrote {len(src)} spell items to {out_dir}")
     print("  activity kinds:", dict(kinds))
 

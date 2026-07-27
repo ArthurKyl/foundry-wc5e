@@ -25,6 +25,7 @@ import re
 import hashlib
 
 import spell_embed
+import folders
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
@@ -34,6 +35,18 @@ DEFAULT_IMG = "modules/wc5e-bestiary/assets/default-token.svg"
 
 # Aggregated spell-embedding report, filled during build_actor().
 SPELL_REPORT = []
+
+# Compendium folder (by creature type) + a themed colour per type.
+TYPE_FOLDER = {
+    "aberration": ("Aberrations", "#6b3fa0"), "beast": ("Beasts", "#6b8e23"),
+    "celestial": ("Celestials", "#d4af37"), "construct": ("Constructs", "#8a8a8a"),
+    "dragon": ("Dragons", "#b22222"), "elemental": ("Elementals", "#1e90ff"),
+    "fey": ("Fey", "#c71585"), "fiend": ("Fiends", "#8b0000"),
+    "giant": ("Giants", "#8b5a2b"), "humanoid": ("Humanoids", "#4682b4"),
+    "monstrosity": ("Monstrosities", "#556b2f"), "ooze": ("Oozes", "#6b8e23"),
+    "plant": ("Plants", "#2e8b57"), "undead": ("Undead", "#4b0082"),
+}
+USED_MONSTER_FOLDERS = {}
 
 # ---------------------------------------------------------------------------
 # Deterministic 16-char Foundry document ids (stable across rebuilds)
@@ -557,6 +570,12 @@ def build_actor(mon):
         "_key": f"!actors!{actor_id}",
     }
 
+    # File into a folder by creature type.
+    tval = actor["system"]["details"]["type"]["value"]
+    fname, fcolor = TYPE_FOLDER.get(tval, ("Other", "#555555"))
+    actor["folder"] = folders.fid("Actor", fname)
+    USED_MONSTER_FOLDERS[fname] = fcolor
+
     # Bake in spellcasting: ability, slots, DC bonus, and embedded spell items.
     matched, unmatched = spell_embed.embed_spellcasting(
         actor, mon, actor_id, pb, ability_mod)
@@ -610,8 +629,16 @@ def main():
             json.dump(actor, f, indent=2, ensure_ascii=False)
         count += 1
 
+    # folder documents (by creature type)
+    for fname, fcolor in USED_MONSTER_FOLDERS.items():
+        doc = folders.folder_doc("Actor", fname, fcolor)
+        with open(os.path.join(out_dir, "_folder-" + slugify(fname) + ".json"),
+                  "w", encoding="utf-8") as f:
+            json.dump(doc, f, indent=2, ensure_ascii=False)
+
     print(f"Wrote {count} actor files to {out_dir} "
-          f"({count - wip_added} main + {wip_added} WIP)")
+          f"({count - wip_added} main + {wip_added} WIP) "
+          f"in {len(USED_MONSTER_FOLDERS)} folders")
 
     # spellcasting report
     total_m = sum(m for _, m, _ in SPELL_REPORT)

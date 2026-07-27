@@ -40,6 +40,28 @@ conversion, converted to the **dnd5e** system.
 
 ---
 
+## Roadmap
+
+**Done**
+- [x] Monsters — 420 NPCs, foldered by creature type
+- [x] Monster attacks & save abilities (breath weapons etc.) rollable
+- [x] Monster spellcasting embedded (~77% of references)
+- [x] Weapons, firearms, shields, ammunition
+- [x] Explosives & adventuring gear
+- [x] Full WC5E custom spell list (99 spells), foldered by level
+- [x] Compendium folders + in-module guide journal
+
+**Planned**
+- [ ] Backgrounds
+- [ ] Races
+- [ ] Classes & subclasses
+- [ ] Feats
+- [ ] Per-monster / creature token art
+- [ ] Wire the remaining non-SRD spells (needs official content)
+
+Races and classes are the most involved (advancement automation) and are being
+tackled manually over time.
+
 ## Installing in Foundry
 
 ### Option A — Install from a manifest URL (recommended once it's on GitHub)

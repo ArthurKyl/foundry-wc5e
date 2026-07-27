@@ -13,8 +13,21 @@ import os
 import re
 import hashlib
 
+import folders
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
+
+
+def _item_folder(item):
+    t, sv = item["type"], item["system"].get("type", {}).get("value", "")
+    if t == "weapon":
+        return "Firearms" if sv == "martialR" else "Weapons"
+    if t == "equipment":
+        return "Shields"
+    if t == "consumable":
+        return "Ammunition" if sv == "ammo" else "Explosives"
+    return "Adventuring Gear"
 
 _B62 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
@@ -362,11 +375,20 @@ def main():
         if fn.endswith(".json"):
             os.remove(os.path.join(out_dir, fn))
     items = build()
+    used = set()
     for it in items:
+        fname = _item_folder(it)
+        it["folder"] = folders.fid("Item", fname)
+        used.add(fname)
         with open(os.path.join(out_dir, slugify(it["name"]) + ".json"), "w",
                   encoding="utf-8") as f:
             json.dump(it, f, indent=2, ensure_ascii=False)
-    print(f"Wrote {len(items)} item files to {out_dir}")
+    for fname in used:
+        doc = folders.folder_doc("Item", fname)
+        with open(os.path.join(out_dir, "_folder-" + slugify(fname) + ".json"),
+                  "w", encoding="utf-8") as f:
+            json.dump(doc, f, indent=2, ensure_ascii=False)
+    print(f"Wrote {len(items)} item files to {out_dir} in {len(used)} folders")
 
 
 if __name__ == "__main__":
