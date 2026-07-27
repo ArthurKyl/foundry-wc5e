@@ -24,11 +24,16 @@ import os
 import re
 import hashlib
 
+import spell_embed
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 
 # Shared default token/portrait shipped with the module.
 DEFAULT_IMG = "modules/wc5e-bestiary/assets/default-token.svg"
+
+# Aggregated spell-embedding report, filled during build_actor().
+SPELL_REPORT = []
 
 # ---------------------------------------------------------------------------
 # Deterministic 16-char Foundry document ids (stable across rebuilds)
@@ -535,7 +540,7 @@ def build_actor(mon):
         "sight": {"enabled": False, "range": 0},
     }
 
-    return {
+    actor = {
         "_id": actor_id,
         "name": mon["name"],
         "type": "npc",
@@ -551,6 +556,14 @@ def build_actor(mon):
         "_stats": {"systemId": "dnd5e", "systemVersion": "5.3.3"},
         "_key": f"!actors!{actor_id}",
     }
+
+    # Bake in spellcasting: ability, slots, DC bonus, and embedded spell items.
+    matched, unmatched = spell_embed.embed_spellcasting(
+        actor, mon, actor_id, pb, ability_mod)
+    if matched or unmatched:
+        SPELL_REPORT.append((mon["name"], matched, unmatched))
+
+    return actor
 
 
 def slugify(name):
@@ -599,6 +612,17 @@ def main():
 
     print(f"Wrote {count} actor files to {out_dir} "
           f"({count - wip_added} main + {wip_added} WIP)")
+
+    # spellcasting report
+    total_m = sum(m for _, m, _ in SPELL_REPORT)
+    all_un = [u for _, _, un in SPELL_REPORT for u in un]
+    from collections import Counter
+    un_counts = Counter(all_un)
+    print(f"\nSpellcasting: {len(SPELL_REPORT)} casters | {total_m} spells embedded"
+          f" | {len(all_un)} references unresolved ({len(un_counts)} distinct)")
+    if un_counts:
+        top = ", ".join(f"{n}(x{c})" for n, c in un_counts.most_common(20))
+        print(f"  unresolved (stay as text): {top}")
 
 
 if __name__ == "__main__":

@@ -126,12 +126,15 @@ To fix a single monster, edit its file in `src/monsters/`, then `npm run pack`.
 - **Non-attack actions** (Multiattack, save-or-suck abilities, etc.) are feats
   with a utility activity so they appear in the right section and can be posted
   to chat; the mechanics live in the description text.
-- **Spellcasting** monsters keep their full spell list in the trait description
-  (with `✦` still marking the WC5E-custom spells). The custom spells are defined
-  as real items in the **WC5E Spells** compendium, but they're **not** auto-added
-  to each monster's sheet — drag one on from the compendium if you want it
-  rollable there. Core/SRD spells the monsters cite already exist in dnd5e's
-  built-in spell compendium.
+- **Spellcasting** monsters have their spells **embedded and rollable** on the
+  sheet: the build sets each caster's spellcasting ability, spell slots, and a
+  DC bonus so the printed statblock DC is honoured, and bakes in every spell it
+  can resolve — **~77% of references** (WC5E custom spells + dnd5e SRD spells),
+  with the correct prepared / at-will / X-per-day mode. The remaining ~23% are
+  **non-SRD spells** (Tasha's/Xanathar's-era, e.g. *shape water, cause fear,
+  mold earth*) that can't legally be bundled; they stay listed in the
+  Spellcasting feature text (customs marked `✦`). If your world has those spells
+  from official content, drag them on manually.
 - **Saving-throw / area abilities** are not auto-converted into save activities;
   the DCs and effects are in the description text.
 - **Damage resistances "from nonmagical attacks"** are mapped to the proper
@@ -154,7 +157,9 @@ its image on the actor in Foundry (or edit `img` /
 
 ## Attribution
 
-Monster content is from the **Warcraft 5e Conversion — Manual of Monsters**
+Embedded SRD spells are from the **System Reference Document 5.1**, © Wizards of
+the Coast, used under **CC-BY-4.0** (as distributed with the Foundry dnd5e
+system). Monster content is from the **Warcraft 5e Conversion — Manual of Monsters**
 (<https://github.com/WC5E/Warcraft-5e-Conversion>), created by the WC5E
 community. This module only reformats that text into Foundry actors. Please
 credit the WC5E project and respect their licensing. Built for the **dnd5e**

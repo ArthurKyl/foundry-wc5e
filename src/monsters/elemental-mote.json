@@ -106,7 +106,7 @@
         "units": "ft",
         "special": ""
       },
-      "spellcasting": "",
+      "spellcasting": "wis",
       "exhaustion": 0,
       "concentration": {
         "ability": "",
