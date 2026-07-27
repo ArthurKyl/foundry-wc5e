@@ -72,7 +72,7 @@
       "packs": ["monsters", "items", "spells"]
     }
   ],
-  "url": "https://github.com/REPLACE_ME/wc5e-bestiary",
-  "manifest": "https://raw.githubusercontent.com/REPLACE_ME/wc5e-bestiary/main/module.json",
-  "download": "https://github.com/REPLACE_ME/wc5e-bestiary/archive/refs/heads/main.zip"
+  "url": "https://github.com/ArthurKyl/foundry-wc5e",
+  "manifest": "https://raw.githubusercontent.com/ArthurKyl/foundry-wc5e/main/module.json",
+  "download": "https://github.com/ArthurKyl/foundry-wc5e/archive/refs/heads/main.zip"
 }
