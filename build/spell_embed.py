@@ -104,9 +104,13 @@ def parse_spellcasting(text):
         end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
         body = text[start:end]
         names = [_norm(x) for x in re.split(r"[,;]", body)]
-        names = [x for x in names if 3 <= len(x) <= 40
-                 and not any(w in x for w in ("spellcast", "the ", "it can",
-                             "requires", "following", "level", "slot"))]
+        # Only drop obvious intro-prose fragments. NOT "the "/"of" etc. — those
+        # occur in real spell names (Spare the Dying, Light of the Protector).
+        # Non-spell tokens simply won't match an index and fall through as
+        # unresolved, so the filter can stay minimal.
+        BAD = ("spellcast", "following", "innately", "material component")
+        names = [x for x in names if 3 <= len(x) <= 45
+                 and not any(w in x for w in BAD)]
         if not names:
             continue
         if mm.group("cantrip"):
