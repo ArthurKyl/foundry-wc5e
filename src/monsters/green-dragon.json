@@ -1395,9 +1395,9 @@
           "level": null
         },
         "activities": {
-          "3Y27lScUt6Om7vxv": {
-            "_id": "3Y27lScUt6Om7vxv",
-            "type": "utility",
+          "l6EUd9vobD7p9Lxa": {
+            "_id": "l6EUd9vobD7p9Lxa",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1453,7 +1453,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "wis"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "16"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },
@@ -1681,9 +1694,9 @@
           "level": null
         },
         "activities": {
-          "qyxO18ZopzRmXt84": {
-            "_id": "qyxO18ZopzRmXt84",
-            "type": "utility",
+          "w1SSJ46VHPf7bk42": {
+            "_id": "w1SSJ46VHPf7bk42",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1739,7 +1752,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "18"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 13,
+                  "denomination": 6,
+                  "bonus": "",
+                  "types": [
+                    "acid"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },
@@ -1824,9 +1868,9 @@
           "level": null
         },
         "activities": {
-          "DoD10rIpon9J56U3": {
-            "_id": "DoD10rIpon9J56U3",
-            "type": "utility",
+          "nKcjjLi6UeVkI12k": {
+            "_id": "nKcjjLi6UeVkI12k",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1882,7 +1926,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "con"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "18"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },
@@ -2396,9 +2453,9 @@
           "level": null
         },
         "activities": {
-          "uRfjbC9qkb7cOAcL": {
-            "_id": "uRfjbC9qkb7cOAcL",
-            "type": "utility",
+          "94WfxMS6RXIjwufD": {
+            "_id": "94WfxMS6RXIjwufD",
+            "type": "save",
             "activation": {
               "type": "legendary",
               "value": 2,
@@ -2454,7 +2511,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "21"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 2,
+                  "denomination": 6,
+                  "bonus": "5",
+                  "types": [
+                    "bludgeoning"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

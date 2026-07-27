@@ -1272,9 +1272,9 @@
           "level": null
         },
         "activities": {
-          "EuzYSm4A9i8GnhyT": {
-            "_id": "EuzYSm4A9i8GnhyT",
-            "type": "utility",
+          "JMXppl1HbwZ1dxrM": {
+            "_id": "JMXppl1HbwZ1dxrM",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1330,7 +1330,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "15"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 5,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "lightning"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },
@@ -1558,9 +1589,9 @@
           "level": null
         },
         "activities": {
-          "14T1dQrt8V5wEcVW": {
-            "_id": "14T1dQrt8V5wEcVW",
-            "type": "utility",
+          "l0BSDBBy7VcsFQXI": {
+            "_id": "l0BSDBBy7VcsFQXI",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1616,7 +1647,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "15"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 3,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "cold"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },
@@ -1701,9 +1763,9 @@
           "level": null
         },
         "activities": {
-          "ltJepk8jGl1nSlID": {
-            "_id": "ltJepk8jGl1nSlID",
-            "type": "utility",
+          "FrVKfGyWMW3MYeGk": {
+            "_id": "FrVKfGyWMW3MYeGk",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1759,7 +1821,55 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "15"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 2,
+                  "denomination": 10,
+                  "bonus": "",
+                  "types": [
+                    "fire"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                },
+                {
+                  "number": 1,
+                  "denomination": 10,
+                  "bonus": "",
+                  "types": [
+                    "fire"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

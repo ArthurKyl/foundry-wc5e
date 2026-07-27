@@ -1201,9 +1201,9 @@
           "level": null
         },
         "activities": {
-          "EnlGOD7Wxpbaq60Y": {
-            "_id": "EnlGOD7Wxpbaq60Y",
-            "type": "utility",
+          "dRD190vwefiSVNuP": {
+            "_id": "dRD190vwefiSVNuP",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1259,7 +1259,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "wis"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "14"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },

@@ -941,9 +941,9 @@
           "level": null
         },
         "activities": {
-          "52n9PtOOpN20h9Gb": {
-            "_id": "52n9PtOOpN20h9Gb",
-            "type": "utility",
+          "Vyn56AaTvkoQQR3t": {
+            "_id": "Vyn56AaTvkoQQR3t",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -999,7 +999,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "str"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "14"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 2,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "piercing"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

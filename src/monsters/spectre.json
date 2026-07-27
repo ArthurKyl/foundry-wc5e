@@ -729,9 +729,9 @@
           "level": null
         },
         "activities": {
-          "gL57AM81PbMDs6Qf": {
-            "_id": "gL57AM81PbMDs6Qf",
-            "type": "utility",
+          "rfPtixicFMXGqU6p": {
+            "_id": "rfPtixicFMXGqU6p",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -787,7 +787,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "wis"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "12"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },

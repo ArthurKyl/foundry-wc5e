@@ -1124,9 +1124,9 @@
           "level": null
         },
         "activities": {
-          "6SZzKSXFDnogTgUh": {
-            "_id": "6SZzKSXFDnogTgUh",
-            "type": "utility",
+          "UFXBMbAmRPgno33J": {
+            "_id": "UFXBMbAmRPgno33J",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1182,7 +1182,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "wis"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "10"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },

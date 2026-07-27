@@ -178,6 +178,11 @@ RANGE_RE = re.compile(r"range\s+(\d+)(?:/(\d+))?\s*ft", re.IGNORECASE)
 # e.g. "15 (3d6 + 5) bludgeoning damage"  or  "7 (2d6) fire damage"
 DMG_RE = re.compile(
     r"(\d+)\s*\((\d+)d(\d+)(?:\s*([+-])\s*(\d+))?\)\s*(\w+)\s+damage", re.IGNORECASE)
+SAVE_RE = re.compile(
+    r"DC\s*(\d+)\s*(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)"
+    r"\s+saving throw", re.IGNORECASE)
+ABILITY_NAME = {"strength": "str", "dexterity": "dex", "constitution": "con",
+                "intelligence": "int", "wisdom": "wis", "charisma": "cha"}
 
 
 def parse_damage_parts(text):
@@ -268,6 +273,26 @@ def build_attack_activity(actor_id, item_id, activation_type, text):
     return act
 
 
+def build_save_activity(actor_id, item_id, activation_type, text):
+    """Build a rollable save activity for a non-attack ability of the form
+    'DC N <ability> saving throw ... N (XdY) <type> damage'. Returns None if it
+    doesn't match. The DC is the flat value printed in the statblock."""
+    sm = SAVE_RE.search(text)
+    if not sm:
+        return None
+    dc = sm.group(1)
+    ability = ABILITY_NAME[sm.group(2).lower()]
+    parts = parse_damage_parts(text)   # same "N (XdY) type damage" format
+    act = base_activity(actor_id, item_id, "save", activation_type)
+    # most monster save abilities deal half on a successful save
+    on_save = "half" if (parts and re.search(r"half", text, re.IGNORECASE)) \
+        else ("half" if parts else "none")
+    act["save"] = {"ability": [ability],
+                   "dc": {"calculation": "flat", "formula": str(dc)}}
+    act["damage"] = {"onSave": on_save, "parts": parts}
+    return act
+
+
 def build_feat_item(actor_id, feat, section, sort):
     """section in {'trait','action','bonus','reaction','legendary'}."""
     name = feat["name"] or "Feature"
@@ -292,11 +317,14 @@ def build_feat_item(actor_id, feat, section, sort):
         act = None
         if ATTACK_RE.search(text):
             act = build_attack_activity(actor_id, item_id, activation_type, text)
-            if act and act_value != 1:
-                act["activation"]["value"] = act_value
+        if act is None:
+            # non-attack abilities with a save (breath weapons, AoE, save-or-X)
+            act = build_save_activity(actor_id, item_id, activation_type, text)
         if act is None:
             act = base_activity(actor_id, item_id, "utility", activation_type,
                                 act_value)
+        if act_value != 1:
+            act["activation"]["value"] = act_value
         activities[act["_id"]] = act
 
     system = {

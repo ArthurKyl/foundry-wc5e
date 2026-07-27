@@ -1130,9 +1130,9 @@
           "level": null
         },
         "activities": {
-          "kQQu1E9vVZEyAyYv": {
-            "_id": "kQQu1E9vVZEyAyYv",
-            "type": "utility",
+          "5DKKRazuetbpGVS1": {
+            "_id": "5DKKRazuetbpGVS1",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1188,7 +1188,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "19"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 3,
+                  "denomination": 10,
+                  "bonus": "",
+                  "types": [
+                    "thunder"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },
@@ -1273,9 +1304,9 @@
           "level": null
         },
         "activities": {
-          "e25APpIyIyrXbkye": {
-            "_id": "e25APpIyIyrXbkye",
-            "type": "utility",
+          "WamnPwN0m6Hr57lF": {
+            "_id": "WamnPwN0m6Hr57lF",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1331,7 +1362,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "wis"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "15"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },
@@ -1416,9 +1460,9 @@
           "level": null
         },
         "activities": {
-          "I4ZMaM5YNKaCNMsi": {
-            "_id": "I4ZMaM5YNKaCNMsi",
-            "type": "utility",
+          "glsX1Kkm1P2RAVWj": {
+            "_id": "glsX1Kkm1P2RAVWj",
+            "type": "save",
             "activation": {
               "type": "reaction",
               "value": 1,
@@ -1474,7 +1518,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "str"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "19"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },

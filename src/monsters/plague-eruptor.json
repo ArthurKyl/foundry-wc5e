@@ -983,9 +983,9 @@
           "level": null
         },
         "activities": {
-          "tUNIY6qJjLBWQvWi": {
-            "_id": "tUNIY6qJjLBWQvWi",
-            "type": "utility",
+          "Xym54Spb9cA3rYNd": {
+            "_id": "Xym54Spb9cA3rYNd",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1041,7 +1041,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "con"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "15"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 2,
+                  "denomination": 8,
+                  "bonus": "3",
+                  "types": [
+                    "poison"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },
@@ -1126,9 +1157,9 @@
           "level": null
         },
         "activities": {
-          "EgNcLvsG7JuAvr8V": {
-            "_id": "EgNcLvsG7JuAvr8V",
-            "type": "utility",
+          "Ytk1RKlNAbGr7Ec1": {
+            "_id": "Ytk1RKlNAbGr7Ec1",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1184,7 +1215,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "con"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "16"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 4,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "poison"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

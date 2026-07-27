@@ -1210,9 +1210,9 @@
           "level": null
         },
         "activities": {
-          "5Gicr1VleAlPjOKj": {
-            "_id": "5Gicr1VleAlPjOKj",
-            "type": "utility",
+          "ZXid88pij1WXfXn4": {
+            "_id": "ZXid88pij1WXfXn4",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1268,7 +1268,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "14"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },

@@ -1605,9 +1605,9 @@
           "level": null
         },
         "activities": {
-          "rVqzPXAHI3rSje04": {
-            "_id": "rVqzPXAHI3rSje04",
-            "type": "utility",
+          "6Mimmu2AP6CxeCXy": {
+            "_id": "6Mimmu2AP6CxeCXy",
+            "type": "save",
             "activation": {
               "type": "reaction",
               "value": 1,
@@ -1663,7 +1663,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "str"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "18"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },

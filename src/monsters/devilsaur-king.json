@@ -1112,9 +1112,9 @@
           "level": null
         },
         "activities": {
-          "FJmnoWxXzcnBzHJp": {
-            "_id": "FJmnoWxXzcnBzHJp",
-            "type": "utility",
+          "rqAprhxiLbwP6tSd": {
+            "_id": "rqAprhxiLbwP6tSd",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1170,7 +1170,55 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "con"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "15"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 8,
+                  "denomination": 12,
+                  "bonus": "7",
+                  "types": [
+                    "piercing"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                },
+                {
+                  "number": 6,
+                  "denomination": 6,
+                  "bonus": "",
+                  "types": [
+                    "acid"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },
@@ -1255,9 +1303,9 @@
           "level": null
         },
         "activities": {
-          "YzpoC4zefnGzOtn3": {
-            "_id": "YzpoC4zefnGzOtn3",
-            "type": "utility",
+          "X5lqqr5DoXrcQMbf": {
+            "_id": "X5lqqr5DoXrcQMbf",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1313,7 +1361,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "wis"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "17"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },

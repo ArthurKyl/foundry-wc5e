@@ -932,9 +932,9 @@
           "level": null
         },
         "activities": {
-          "IGCKMmgktKaoRdYn": {
-            "_id": "IGCKMmgktKaoRdYn",
-            "type": "utility",
+          "YPJCjEB7cGUl5xtV": {
+            "_id": "YPJCjEB7cGUl5xtV",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -990,7 +990,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "11"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 3,
+                  "denomination": 6,
+                  "bonus": "",
+                  "types": [
+                    "fire"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

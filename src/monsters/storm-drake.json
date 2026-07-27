@@ -1045,9 +1045,9 @@
           "level": null
         },
         "activities": {
-          "B17OTYsI70ftXS73": {
-            "_id": "B17OTYsI70ftXS73",
-            "type": "utility",
+          "6NUSIjhYKAsOQDjP": {
+            "_id": "6NUSIjhYKAsOQDjP",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1103,7 +1103,36 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "16"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 10,
+                  "denomination": 6,
+                  "bonus": "",
+                  "types": [],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

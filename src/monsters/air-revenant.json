@@ -863,9 +863,9 @@
           "level": null
         },
         "activities": {
-          "sopuFor6SfRurAr0": {
-            "_id": "sopuFor6SfRurAr0",
-            "type": "utility",
+          "Cl12PixAg68oKsrL": {
+            "_id": "Cl12PixAg68oKsrL",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -921,7 +921,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "con"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "14"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 5,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "lightning"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

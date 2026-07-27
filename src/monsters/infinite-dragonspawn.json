@@ -1028,9 +1028,9 @@
           "level": null
         },
         "activities": {
-          "ticUloPYuLv3v8X1": {
-            "_id": "ticUloPYuLv3v8X1",
-            "type": "utility",
+          "hYDOYWwcLJL3AW3a": {
+            "_id": "hYDOYWwcLJL3AW3a",
+            "type": "save",
             "activation": {
               "type": "reaction",
               "value": 1,
@@ -1086,7 +1086,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "str"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "15"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },

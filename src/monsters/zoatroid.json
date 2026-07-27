@@ -808,9 +808,9 @@
           "level": null
         },
         "activities": {
-          "Q4B4vKcssoinCxgm": {
-            "_id": "Q4B4vKcssoinCxgm",
-            "type": "utility",
+          "vEZGLWm1BzqUEelp": {
+            "_id": "vEZGLWm1BzqUEelp",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -866,7 +866,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "wis"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "13"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },
@@ -951,9 +964,9 @@
           "level": null
         },
         "activities": {
-          "GcKSHRMgeLCwbjo3": {
-            "_id": "GcKSHRMgeLCwbjo3",
-            "type": "utility",
+          "FBU1nSlaeabmunb7": {
+            "_id": "FBU1nSlaeabmunb7",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1009,7 +1022,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "wis"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "12"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },

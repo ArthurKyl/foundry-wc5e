@@ -1481,9 +1481,9 @@
           "level": null
         },
         "activities": {
-          "jUZdh1t51WYu0CSZ": {
-            "_id": "jUZdh1t51WYu0CSZ",
-            "type": "utility",
+          "v84zUmgtOfZyNV49": {
+            "_id": "v84zUmgtOfZyNV49",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1539,7 +1539,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "wis"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "19"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },
@@ -1767,9 +1780,9 @@
           "level": null
         },
         "activities": {
-          "f6BRsgOKVp2lCb8y": {
-            "_id": "f6BRsgOKVp2lCb8y",
-            "type": "utility",
+          "zj0PhM7Gelikhcvi": {
+            "_id": "zj0PhM7Gelikhcvi",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1825,7 +1838,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "22"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },
@@ -1910,9 +1936,9 @@
           "level": null
         },
         "activities": {
-          "ngSo49eIIWx02N4W": {
-            "_id": "ngSo49eIIWx02N4W",
-            "type": "utility",
+          "Tq9bkJheB8Jccqek": {
+            "_id": "Tq9bkJheB8Jccqek",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1968,7 +1994,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "22"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 8,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "bludgeoning"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },
@@ -2482,9 +2539,9 @@
           "level": null
         },
         "activities": {
-          "eseZgx3Ec1BvBJ42": {
-            "_id": "eseZgx3Ec1BvBJ42",
-            "type": "utility",
+          "auJPkRt2BNqrGqm9": {
+            "_id": "auJPkRt2BNqrGqm9",
+            "type": "save",
             "activation": {
               "type": "legendary",
               "value": 2,
@@ -2540,7 +2597,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "21"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 2,
+                  "denomination": 6,
+                  "bonus": "7",
+                  "types": [
+                    "bludgeoning"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

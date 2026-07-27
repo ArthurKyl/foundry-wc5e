@@ -764,9 +764,9 @@
           "level": null
         },
         "activities": {
-          "MkQTy1HGDRjCrCDz": {
-            "_id": "MkQTy1HGDRjCrCDz",
-            "type": "utility",
+          "wMjq8MReCEOZRdOk": {
+            "_id": "wMjq8MReCEOZRdOk",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -822,7 +822,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "13"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },
@@ -907,9 +920,9 @@
           "level": null
         },
         "activities": {
-          "IMy4xyvIRBM9Ppt8": {
-            "_id": "IMy4xyvIRBM9Ppt8",
-            "type": "utility",
+          "vu6v0LklmdA34RPe": {
+            "_id": "vu6v0LklmdA34RPe",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -965,7 +978,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "con"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "12"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },
@@ -1050,9 +1076,9 @@
           "level": null
         },
         "activities": {
-          "StTxbs8In30PRHL3": {
-            "_id": "StTxbs8In30PRHL3",
-            "type": "utility",
+          "6P0KbkjxS0RtwVZE": {
+            "_id": "6P0KbkjxS0RtwVZE",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1108,7 +1134,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "12"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },
@@ -1516,9 +1555,9 @@
           "level": null
         },
         "activities": {
-          "PDaNs04CP2tAysnX": {
-            "_id": "PDaNs04CP2tAysnX",
-            "type": "utility",
+          "VWAKZf3Vpiakn9Vn": {
+            "_id": "VWAKZf3Vpiakn9Vn",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1574,7 +1613,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "str"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "13"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },

@@ -1274,9 +1274,9 @@
           "level": null
         },
         "activities": {
-          "h9oCc9PMsEaMqilY": {
-            "_id": "h9oCc9PMsEaMqilY",
-            "type": "utility",
+          "3J3HQxMCeQY6yA6I": {
+            "_id": "3J3HQxMCeQY6yA6I",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1332,7 +1332,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "16"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 10,
+                  "denomination": 6,
+                  "bonus": "",
+                  "types": [
+                    "cold"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },
@@ -1417,9 +1448,9 @@
           "level": null
         },
         "activities": {
-          "dohE7grQjutScRs6": {
-            "_id": "dohE7grQjutScRs6",
-            "type": "utility",
+          "v4UMSKyDAqCrv0Jd": {
+            "_id": "v4UMSKyDAqCrv0Jd",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1475,7 +1506,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "str"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "17"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },

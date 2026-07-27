@@ -1046,9 +1046,9 @@
           "level": null
         },
         "activities": {
-          "o6pn65KaxHBrWB5f": {
-            "_id": "o6pn65KaxHBrWB5f",
-            "type": "utility",
+          "tRRlQK4cUe3yvVfn": {
+            "_id": "tRRlQK4cUe3yvVfn",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1104,7 +1104,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "16"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 2,
+                  "denomination": 10,
+                  "bonus": "",
+                  "types": [
+                    "thunder"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },
@@ -1189,9 +1220,9 @@
           "level": null
         },
         "activities": {
-          "zyVPBHo6LKY2xuUr": {
-            "_id": "zyVPBHo6LKY2xuUr",
-            "type": "utility",
+          "YNAQ6VC8Ed3JnOOF": {
+            "_id": "YNAQ6VC8Ed3JnOOF",
+            "type": "save",
             "activation": {
               "type": "reaction",
               "value": 1,
@@ -1247,7 +1278,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "wis"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "15"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },

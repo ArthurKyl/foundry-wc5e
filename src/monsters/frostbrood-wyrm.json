@@ -1489,9 +1489,9 @@
           "level": null
         },
         "activities": {
-          "aC4lRuTqAmULCnj7": {
-            "_id": "aC4lRuTqAmULCnj7",
-            "type": "utility",
+          "u9eg7yXYYkRQZKP0": {
+            "_id": "u9eg7yXYYkRQZKP0",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1547,7 +1547,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "wis"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "20"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },
@@ -1632,9 +1645,9 @@
           "level": null
         },
         "activities": {
-          "L2sEmFpMRURFLiAh": {
-            "_id": "L2sEmFpMRURFLiAh",
-            "type": "utility",
+          "xqEv4Sw0zwAMGFqj": {
+            "_id": "xqEv4Sw0zwAMGFqj",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1690,7 +1703,55 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "22"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 12,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "cold"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                },
+                {
+                  "number": 4,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "cold"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

@@ -705,9 +705,9 @@
           "level": null
         },
         "activities": {
-          "rB42Motb9wh7mZ2P": {
-            "_id": "rB42Motb9wh7mZ2P",
-            "type": "utility",
+          "R0kOUwRFpx3vDv5R": {
+            "_id": "R0kOUwRFpx3vDv5R",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -763,7 +763,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "12"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 1,
+                  "denomination": 6,
+                  "bonus": "",
+                  "types": [
+                    "radiant"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

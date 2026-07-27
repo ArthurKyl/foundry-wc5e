@@ -950,9 +950,9 @@
           "level": null
         },
         "activities": {
-          "YutaTxqwpNtrYGT9": {
-            "_id": "YutaTxqwpNtrYGT9",
-            "type": "utility",
+          "xRdZBozznRoKdAaS": {
+            "_id": "xRdZBozznRoKdAaS",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1008,7 +1008,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "wis"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "12"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },

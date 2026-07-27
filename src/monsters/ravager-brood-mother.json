@@ -951,9 +951,9 @@
           "level": null
         },
         "activities": {
-          "p4kYn8gxjxYhRelV": {
-            "_id": "p4kYn8gxjxYhRelV",
-            "type": "utility",
+          "kKsaG6S3kqD6q8ML": {
+            "_id": "kKsaG6S3kqD6q8ML",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1009,7 +1009,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "con"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "12"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },
@@ -1094,9 +1107,9 @@
           "level": null
         },
         "activities": {
-          "uuAzQBi0lB7Fsbrg": {
-            "_id": "uuAzQBi0lB7Fsbrg",
-            "type": "utility",
+          "HMM6n7d209Ek6xRn": {
+            "_id": "HMM6n7d209Ek6xRn",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1152,7 +1165,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "con"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "14"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },

@@ -1190,9 +1190,9 @@
           "level": null
         },
         "activities": {
-          "F67735GYSsUQpkdF": {
-            "_id": "F67735GYSsUQpkdF",
-            "type": "utility",
+          "yDhLC2e9Qt5AiNfQ": {
+            "_id": "yDhLC2e9Qt5AiNfQ",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1248,7 +1248,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "16"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 10,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "fire"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },
@@ -1333,9 +1364,9 @@
           "level": null
         },
         "activities": {
-          "ZioMHza2roIKykMh": {
-            "_id": "ZioMHza2roIKykMh",
-            "type": "utility",
+          "PddZPgVpZkQ3vImi": {
+            "_id": "PddZPgVpZkQ3vImi",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1391,7 +1422,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "str"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "16"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 6,
+                  "denomination": 6,
+                  "bonus": "",
+                  "types": [
+                    "necrotic"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

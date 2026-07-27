@@ -818,9 +818,9 @@
           "level": null
         },
         "activities": {
-          "ut56qPOK184AGYTV": {
-            "_id": "ut56qPOK184AGYTV",
-            "type": "utility",
+          "1XZTv7OonSxILHFJ": {
+            "_id": "1XZTv7OonSxILHFJ",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -876,7 +876,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "con"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "12"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 2,
+                  "denomination": 6,
+                  "bonus": "",
+                  "types": [
+                    "acid"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

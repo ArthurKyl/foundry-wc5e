@@ -1042,9 +1042,9 @@
           "level": null
         },
         "activities": {
-          "iDaRacmpNt2MwT4u": {
-            "_id": "iDaRacmpNt2MwT4u",
-            "type": "utility",
+          "0t68UQgT0HBPa1ry": {
+            "_id": "0t68UQgT0HBPa1ry",
+            "type": "save",
             "activation": {
               "type": "reaction",
               "value": 1,
@@ -1100,7 +1100,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "13"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },

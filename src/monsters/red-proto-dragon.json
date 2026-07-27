@@ -1047,9 +1047,9 @@
           "level": null
         },
         "activities": {
-          "dD7IdVZhvYOt16UX": {
-            "_id": "dD7IdVZhvYOt16UX",
-            "type": "utility",
+          "dfJeSXYzp7CwY93N": {
+            "_id": "dfJeSXYzp7CwY93N",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1105,7 +1105,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "17"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 12,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "fire"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },
@@ -1190,9 +1221,9 @@
           "level": null
         },
         "activities": {
-          "zFLmTHoKG4uiYz4Q": {
-            "_id": "zFLmTHoKG4uiYz4Q",
-            "type": "utility",
+          "vEc7cL1fEzAPTwwp": {
+            "_id": "vEc7cL1fEzAPTwwp",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1248,7 +1279,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "18"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 2,
+                  "denomination": 10,
+                  "bonus": "",
+                  "types": [
+                    "bludgeoning"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

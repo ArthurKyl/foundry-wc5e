@@ -1233,9 +1233,9 @@
           "level": null
         },
         "activities": {
-          "ABoRO61SXR8xGUld": {
-            "_id": "ABoRO61SXR8xGUld",
-            "type": "utility",
+          "Gwyy3Ke4iyuziA3R": {
+            "_id": "Gwyy3Ke4iyuziA3R",
+            "type": "save",
             "activation": {
               "type": "reaction",
               "value": 1,
@@ -1291,7 +1291,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "str"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "13"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 2,
+                  "denomination": 4,
+                  "bonus": "",
+                  "types": [
+                    "slashing"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

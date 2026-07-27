@@ -1028,9 +1028,9 @@
           "level": null
         },
         "activities": {
-          "FxvI3JGVZCbeAlBf": {
-            "_id": "FxvI3JGVZCbeAlBf",
-            "type": "utility",
+          "Xs9U0bY27Yaoblcn": {
+            "_id": "Xs9U0bY27Yaoblcn",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1086,7 +1086,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "wis"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "15"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },
@@ -1171,9 +1184,9 @@
           "level": null
         },
         "activities": {
-          "2kDRmzBn36xwUIrP": {
-            "_id": "2kDRmzBn36xwUIrP",
-            "type": "utility",
+          "xsywZoM8lwXerMxG": {
+            "_id": "xsywZoM8lwXerMxG",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1229,7 +1242,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "con"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "15"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 6,
+                  "denomination": 10,
+                  "bonus": "",
+                  "types": [
+                    "thunder"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

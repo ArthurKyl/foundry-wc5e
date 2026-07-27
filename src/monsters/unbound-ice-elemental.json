@@ -1213,9 +1213,9 @@
           "level": null
         },
         "activities": {
-          "GJDPA0UrpGSCQNk1": {
-            "_id": "GJDPA0UrpGSCQNk1",
-            "type": "utility",
+          "ajnuR8SmmGkWS52I": {
+            "_id": "ajnuR8SmmGkWS52I",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1271,7 +1271,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "con"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "17"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 4,
+                  "denomination": 10,
+                  "bonus": "",
+                  "types": [
+                    "cold"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

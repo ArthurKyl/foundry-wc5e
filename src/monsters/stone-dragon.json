@@ -1376,9 +1376,9 @@
           "level": null
         },
         "activities": {
-          "S44afOEdx68vaM0b": {
-            "_id": "S44afOEdx68vaM0b",
-            "type": "utility",
+          "WiztAeAT7BFxVDVt": {
+            "_id": "WiztAeAT7BFxVDVt",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1434,7 +1434,20 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "wis"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "18"
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": []
+            }
           }
         }
       },
@@ -1519,9 +1532,9 @@
           "level": null
         },
         "activities": {
-          "BHI5JP01xW1FvyAe": {
-            "_id": "BHI5JP01xW1FvyAe",
-            "type": "utility",
+          "jzpy0ViBZSY3bgt0": {
+            "_id": "jzpy0ViBZSY3bgt0",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1577,7 +1590,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "19"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 15,
+                  "denomination": 6,
+                  "bonus": "",
+                  "types": [
+                    "bludgeoning"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },
@@ -2091,9 +2135,9 @@
           "level": null
         },
         "activities": {
-          "unFX1smNVjC6MSPP": {
-            "_id": "unFX1smNVjC6MSPP",
-            "type": "utility",
+          "lM39vgtpEJvIroOg": {
+            "_id": "lM39vgtpEJvIroOg",
+            "type": "save",
             "activation": {
               "type": "legendary",
               "value": 2,
@@ -2149,7 +2193,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "21"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 2,
+                  "denomination": 6,
+                  "bonus": "6",
+                  "types": [
+                    "bludgeoning"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

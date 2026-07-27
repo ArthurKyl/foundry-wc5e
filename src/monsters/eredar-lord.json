@@ -1216,9 +1216,9 @@
           "level": null
         },
         "activities": {
-          "XZSOzi6H41RSjeap": {
-            "_id": "XZSOzi6H41RSjeap",
-            "type": "utility",
+          "Rbi2zdBu9YcIgdeq": {
+            "_id": "Rbi2zdBu9YcIgdeq",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -1274,7 +1274,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "19"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 10,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "fire"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

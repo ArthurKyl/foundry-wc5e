@@ -904,9 +904,9 @@
           "level": null
         },
         "activities": {
-          "KNEIgiJwLihJiEnJ": {
-            "_id": "KNEIgiJwLihJiEnJ",
-            "type": "utility",
+          "P4kPPWY5FQvVt5mX": {
+            "_id": "P4kPPWY5FQvVt5mX",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -962,7 +962,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "16"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 6,
+                  "denomination": 12,
+                  "bonus": "",
+                  "types": [
+                    "lightning"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

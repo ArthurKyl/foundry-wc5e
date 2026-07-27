@@ -724,9 +724,9 @@
           "level": null
         },
         "activities": {
-          "UfZpEipNkpb8Seoy": {
-            "_id": "UfZpEipNkpb8Seoy",
-            "type": "utility",
+          "1BxRrDHb8fo2mgHW": {
+            "_id": "1BxRrDHb8fo2mgHW",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -782,7 +782,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "13"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 4,
+                  "denomination": 10,
+                  "bonus": "",
+                  "types": [
+                    "fire"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },

@@ -870,9 +870,9 @@
           "level": null
         },
         "activities": {
-          "RvO6S8mHkDkyj5ff": {
-            "_id": "RvO6S8mHkDkyj5ff",
-            "type": "utility",
+          "DPYbco5Jdt33igOo": {
+            "_id": "DPYbco5Jdt33igOo",
+            "type": "save",
             "activation": {
               "type": "action",
               "value": 1,
@@ -928,7 +928,38 @@
               "max": "",
               "recovery": []
             },
-            "sort": 0
+            "sort": 0,
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "flat",
+                "formula": "13"
+              }
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 2,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "piercing"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
           }
         }
       },
