@@ -5,11 +5,11 @@
   "img": "icons/svg/daze.svg",
   "system": {
     "description": {
-      "value": "<p>Solid ice rapidly encases your body, protecting you from harm. You immediately gain 40 temporary hit points, and resistance against all damage except fire and psychic, and immunity to cold damage. Ice block continues until your concentration is broken, your temporary hit points vanish, or you end it prematurely.</p><p>While encased, you are under the effects of being incapacitated, with the exception of your concentration being broken.</p>",
+      "value": "<p>Ice rapidly materializes around you, protecting you from harm. You gain 40 temporary hit points and immunity to cold damage for the spells duration. While the spell is active you can't move and take any actions or reactions. The spell remains until the temporary hit points have been expended or for the spell's duration.</p>",
       "chat": ""
     },
     "source": {
-      "custom": "Warcraft 5e - Heroes Handbook",
+      "custom": "Warcraft 5e - Chapter 6 Spells",
       "book": "",
       "page": "",
       "license": "",
@@ -17,11 +17,11 @@
     },
     "activation": {
       "type": "reaction",
-      "condition": "which you take when you are targeted by an attack or spell",
+      "condition": "when you take damage",
       "value": 1
     },
     "duration": {
-      "value": "10",
+      "value": "1",
       "units": "minute"
     },
     "target": {
@@ -78,7 +78,7 @@
         "activation": {
           "type": "reaction",
           "value": 1,
-          "condition": "which you take when you are targeted by an attack or spell",
+          "condition": "when you take damage",
           "override": false
         },
         "consumption": {

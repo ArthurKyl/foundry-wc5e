@@ -5,11 +5,11 @@
   "img": "icons/svg/daze.svg",
   "system": {
     "description": {
-      "value": "<p>Frigid cold rapid expands in a 15-foot-radius centered on a point you choose within range. Each creature in the cold must succeed on a Dexterity saving throw. On a failed save, a creature takes 10d6 cold damage and is grappled for 1 hour as ice encases the lower part of their legs. On a successful save, it takes half as much damage and isn't grappled by this spell.</p><p>A creature can break the grapple by using their action to make a Strength saving throw, or deal a total of 40 hit points worth of damage to the ice.</p>",
+      "value": "<p>Frigid cold rapidly expands in a 15-foot-radius centered on a point you you can see within range. Each creature in the cold must succeed on a Dexterity saving throw. On a failed save, a creature takes 10d6 cold damage and is restrained for 1 minute as ice encases the lower part of their legs. On a successful save, it takes half as much damage and isn't restrained by this spell.</p><p>A creature restrained by the ice can use its action to make a Strength check against your spell save DC. On a success, it frees itself. Alternatively, the ice can be broken by dealing a total of 40 hit points worth of damage to it. It has an armor class of 10.</p>",
       "chat": ""
     },
     "source": {
-      "custom": "Warcraft 5e - Heroes Handbook",
+      "custom": "Warcraft 5e - Chapter 6 Spells",
       "book": "",
       "page": "",
       "license": "",

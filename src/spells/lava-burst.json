@@ -9,7 +9,7 @@
       "chat": ""
     },
     "source": {
-      "custom": "Warcraft 5e - Heroes Handbook",
+      "custom": "Warcraft 5e - Chapter 6 Spells",
       "book": "",
       "page": "",
       "license": "",
@@ -140,8 +140,8 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
-                "number": 1,
+                "mode": "",
+                "number": null,
                 "formula": ""
               }
             },
@@ -157,8 +157,8 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
-                "number": 1,
+                "mode": "",
+                "number": null,
                 "formula": ""
               }
             }

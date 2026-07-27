@@ -5,11 +5,11 @@
   "img": "icons/svg/daze.svg",
   "system": {
     "description": {
-      "value": "<p>A shard of ice streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d8 cold damage.</p><p>The spell creates more than one shard when you reach higher levels: two shards at 5th level, three shards at 11th level, and four shards at 17th level. You can direct the shards at the same target or at different ones. Make a separate attack roll for each shard.</p>",
+      "value": "<p>Three shards of ice streaks out toward one or more creatures within range. Make a ranged spell attack for each shard. You can direct the shards at the same target or at different ones, but they all strike simultaneously. Each shard deals 1d4 cold damage on a hit.</p><p>This spell's damage increases by 1d4 per shard when you reach 5th level (2d4), 11th level (3d4), and 17th level (4d4).</p>",
       "chat": ""
     },
     "source": {
-      "custom": "Warcraft 5e - Heroes Handbook",
+      "custom": "Warcraft 5e - Chapter 6 Spells",
       "book": "",
       "page": "",
       "license": "",
@@ -42,7 +42,7 @@
       }
     },
     "range": {
-      "value": "60",
+      "value": "30",
       "units": "ft",
       "special": ""
     },
@@ -136,7 +136,7 @@
           "parts": [
             {
               "number": 1,
-              "denomination": 8,
+              "denomination": 4,
               "bonus": "",
               "types": [
                 "cold"
@@ -146,8 +146,8 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
-                "number": 1,
+                "mode": "",
+                "number": null,
                 "formula": ""
               }
             }

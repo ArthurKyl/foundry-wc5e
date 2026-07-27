@@ -1016,11 +1016,11 @@
       "img": "icons/svg/daze.svg",
       "system": {
         "description": {
-          "value": "<p>A shoot a blast of necrotic energy at a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 necrotic damage.</p><p>This spell's damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10).</p>",
+          "value": "<p>You fire a blast of necrotic energy at a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d8 necrotic damage.</p><p>When the spell hits, you can choose to take 1 point of psychic damage to increase the damage dealt to 1d12 necrotic damage.</p><p>The spell's damage dealt increases by one die when you reach 5th level (2d8 or 2d12), 11th level (3d8 or 3d12), and 17th level (4d8 or 4d12). The optional damage taken increases by 2 when you reach 5th level (3), 11th level (5), and 17th level (7).</p>",
           "chat": ""
         },
         "source": {
-          "custom": "Warcraft 5e - Heroes Handbook",
+          "custom": "Warcraft 5e - Chapter 6 Spells",
           "book": "",
           "page": "",
           "license": "",
@@ -1053,7 +1053,7 @@
           }
         },
         "range": {
-          "value": "60",
+          "value": "120",
           "units": "ft",
           "special": ""
         },
@@ -1063,7 +1063,7 @@
           "spent": 0
         },
         "level": 0,
-        "school": "evo",
+        "school": "nec",
         "materials": {
           "value": "",
           "consumed": false,
@@ -1147,7 +1147,7 @@
               "parts": [
                 {
                   "number": 1,
-                  "denomination": 10,
+                  "denomination": 8,
                   "bonus": "",
                   "types": [
                     "necrotic"
@@ -1157,8 +1157,8 @@
                     "formula": ""
                   },
                   "scaling": {
-                    "mode": "whole",
-                    "number": 1,
+                    "mode": "",
+                    "number": null,
                     "formula": ""
                   }
                 }
@@ -1188,11 +1188,11 @@
       "img": "icons/svg/daze.svg",
       "system": {
         "description": {
-          "value": "<p>You grasp the fabric around a target within range, pulling necrotic energy from it and creatures within a 5-foot radius of your choice. The creatures must make a Constitution saving throw. On a failed saving throw, the creature takes 1d8 necrotic damage and gains the effect of your Word of Power: Pain. On a successful save, the creature takes half damage, but suffers no effect from the word of power.</p><p><strong><em>At Higher Levels.</em></strong> When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st.</p>",
+          "value": "<p>You pull on the veil separating reality and the void realm, creating small fissures where its maddening energies leak through. A creature within range and creatures of your choice within 5 feet of it, must succeed on a Wisdom saving throw or take 2d4 psychic damage on a failed save, or half as much damage on a successful one. A creature who fails this saving throw also can't regain hit points for 1 round.</p><p><strong><em>At Higher Levels.</em></strong> When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d4 for each slot level above 1st.</p>",
           "chat": ""
         },
         "source": {
-          "custom": "Warcraft 5e - Heroes Handbook",
+          "custom": "Warcraft 5e - Chapter 6 Spells",
           "book": "",
           "page": "",
           "license": "",
@@ -1302,7 +1302,7 @@
             },
             "save": {
               "ability": [
-                "con"
+                "wis"
               ],
               "dc": {
                 "calculation": "spellcasting",
@@ -1313,11 +1313,11 @@
               "onSave": "half",
               "parts": [
                 {
-                  "number": 1,
-                  "denomination": 8,
+                  "number": 2,
+                  "denomination": 4,
                   "bonus": "",
                   "types": [
-                    "necrotic"
+                    "psychic"
                   ],
                   "custom": {
                     "enabled": false,

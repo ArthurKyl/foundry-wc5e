@@ -5,11 +5,11 @@
   "img": "icons/svg/daze.svg",
   "system": {
     "description": {
-      "value": "<p>A whirl of wind 5-foot wide and 15-foot high rushes up around a target within range. The target must make a successful Dexterity saving throw, or be grappled for the spells duration. A grappled target can use its action to make a Dexterity saving throw. On a successful save, the target forces itself out of the cyclone in an empty space within 5 feet of it.</p><p><strong><em>At Higher Levels.</em></strong> When you cast this spell using a spell slot of 4th level or higher, you conjure one additional cyclone beneath a target within range for every two slot levels above 2nd.</p>",
+      "value": "<p>A whirl of wind forms around a Large or smaller creature that you can see within range. The target must make a Strength saving throw. On a failed save, the target is lifted off the ground and is restrained for the spell's duration.</p><p>As an action, you can cause the cyclone to move up to 20 feet in a direction of your choice. A creature restrained by the cyclone moves with it. If the cyclone moves through a space too narrow for its restrained creature, the creature breaks out and the spell ends.</p><p>To break out, the restrained target can use its action to make a Strength check against your spell save DC. On a success, the target escapes and is no longer restrained by the hand. The cyclone then vanishes.</p>",
       "chat": ""
     },
     "source": {
-      "custom": "Warcraft 5e - Heroes Handbook",
+      "custom": "Warcraft 5e - Chapter 6 Spells",
       "book": "",
       "page": "",
       "license": "",
@@ -52,7 +52,7 @@
       "spent": 0
     },
     "level": 2,
-    "school": "trs",
+    "school": "con",
     "materials": {
       "value": "",
       "consumed": false,
@@ -119,7 +119,7 @@
         },
         "save": {
           "ability": [
-            "dex"
+            "str"
           ],
           "dc": {
             "calculation": "spellcasting",

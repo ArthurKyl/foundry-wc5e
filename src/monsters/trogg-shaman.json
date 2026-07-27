@@ -1062,11 +1062,11 @@
       "img": "icons/svg/daze.svg",
       "system": {
         "description": {
-          "value": "<p>You manifest a swift burst of elemental force, and launch it at creature of within range. Make a ranged spell attack against the target. On a hit, the target takes 3d8 bludgeoning, cold, fire, or lightning damage (your choice).</p><p><strong><em>At Higher Levels.</em></strong> When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st.</p>",
+          "value": "<p>You manifest a burst of elemental force around a creature within range. You choose acid, cold, fire, lightning, or thunder for the shock you make, the creature must then make a Dexterity saving throw. Taking 3d8 of the chosen damage type on a failed save, or half as much on a success.</p><p><strong><em>At Higher Levels.</em></strong> When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st.</p>",
           "chat": ""
         },
         "source": {
-          "custom": "Warcraft 5e - Heroes Handbook",
+          "custom": "Warcraft 5e - Chapter 6 Spells",
           "book": "",
           "page": "",
           "license": "",
@@ -1128,7 +1128,7 @@
         "activities": {
           "cjqPLPA0bgpfw1Cl": {
             "_id": "cjqPLPA0bgpfw1Cl",
-            "type": "attack",
+            "type": "save",
             "sort": 0,
             "name": "",
             "img": "",
@@ -1174,40 +1174,18 @@
               "recovery": [],
               "max": ""
             },
-            "attack": {
-              "ability": "",
-              "bonus": "",
-              "critical": {
-                "threshold": null
-              },
-              "flat": false,
-              "type": {
-                "value": "ranged",
-                "classification": ""
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "spellcasting",
+                "formula": ""
               }
             },
             "damage": {
-              "critical": {
-                "bonus": ""
-              },
-              "includeBase": true,
-              "parts": [
-                {
-                  "number": 3,
-                  "denomination": 8,
-                  "bonus": "",
-                  "types": [],
-                  "custom": {
-                    "enabled": false,
-                    "formula": ""
-                  },
-                  "scaling": {
-                    "mode": "whole",
-                    "number": 1,
-                    "formula": ""
-                  }
-                }
-              ]
+              "onSave": "none",
+              "parts": []
             }
           }
         },
@@ -1237,7 +1215,7 @@
           "chat": ""
         },
         "source": {
-          "custom": "Warcraft 5e - Heroes Handbook",
+          "custom": "Warcraft 5e - Chapter 6 Spells",
           "book": "",
           "page": "",
           "license": "",
@@ -1368,8 +1346,8 @@
                     "formula": ""
                   },
                   "scaling": {
-                    "mode": "whole",
-                    "number": 1,
+                    "mode": "",
+                    "number": null,
                     "formula": ""
                   }
                 },
@@ -1385,8 +1363,8 @@
                     "formula": ""
                   },
                   "scaling": {
-                    "mode": "whole",
-                    "number": 1,
+                    "mode": "",
+                    "number": null,
                     "formula": ""
                   }
                 }
@@ -1416,11 +1394,11 @@
       "img": "icons/svg/daze.svg",
       "system": {
         "description": {
-          "value": "<p>A place your hand to the ground, and erupt a large stalag-mite beneath a creature within range. The creature must make a Dexterity saving throw. On a failed save, the target takes 6d8 bludgeoning damage and is knocked 20 feet into the air as a 15-foot in diameter and 20 feet high spike rises beneath it. On a successful saving throw, the target takes half damage.</p><p>Each creature within 5 feet of the chosen target must also make a Dexterity saving throw. On a failed save, the target takes half damage, and no damage on a success.</p><p>The creature is then pushed back 5 feet. The stalag-mite remains until your concentration is broken, at which point it crumbles, making its area difficult terrain.</p><p><strong><em>At Higher Levels.</em></strong> When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d8 for each slot level above 3rd.</p>",
+          "value": "<p>You place your hand on the ground and evoke the element of earth, erupting a spike of earth at a point within range. A 5-foot radius, 15-foot high spike of earth erupts from that point. Each creature within that area must make a Dexterity saving throw. On a failed save, a creature takes 6d8 bludgeoning damage, or half as much damage on a success. Each creature affected by this spike is pushed away from the point of the spell to the nearest empty space. A creature who failed the saving throw falls prone.</p><p>The earthen spike remains for the duration of the spell or until your concentration is broken at which point it crumbles, leaving its area as difficult terrain. When it crumbles, each creature within 5 feet of it must succeed on a Dexterity saving throw or take 1d6 bludgeoning damage.</p><p><strong><em>At Higher Levels.</em></strong> When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d8 for each slot level above 3rd.</p>",
           "chat": ""
         },
         "source": {
-          "custom": "Warcraft 5e - Heroes Handbook",
+          "custom": "Warcraft 5e - Chapter 6 Spells",
           "book": "",
           "page": "",
           "license": "",
@@ -1437,19 +1415,19 @@
         },
         "target": {
           "affects": {
-            "type": "creature",
-            "count": "1",
+            "type": "",
+            "count": "",
             "choice": false,
             "special": ""
           },
           "template": {
             "count": "",
             "contiguous": false,
-            "type": "",
-            "size": "",
+            "type": "sphere",
+            "size": "5",
             "width": "",
             "height": "",
-            "units": ""
+            "units": "ft"
           }
         },
         "range": {

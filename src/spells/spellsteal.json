@@ -5,11 +5,11 @@
   "img": "icons/svg/daze.svg",
   "system": {
     "description": {
-      "value": "<p>You attempt to steal the effect of a spell from a creature for a brief time. If the spell affecting the creature was cast at 3rd level or lower, the spell effect transfers to you for this spells duration. Once this spell ends, the stolen spells effect returns to the original caster. The time you had the spell counts against the spells original duration. If the spell is of 4th level or higher, make an ability check using your spellcasting ability. The DC equals 10 + the spell's level. On a success, the spells effect transfers to you.</p><p><strong><em>At Higher Levels.</em></strong> When you cast this spell using a spell slot of 4th level or higher, a spell can be stolen without a saving throw if its level is less than or equal to the level of the spell slot you used.</p>",
+      "value": "<p>Choose a creature that you can see within range. A 1st level spell effect of your choosing that affects the target is transferred to you. For its remaining duration, the spell's effect is applied to you as if you had cast it yourself.</p><p>If the stolen spell requires concentration, you need to concentrate on it. You do not need to provide any additional spellcasting components, if any were required by the stolen spell. Spellsteal has no effect on spells that create or summon creatures, or on spell effects that can't be removed by <em>dispel magic</em>.</p><p>You cannot change the stolen spell from how it was originally cast, unless its description explicitly allows it to be changed after being cast.</p><p>To steal a spell effect of 2nd level or higher, make an ability check using your spellcasting ability. The DC equals 10 + the spell's level. On a successful check, you successfully steal the spell.</p><p><strong><em>At Higher Levels.</em></strong> When you cast this spell using a spell slot of 4th level or higher, the spell level where you automatically succeed the check increases by one for each slot level above 3rd.</p>",
       "chat": ""
     },
     "source": {
-      "custom": "Warcraft 5e - Heroes Handbook",
+      "custom": "Warcraft 5e - Chapter 6 Spells",
       "book": "",
       "page": "",
       "license": "",
@@ -21,8 +21,8 @@
       "value": 1
     },
     "duration": {
-      "value": "1",
-      "units": "minute"
+      "value": "",
+      "units": "inst"
     },
     "target": {
       "affects": {
@@ -65,8 +65,7 @@
     },
     "properties": [
       "vocal",
-      "somatic",
-      "concentration"
+      "somatic"
     ],
     "activities": {
       "BoAo9kbjLW7aZH2d": {

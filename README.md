@@ -23,12 +23,15 @@ conversion, converted to the **dnd5e** system.
     Buzzbox, Firestarter, Flashlight, Glowstick, Parachute). Uses dnd5e's native
     firearm/ammunition properties; the SRD-standard equipment is intentionally
     left out since the dnd5e system already ships it.
-  - **WC5E Spells** — 27 Warcraft-specific spells (Solar Wrath, Starfire,
-    Starsurge, Shadow Bolt, Chain Heal, Lava Burst, Blizzard, Ice Nova, etc.) as
-    real dnd5e spell items with rollable attacks/saves, correct level/school/
-    components, and slot scaling. These are exactly the custom spells the
-    monsters reference (marked `✦` in the source) that don't exist in core D&D;
-    the SRD spells the monsters also use already ship with the dnd5e system.
+  - **WC5E Spells** — the **complete WC5E custom spell list (99 spells)** as
+    real dnd5e spell items: correct level/school/components/duration, with
+    rollable attack / save / heal activities and slot scaling auto-derived from
+    each spell's rules text (Solar Wrath, Pyroblast, Death and Decay, Chain
+    Heal, Bloodlust and Heroism, Army of the Dead, …). These are the Warcraft
+    spells that don't exist in core D&D; the SRD spells monsters also use ship
+    with the dnd5e system. A few utility/buff spells with unusual wording carry
+    their full text but aren't auto-wired to roll — flag any and they're a quick
+    fix.
 
 > Fan-made conversion for personal use. Warcraft is a trademark of Blizzard
 > Entertainment. This module is not affiliated with or endorsed by Blizzard or

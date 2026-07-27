@@ -754,6 +754,172 @@
       "_key": "!actors.items!cfoZVqwspAcSyYon.vF5T5GEeJRJSOV2q"
     },
     {
+      "_id": "BOwheEEKPim4fbkZ",
+      "name": "Arcane Blast",
+      "type": "spell",
+      "img": "icons/svg/daze.svg",
+      "system": {
+        "description": {
+          "value": "<p>You extend your hand and make a burst of arcane energy erupt from a target within range. If the target is a creature it must succeed on a Dexterity saving throw or take 1d8 force damage. A creature forced to make a Constitution saving throw to maintain concentration because of this spell, makes the saving throw with disadvantage.</p><p>This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), 17th level (4d8).</p>",
+          "chat": ""
+        },
+        "source": {
+          "custom": "Warcraft 5e - Chapter 6 Spells",
+          "book": "",
+          "page": "",
+          "license": "",
+          "rules": "2014"
+        },
+        "activation": {
+          "type": "action",
+          "condition": "",
+          "value": 1
+        },
+        "duration": {
+          "value": "",
+          "units": "inst"
+        },
+        "target": {
+          "affects": {
+            "type": "creature",
+            "count": "1",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": ""
+          }
+        },
+        "range": {
+          "value": "60",
+          "units": "ft",
+          "special": ""
+        },
+        "uses": {
+          "max": "",
+          "recovery": [],
+          "spent": 0
+        },
+        "level": 0,
+        "school": "evo",
+        "materials": {
+          "value": "",
+          "consumed": false,
+          "cost": 0,
+          "supply": 0
+        },
+        "preparation": {
+          "mode": "prepared",
+          "prepared": true
+        },
+        "properties": [
+          "vocal",
+          "somatic"
+        ],
+        "activities": {
+          "7aOgPPiQupmGwPRZ": {
+            "_id": "7aOgPPiQupmGwPRZ",
+            "type": "save",
+            "sort": 0,
+            "name": "",
+            "img": "",
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "units": "inst",
+              "concentration": false,
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft"
+              },
+              "affects": {
+                "choice": false
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": ""
+            },
+            "save": {
+              "ability": [
+                "dex"
+              ],
+              "dc": {
+                "calculation": "spellcasting",
+                "formula": ""
+              }
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": [
+                {
+                  "number": 1,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "force"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "whole",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "identifier": "arcane-blast"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 200000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "_key": "!actors.items!cfoZVqwspAcSyYon.BOwheEEKPim4fbkZ"
+    },
+    {
       "_id": "EQJezoqBbeukFuTF",
       "name": "Dancing Lights",
       "type": "spell",
@@ -923,7 +1089,7 @@
       },
       "effects": [],
       "folder": null,
-      "sort": 200000,
+      "sort": 201000,
       "ownership": {
         "default": 0
       },
@@ -1096,7 +1262,7 @@
       },
       "effects": [],
       "folder": null,
-      "sort": 201000,
+      "sort": 202000,
       "ownership": {
         "default": 0
       },
@@ -1329,7 +1495,7 @@
       },
       "effects": [],
       "folder": null,
-      "sort": 202000,
+      "sort": 203000,
       "ownership": {
         "default": 0
       },
@@ -1476,7 +1642,7 @@
       },
       "effects": [],
       "folder": null,
-      "sort": 203000,
+      "sort": 204000,
       "ownership": {
         "default": 0
       },
@@ -1622,7 +1788,7 @@
       },
       "effects": [],
       "folder": null,
-      "sort": 204000,
+      "sort": 205000,
       "ownership": {
         "default": 0
       },
@@ -1772,7 +1938,7 @@
       },
       "effects": [],
       "folder": null,
-      "sort": 205000,
+      "sort": 206000,
       "ownership": {
         "default": 0
       },
@@ -1934,7 +2100,7 @@
       },
       "effects": [],
       "folder": null,
-      "sort": 206000,
+      "sort": 207000,
       "ownership": {
         "default": 0
       },
@@ -2076,7 +2242,7 @@
       },
       "effects": [],
       "folder": null,
-      "sort": 207000,
+      "sort": 208000,
       "ownership": {
         "default": 0
       },
@@ -2208,7 +2374,7 @@
       },
       "effects": [],
       "folder": null,
-      "sort": 208000,
+      "sort": 209000,
       "ownership": {
         "default": 0
       },
@@ -2336,7 +2502,7 @@
       },
       "effects": [],
       "folder": null,
-      "sort": 209000,
+      "sort": 210000,
       "ownership": {
         "default": 0
       },
