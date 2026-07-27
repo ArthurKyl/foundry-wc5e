@@ -1254,7 +1254,7 @@
                 "dex"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "16"
               }
             },
@@ -1428,7 +1428,7 @@
                 "str"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "16"
               }
             },

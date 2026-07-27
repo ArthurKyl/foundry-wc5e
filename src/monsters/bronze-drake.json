@@ -1252,7 +1252,7 @@
                 "dex"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "17"
               }
             },
@@ -1426,7 +1426,7 @@
                 "con"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "16"
               }
             },

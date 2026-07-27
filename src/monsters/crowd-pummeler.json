@@ -927,7 +927,7 @@
                 "dex"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "12"
               }
             },
@@ -1281,7 +1281,7 @@
                 "wis"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "13"
               }
             },

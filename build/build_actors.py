@@ -287,8 +287,10 @@ def build_save_activity(actor_id, item_id, activation_type, text):
     # most monster save abilities deal half on a successful save
     on_save = "half" if (parts and re.search(r"half", text, re.IGNORECASE)) \
         else ("half" if parts else "none")
+    # calculation "" (empty) = use the literal DC in `formula`; a truthy value
+    # like "flat" would make dnd5e ignore it and compute 8+prof+mod instead.
     act["save"] = {"ability": [ability],
-                   "dc": {"calculation": "flat", "formula": str(dc)}}
+                   "dc": {"calculation": "", "formula": str(dc)}}
     act["damage"] = {"onSave": on_save, "parts": parts}
     return act
 

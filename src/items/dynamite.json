@@ -106,7 +106,7 @@
             "dex"
           ],
           "dc": {
-            "calculation": "flat",
+            "calculation": "",
             "formula": "12"
           }
         },

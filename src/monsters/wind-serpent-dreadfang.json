@@ -1111,7 +1111,7 @@
                 "wis"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "12"
               }
             },
@@ -1267,7 +1267,7 @@
                 "dex"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "14"
               }
             },

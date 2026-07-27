@@ -930,7 +930,7 @@
                 "str"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "11"
               }
             },
@@ -1104,7 +1104,7 @@
                 "dex"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "13"
               }
             },

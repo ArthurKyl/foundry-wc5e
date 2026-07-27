@@ -872,7 +872,7 @@
                 "wis"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "13"
               }
             },
@@ -1028,7 +1028,7 @@
                 "wis"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "12"
               }
             },

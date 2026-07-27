@@ -1176,7 +1176,7 @@
                 "con"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "15"
               }
             },
@@ -1367,7 +1367,7 @@
                 "wis"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "17"
               }
             },

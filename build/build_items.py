@@ -91,7 +91,7 @@ def save_activity(item_id, ability, dc, dmg_parts, on_save, radius, rng):
                     "special": ""}, "prompt": True, "override": False},
         "uses": {"spent": 0, "max": "", "recovery": []},
         "save": {"ability": [ability],
-                 "dc": {"calculation": "flat", "formula": str(dc)}},
+                 "dc": {"calculation": "", "formula": str(dc)}},
         "damage": {"onSave": on_save, "parts": dmg_parts},
     }}
 

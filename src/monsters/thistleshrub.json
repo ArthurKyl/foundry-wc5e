@@ -1005,7 +1005,7 @@
                 "str"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "14"
               }
             },

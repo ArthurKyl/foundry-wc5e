@@ -1020,7 +1020,7 @@
                 "con"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "13"
               }
             },
@@ -1176,7 +1176,7 @@
                 "con"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "13"
               }
             },
@@ -1350,7 +1350,7 @@
                 "cha"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "15"
               }
             },

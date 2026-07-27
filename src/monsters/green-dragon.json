@@ -1459,7 +1459,7 @@
                 "wis"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "16"
               }
             },
@@ -1758,7 +1758,7 @@
                 "dex"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "18"
               }
             },
@@ -1932,7 +1932,7 @@
                 "con"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "18"
               }
             },
@@ -2517,7 +2517,7 @@
                 "dex"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "21"
               }
             },

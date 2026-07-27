@@ -1297,7 +1297,7 @@
                 "str"
               ],
               "dc": {
-                "calculation": "flat",
+                "calculation": "",
                 "formula": "13"
               }
             },
