@@ -130,6 +130,11 @@ dnd5e's structured equipment picker.
 Casters also **prompt you to choose spells on level-up**, driven by each class's
 Cantrips Known / Spells Known table — something dnd5e's own SRD classes don't do.
 
+Subclasses grant their own spells too: the paladin oaths, druid paths, priest
+priesthoods and shaman bindings hand out their spells automatically as
+always-prepared, and the three warlock studies add an expanded list you can
+choose from.
+
 **WC5E Class Spell Lists** — dnd5e spell-list journal pages for all 7 casting
 classes (Death Knight, Druid, Mage, Paladin, Priest, Shaman, Warlock), built from
 the WC5E class spell tables. 671 spell links across the seven lists, mixing this

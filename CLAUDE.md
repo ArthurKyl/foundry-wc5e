@@ -265,6 +265,40 @@ only cantrips come from the Blessed Fighter fighting style. Cantrip choices use
 `restriction.level: "0"`; spell choices use `"available"` (any level the character has slots for),
 and only spells get `replacement: true`.
 
+## Subclass spells
+
+`build_subclass_spells.py` handles the Heroes Handbook subclass tables, which come in **two shapes
+needing two different mechanisms** — telling them apart is the whole job:
+
+- Keyed by **class level** (`| Paladin Level | Spells |`) — Oath / Path / Priesthood / Binding
+  spells. Granted automatically and always prepared, like dnd5e's cleric domain spells, so they
+  become `ItemGrant` advancements on the subclass with `spell.preparation: "always"`.
+- Keyed by **spell level** (`| Spell Level | Spells |`) — the warlock "Expanded Spells". These widen
+  what may be *chosen*, so they become spell-list pages with `system.type: "subclass"`
+  (dnd5e's `spellListTypes` allows class/subclass/background/race/other).
+
+Traps in the source: the paladin subclasses are "Oath of X" upstream but "Path of X" in the class
+documents, and several names collide across classes (`Holy` the priesthood vs `Path of the Holy`
+the oath; `Restoration` the binding vs `Path of Restoration` the druid path) — so `SECTIONS` maps
+explicitly and validates against each subclass's `classIdentifier` instead of matching by name.
+Column positions also vary: the paladin/priest tables are two columns, the druid ones insert an
+`&nbsp;` spacer, so the spells column is found from the header. Split spell lists on **commas
+only** — `enlarge/reduce` and `blindness/deafness` are single names containing a slash.
+
+**Both spell-list builders write `flags.dnd5e.spellLists`,** so each preserves entries belonging to
+the other journal. Without that, whichever ran second silently unregistered the first one's lists.
+Verify by running them in both orders and checking the count holds.
+
+### Why subclass caster progressions are deliberately absent
+
+`Subtlety` (third/int), `Enhancement` (half/wis) and `Path of Feral` (half/wis) each have their own
+Cantrips/Spells Known table upstream, and they are **intentionally not generated**. A subclass's
+`spellcasting` overrides the class's for *slots*, but advancement has no subclass-conditional
+gating — `classRestriction` only distinguishes primary/secondary multiclass. The Shaman class
+carries 19 spell-choice advancements that fire whatever subclass is taken, so adding Enhancement's
+table on top would double-grant rather than replace. Don't "fix" this by adding them.
+`Subtlety` additionally references a "subtlety spell list" that **does not exist anywhere upstream**.
+
 ## Advancement levels on non-class items
 
 `AdvancementManager.forNewItem` creates flows for **every level from 0 to the current level** for

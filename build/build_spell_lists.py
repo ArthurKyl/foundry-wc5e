@@ -213,10 +213,15 @@ def register_in_manifest(journal_id, pages):
     uuids = [f"Compendium.wc5e-bestiary.spell-lists.JournalEntry.{journal_id}"
              f".JournalEntryPage.{p['_id']}" for p in pages]
     flags = manifest.setdefault("flags", {}).setdefault("dnd5e", {})
-    if flags.get("spellLists") == uuids:
-        print(f"  module.json flags.dnd5e.spellLists already up to date ({len(uuids)})")
+    # Preserve registrations owned by other builders (build_subclass_spells.py adds
+    # its own journal's pages here), so the two can run in either order without one
+    # silently unregistering the other's lists.
+    others = [u for u in flags.get("spellLists", []) if journal_id not in u]
+    merged = others + uuids
+    if flags.get("spellLists") == merged:
+        print(f"  module.json flags.dnd5e.spellLists already up to date ({len(merged)})")
         return
-    flags["spellLists"] = uuids
+    flags["spellLists"] = merged
     with open(path, "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=2, ensure_ascii=False)
         f.write("\n")
