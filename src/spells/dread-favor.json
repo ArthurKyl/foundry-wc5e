@@ -127,7 +127,50 @@
     },
     "identifier": "dread-favor"
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "0NJuI8i1br0HR65P",
+      "name": "Dread Favor",
+      "img": "icons/svg/daze.svg",
+      "type": "base",
+      "changes": [
+        {
+          "key": "system.bonuses.mwak.damage",
+          "mode": 2,
+          "value": "1d4",
+          "priority": 20
+        },
+        {
+          "key": "system.bonuses.rwak.damage",
+          "mode": 2,
+          "value": "1d4",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 60,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>Weapon attacks deal +1d4 necrotic while this is active.</p>",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "_key": "!items.effects!cWGTC6vhwrjamc89.0NJuI8i1br0HR65P"
+    }
+  ],
   "folder": "1498WIsHveILx958",
   "sort": 0,
   "ownership": {

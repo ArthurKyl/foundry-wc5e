@@ -153,6 +153,92 @@
             }
           ]
         }
+      },
+      "mwFv9irISWez5xhr": {
+        "_id": "mwFv9irISWez5xhr",
+        "type": "attack",
+        "sort": 100,
+        "name": "Empowered (take 1 psychic damage)",
+        "img": "",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": "You take 1 point of psychic damage (3 at 5th level, 5 at 11th) to increase the damage die to d12."
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "attack": {
+          "ability": "",
+          "bonus": "",
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "ranged",
+            "classification": ""
+          }
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": [
+            {
+              "number": 1,
+              "denomination": 12,
+              "bonus": "",
+              "types": [
+                "necrotic"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        }
       }
     },
     "identifier": "shadow-bolt"

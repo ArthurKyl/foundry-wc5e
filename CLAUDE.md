@@ -265,6 +265,17 @@ Rather than patching `src/`, add to the small curated tables:
 - `spell_embed.ALIAS` — upstream spell-name typos/variants → canonical name.
 - `build_spells.OVERRIDES` — spells whose mechanics `auto_detect()` can't infer (keyed by
   lowercase name).
+- `build_spells.EFFECTS` — Active Effects for **duration** buffs, so the bonus lands on rolls by
+  itself. `system.bonuses.{mwak,rwak,msak,rsak}.{attack,damage}` are real actor fields, and dnd5e's
+  `FormulaField._applyChangeAdd` joins with an operator, so ADD mode stacks (`1d4 + 1d6`) instead of
+  concatenating into nonsense. Use `transfer: false` on a spell — otherwise the bonus applies just
+  for *knowing* the spell. Only duration buffs qualify: a "next time you hit" spell would keep
+  applying until someone deleted the effect (dnd5e has no once-per-hit expiry), and a spell that
+  buffs one specific weapon needs the enchantment system, not an actor-wide bonus.
+- `build_spells.ALT_ACTIVITIES` — a second clickable activity for optional modes (Shadow Bolt's
+  "spend 1 psychic for a d12"). The self-cost is chat flavour rather than `consumption`: dnd5e's
+  consumption types don't verifiably cover paying hit points, and a malformed consumption block
+  fails worse than a line of text.
 - `build/data/extra_spells.json` — spells that appear in the WC5E spell *tables* but never get a
   definition block in Chapter 6, so `extract_spells.py` cannot produce them even though class
   features reference them (currently *Anti-Magic Shell* and *Feral Spirits*, transcribed by

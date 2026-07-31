@@ -154,6 +154,56 @@ OVERRIDES = {
                       "dmg": [(7, 8, "cold", 2)], "flat": [("30", "bludgeoning")]},
 }
 
+# Active Effects for duration buffs, so the bonus applies to rolls automatically
+# instead of the player remembering it.
+#
+# `system.bonuses.{mwak,rwak,msak,rsak}.{attack,damage}` are real actor fields, and
+# dnd5e's FormulaField overrides _applyChangeAdd to join with an operator ("1d4"
+# then "1d6" gives "1d4 + 1d6"), so ADD mode stacks correctly rather than
+# concatenating into nonsense.
+#
+# Only *duration* buffs belong here. A "next time you hit" spell like Righteous
+# Smite would keep applying to every attack until someone manually deleted the
+# effect, which is worse than not automating it -- dnd5e has no once-per-hit
+# expiry. Unholy Weapon buffs one specific weapon, which needs the enchantment
+# system rather than an actor-wide bonus.
+EFFECTS = {
+    "Dread Favor": {
+        "seconds": 60,
+        "changes": [("system.bonuses.mwak.damage", "1d4"),
+                    ("system.bonuses.rwak.damage", "1d4")],
+        "hint": "Weapon attacks deal +1d4 necrotic while this is active.",
+    },
+}
+
+
+def build_effects(item_id, name):
+    spec = EFFECTS.get(name)
+    if not spec:
+        return []
+    eid = make_id("effect", name)
+    return [{
+        "_id": eid,
+        "name": name,
+        "img": IMG,
+        "type": "base",
+        "changes": [{"key": k, "mode": 2, "value": v, "priority": 20}
+                    for k, v in spec["changes"]],
+        "disabled": False,
+        "duration": {"startTime": None, "seconds": spec["seconds"], "combat": None,
+                     "rounds": None, "turns": None, "startRound": None,
+                     "startTurn": None},
+        "description": f"<p>{spec['hint']}</p>",
+        "origin": None,
+        "tint": "#ffffff",
+        "transfer": False,       # applied when the spell is cast, not while merely known
+        "statuses": [],
+        "sort": 0,
+        "flags": {},
+        "_stats": {"systemId": "dnd5e", "systemVersion": "5.3.3"},
+        "_key": f"!items.effects!{item_id}.{eid}",
+    }]
+
 
 # ---------------------------------------------------------------------------
 # Activity + item assembly
@@ -204,6 +254,37 @@ def build_activity(spell_id, mech, activation):
     return {aid: a}
 
 
+# Optional alternative modes that auto_detect can't express: a second activity the
+# player can click instead of the default one. The self-inflicted cost is stated in
+# the activity's chat flavour rather than wired as consumption -- dnd5e's
+# consumption types don't verifiably cover paying hit points, and a malformed
+# consumption block is worse than a line of text the player acts on.
+ALT_ACTIVITIES = {
+    "Shadow Bolt": {
+        "name": "Empowered (take 1 psychic damage)",
+        "dmg": [(1, 12, "necrotic", 1)],
+        "flavor": "You take 1 point of psychic damage (3 at 5th level, 5 at 11th) "
+                  "to increase the damage die to d12.",
+    },
+}
+
+
+def build_alt_activity(spell_id, name, activation):
+    spec = ALT_ACTIVITIES.get(name)
+    if not spec:
+        return {}
+    aid = make_id(spell_id, "act", "alt")
+    a = base_act(aid, "attack", activation)
+    a["name"] = spec["name"]
+    a["attack"] = {"ability": "", "bonus": "", "critical": {"threshold": None},
+                   "flat": False, "type": {"value": "ranged", "classification": ""}}
+    a["damage"] = {"critical": {"bonus": ""}, "includeBase": True,
+                   "parts": [dpart(*p) for p in spec["dmg"]]}
+    a["description"] = {"chatFlavor": spec["flavor"]}
+    a["sort"] = 100
+    return {aid: a}
+
+
 def build_spell(src):
     name = src["name"]
     spell_id = make_id("spell", name)
@@ -238,14 +319,16 @@ def build_spell(src):
         "materials": {"value": src["material"], "consumed": False, "cost": 0, "supply": 0},
         "preparation": {"mode": "prepared", "prepared": False},
         "properties": src["properties"],
-        "activities": build_activity(spell_id, mech, activation),
+        "activities": {**build_activity(spell_id, mech, activation),
+                       **build_alt_activity(spell_id, name, activation)},
         "identifier": slugify(name),
     }
     fname = _level_folder(src["level"])
     USED_SPELL_FOLDERS.add(fname)
     return {
         "_id": spell_id, "name": name, "type": "spell", "img": IMG,
-        "system": system, "effects": [], "folder": folders.fid("Item", fname),
+        "system": system, "effects": build_effects(spell_id, name),
+        "folder": folders.fid("Item", fname),
         "sort": 0, "ownership": {"default": 0}, "flags": {},
         "_stats": {"systemId": "dnd5e", "systemVersion": "5.3.3"},
         "_key": f"!items!{spell_id}",
