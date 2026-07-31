@@ -419,6 +419,117 @@
           "replaced": {}
         },
         "hint": ""
+      },
+      {
+        "_id": "K0a42ZlU51LaP8cV",
+        "type": "ItemChoice",
+        "title": "Cantrips Known",
+        "hint": "Choose 2 cantrips from the Druid spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "1": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "0",
+            "list": [
+              "class:wc5e-druid"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "MHnKQ9IxXWwoTMHn",
+        "type": "ItemChoice",
+        "title": "Cantrips Known",
+        "hint": "Choose 1 cantrip from the Druid spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "4": {
+              "count": 1,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "0",
+            "list": [
+              "class:wc5e-druid"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "0oxu7qUFHuOx0Ihq",
+        "type": "ItemChoice",
+        "title": "Cantrips Known",
+        "hint": "Choose 1 cantrip from the Druid spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "10": {
+              "count": 1,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "0",
+            "list": [
+              "class:wc5e-druid"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
       }
     ],
     "description": {

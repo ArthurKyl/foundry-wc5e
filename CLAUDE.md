@@ -232,6 +232,32 @@ alternate lists and are skipped deliberately.
 - Long names wrap in the source using `&nbsp;`/soft hyphens ("Amplify or &nbsp;&nbsp; Dampen
   Magic"); `clean_entry()` strips them, and forgetting that makes real spells look unavailable.
 
+## Spell progression (the one generator that edits hand-maintained files)
+
+`build_spell_progression.py` reads the Cantrips Known / Spells Known columns from the upstream
+class tables and writes `ItemChoice` advancements into `src/classes/*.json`, so levelling up
+actually prompts for spells. dnd5e has no built-in prompt — its own SRD casters expect you to add
+spells from the spellbook by hand, and guided builders hardcode the progression per SRD class, so
+custom classes get skipped. `ItemChoice` is the supported mechanism, so this is data-driven.
+
+**It is the only generator that modifies hand-maintained documents**, so it is deliberately
+surgical: each advancement's `_id` is `make_id("spellprog", class, kind, level)`, and every run
+removes that entire candidate id set (all kinds × levels 1–20) before re-inserting. Hand-authored
+advancement is never touched, and re-running cannot duplicate. Verify with an id-uniqueness
+assertion after changing it.
+
+Table sources, best first: `WIP 3.0 Classes/<Class>` (extensionless for some classes) then the
+Heroes Handbook section. A candidate that yields no column must **fall through**, not end the
+search — `Warlock.md` carries the prose but contains no markdown tables at all, so the Warlock
+table only comes from the Heroes Handbook.
+
+Known-good output: Death Knight 10 spell picks (L2,3,5,7,9,11,13,15,17,19); Druid/Mage/Priest 3
+cantrip picks; Shaman 3 cantrip + 16 spell; Warlock 3 cantrip + 14 spell. **Paladin generates
+nothing on purpose** — it has no Known column in either source, being a prepared half-caster whose
+only cantrips come from the Blessed Fighter fighting style. Cantrip choices use
+`restriction.level: "0"`; spell choices use `"available"` (any level the character has slots for),
+and only spells get `replacement: true`.
+
 ## Advancement levels on non-class items
 
 `AdvancementManager.forNewItem` creates flows for **every level from 0 to the current level** for

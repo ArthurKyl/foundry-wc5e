@@ -276,6 +276,117 @@
         "level": 20,
         "title": "",
         "hint": ""
+      },
+      {
+        "_id": "tnwKqCPF5yjMl1Tc",
+        "type": "ItemChoice",
+        "title": "Cantrips Known",
+        "hint": "Choose 3 cantrips from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "1": {
+              "count": 3,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "0",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "1oivNbEgo5Cs8Cza",
+        "type": "ItemChoice",
+        "title": "Cantrips Known",
+        "hint": "Choose 1 cantrip from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "4": {
+              "count": 1,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "0",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "Hs54TzLLTl0LyxUL",
+        "type": "ItemChoice",
+        "title": "Cantrips Known",
+        "hint": "Choose 1 cantrip from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "11": {
+              "count": 1,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "0",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
       }
     ],
     "description": {

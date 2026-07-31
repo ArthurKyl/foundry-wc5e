@@ -447,6 +447,635 @@
           "replaced": {}
         },
         "hint": ""
+      },
+      {
+        "_id": "mVliyo8UxFQ94F9V",
+        "type": "ItemChoice",
+        "title": "Cantrips Known",
+        "hint": "Choose 3 cantrips from the Warlock spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "1": {
+              "count": 3,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "0",
+            "list": [
+              "class:wc5e-warlock"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "1yV1Qq1fq9oJoaja",
+        "type": "ItemChoice",
+        "title": "Cantrips Known",
+        "hint": "Choose 1 cantrip from the Warlock spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "4": {
+              "count": 1,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "0",
+            "list": [
+              "class:wc5e-warlock"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "eApO1o7ZxSTWa3JV",
+        "type": "ItemChoice",
+        "title": "Cantrips Known",
+        "hint": "Choose 1 cantrip from the Warlock spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "10": {
+              "count": 1,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "0",
+            "list": [
+              "class:wc5e-warlock"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "hhyoUCyEkLQM3CQb",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 2 new spells from the Warlock spell list (you know 2 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "1": {
+              "count": 2,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-warlock"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "deYqRLY2qUQHtbJ6",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Warlock spell list (you know 3 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "2": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-warlock"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "WyhVjFiuUSv1bHxb",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Warlock spell list (you know 4 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "3": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-warlock"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "WlDS9PNlHHlhIqko",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Warlock spell list (you know 5 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "4": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-warlock"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "GNkZZw3r6OSYYFyG",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Warlock spell list (you know 6 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "5": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-warlock"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "ZwbB6GWYqSq29TXn",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Warlock spell list (you know 7 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "6": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-warlock"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "reVjoBwkOSvxRNDH",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Warlock spell list (you know 8 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "7": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-warlock"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "qn5ifS6P05rnpxfR",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Warlock spell list (you know 9 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "8": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-warlock"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "BlYthgo67iHeOLZs",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Warlock spell list (you know 10 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "9": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-warlock"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "tqKY5VYs1tdxqKNU",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Warlock spell list (you know 11 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "11": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-warlock"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "xBBv7nDUmSLAk2Bp",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Warlock spell list (you know 12 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "13": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-warlock"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "bCkJ44MJndSXorW7",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Warlock spell list (you know 13 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "15": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-warlock"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "qIV7PavoFviTSnWB",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Warlock spell list (you know 14 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "17": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-warlock"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "aAkMPmsT8TU7YVBb",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Warlock spell list (you know 15 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "19": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-warlock"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
       }
     ],
     "description": {

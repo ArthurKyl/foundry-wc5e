@@ -314,6 +314,376 @@
         "level": 18,
         "title": "",
         "hint": ""
+      },
+      {
+        "_id": "uMK0QJXzdCEobQRo",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 2 new spells from the Death Knight spell list (you know 2 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "2": {
+              "count": 2,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-death-knight"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "UivQLTVXZWZoobq9",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Death Knight spell list (you know 3 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "3": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-death-knight"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "loWsRILl74dfPtoD",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Death Knight spell list (you know 4 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "5": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-death-knight"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "pncNcGd4PreazhjM",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Death Knight spell list (you know 5 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "7": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-death-knight"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "Dh6Zlm1q81JeTyAr",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Death Knight spell list (you know 6 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "9": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-death-knight"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "bq8G1tAgLRbQN9SW",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Death Knight spell list (you know 7 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "11": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-death-knight"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "VVd1W3WESwadUDc0",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Death Knight spell list (you know 8 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "13": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-death-knight"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "ho9MhT5McOCxWgfB",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Death Knight spell list (you know 9 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "15": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-death-knight"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "PPLhogkYAsyK8cWJ",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Death Knight spell list (you know 10 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "17": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-death-knight"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "6aNcgjOk88eUmkXw",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Death Knight spell list (you know 11 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "19": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-death-knight"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
       }
     ],
     "description": {

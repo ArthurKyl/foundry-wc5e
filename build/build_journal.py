@@ -69,6 +69,7 @@ ROADMAP = """
     features and feats, with advancement configured</li>
   <li>&#9745; Summons &amp; pets</li>
   <li>&#9745; Class spell lists for all 7 casting classes</li>
+  <li>&#9745; Spell selection prompts on level-up (Cantrips/Spells Known)</li>
   <li>&#9745; The 4 Heroes' Handbook backgrounds</li>
   <li>&#9745; Compendium folders &amp; this guide</li>
 </ul>

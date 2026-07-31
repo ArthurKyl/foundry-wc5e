@@ -58,10 +58,12 @@ The release zip contains only what's needed to play (`module.json`, `packs/`,
 
 ### Using it with a character builder
 
-Guided character-creation modules (Originate and similar) generally recognise
-only the SRD class list, so they may not know a WC5E class's spellcasting rules
-even though this module ships the spell lists. Point the module's spell-list
-setting at **WC5E Class Spell Lists** and map each caster to the matching class.
+Guided character-creation modules (Originate and similar) hardcode spellcasting
+rules per SRD class, so they skip the spell step for a custom class no matter how
+it's configured. This module works around that by driving the choices through
+dnd5e's own advancement system instead, so levelling up on the standard sheet
+prompts for cantrips and spells. If your builder also offers a spell-list
+setting, point it at **WC5E Class Spell Lists** and map each caster.
 The class identifiers are `wc5e-death-knight`, `wc5e-druid`, `wc5e-mage`,
 `wc5e-paladin`, `wc5e-priest`, `wc5e-shaman`, `wc5e-warlock`.
 
@@ -124,6 +126,9 @@ that grants its skill proficiencies, prompts for tool and language choices, and
 grants its feature as a separate item. Suggested-characteristics roll tables are
 included. Starting equipment is listed in the description rather than wired into
 dnd5e's structured equipment picker.
+
+Casters also **prompt you to choose spells on level-up**, driven by each class's
+Cantrips Known / Spells Known table — something dnd5e's own SRD classes don't do.
 
 **WC5E Class Spell Lists** — dnd5e spell-list journal pages for all 7 casting
 classes (Death Knight, Druid, Mage, Paladin, Priest, Shaman, Warlock), built from

@@ -322,6 +322,709 @@
         "level": 13,
         "title": "",
         "hint": ""
+      },
+      {
+        "_id": "gxbF79iJJG2teeKf",
+        "type": "ItemChoice",
+        "title": "Cantrips Known",
+        "hint": "Choose 2 cantrips from the Shaman spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "1": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "0",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "j872YrP2GqlE8hUZ",
+        "type": "ItemChoice",
+        "title": "Cantrips Known",
+        "hint": "Choose 1 cantrip from the Shaman spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "4": {
+              "count": 1,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "0",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "Z2Pnl88Y844q0bjs",
+        "type": "ItemChoice",
+        "title": "Cantrips Known",
+        "hint": "Choose 1 cantrip from the Shaman spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "10": {
+              "count": 1,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "0",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "mMD8FHm66cljwCGo",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 4 new spells from the Shaman spell list (you know 4 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "1": {
+              "count": 4,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "tsgNqEgFTgO5Hud2",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Shaman spell list (you know 5 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "2": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "hj1EzMMv7Vcc6Lap",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Shaman spell list (you know 6 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "3": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "RC2XihTpjNRTInPh",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Shaman spell list (you know 7 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "4": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "vo9D57vSNFjOmoMM",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Shaman spell list (you know 8 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "5": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "zDMWHQ9JloqCErcv",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Shaman spell list (you know 9 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "6": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "wGZvCyhGp7wAeW0Y",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Shaman spell list (you know 10 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "7": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "4vKudLQMLbQ5fFWf",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Shaman spell list (you know 11 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "8": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "RCTVolJvYbDBXLBp",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Shaman spell list (you know 12 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "9": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "cIGzYVQI2v3EPoqS",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 2 new spells from the Shaman spell list (you know 14 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "10": {
+              "count": 2,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "07Hl39m2rCnVWgBV",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Shaman spell list (you know 15 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "11": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "nu3AOWO667U4c2V7",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Shaman spell list (you know 16 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "13": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "XwhvBfvLwpq575Yg",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 2 new spells from the Shaman spell list (you know 18 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "14": {
+              "count": 2,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "HQ0B9xYnnDqydqSU",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Shaman spell list (you know 19 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "15": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "sq7bxfpXlCWBwIqC",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 1 new spell from the Shaman spell list (you know 20 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "17": {
+              "count": 1,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "6Dr1mCbpboSPXH13",
+        "type": "ItemChoice",
+        "title": "Spells Known",
+        "hint": "Learn 2 new spells from the Shaman spell list (you know 22 in total).",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "18": {
+              "count": 2,
+              "replacement": true
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-shaman"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
       }
     ],
     "description": {
