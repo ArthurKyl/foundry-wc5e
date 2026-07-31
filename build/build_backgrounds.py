@@ -16,9 +16,15 @@ A dnd5e background drives the character sheet through `system.advancement`:
 Trait key formats verified against dnd5e 5.3.3: `skills:<abbr>`, `languages:*`,
 `tool:forg`, and the namespaced `tool:art:*` / `tool:music:*`.
 
-Starting equipment is deliberately left unstructured: dnd5e's `startingEquipment`
-needs typed AND/OR groups referencing item UUIDs, and a malformed one breaks the
-sheet, so the equipment line is preserved verbatim in the description instead.
+Starting equipment IS wired, from the `EQUIPMENT` table below. dnd5e wants typed
+entries under an AND group -- `linked` for a specific item UUID, `tool` for a
+category like artisan's tools -- plus `wealth` as a bare gp string. The shape was
+copied from a working 2024 SRD background (Soldier) rather than guessed, and every
+UUID is resolved from a committed index so the build needs no Foundry install.
+
+The equipment line stays in the description too: a couple of entries have no dnd5e
+equivalent ("a hooded cloak") and the prose also carries the flavour ("a trinket of
+your faction"), which the picker can't express.
 """
 import json
 import os
@@ -228,6 +234,64 @@ def build_advancement(bg, feature_uuid):
 SRC_META = {"custom": "Warcraft 5e - Heroes Handbook", "book": "", "page": "",
             "license": "", "revision": 1, "rules": "2014"}
 
+# Starting equipment, transcribed from each background's Equipment line.
+#   ("<dnd5e item name>", count)  -> a `linked` entry, resolved via
+#                                   build/data/srd_item_ids.json
+#   ("tool:<key>", None)          -> a `tool` entry for a whole category, the way
+#                                   dnd5e's Soldier uses key "game" for a gaming set
+# `gp` becomes system.wealth. Items with no dnd5e equivalent (a hooded cloak) are
+# left to the description rather than approximated with something else.
+EQUIPMENT = {
+    "Double Agent": {"gp": 15, "items": [
+        ("Forgery Kit", None), ("Dagger", None), ("Chalk", 2), ("Parchment", 4),
+        ("Ink Bottle", None), ("Ink Pen", None), ("Traveler's Clothes", None),
+        ("Pouch", None)]},
+    "Faction Fostered": {"gp": 10, "items": [
+        ("Common Clothes", None), ("Trinket", None), ("Book", None),
+        ("Ink Bottle", None), ("Ink Pen", None), ("Pouch", None)]},
+    "Kirin Tor Apprentice": {"gp": 15, "items": [
+        ("Ink Bottle", None), ("Ink Pen", None), ("Chalk", None),
+        ("Scroll Case", None), ("Parchment", 5), ("Robes", None),
+        ("Candle", None), ("Tinderbox", None), ("Pouch", None)]},
+    "Tribal Member": {"gp": 10, "items": [
+        ("Traveler's Clothes", None), ("tool:art", None), ("tool:music", None),
+        ("Trinket", None), ("Pouch", None)]},
+}
+
+
+def item_index():
+    path = os.path.join(HERE, "data", "srd_item_ids.json")
+    return json.load(open(path, encoding="utf-8"))
+
+
+def starting_equipment(bg_name, idx, report):
+    """-> (entries, wealth) in dnd5e's startingEquipment shape."""
+    spec = EQUIPMENT.get(bg_name)
+    if not spec:
+        return [], ""
+    root = make_id(bg_name, "equip", "root")
+    entries = [{"type": "AND", "requiresProficiency": False, "_id": root,
+                "group": "", "sort": 100000}]
+    sort = 200000
+    for name, count in spec["items"]:
+        entry = {"type": None, "count": count, "key": None,
+                 "requiresProficiency": False,
+                 "_id": make_id(bg_name, "equip", name), "group": root, "sort": sort}
+        if name.startswith("tool:"):
+            entry["type"] = "tool"
+            entry["key"] = name.split(":", 1)[1]
+        else:
+            ref = idx.get(name)
+            if not ref:
+                report.append(f"{bg_name}: no dnd5e item named {name!r} -- left to the description")
+                continue
+            pack, _id = ref.split(".", 1)
+            entry["type"] = "linked"
+            entry["key"] = f"Compendium.dnd5e.{pack}.Item.{_id}"
+        entries.append(entry)
+        sort += 100000
+    return entries, str(spec["gp"])
+
 
 def description(bg):
     parts = [f"<p>{md_html(p)}</p>" for p in bg["flavor"]]
@@ -260,6 +324,8 @@ def main():
         raise SystemExit(f"upstream source not found: {SRC}\n"
                          "clone WC5E/Warcraft-5e-Conversion as a sibling directory")
     bgs = parse(SRC)
+    idx = item_index()
+    equip_report = []
     out_dir = os.path.join(REPO, "src", "backgrounds")
     os.makedirs(out_dir, exist_ok=True)
     for fn in os.listdir(out_dir):
@@ -279,8 +345,8 @@ def main():
             "identifier": slugify(bg["name"]),
             "source": dict(SRC_META),
             "advancement": build_advancement(bg, feat_uuid),
-            "startingEquipment": [],
-            "wealth": "",
+            **dict(zip(("startingEquipment", "wealth"),
+                       starting_equipment(bg["name"], idx, equip_report))),
             "type": {"value": "", "subtype": ""},
         }, f_bg))
 
@@ -325,6 +391,10 @@ def main():
         missing = [k for k in ("skill proficiencies", "equipment") if not bg["profs"].get(k)]
         if missing:
             print(f"      !! missing: {missing}")
+    if equip_report:
+        print("\n  equipment notes:")
+        for r in equip_report:
+            print(f"    {r}")
     if suspect:
         print(f"\n  !! unrecognised hyphenation (add to DEHYPHEN or LEGITIMATE_HYPHENS): "
               f"{', '.join(sorted(suspect))}")

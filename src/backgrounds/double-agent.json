@@ -102,8 +102,88 @@
         "classRestriction": ""
       }
     ],
-    "startingEquipment": [],
-    "wealth": "",
+    "startingEquipment": [
+      {
+        "type": "AND",
+        "requiresProficiency": false,
+        "_id": "MhlkAdowwFiMsXmf",
+        "group": "",
+        "sort": 100000
+      },
+      {
+        "type": "linked",
+        "count": null,
+        "key": "Compendium.dnd5e.items.Item.cG3m4YlHfbQlLEOx",
+        "requiresProficiency": false,
+        "_id": "JVVaqthM8rhgDhEa",
+        "group": "MhlkAdowwFiMsXmf",
+        "sort": 200000
+      },
+      {
+        "type": "linked",
+        "count": null,
+        "key": "Compendium.dnd5e.items.Item.0E565kQUBmndJ1a2",
+        "requiresProficiency": false,
+        "_id": "xXWkJPBc0dcv33kl",
+        "group": "MhlkAdowwFiMsXmf",
+        "sort": 300000
+      },
+      {
+        "type": "linked",
+        "count": 2,
+        "key": "Compendium.dnd5e.items.Item.5fJn3LQ2eQG7luEO",
+        "requiresProficiency": false,
+        "_id": "ogOupg2bZyMjTAqn",
+        "group": "MhlkAdowwFiMsXmf",
+        "sort": 400000
+      },
+      {
+        "type": "linked",
+        "count": 4,
+        "key": "Compendium.dnd5e.items.Item.WFQS2vT8ddrFjTJg",
+        "requiresProficiency": false,
+        "_id": "aO25ZjPgaOzpxwi8",
+        "group": "MhlkAdowwFiMsXmf",
+        "sort": 500000
+      },
+      {
+        "type": "linked",
+        "count": null,
+        "key": "Compendium.dnd5e.items.Item.qGfu1070HAllkO4W",
+        "requiresProficiency": false,
+        "_id": "EPsfesraAvRjRll3",
+        "group": "MhlkAdowwFiMsXmf",
+        "sort": 600000
+      },
+      {
+        "type": "linked",
+        "count": null,
+        "key": "Compendium.dnd5e.items.Item.ybeLtyIloDvKhDz8",
+        "requiresProficiency": false,
+        "_id": "Mt5e3AWTbDmmlXYm",
+        "group": "MhlkAdowwFiMsXmf",
+        "sort": 700000
+      },
+      {
+        "type": "linked",
+        "count": null,
+        "key": "Compendium.dnd5e.items.Item.SsAmWV6YBqeOFihT",
+        "requiresProficiency": false,
+        "_id": "gugaR4MfmlArdjmu",
+        "group": "MhlkAdowwFiMsXmf",
+        "sort": 800000
+      },
+      {
+        "type": "linked",
+        "count": null,
+        "key": "Compendium.dnd5e.items.Item.9bWTRRDym06PzSAf",
+        "requiresProficiency": false,
+        "_id": "v0qcP8YdW31XwxH8",
+        "group": "MhlkAdowwFiMsXmf",
+        "sort": 900000
+      }
+    ],
+    "wealth": "15",
     "type": {
       "value": "",
       "subtype": ""

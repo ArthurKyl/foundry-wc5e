@@ -91,8 +91,61 @@
         "classRestriction": ""
       }
     ],
-    "startingEquipment": [],
-    "wealth": "",
+    "startingEquipment": [
+      {
+        "type": "AND",
+        "requiresProficiency": false,
+        "_id": "lT53LXKykwLITIwZ",
+        "group": "",
+        "sort": 100000
+      },
+      {
+        "type": "linked",
+        "count": null,
+        "key": "Compendium.dnd5e.items.Item.SsAmWV6YBqeOFihT",
+        "requiresProficiency": false,
+        "_id": "kr4Kv1tsuyPFxpaG",
+        "group": "lT53LXKykwLITIwZ",
+        "sort": 200000
+      },
+      {
+        "type": "tool",
+        "count": null,
+        "key": "art",
+        "requiresProficiency": false,
+        "_id": "Ck8W7be1gygUhhGe",
+        "group": "lT53LXKykwLITIwZ",
+        "sort": 300000
+      },
+      {
+        "type": "tool",
+        "count": null,
+        "key": "music",
+        "requiresProficiency": false,
+        "_id": "i0VqATYFBFaCNAWt",
+        "group": "lT53LXKykwLITIwZ",
+        "sort": 400000
+      },
+      {
+        "type": "linked",
+        "count": null,
+        "key": "Compendium.dnd5e.items.Item.vpenjFjUyEBLLlUc",
+        "requiresProficiency": false,
+        "_id": "B5dRG6XLxbvjwW94",
+        "group": "lT53LXKykwLITIwZ",
+        "sort": 500000
+      },
+      {
+        "type": "linked",
+        "count": null,
+        "key": "Compendium.dnd5e.items.Item.9bWTRRDym06PzSAf",
+        "requiresProficiency": false,
+        "_id": "0wuezFIGTzjK0LRt",
+        "group": "lT53LXKykwLITIwZ",
+        "sort": 600000
+      }
+    ],
+    "wealth": "10",
     "type": {
       "value": "",
       "subtype": ""

@@ -17,6 +17,23 @@ and the player options merged from GoC45's `wc5e-ccc`: **classes** (12 + 36 subc
 
 ## Source of truth: the PDFs are ahead of the repo
 
+**Which source is newer varies per class — check, don't assume.** The PDFs' internal
+`CreationDate` (they're Chrome print-to-PDF, so that's when they were printed) against the last
+upstream commit touching each class file:
+
+| repo newer (9) | PDF newer (3) |
+|---|---|
+| Death Knight, Druid, Hunter, Monk, Paladin, **Rogue**, Shaman, Warlock, Warrior | Demon Hunter (2026-02), Mage 3.1 (2025-06), **Priest 3.1.1** (2026-01) |
+
+Most PDFs were printed in **2020**. Use `gh api ".../commits?path=<file>"` for the repo side — a
+`--depth 1` clone returns the same shallow commit for every path, which will silently tell you the
+repo is newer for everything.
+
+Consequence worth knowing: **Subtle Magic is the OLDER Rogue design.** Its PDF was printed
+2020-09-03; the repo's Rogue is 2026-01-08 and uses a third-caster "subtlety spell list" version
+instead. We still ship Subtle Magic because the newer design references a spell list that was never
+written upstream — older but playable beats newer but unimplementable. Revisit if that list appears.
+
 **The GitHub repo lags the class PDFs.** WC5E is authored in GMBinder; PDFs are exported to the
 team's Drive, and the repo is a periodically-synced mirror. Proof: the Rogue PDF replaced the
 Subtlety third-caster design with *Subtle Magic*, and that string appears **nowhere** in the repo —
@@ -50,10 +67,23 @@ Shaman and Warlock. Migrating would need per-class column maps or a coordinate-a
 (pdfplumber gives real x/y per word); positional guessing is not good enough. **Validate against the
 current numbers before trusting any replacement.**
 
+### Deliberately not modelled: uses scaling
+
+The Warlock's `Life Tap (1/day → 2/day → 3/day → at will)` and the Warrior's `Extra Attack (2)` at
+20 are *uses* progressions. They are **not** wired, on purpose: doing it means editing GoC45's
+hand-maintained feature documents to point `uses` at a `@scale.<class>.<key>` value and inventing
+ScaleValue identifiers, and a wrong identifier resolves to zero uses **silently** — the same failure
+class as the spell-list flag. The feature text states the progression, so nothing is hidden from the
+player. Not worth the risk until someone asks.
+
+(The Priest's `Divine Word (2)…(5)` looked like scaling but wasn't — it's the *number known*, i.e.
+the ItemChoice count, fixed by aligning its levels to the newer PDF.)
+
 ### Known source conflicts, unresolved on purpose
 
 - **Warlock cantrips:** the v3.0 PDF says "you know *two* cantrips", the Heroes Handbook table on
-  master says **3**, and the module ships 3. Which is canonical needs a human answer.
+  master says **3**, and the module ships 3. The repo is newer here (2026-01 vs a 2021 PDF), so 3 is
+  probably right — but it hasn't been confirmed.
 - The Warlock PDF has a **Demons Known** column that isn't modelled at all.
 - Features named in the current PDFs but absent from the module: `Malignant Presence`,
   `Druid Path`, `Druidic`, `Sacred Path`, `Divine Calling`, `Empowering Faith`, `Unwavering Faith`,
