@@ -2,7 +2,7 @@
   "id": "wc5e-bestiary",
   "title": "Warcraft 5e (WC5E)",
   "description": "Compendium content for playing Warcraft on the dnd5e system, converted from the community Warcraft 5e (WC5E) project: 420 monsters, 101 spells, items, plus player options — 12 classes, 36 subclasses, 28 races, class features and feats with dnd5e advancement configured. Fan work; not affiliated with Blizzard Entertainment or the WC5E team.",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "authors": [
     {
       "name": "ArthurKyl",
@@ -216,7 +216,7 @@
   ],
   "url": "https://github.com/ArthurKyl/foundry-wc5e",
   "manifest": "https://github.com/ArthurKyl/foundry-wc5e/releases/latest/download/module.json",
-  "download": "https://github.com/ArthurKyl/foundry-wc5e/releases/download/v1.9.0/module.zip",
+  "download": "https://github.com/ArthurKyl/foundry-wc5e/releases/download/v1.9.1/module.zip",
   "flags": {
     "dnd5e": {
       "spellLists": [
@@ -227,7 +227,13 @@
         "Compendium.wc5e-bestiary.spell-lists.JournalEntry.wFvFb4VAZnwjzV5z.JournalEntryPage.tJysFr1LYBbIFD3j",
         "Compendium.wc5e-bestiary.spell-lists.JournalEntry.wFvFb4VAZnwjzV5z.JournalEntryPage.BO6rmBOC5ynJQt3E",
         "Compendium.wc5e-bestiary.spell-lists.JournalEntry.wFvFb4VAZnwjzV5z.JournalEntryPage.PAL54scDSQtxW3Jr"
-      ]
+      ],
+      "sourceBooks": {
+        "Warcraft 5e - Chapter 6 Spells": "Warcraft 5e — Chapter 6 Spells",
+        "Warcraft 5e - Heroes Handbook": "Warcraft 5e — Heroes Handbook",
+        "Warcraft 5e - Manual of Monsters": "Warcraft 5e — Manual of Monsters",
+        "Warcraft 5e - Manual of Monsters (WIP)": "Warcraft 5e — Manual of Monsters (WIP)"
+      }
     }
   }
 }
