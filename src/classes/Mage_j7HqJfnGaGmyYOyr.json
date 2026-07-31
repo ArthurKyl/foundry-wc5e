@@ -387,6 +387,746 @@
           "added": {},
           "replaced": {}
         }
+      },
+      {
+        "_id": "XBToyetpn9YNXnOV",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 6 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "1": {
+              "count": 6,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "2DgfdT2bIQya7TfU",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "2": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "UL94kpjqpfHI9e6A",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "3": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "sgdNtbggftuAGRWi",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "4": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "qf9zeqBEfK5BJpdG",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "5": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "UxzqmdX63IDkNaCE",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "6": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "OPVreiFXX76Wv5bv",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "7": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "C0FuoYhwv2JndD9s",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "8": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "hp9CDBdta1TgE8P4",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "9": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "ELtYd2vQFf5oqvLR",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "10": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "toJ5P6e9MQKNOlGD",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "11": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "X7DPHljFB1Z6L6Hj",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "12": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "A0BpnVQ3WoBGflDc",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "13": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "7611mgLKRfmIdgvS",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "14": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "mBGJaBnU5IHcui8e",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "15": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "9FETa2F3LBiWDch3",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "16": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "t1uDmv9Nexol8jSU",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "17": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "J408q2oYC9GWYhkc",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "18": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "2dETK3S1mlkPtUEx",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "19": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
+      },
+      {
+        "_id": "YJ2cfKDOcPFFFG58",
+        "type": "ItemChoice",
+        "title": "Spellbook",
+        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
+        "configuration": {
+          "allowDrops": true,
+          "choices": {
+            "20": {
+              "count": 2,
+              "replacement": false
+            }
+          },
+          "pool": [],
+          "restriction": {
+            "type": "spell",
+            "subtype": "",
+            "level": "available",
+            "list": [
+              "class:wc5e-mage"
+            ]
+          },
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          },
+          "type": "spell"
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        }
       }
     ],
     "description": {

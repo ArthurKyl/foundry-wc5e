@@ -35,6 +35,17 @@ HHB = os.path.join(UPSTREAM, "Heroes Handbook, Main File.txt")
 
 CASTERS = ["Death Knight", "Druid", "Mage", "Paladin", "Priest", "Shaman", "Warlock"]
 
+# Casters whose spell learning lives in prose rather than a table column, so
+# `column_by_level` can't see it. The Mage is a spellbook caster:
+#   "You have a spellbook containing six 1st-level mage spells of your choice."
+#   "Each time you gain a mage level, you add two mage spells of your choice."
+# Priest and Druid deliberately get nothing here -- they prepare from the entire
+# class list ("choosing from the priest spell list"), so there is no learning
+# step at all, only cantrips.
+SPELLBOOK = {
+    "Mage": {"initial": 6, "per_level": 2},
+}
+
 _B62 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
 def make_id(*p):
@@ -141,20 +152,31 @@ def deltas(by_level):
     return out
 
 
+TITLES = {"cantrip": "Cantrips Known", "spell": "Spells Known", "spellbook": "Spellbook"}
+
+
 def item_choice(cls, ident, kind, level, count, total):
-    """One ItemChoice advancement. `kind` is 'cantrip' or 'spell'."""
+    """One ItemChoice advancement. `kind` is 'cantrip', 'spell' or 'spellbook'."""
     cantrip = kind == "cantrip"
+    if cantrip:
+        hint = f"Choose {count} {'cantrip' if count == 1 else 'cantrips'} from the {cls} spell list."
+    elif kind == "spellbook":
+        hint = (f"Add {count} {'spell' if count == 1 else 'spells'} of your choice to your "
+                f"spellbook from the {cls} spell list.")
+    else:
+        hint = (f"Learn {count} new {'spell' if count == 1 else 'spells'} from the "
+                f"{cls} spell list (you know {total} in total).")
     return OrderedDict([
         ("_id", make_id("spellprog", cls, kind, level)),
         ("type", "ItemChoice"),
-        ("title", f"{'Cantrips' if cantrip else 'Spells'} Known"),
-        ("hint", f"Choose {count} {'cantrip' if count == 1 else 'cantrips'} from the "
-                 f"{cls} spell list." if cantrip else
-                 f"Learn {count} new {'spell' if count == 1 else 'spells'} from the "
-                 f"{cls} spell list (you know {total} in total)."),
+        ("title", TITLES[kind]),
+        ("hint", hint),
         ("configuration", OrderedDict([
             ("allowDrops", True),
-            ("choices", {str(level): {"count": count, "replacement": not cantrip}}),
+            # Only known casters may swap a spell on level-up ("you can replace one
+            # of the spells you know"). Cantrips are fixed, and a spellbook is only
+            # ever added to.
+            ("choices", {str(level): {"count": count, "replacement": kind == "spell"}}),
             ("pool", []),
             # "0" restricts to cantrips; "available" lets the player pick any spell
             # level they currently have slots for, which is what "Spells Known" means.
@@ -186,36 +208,45 @@ def main():
     report = []
     for cls in CASTERS:
         if cls not in docs:
-            report.append((cls, None, "no class document", {}, {}))
+            report.append((cls, None, "no class document", {}, {}, 0))
             continue
         path, ident, doc = docs[cls]
         cantrip_totals, known_totals, origin = load_progression(cls)
         if not origin:
-            report.append((cls, None, "no table found", {}, {}))
+            report.append((cls, None, "no table found", {}, {}, 0))
             continue
         cantrips = deltas(cantrip_totals)
         known = deltas(known_totals)
 
         adv = doc["system"].setdefault("advancement", [])
         # drop everything this script could have produced, then re-add
-        mine = {make_id("spellprog", cls, k, lv) for k in ("cantrip", "spell")
-                for lv in range(1, 21)}
+        mine = {make_id("spellprog", cls, k, lv)
+                for k in ("cantrip", "spell", "spellbook") for lv in range(1, 21)}
         kept = [a for a in adv if a.get("_id") not in mine]
         new = []
         for lv, n in sorted(cantrips.items()):
             new.append(item_choice(cls, ident, "cantrip", lv, n, cantrip_totals.get(lv, n)))
         for lv, n in sorted(known.items()):
             new.append(item_choice(cls, ident, "spell", lv, n, known_totals.get(lv, n)))
+        book = SPELLBOOK.get(cls)
+        if book:
+            running = book["initial"]
+            new.append(item_choice(cls, ident, "spellbook", 1, book["initial"], running))
+            for lv in range(2, 21):
+                running += book["per_level"]
+                new.append(item_choice(cls, ident, "spellbook", lv, book["per_level"], running))
         doc["system"]["advancement"] = kept + new
         json.dump(doc, open(path, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
         open(path, "a", encoding="utf-8").write("\n")
-        report.append((cls, origin, f"{len(kept)} kept", cantrips, known))
+        report.append((cls, origin, f"{len(kept)} kept", cantrips, known,
+                       len(new) - len(cantrips) - len(known)))
 
-    print("  class          source                          cantrip picks        spell picks")
-    for cls, origin, note, cantrips, known in report:
+    print("  class          source                          cantrip picks        spell picks              book")
+    for cls, origin, note, cantrips, known, *rest in report:
+        book = rest[0] if rest else 0
         c = ", ".join(f"L{l}+{n}" for l, n in sorted(cantrips.items())) or "—"
         s = ", ".join(f"L{l}+{n}" for l, n in sorted(known.items())) or "—"
-        print(f"  {cls:14s} {str(origin):31s} {c[:20]:20s} {s[:34]}")
+        print(f"  {cls:14s} {str(origin):31s} {c[:20]:20s} {s[:24]:24s} {book or '—'}")
         if not cantrips and not known:
             print(f"      !! nothing generated ({note})")
 

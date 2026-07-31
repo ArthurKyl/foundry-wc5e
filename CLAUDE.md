@@ -251,6 +251,13 @@ Heroes Handbook section. A candidate that yields no column must **fall through**
 search — `Warlock.md` carries the prose but contains no markdown tables at all, so the Warlock
 table only comes from the Heroes Handbook.
 
+`SPELLBOOK` covers casters whose learning rule is in **prose, not a table column**: the Mage is a
+spellbook caster ("a spellbook containing six 1st-level mage spells", "each time you gain a mage
+level, you add two"), so it gets 6 at level 1 and 2 at every level after. Priest and Druid
+deliberately get nothing beyond cantrips — they prepare from the *entire* class list, so there is no
+learning step to prompt for. Only `kind == "spell"` (known casters) sets `replacement: true`;
+cantrips are fixed and a spellbook is only added to.
+
 Known-good output: Death Knight 10 spell picks (L2,3,5,7,9,11,13,15,17,19); Druid/Mage/Priest 3
 cantrip picks; Shaman 3 cantrip + 16 spell; Warlock 3 cantrip + 14 spell. **Paladin generates
 nothing on purpose** — it has no Known column in either source, being a prepared half-caster whose
