@@ -68,6 +68,27 @@ SECTIONS = {
     "Destruction Expanded Spells": ("Study of Destruction", "wc5e-warlock"),
 }
 
+# Subclass spell grants that exist in the current class PDFs but not yet in the
+# cloned conversion repo, transcribed by hand. Subtlety was redesigned: the repo
+# still carries the older third-caster version ("two cantrips from the subtlety
+# spell list", a Spells Known table, and a spell list that was never written),
+# while the current Rogue PDF replaces all of it with "Subtle Magic" -- a fixed
+# set granted at rogue levels, cast from a bespoke slot pool. Keyed by class
+# level, so these go through the same always-prepared ItemGrant path as the
+# oaths and priesthoods. Drop an entry here once upstream catches up.
+CURATED = {
+    "Subtlety": {
+        "class": "wc5e-rogue",
+        "source": "Subtle Magic Spells (Rogue PDF)",
+        "levels": {
+            3:  ["fog cloud", "feather fall"],
+            7:  ["darkness", "invisibility"],
+            11: ["nondetection", "darkvision"],
+            15: ["greater invisibility", "sending"],
+        },
+    },
+}
+
 ALIAS = {"devouringplauge": "devouringplague", "rightoussmite": "righteoussmite",
          "shadowyappriations": "shadowyapparitions", "summonvoidfiend": "summonvoidbeing",
          # upstream singular/typo variants of real spell names
@@ -206,8 +227,14 @@ def main():
             subs[d["name"]] = (p, d)
 
     granted, expanded, report = 0, [], []
-    for heading, (name, expect_class) in SECTIONS.items():
-        if heading not in sections:
+
+    # curated entries first, so they behave exactly like a parsed section
+    jobs = [(h, n, c, sections.get(h)) for h, (n, c) in SECTIONS.items()]
+    for name, spec in CURATED.items():
+        jobs.append((spec["source"], name, spec["class"], ("class", spec["levels"])))
+
+    for heading, name, expect_class, parsed in jobs:
+        if parsed is None:
             report.append((heading, name, "SECTION NOT FOUND", 0, []))
             continue
         if name not in subs:
@@ -219,7 +246,7 @@ def main():
         if actual != expect_class:
             report.append((heading, name, f"CLASS MISMATCH {actual} != {expect_class}", 0, []))
             continue
-        kind, rows = sections[heading]
+        kind, rows = parsed
 
         resolved, missing = {}, []
         for lv, names in sorted(rows.items()):

@@ -291,13 +291,21 @@ Verify by running them in both orders and checking the count holds.
 
 ### Why subclass caster progressions are deliberately absent
 
-`Subtlety` (third/int), `Enhancement` (half/wis) and `Path of Feral` (half/wis) each have their own
-Cantrips/Spells Known table upstream, and they are **intentionally not generated**. A subclass's
-`spellcasting` overrides the class's for *slots*, but advancement has no subclass-conditional
-gating — `classRestriction` only distinguishes primary/secondary multiclass. The Shaman class
-carries 19 spell-choice advancements that fire whatever subclass is taken, so adding Enhancement's
-table on top would double-grant rather than replace. Don't "fix" this by adding them.
-`Subtlety` additionally references a "subtlety spell list" that **does not exist anywhere upstream**.
+`Enhancement` (half/wis) and `Path of Feral` (half/wis) each have their own Cantrips/Spells Known
+table upstream and are **intentionally not generated**. A subclass's `spellcasting` overrides the
+class's for *slots*, but advancement has no subclass-conditional gating — `classRestriction` only
+distinguishes primary/secondary multiclass. The Shaman class carries 19 spell-choice advancements
+that fire whatever subclass is taken, so adding Enhancement's table on top would double-grant rather
+than replace. Don't "fix" this by adding them.
+
+`Subtlety` is a different case: **the cloned repo is behind the class PDFs.** The repo still has an
+older third-caster design referencing a "subtlety spell list" that was never written, while the
+current Rogue PDF replaces it with *Subtle Magic* — a fixed set granted at rogue levels 3/7/11/15
+(all SRD spells), cast from a bespoke pool of `INT mod + half rogue level` slots always at their
+lowest level. The spell grants are transcribed in `build_subclass_spells.CURATED` and go through the
+normal always-prepared path; delete that entry once upstream catches up. The slot pool is *not*
+modelled — the subclass keeps `third` progression, which is an approximation, because dnd5e has no
+way to express "flat pool, usable only for these spells, always at lowest level".
 
 ## Advancement levels on non-class items
 

@@ -81,6 +81,126 @@
         "level": 17,
         "title": "",
         "hint": ""
+      },
+      {
+        "_id": "60O4eGNZEeSYNHWL",
+        "type": "ItemGrant",
+        "title": "Subclass Spells",
+        "hint": "",
+        "configuration": {
+          "items": [
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.IBJmWjzbQGu7M4UX",
+              "optional": false
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.pub0OWVEB71XQx1n",
+              "optional": false
+            }
+          ],
+          "optional": false,
+          "spell": {
+            "ability": [],
+            "preparation": "always",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          }
+        },
+        "value": {},
+        "level": 3,
+        "classRestriction": ""
+      },
+      {
+        "_id": "K9TJpqDGpeSFOw3n",
+        "type": "ItemGrant",
+        "title": "Subclass Spells",
+        "hint": "",
+        "configuration": {
+          "items": [
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.S7VbUetIfVT7B6Eq",
+              "optional": false
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.1N8dDMMgZ1h1YJ3B",
+              "optional": false
+            }
+          ],
+          "optional": false,
+          "spell": {
+            "ability": [],
+            "preparation": "always",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          }
+        },
+        "value": {},
+        "level": 7,
+        "classRestriction": ""
+      },
+      {
+        "_id": "58FcKM2FnCYavZZQ",
+        "type": "ItemGrant",
+        "title": "Subclass Spells",
+        "hint": "",
+        "configuration": {
+          "items": [
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.aU62xVUBYkAQWIHv",
+              "optional": false
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.hJ6ZiA3fpoY8v9cp",
+              "optional": false
+            }
+          ],
+          "optional": false,
+          "spell": {
+            "ability": [],
+            "preparation": "always",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          }
+        },
+        "value": {},
+        "level": 11,
+        "classRestriction": ""
+      },
+      {
+        "_id": "6Cfoqngxk5mEcaAY",
+        "type": "ItemGrant",
+        "title": "Subclass Spells",
+        "hint": "",
+        "configuration": {
+          "items": [
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.tEpDmYZNGc9f5OhJ",
+              "optional": false
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.GtGjNjPBgUHxGYAD",
+              "optional": false
+            }
+          ],
+          "optional": false,
+          "spell": {
+            "ability": [],
+            "preparation": "always",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          }
+        },
+        "value": {},
+        "level": 15,
+        "classRestriction": ""
       }
     ],
     "description": {
