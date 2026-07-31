@@ -9,8 +9,8 @@ the **dnd5e** system.
 
 The goal is a **complete WC5E module** — everything you need to run a Warcraft
 campaign without hand-entering content. Monsters, spells, items and the full set
-of player options (classes, subclasses, races, feats) are in; backgrounds and
-class spell lists are what's left. See [Roadmap](#roadmap).
+of player options — classes, subclasses, races, feats, backgrounds and class
+spell lists — are all in. See [Roadmap](#roadmap).
 
 > Unofficial fan content. Warcraft is a trademark of Blizzard Entertainment.
 > This module is not affiliated with or endorsed by Blizzard, Wizards of the
@@ -118,6 +118,13 @@ three orc clans, Lightforged and Broken draenei…), 443 class features, 90 race
 racial documents, 18 feats, class equipment, and 24 summon/pet statblocks. Created by
 **GoC45** for the Character Creation Compendium and merged here with their permission.
 
+**WC5E Backgrounds** — the 4 Heroes' Handbook backgrounds (Double Agent, Faction
+Fostered, Kirin Tor Apprentice, Tribal Member), each as a dnd5e background item
+that grants its skill proficiencies, prompts for tool and language choices, and
+grants its feature as a separate item. Suggested-characteristics roll tables are
+included. Starting equipment is listed in the description rather than wired into
+dnd5e's structured equipment picker.
+
 **WC5E Class Spell Lists** — dnd5e spell-list journal pages for all 7 casting
 classes (Death Knight, Druid, Mage, Paladin, Priest, Shaman, Warlock), built from
 the WC5E class spell tables. 671 spell links across the seven lists, mixing this
@@ -137,6 +144,7 @@ roadmap and credits.
 
 - [x] Classes, subclasses, races, class features & feats (advancement configured)
 - [x] Class spell lists for all 7 casters
+- [x] Backgrounds
 - [x] Summons & pets
 - [x] Monsters — 420 NPCs, foldered by creature type
 - [x] Monster attacks & save abilities (breath weapons etc.) rollable
@@ -148,7 +156,6 @@ roadmap and credits.
 
 **Planned**
 
-- [ ] Backgrounds — the one Heroes' Handbook chunk nobody has built yet
 - [ ] Per-monster / creature token art
 - [ ] Wire the remaining non-SRD spells (needs official content)
 

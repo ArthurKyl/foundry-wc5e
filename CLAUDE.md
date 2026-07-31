@@ -9,10 +9,11 @@ generated from the community [Warcraft 5e Conversion](https://github.com/WC5E/Wa
 markdown. There is no runtime JavaScript: the module ships only `module.json`, `assets/`, and
 compiled LevelDB packs. Everything else in the repo is build tooling.
 
-Current packs (11, 1222 documents): **monsters** (420 NPC actors), **spells** (101), **items** (21),
-**journals** (guide), **spell-lists** (7 class spell lists), and the player options merged from
-GoC45's `wc5e-ccc`: **classes** (12 + 36 subclasses), **class-features** (443), **races** (28 +
-racials), **feats** (18), **new-equipment** (14), **summons** (24 actors).
+Current packs (12, 1232 documents): **monsters** (420 NPC actors), **spells** (101), **items** (21),
+**journals** (guide), **spell-lists** (7 class spell lists), **backgrounds** (4 + their features),
+and the player options merged from GoC45's `wc5e-ccc`: **classes** (12 + 36 subclasses),
+**class-features** (443), **races** (28 + racials), **feats** (18), **new-equipment** (14),
+**summons** (24 actors).
 
 ## Prerequisite: the upstream source repo
 
@@ -30,6 +31,7 @@ Hard-coded paths inside `../Warcraft-5e-Conversion`:
 | `build/parse.py` | `Manual of Monsters, Main File.txt` (finished) and every file in `WIP Manual of Monsters/` |
 | `build/extract_spells.py` | `WIP 3.0 Chapters/Chapter 6 Spells.md` (the most complete spell list) |
 | `build/build_spell_lists.py` | the same Chapter 6 file, for the per-class spell tables |
+| `build/build_backgrounds.py` | `Heroes Handbook, Main File.txt` (`## New Backgrounds`, chapter 3) |
 
 `parse.py` accepts an alternate main-file path as `argv[1]`; `extract_spells.py` does not.
 Because `src/` is committed, you can rebuild the packs (`npm run pack`) and edit the item/journal
@@ -39,15 +41,16 @@ builders **without** the upstream clone.
 
 ```bash
 npm install                     # Foundry CLI (only dependency); node_modules/ is not present by default
-npm run build                   # parse → spells → actors → items → journal → spell-lists → pack
+npm run build                   # parse → spells → actors → items → journal → spell-lists
+                                #   → backgrounds → pack
 npm run pack                    # src/**/*.json → packs/** LevelDB (the only step Foundry cares about)
 node build/_chk.mjs             # sanity check: extract each pack back out, print doc counts
 python3 build/validate_wip.py   # report incomplete/duplicate WIP statblocks (read-only, needs intermediate/)
 ```
 
 Individual stages: `npm run parse`, `npm run spells`, `npm run actors`, `npm run items`,
-`npm run journal`, `npm run spell-lists`. There is no test suite and no linter — `_chk.mjs` plus loading the module in
-Foundry is the verification loop.
+`npm run journal`, `npm run spell-lists`, `npm run backgrounds`. There is no test suite and no
+linter — `_chk.mjs` plus loading the module in Foundry is the verification loop.
 
 **`spells` must run before `actors` and before `spell-lists`** — both read `src/spells/*.json`:
 `spell_embed.py` to embed spells onto casters, `build_spell_lists.py` to resolve spell names to
@@ -70,11 +73,11 @@ Three stages, each writing plain JSON so every step is inspectable:
   → parse.py / extract_spells.py            → intermediate/*.json   (system-agnostic statblocks)
   → build_actors.py / build_spells.py /     → src/<pack>/*.json
     build_items.py / build_journal.py /       (one file per Foundry document, dnd5e 5.3.3 schema)
-    build_spell_lists.py
+    build_spell_lists.py / build_backgrounds.py
   → pack.mjs (Foundry CLI compilePack)      → packs/<pack>/  (LevelDB)
+```
 
 The six player-option directories bypass this entirely — they are hand-maintained, not generated.
-```
 
 - **`parse.py`** knows nothing about Foundry. Its job is surviving the source's typesetting:
   blockquote-run statblock detection, `heal_blockquotes()` for author-forgotten `>` markers,
@@ -172,6 +175,26 @@ Rather than patching `src/`, add to the small curated tables:
 `build_actors.py` prints a spellcasting report at the end (embedded count + unresolved spell
 names by frequency) and `build_spells.py` prints the activity-kind histogram — use these to spot
 regressions after a parser change.
+
+## Backgrounds
+
+`build_backgrounds.py` reads `## New Backgrounds` from `Heroes Handbook, Main File.txt` (chapter 3)
+and emits, per background, a `background` item plus a separate `feat` for its feature, into
+`src/backgrounds/`. Only 4 exist upstream.
+
+A dnd5e background drives the sheet entirely through `system.advancement`: a `Trait` with
+`grants: ["skills:dec", …]` for fixed proficiencies, a `Trait` with
+`choices: [{count: n, pool: ["languages:*"]}]` for "one of your choice", and an `ItemGrant` titled
+`Feature` pointing at the feature item. Trait keys verified against dnd5e 5.3.3: `skills:<abbr>`,
+`languages:*`, flat kit ids like `tool:forg`, and namespaced `tool:art:*` / `tool:music:*`.
+
+- `startingEquipment` is intentionally left `[]`. dnd5e wants typed AND/OR groups referencing item
+  UUIDs, and a malformed one breaks the background sheet, so the equipment line stays verbatim in
+  the description. Wiring it properly is a possible follow-up.
+- `DEHYPHEN` fixes hyphenation baked into the source prose (`organi-zation`). It's mid-sentence,
+  not at line ends, so joining lines can't undo it, and blanket de-hyphenation would destroy real
+  compounds like *self-mastery*. Anything hyphenated that isn't in `DEHYPHEN` or
+  `LEGITIMATE_HYPHENS` is reported at the end of the build rather than shipped silently.
 
 ## Class spell lists
 

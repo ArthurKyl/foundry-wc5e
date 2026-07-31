@@ -23,8 +23,8 @@ WELCOME = """
 conversion on the <strong>dnd5e</strong> system.</p>
 <p>The goal is a <strong>complete</strong> WC5E module — everything needed to run a
 Warcraft campaign without hand-entering content. Monsters, spells, items and the
-full set of player options are in; backgrounds and class spell lists are what's
-left (see <em>Roadmap</em>).</p>
+full set of player options are in, including backgrounds and class spell lists
+(see <em>Roadmap</em>).</p>
 <p><strong>What's inside</strong></p>
 <ul>
   <li><strong>WC5E Monsters</strong> — 420 NPC actors (Manual of Monsters + WIP
@@ -69,11 +69,11 @@ ROADMAP = """
     features and feats, with advancement configured</li>
   <li>&#9745; Summons &amp; pets</li>
   <li>&#9745; Class spell lists for all 7 casting classes</li>
+  <li>&#9745; The 4 Heroes' Handbook backgrounds</li>
   <li>&#9745; Compendium folders &amp; this guide</li>
 </ul>
 <p><strong>Planned</strong></p>
 <ul>
-  <li>&#9744; Backgrounds</li>
   <li>&#9744; Per-monster / creature token art</li>
   <li>&#9744; Wire the remaining non-SRD spells (needs official content)</li>
 </ul>
