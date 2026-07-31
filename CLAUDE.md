@@ -205,6 +205,16 @@ spells a class may learn: `system.identifier` on the page must equal the class d
 `restriction.list: ["class:<identifier>"]`. Without these pages a custom class has no spell
 list and spell selection silently does nothing.
 
+**Registering them in the manifest is mandatory and easy to miss.** dnd5e discovers spell lists
+*only* from `flags.dnd5e.spellLists` in `module.json` — `registerSpellLists()` returns immediately
+unless that key is an array, and `SpellListRegistry.register()` resolves each entry with
+`fromUuid()` and throws unless `page.type === "spells"`. The UUIDs must be **JournalEntryPage**
+UUIDs (`Compendium.wc5e-bestiary.spell-lists.JournalEntry.<jid>.JournalEntryPage.<pid>`).
+Without the flag the pages sit inert: the compendium browser can't filter by class, and any
+advancement restricted to `class:<identifier>` resolves to an empty pool — which is exactly how
+v1.7.0/v1.8.0 shipped. `build_spell_lists.register_in_manifest()` writes the flag from the built
+pages so the UUIDs cannot drift; never hand-edit it.
+
 Source is `WIP 3.0 Chapters/Chapter 6 Spells.md` upstream, where each caster has a
 `### <Class> Spells` section subdivided by `##### Nth Level`. Entry markup carries the
 provenance that decides which pack to cite: `✦` = a WC5E custom spell (this module),
@@ -221,6 +231,23 @@ alternate lists and are skipped deliberately.
   that all of `src/spells` is cited by at least one list after changing spell names.
 - Long names wrap in the source using `&nbsp;`/soft hyphens ("Amplify or &nbsp;&nbsp; Dampen
   Magic"); `clean_entry()` strips them, and forgetting that makes real spells look unavailable.
+
+## Advancement levels on non-class items
+
+`AdvancementManager.forNewItem` creates flows for **every level from 0 to the current level** for
+anything that isn't a class — so an `ItemChoice` on a feature, race or background should key its
+`configuration.choices` at **`"1"`**, which then fires no matter what class level the item was
+granted at. Keying it at the class level (e.g. `"2"` for a level-2 fighting style) works only for a
+character who took it at exactly that level. `ItemChoiceAdvancement.configuredForLevel` treats any
+level absent from `choices` as already satisfied, so a wrong key fails **silently** — no error, no
+prompt. The races use `"1"`; match them.
+
+Features that grant spells from *another* class's list (the `Profane Warrior` and `Blessed Fighter`
+fighting styles) need an explicit `ItemChoice` with
+`restriction: {type: "spell", level: "0", list: ["class:wc5e-warlock"]}`, because the sheet would
+otherwise only offer the character's own class list. The main `Spellcasting` features do **not**
+need one — dnd5e's own SRD casters have no cantrip `ItemChoice` either; players add cantrips from
+the spellbook browser, which works once the lists are registered.
 
 ## Cross-document references (the fragile part of the merged content)
 

@@ -195,6 +195,34 @@ def page(journal_id, cls, identifier, uuids, missing, sort):
     }
 
 
+def register_in_manifest(journal_id, pages):
+    """Write the page UUIDs into module.json `flags.dnd5e.spellLists`.
+
+    THIS IS NOT OPTIONAL. dnd5e discovers spell lists *only* from that manifest
+    flag -- `registerSpellLists()` returns immediately unless
+    `flags.dnd5e.spellLists` is an array, and `SpellListRegistry.register()`
+    resolves each entry with `fromUuid()` and rejects anything whose
+    `page.type !== "spells"`. Without it the pages sit in the compendium
+    completely inert: the compendium browser can't filter by class and any
+    advancement restricted to `class:<identifier>` resolves to an empty pool.
+    Generated here rather than hand-written so the UUIDs can never drift from
+    the documents.
+    """
+    path = os.path.join(REPO, "module.json")
+    manifest = json.load(open(path, encoding="utf-8"))
+    uuids = [f"Compendium.wc5e-bestiary.spell-lists.JournalEntry.{journal_id}"
+             f".JournalEntryPage.{p['_id']}" for p in pages]
+    flags = manifest.setdefault("flags", {}).setdefault("dnd5e", {})
+    if flags.get("spellLists") == uuids:
+        print(f"  module.json flags.dnd5e.spellLists already up to date ({len(uuids)})")
+        return
+    flags["spellLists"] = uuids
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(manifest, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    print(f"  registered {len(uuids)} spell lists in module.json flags.dnd5e.spellLists")
+
+
 def main():
     if not os.path.exists(SRC):
         raise SystemExit(f"upstream source not found: {SRC}\n"
@@ -250,6 +278,8 @@ def main():
             os.remove(os.path.join(out_dir, fn))
     with open(os.path.join(out_dir, "spell-lists.json"), "w", encoding="utf-8") as f:
         json.dump(entry, f, indent=2, ensure_ascii=False)
+
+    register_in_manifest(jid, pages)
 
     tot_res = sum(r[2] for r in report)
     tot_mis = sum(r[3] for r in report)
