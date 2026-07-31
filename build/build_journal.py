@@ -17,10 +17,13 @@ def mkid(*p):
 STATS = {"systemId": "dnd5e", "systemVersion": "5.3.3"}
 
 WELCOME = """
-<h2>Warcraft 5e — Bestiary &amp; Content</h2>
+<h2>Warcraft 5e (WC5E)</h2>
 <p>An unofficial, fan-made Foundry VTT module for playing in the world of
 <strong>Warcraft</strong> using the community <strong>Warcraft 5e (WC5E)</strong>
 conversion on the <strong>dnd5e</strong> system.</p>
+<p>The goal is a <strong>complete</strong> WC5E module — everything needed to run a
+Warcraft campaign without hand-entering content. Monsters, items and spells are
+done; races, classes, backgrounds and feats are next (see <em>Roadmap</em>).</p>
 <p><strong>What's inside</strong></p>
 <ul>
   <li><strong>WC5E Monsters</strong> — 420 NPC actors (Manual of Monsters + WIP
