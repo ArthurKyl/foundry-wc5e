@@ -27,6 +27,28 @@ spell lists — are all in. See [Roadmap](#roadmap).
 > Coast, or the WC5E team. All WC5E text belongs to its respective authors — see
 > [Attribution](#attribution--license).
 
+## Known content uncertainties
+
+The conversion pulls from two sources that disagree: the WC5E GitHub repository and the
+class PDFs on the team's Drive. **Neither is consistently newer** — most PDFs were printed
+in 2020, but three (Mage 3.1, Priest 3.1.1, Demon Hunter) are newer than their repo files,
+and a January 2026 repo commit that touched 8 class files turned out to be **CSS only**, so
+commit dates overstate how current the markdown is.
+
+Everything below is a deliberate choice with a reason, not an oversight — but if you know
+which version is canonical, please say so in an issue.
+
+| Content | What's shipped | Why it's uncertain |
+|---|---|---|
+| **Subtlety rogue** | *Subtle Magic* — fixed spells at rogue 3/7/11/15 | From the Sept 2020 PDF. The repo instead has an unfinished third-caster design referencing a "subtlety spell list" that was never written. Older but playable beat newer but unimplementable. |
+| **Priest Divine Words** | picks at levels 2/5/9/13/17 | Matches the Priest 3.1.1 PDF (Jan 2026), which is newer than the repo. Earlier builds used 2/5/10/14. |
+| **Warlock cantrips** | 3 at level 1 | The repo table says 3, the 2021 PDF says 2. |
+| **Warlock "Demons Known"** | not modelled | The PDF has a column for it with no equivalent in the repo. |
+| **Enhancement, Path of Feral** | no spell-selection prompts | Each *replaces* its parent class's progression, and dnd5e advancement can't be made conditional on subclass — adding their tables would double-grant on top of the class's prompts. Spell slots are still correct. |
+| **Life Tap, Extra Attack (2)** | uses don't scale automatically | The feature text states the progression; wiring it risks resolving to zero uses silently. |
+| **~130 monster spell references** | listed as text, not embedded | Non-SRD spells (Xanathar's/Tasha's) that can't legally be bundled. Each caster's Spellcasting entry names them. |
+| **Backgrounds** | 4, from the Heroes' Handbook | That's all that exist upstream. A "hooded cloak" has no dnd5e item, so it stays in the description. |
+
 ---
 
 ## Install
