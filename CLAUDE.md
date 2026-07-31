@@ -9,12 +9,15 @@ generated from the community [Warcraft 5e Conversion](https://github.com/WC5E/Wa
 markdown. There is no runtime JavaScript: the module ships only `module.json`, `assets/`, and
 compiled LevelDB packs. Everything else in the repo is build tooling.
 
-Current packs: **monsters** (420 NPC actors), **items** (21), **spells** (99), **journals** (1 guide entry).
+Current packs (11, 1222 documents): **monsters** (420 NPC actors), **spells** (101), **items** (21),
+**journals** (guide), **spell-lists** (7 class spell lists), and the player options merged from
+GoC45's `wc5e-ccc`: **classes** (12 + 36 subclasses), **class-features** (443), **races** (28 +
+racials), **feats** (18), **new-equipment** (14), **summons** (24 actors).
 
 ## Prerequisite: the upstream source repo
 
-The parsers read the WC5E markdown from a **sibling clone** that is *not* in this repo and is
-currently **absent** — `npm run parse` / `npm run spells` will fail until it exists:
+The parsers read the WC5E markdown from a **sibling clone** that is not part of this repo. If it's
+missing, `npm run parse` / `npm run spells` / `npm run spell-lists` fail:
 
 ```bash
 git clone https://github.com/WC5E/Warcraft-5e-Conversion ../Warcraft-5e-Conversion
@@ -26,6 +29,7 @@ Hard-coded paths inside `../Warcraft-5e-Conversion`:
 |---|---|
 | `build/parse.py` | `Manual of Monsters, Main File.txt` (finished) and every file in `WIP Manual of Monsters/` |
 | `build/extract_spells.py` | `WIP 3.0 Chapters/Chapter 6 Spells.md` (the most complete spell list) |
+| `build/build_spell_lists.py` | the same Chapter 6 file, for the per-class spell tables |
 
 `parse.py` accepts an alternate main-file path as `argv[1]`; `extract_spells.py` does not.
 Because `src/` is committed, you can rebuild the packs (`npm run pack`) and edit the item/journal
@@ -35,21 +39,23 @@ builders **without** the upstream clone.
 
 ```bash
 npm install                     # Foundry CLI (only dependency); node_modules/ is not present by default
-npm run build                   # full pipeline: parse → spells → actors → items → journal → pack
+npm run build                   # parse → spells → actors → items → journal → spell-lists → pack
 npm run pack                    # src/**/*.json → packs/** LevelDB (the only step Foundry cares about)
 node build/_chk.mjs             # sanity check: extract each pack back out, print doc counts
 python3 build/validate_wip.py   # report incomplete/duplicate WIP statblocks (read-only, needs intermediate/)
 ```
 
 Individual stages: `npm run parse`, `npm run spells`, `npm run actors`, `npm run items`,
-`npm run journal`. There is no test suite and no linter — `_chk.mjs` plus loading the module in
+`npm run journal`, `npm run spell-lists`. There is no test suite and no linter — `_chk.mjs` plus loading the module in
 Foundry is the verification loop.
 
-**`spells` must run before `actors`** — `spell_embed.py` indexes `src/spells/*.json` to embed
-spells onto casters, so building actors first bakes in the *previous* run's spell data. The `build`
-script orders them correctly; keep it that way if you add stages. `items` and `journal` have no
-dependencies. Rebuilding either stage is deterministic: identical inputs produce byte-identical
-output, so `git status` after a rebuild is a real regression check.
+**`spells` must run before `actors` and before `spell-lists`** — both read `src/spells/*.json`:
+`spell_embed.py` to embed spells onto casters, `build_spell_lists.py` to resolve spell names to
+document ids. Running either first bakes in the *previous* run's spell data, and since spell ids
+derive from spell *names*, a renamed spell silently breaks both. The `build` script orders them
+correctly; keep it that way if you add stages. `items` and `journal` have no dependencies.
+Rebuilding is deterministic: identical inputs produce byte-identical output, so `git status` after
+a rebuild is a real regression check.
 
 **A failed build is destructive.** Every builder deletes its whole output directory *before*
 writing, so a crash mid-build leaves `src/<pack>/` gutted (this is how the v1.4.0 folder-document
@@ -62,9 +68,12 @@ Three stages, each writing plain JSON so every step is inspectable:
 ```
 ../Warcraft-5e-Conversion/*.txt|md          upstream Homebrewery/GMBinder markdown
   → parse.py / extract_spells.py            → intermediate/*.json   (system-agnostic statblocks)
-  → build_actors.py / build_spells.py /     → src/{monsters,items,spells,journals}/*.json
-    build_items.py / build_journal.py         (one file per Foundry document, dnd5e 5.3.3 schema)
-  → pack.mjs (Foundry CLI compilePack)      → packs/{monsters,items,spells,journals}/  (LevelDB)
+  → build_actors.py / build_spells.py /     → src/<pack>/*.json
+    build_items.py / build_journal.py /       (one file per Foundry document, dnd5e 5.3.3 schema)
+    build_spell_lists.py
+  → pack.mjs (Foundry CLI compilePack)      → packs/<pack>/  (LevelDB)
+
+The six player-option directories bypass this entirely — they are hand-maintained, not generated.
 ```
 
 - **`parse.py`** knows nothing about Foundry. Its job is surviving the source's typesetting:
@@ -74,8 +83,8 @@ Three stages, each writing plain JSON so every step is inspectable:
   `spell_embed` and `folders`.
 - **`build_items.py`** is *hand-transcribed* data from the Heroes Handbook, not machine-parsed —
   edit the Python literals in `build()` to change gear.
-- **`pack.mjs`** compiles every folder in its `PACKS` array, `rm -rf`ing the destination first so
-  deleted documents don't linger.
+- **`pack.mjs`** compiles every pack declared in `module.json`, `rm -rf`ing the destination first
+  so deleted documents don't linger. It warns about a declared pack with no `src/` directory.
 
 ### Hard invariants
 
@@ -163,6 +172,32 @@ Rather than patching `src/`, add to the small curated tables:
 `build_actors.py` prints a spellcasting report at the end (embedded count + unresolved spell
 names by frequency) and `build_spells.py` prints the activity-kind histogram — use these to spot
 regressions after a parser change.
+
+## Class spell lists
+
+`build_spell_lists.py` produces `src/spell-lists/` — one dnd5e `spells`-type
+JournalEntryPage per casting class. This is the *only* mechanism by which dnd5e knows which
+spells a class may learn: `system.identifier` on the page must equal the class document's
+`system.identifier` (`wc5e-mage`, …), and class features reference it as
+`restriction.list: ["class:<identifier>"]`. Without these pages a custom class has no spell
+list and spell selection silently does nothing.
+
+Source is `WIP 3.0 Chapters/Chapter 6 Spells.md` upstream, where each caster has a
+`### <Class> Spells` section subdivided by `##### Nth Level`. Entry markup carries the
+provenance that decides which pack to cite: `✦` = a WC5E custom spell (this module),
+`^XGE^`/`^TCE^` = non-SRD official content (omitted, and named in the page description so the
+gap is visible), bare = SRD. Blockquoted `> ##### Variant Rule:` blocks are optional
+alternate lists and are skipped deliberately.
+
+- `build/data/srd51_spell_ids.json` / `srd52_spell_ids.json` — committed name→id indexes for
+  the dnd5e system's two SRD spell packs, so the build doesn't need a Foundry install to cite
+  them. Regenerate by extracting `systems/dnd5e/packs/{spells,spells24}` if dnd5e reshuffles ids.
+- `build_spell_lists.EXTRA_ENTRIES` — spells this module ships that the Chapter 6 tables never
+  list (currently *Feral Spirits*, Heroes-Handbook-only). Without it they'd be unreachable:
+  present in the compendium but on no class's list. The build asserts nothing silently: check
+  that all of `src/spells` is cited by at least one list after changing spell names.
+- Long names wrap in the source using `&nbsp;`/soft hyphens ("Amplify or &nbsp;&nbsp; Dampen
+  Magic"); `clean_entry()` strips them, and forgetting that makes real spells look unavailable.
 
 ## Cross-document references (the fragile part of the merged content)
 

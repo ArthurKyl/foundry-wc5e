@@ -2,7 +2,7 @@
   "id": "wc5e-bestiary",
   "title": "Warcraft 5e (WC5E)",
   "description": "Compendium content for playing Warcraft on the dnd5e system, converted from the community Warcraft 5e (WC5E) project: 420 monsters, 101 spells, items, plus player options — 12 classes, 36 subclasses, 28 races, class features and feats with dnd5e advancement configured. Fan work; not affiliated with Blizzard Entertainment or the WC5E team.",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "authors": [
     {
       "name": "ArthurKyl",
@@ -160,21 +160,47 @@
         "GAMEMASTER": "OWNER"
       },
       "flags": {}
+    },
+    {
+      "name": "spell-lists",
+      "label": "WC5E Class Spell Lists",
+      "path": "packs/spell-lists",
+      "type": "JournalEntry",
+      "system": "dnd5e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER",
+        "GAMEMASTER": "OWNER"
+      },
+      "flags": {}
     }
   ],
   "packFolders": [
     {
       "name": "Warcraft 5e",
       "sorting": "m",
-      "packs": ["journals", "monsters", "items", "spells"]
+      "packs": [
+        "journals",
+        "monsters",
+        "items",
+        "spells"
+      ]
     },
     {
       "name": "Warcraft 5e — Player Options",
       "sorting": "m",
-      "packs": ["classes", "class-features", "races", "feats", "new-equipment", "summons"]
+      "packs": [
+        "classes",
+        "class-features",
+        "races",
+        "feats",
+        "new-equipment",
+        "summons",
+        "spell-lists"
+      ]
     }
   ],
   "url": "https://github.com/ArthurKyl/foundry-wc5e",
   "manifest": "https://github.com/ArthurKyl/foundry-wc5e/releases/latest/download/module.json",
-  "download": "https://github.com/ArthurKyl/foundry-wc5e/releases/download/v1.6.0/module.zip"
+  "download": "https://github.com/ArthurKyl/foundry-wc5e/releases/download/v1.7.0/module.zip"
 }

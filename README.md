@@ -56,6 +56,18 @@ The release zip contains only what's needed to play (`module.json`, `packs/`,
 `assets/`). Cloning the repo instead also works, but brings the `build/` and
 `src/` trees, which exist purely to regenerate the packs.
 
+### Using it with a character builder
+
+Guided character-creation modules (Originate and similar) generally recognise
+only the SRD class list, so they may not know a WC5E class's spellcasting rules
+even though this module ships the spell lists. Point the module's spell-list
+setting at **WC5E Class Spell Lists** and map each caster to the matching class.
+The class identifiers are `wc5e-death-knight`, `wc5e-druid`, `wc5e-mage`,
+`wc5e-paladin`, `wc5e-priest`, `wc5e-shaman`, `wc5e-warlock`.
+
+Ability-score assignment and rolling for hit points are features of those
+modules, not of this content — check their own settings if a step is missing.
+
 ### Using it
 
 Open the **Compendium Packs** sidebar tab and find the **Warcraft 5e** group.
@@ -106,6 +118,14 @@ three orc clans, Lightforged and Broken draenei…), 443 class features, 90 race
 racial documents, 18 feats, class equipment, and 24 summon/pet statblocks. Created by
 **GoC45** for the Character Creation Compendium and merged here with their permission.
 
+**WC5E Class Spell Lists** — dnd5e spell-list journal pages for all 7 casting
+classes (Death Knight, Druid, Mage, Paladin, Priest, Shaman, Warlock), built from
+the WC5E class spell tables. 671 spell links across the seven lists, mixing this
+module's custom spells with the dnd5e system's SRD ones, so the character sheet
+knows which spells each class can learn or prepare. Spells from non-SRD
+sourcebooks can't be bundled — each list names the ones it had to omit so the gap
+is visible in-game rather than silent.
+
 **WC5E Guide** — a short in-module journal: what's included, how to use it,
 roadmap and credits.
 
@@ -116,6 +136,7 @@ roadmap and credits.
 **Done**
 
 - [x] Classes, subclasses, races, class features & feats (advancement configured)
+- [x] Class spell lists for all 7 casters
 - [x] Summons & pets
 - [x] Monsters — 420 NPCs, foldered by creature type
 - [x] Monster attacks & save abilities (breath weapons etc.) rollable
@@ -128,7 +149,6 @@ roadmap and credits.
 **Planned**
 
 - [ ] Backgrounds — the one Heroes' Handbook chunk nobody has built yet
-- [ ] Class spell lists (dnd5e `spells` journal pages per class)
 - [ ] Per-monster / creature token art
 - [ ] Wire the remaining non-SRD spells (needs official content)
 

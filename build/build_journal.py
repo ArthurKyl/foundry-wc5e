@@ -45,6 +45,9 @@ left (see <em>Roadmap</em>).</p>
 <ul>
   <li>Open the <em>Compendium Packs</em> sidebar tab → drag monsters onto the
     canvas and items/spells onto character sheets.</li>
+  <li>Spellcasters have a <strong>class spell list</strong> (see <em>WC5E Class
+    Spell Lists</em>). If you use a guided character-builder module, point its
+    spell-list setting at that compendium.</li>
   <li>Some monster spells and abilities reference <em>non-SRD</em> spells
     (Tasha's/Xanathar's) that can't be bundled — those stay listed as text; drag
     them from your own content if you own it.</li>
@@ -65,12 +68,12 @@ ROADMAP = """
   <li>&#9745; Player options: 12 classes, 36 subclasses, 28 races, class
     features and feats, with advancement configured</li>
   <li>&#9745; Summons &amp; pets</li>
+  <li>&#9745; Class spell lists for all 7 casting classes</li>
   <li>&#9745; Compendium folders &amp; this guide</li>
 </ul>
 <p><strong>Planned</strong></p>
 <ul>
   <li>&#9744; Backgrounds</li>
-  <li>&#9744; Class spell lists</li>
   <li>&#9744; Per-monster / creature token art</li>
   <li>&#9744; Wire the remaining non-SRD spells (needs official content)</li>
 </ul>
