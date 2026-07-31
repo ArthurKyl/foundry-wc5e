@@ -22,8 +22,9 @@ WELCOME = """
 <strong>Warcraft</strong> using the community <strong>Warcraft 5e (WC5E)</strong>
 conversion on the <strong>dnd5e</strong> system.</p>
 <p>The goal is a <strong>complete</strong> WC5E module — everything needed to run a
-Warcraft campaign without hand-entering content. Monsters, items and spells are
-done; races, classes, backgrounds and feats are next (see <em>Roadmap</em>).</p>
+Warcraft campaign without hand-entering content. Monsters, spells, items and the
+full set of player options are in; backgrounds and class spell lists are what's
+left (see <em>Roadmap</em>).</p>
 <p><strong>What's inside</strong></p>
 <ul>
   <li><strong>WC5E Monsters</strong> — 420 NPC actors (Manual of Monsters + WIP
@@ -33,8 +34,12 @@ done; races, classes, backgrounds and feats are next (see <em>Roadmap</em>).</p>
   <li><strong>WC5E Items</strong> — 21 Warcraft weapons &amp; gear: firearms,
     exotic weapons, shields, ammunition, explosives (Bomb, Dynamite), and
     adventuring gear.</li>
-  <li><strong>WC5E Spells</strong> — the full 99-spell WC5E custom spell list,
+  <li><strong>WC5E Spells</strong> — the full 101-spell WC5E custom spell list,
     foldered by level.</li>
+  <li><strong>Player Options</strong> — 12 classes, 36 subclasses, 28 races,
+    class features, feats, equipment and summons, with dnd5e advancement
+    configured. Drag a class and a race onto a blank sheet and level up.
+    Created by <strong>GoC45</strong>, included with permission.</li>
 </ul>
 <p><strong>How to use</strong></p>
 <ul>
@@ -53,23 +58,22 @@ ROADMAP = """
 <ul>
   <li>&#9745; Monsters (420 NPCs, foldered by type)</li>
   <li>&#9745; Monster attacks &amp; save abilities (rollable)</li>
-  <li>&#9745; Monster spellcasting (embedded, ~77% of references)</li>
+  <li>&#9745; Monster spellcasting (embedded, ~79% of references)</li>
   <li>&#9745; Weapons, firearms, shields, ammunition</li>
   <li>&#9745; Explosives &amp; adventuring gear</li>
-  <li>&#9745; Full WC5E custom spell list (99 spells)</li>
+  <li>&#9745; Full WC5E custom spell list (101 spells)</li>
+  <li>&#9745; Player options: 12 classes, 36 subclasses, 28 races, class
+    features and feats, with advancement configured</li>
+  <li>&#9745; Summons &amp; pets</li>
   <li>&#9745; Compendium folders &amp; this guide</li>
 </ul>
 <p><strong>Planned</strong></p>
 <ul>
   <li>&#9744; Backgrounds</li>
-  <li>&#9744; Races</li>
-  <li>&#9744; Classes &amp; subclasses</li>
-  <li>&#9744; Feats</li>
+  <li>&#9744; Class spell lists</li>
   <li>&#9744; Per-monster / creature token art</li>
   <li>&#9744; Wire the remaining non-SRD spells (needs official content)</li>
 </ul>
-<p><em>Races and classes are the most involved (advancement automation) and are
-being tackled manually over time.</em></p>
 """
 
 CREDITS = """
@@ -81,6 +85,10 @@ Blizzard.</p>
   <li><strong>WC5E content</strong> (monsters, items, spells) is from the
     community <em>Warcraft 5e Conversion</em>. Please credit and support the
     WC5E project and follow their licensing.</li>
+  <li><strong>Player options</strong> (classes, subclasses, races, class
+    features, feats, equipment, summons) were built by <strong>GoC45</strong> for
+    the <em>WC5E Character Creation Compendium</em> and are included here with
+    their permission.</li>
   <li><strong>SRD spells</strong> embedded on casters are from the
     <em>System Reference Document 5.1</em>, &copy; Wizards of the Coast, used
     under <strong>CC-BY-4.0</strong>.</li>

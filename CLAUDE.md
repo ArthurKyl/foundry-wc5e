@@ -79,11 +79,16 @@ Three stages, each writing plain JSON so every step is inspectable:
 
 ### Hard invariants
 
-- **`src/` is generated output, not source.** `build_actors.py`, `build_spells.py`,
-  `build_items.py`, and `build_journal.py` each **delete every `*.json`** in their target
-  directory before writing. Hand-edits to `src/monsters/*.json` survive only until the next build —
-  fix things in the build script instead (see the escape hatches below). The README's
-  "edit these, then re-pack" advice is only safe for one-off local tweaks.
+- **`src/` holds two different kinds of content — know which you're touching.**
+  - *Generated* (`src/monsters`, `src/spells`, `src/items`, `src/journals`): `build_actors.py`,
+    `build_spells.py`, `build_items.py` and `build_journal.py` each **delete every `*.json`** in
+    their target directory before writing. Hand-edits survive only until the next build — fix
+    things in the build script instead (see the escape hatches below).
+  - *Hand-maintained* (`src/classes`, `src/class-features`, `src/races`, `src/feats`,
+    `src/new-equipment`, `src/summons`): 649 documents merged from GoC45's `wc5e-ccc` module,
+    with dnd5e advancement configured. **No generator produces these** — they are the source of
+    truth and must be edited directly. Never add a "clean `src/`" step; keep every builder scoped
+    to its own subdirectory.
 - **Document `_id`s are deterministic**: sha1 of a name-derived key rendered into 16 base62 chars
   (`make_id()` in each builder, `folders.fid()` for folders). This keeps ids stable across
   rebuilds so worlds don't lose references. Never randomise them, and don't change the hashed
@@ -145,6 +150,12 @@ Rather than patching `src/`, add to the small curated tables:
 - `spell_embed.ALIAS` — upstream spell-name typos/variants → canonical name.
 - `build_spells.OVERRIDES` — spells whose mechanics `auto_detect()` can't infer (keyed by
   lowercase name).
+- `build/data/extra_spells.json` — spells that appear in the WC5E spell *tables* but never get a
+  definition block in Chapter 6, so `extract_spells.py` cannot produce them even though class
+  features reference them (currently *Anti-Magic Shell* and *Feral Spirits*, transcribed by
+  GoC45). Records use the same intermediate shape and go through `auto_detect()` like any other
+  spell. If upstream ever defines one properly, the extracted version wins and the extra is
+  skipped with a log line.
 - `build_spells.DTYPE_ALIAS` — Warcraft flavour damage words (`frost`, `shadow`, `arcane`,
   `holy`, `nature`) → 5e damage types.
 - `build_actors.TYPE_FOLDER`, `CONDITION_STEMS`, `SIZE_MAP` — creature-type/condition mapping.
@@ -152,6 +163,24 @@ Rather than patching `src/`, add to the small curated tables:
 `build_actors.py` prints a spellcasting report at the end (embedded count + unresolved spell
 names by frequency) and `build_spells.py` prints the activity-kind histogram — use these to spot
 regressions after a parser change.
+
+## Cross-document references (the fragile part of the merged content)
+
+The player-options documents contain **1,045 internal `Compendium.wc5e-bestiary.*` UUIDs** —
+advancement `ItemGrant`/`ItemChoice` targets, `effects.origin`, `startingEquipment.key`, and
+`@UUID[…]` links in description text — plus 387 references into the dnd5e system's own packs and
+864 asset paths. These came from GoC45's module as `Compendium.wc5e-ccc.*` and were rewritten
+during the merge.
+
+**Consequences:** renaming a pack, changing the module id, or regenerating a document id breaks
+advancement silently — a broken `ItemGrant` is a no-op on level-up, not an error. So pack names
+(`class-features`, `new-equipment`, …) are load-bearing and must not be "tidied", and the spell
+ids that class features point at are derived from spell *names* via `make_id("spell", name)` —
+renaming a spell in the source breaks any feature granting it.
+
+After touching any of this, re-run the integrity check: index every `_id` per pack, then confirm
+every internal UUID resolves, no `wc5e-ccc` strings survive, and every `modules/wc5e-bestiary/…`
+asset exists on disk.
 
 ## Licensing constraint (affects design, not just credits)
 

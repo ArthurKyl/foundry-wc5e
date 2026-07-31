@@ -14,6 +14,12 @@ is claimed.
   credit and support the WC5E project, and follow their licensing and wishes for
   redistribution.
 
+- **Player options** — the classes, subclasses, races, class features, feats,
+  class equipment and summons were created by **GoC45** for the *WC5E Character
+  Creation Compendium* Foundry module, and are included here with their explicit
+  permission, coordinated through the WC5E project. Credit for that work belongs
+  to GoC45.
+
 - **SRD 5.1** — spells embedded on caster monsters are from the **System
   Reference Document 5.1**, © Wizards of the Coast LLC, used under the
   **Creative Commons Attribution 4.0 International License (CC-BY-4.0)**

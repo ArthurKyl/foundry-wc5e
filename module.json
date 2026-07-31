@@ -1,12 +1,17 @@
 {
   "id": "wc5e-bestiary",
   "title": "Warcraft 5e (WC5E)",
-  "description": "Compendium content for playing Warcraft on the dnd5e system, converted from the community Warcraft 5e (WC5E) project: monsters, items and spells today, with races, classes, backgrounds and feats planned. Fan work; not affiliated with Blizzard Entertainment or the WC5E team.",
-  "version": "1.5.1",
+  "description": "Compendium content for playing Warcraft on the dnd5e system, converted from the community Warcraft 5e (WC5E) project: 420 monsters, 101 spells, items, plus player options — 12 classes, 36 subclasses, 28 races, class features and feats with dnd5e advancement configured. Fan work; not affiliated with Blizzard Entertainment or the WC5E team.",
+  "version": "1.6.0",
   "authors": [
     {
       "name": "ArthurKyl",
       "url": "https://github.com/ArthurKyl"
+    },
+    {
+      "name": "GoC45",
+      "discord": "goc45",
+      "flags": {}
     }
   ],
   "compatibility": {
@@ -77,6 +82,84 @@
         "GAMEMASTER": "OWNER"
       },
       "flags": {}
+    },
+    {
+      "name": "classes",
+      "label": "WC5E Classes",
+      "path": "packs/classes",
+      "type": "Item",
+      "system": "dnd5e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER",
+        "GAMEMASTER": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "class-features",
+      "label": "WC5E Class Features",
+      "path": "packs/class-features",
+      "type": "Item",
+      "system": "dnd5e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER",
+        "GAMEMASTER": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "races",
+      "label": "WC5E Races and Racials",
+      "path": "packs/races",
+      "type": "Item",
+      "system": "dnd5e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER",
+        "GAMEMASTER": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "feats",
+      "label": "WC5E Feats",
+      "path": "packs/feats",
+      "type": "Item",
+      "system": "dnd5e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER",
+        "GAMEMASTER": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "new-equipment",
+      "label": "WC5E Class Equipment",
+      "path": "packs/new-equipment",
+      "type": "Item",
+      "system": "dnd5e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER",
+        "GAMEMASTER": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "summons",
+      "label": "WC5E Summons & Pets",
+      "path": "packs/summons",
+      "type": "Actor",
+      "system": "dnd5e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER",
+        "GAMEMASTER": "OWNER"
+      },
+      "flags": {}
     }
   ],
   "packFolders": [
@@ -84,9 +167,14 @@
       "name": "Warcraft 5e",
       "sorting": "m",
       "packs": ["journals", "monsters", "items", "spells"]
+    },
+    {
+      "name": "Warcraft 5e — Player Options",
+      "sorting": "m",
+      "packs": ["classes", "class-features", "races", "feats", "new-equipment", "summons"]
     }
   ],
   "url": "https://github.com/ArthurKyl/foundry-wc5e",
   "manifest": "https://github.com/ArthurKyl/foundry-wc5e/releases/latest/download/module.json",
-  "download": "https://github.com/ArthurKyl/foundry-wc5e/releases/download/v1.5.1/module.zip"
+  "download": "https://github.com/ArthurKyl/foundry-wc5e/releases/download/v1.6.0/module.zip"
 }

@@ -252,9 +252,36 @@ def build_spell(src):
     }, mech["kind"]
 
 
+def load_extras(src):
+    """Merge in hand-curated spells from build/data/extra_spells.json.
+
+    A few spells appear in the WC5E spell *tables* but never get a definition
+    block in Chapter 6, so extract_spells.py can't produce them even though
+    class features reference them. Those are transcribed by hand in the same
+    intermediate shape and processed identically (auto_detect still derives the
+    mechanics). If upstream ever defines one properly, the extracted version
+    wins and the extra is ignored.
+    """
+    path = os.path.join(HERE, "data", "extra_spells.json")
+    if not os.path.exists(path):
+        return src
+    have = {s["name"].lower() for s in src}
+    added, superseded = [], []
+    for rec in json.load(open(path, encoding="utf-8")):
+        (superseded if rec["name"].lower() in have else added).append(rec["name"])
+        if rec["name"].lower() not in have:
+            src.append(rec)
+    if added:
+        print(f"  + {len(added)} hand-curated extras: {', '.join(added)}")
+    if superseded:
+        print(f"  - {len(superseded)} extras superseded by upstream: {', '.join(superseded)}")
+    return src
+
+
 def main():
     src = json.load(open(os.path.join(REPO, "intermediate", "wc5e_spells_src.json"),
                          encoding="utf-8"))
+    src = load_extras(src)
     out_dir = os.path.join(REPO, "src", "spells")
     os.makedirs(out_dir, exist_ok=True)
     for fn in os.listdir(out_dir):

@@ -8,8 +8,9 @@ the **dnd5e** system.
 **Foundry VTT** v13–v14 (verified on v14) · **dnd5e system** 5.3.3
 
 The goal is a **complete WC5E module** — everything you need to run a Warcraft
-campaign without hand-entering content. Monsters, items and spells are done;
-races, classes, backgrounds and feats are next. See [Roadmap](#roadmap).
+campaign without hand-entering content. Monsters, spells, items and the full set
+of player options (classes, subclasses, races, feats) are in; backgrounds and
+class spell lists are what's left. See [Roadmap](#roadmap).
 
 > Unofficial fan content. Warcraft is a trademark of Blizzard Entertainment.
 > This module is not affiliated with or endorsed by Blizzard, Wizards of the
@@ -60,7 +61,9 @@ The release zip contains only what's needed to play (`module.json`, `packs/`,
 Open the **Compendium Packs** sidebar tab and find the **Warcraft 5e** group.
 Drag monsters onto the canvas or into the Actors directory (attacks roll from
 the sheet like any dnd5e NPC), and drag gear or spells onto a character sheet.
-Start with the **WC5E Guide** journal for a short in-module orientation.
+For player characters, drag a class and a race onto a blank sheet — dnd5e's
+advancement prompts will walk you through levelling. Start with the **WC5E
+Guide** journal for a short in-module orientation.
 
 ---
 
@@ -85,7 +88,7 @@ firearm/ammunition properties, 3 shields, firearm ammunition, 2 explosives
 SRD-standard equipment is intentionally left out since the dnd5e system already
 ships it.
 
-**WC5E Spells** — the complete WC5E custom spell list (99 spells) as real dnd5e
+**WC5E Spells** — the complete WC5E custom spell list (101 spells) as real dnd5e
 spell items, foldered by level: correct level/school/components/duration, with
 rollable attack / save / heal activities and slot scaling derived from each
 spell's rules text (Solar Wrath, Pyroblast, Death and Decay, Chain Heal,
@@ -93,6 +96,15 @@ Bloodlust and Heroism, Army of the Dead, …). These are the Warcraft spells tha
 don't exist in core D&D; the SRD spells monsters also use ship with the dnd5e
 system. A few utility/buff spells with unusual wording carry their full text but
 aren't auto-wired to roll — open an issue and they're a quick fix.
+
+**WC5E Player Options** — everything needed to build a Warcraft character, with dnd5e
+*advancement* configured so levelling up actually grants features: **12 classes**
+(Death Knight, Demon Hunter, Druid, Hunter, Mage, Monk, Paladin, Priest, Rogue,
+Shaman, Warlock, Warrior), **36 subclasses/specialisations**, **28 races** including
+sub-variants (Dark Iron / Ironforge / Wildhammer dwarves, four trolls, three tauren,
+three orc clans, Lightforged and Broken draenei…), 443 class features, 90 race and
+racial documents, 18 feats, class equipment, and 24 summon/pet statblocks. Created by
+**GoC45** for the Character Creation Compendium and merged here with their permission.
 
 **WC5E Guide** — a short in-module journal: what's included, how to use it,
 roadmap and credits.
@@ -103,26 +115,22 @@ roadmap and credits.
 
 **Done**
 
+- [x] Classes, subclasses, races, class features & feats (advancement configured)
+- [x] Summons & pets
 - [x] Monsters — 420 NPCs, foldered by creature type
 - [x] Monster attacks & save abilities (breath weapons etc.) rollable
-- [x] Monster spellcasting embedded (~77% of references)
+- [x] Monster spellcasting embedded (~79% of references)
 - [x] Weapons, firearms, shields, ammunition
 - [x] Explosives & adventuring gear
-- [x] Full WC5E custom spell list (99 spells), foldered by level
+- [x] Full WC5E custom spell list (101 spells), foldered by level
 - [x] Compendium folders + in-module guide journal
 
 **Planned**
 
-- [ ] Backgrounds
-- [ ] Races
-- [ ] Classes & subclasses
-- [ ] Feats
+- [ ] Backgrounds — the one Heroes' Handbook chunk nobody has built yet
+- [ ] Class spell lists (dnd5e `spells` journal pages per class)
 - [ ] Per-monster / creature token art
 - [ ] Wire the remaining non-SRD spells (needs official content)
-
-Races and classes are the most involved — they need dnd5e *advancement*
-configuration to actually build a character rather than just describe one — and
-are being tackled manually over time.
 
 This project is in conversation with the WC5E team about becoming a proper
 first-party Foundry module. Suggestions, bug reports and corrections are
@@ -132,9 +140,12 @@ welcome via issues.
 
 ## Rebuilding from source
 
-Everything is generated from the WC5E markdown, so the whole pipeline can be
-re-run — after a dnd5e update, when upstream adds content, or to tweak the
-conversion.
+The monsters, spells, items and guide are generated from the WC5E markdown, so
+that pipeline can be re-run — after a dnd5e update, when upstream adds content,
+or to tweak the conversion. The player options
+(`src/{classes,class-features,races,feats,new-equipment,summons}`) are instead
+hand-maintained documents with dnd5e advancement configured: no generator
+produces them, so edit those files directly.
 
 Requirements: **Node 18+**, **Python 3**, and a clone of the upstream
 conversion **as a sibling directory**:
@@ -221,6 +232,10 @@ monster its own art, set its image on the actor in Foundry (or edit `img` /
 `prototypeToken.texture.src` in its `src/monsters/*.json` and re-pack).
 
 ## Attribution & License
+
+**Player options** (classes, subclasses, races, class features, feats, equipment and
+summons) were built by **GoC45** for the *WC5E Character Creation Compendium* and are
+included here with their permission, coordinated through the WC5E project.
 
 **WC5E content** (monsters, items, spells) is from the
 [Warcraft 5e Conversion](https://github.com/WC5E/Warcraft-5e-Conversion),
