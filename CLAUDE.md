@@ -89,7 +89,8 @@ npm install                     # Foundry CLI (only dependency); node_modules/ i
 npm run build                   # parse → spells → actors → items → journal → spell-lists
                                 #   → backgrounds → pack
 npm run pack                    # src/**/*.json → packs/** LevelDB (the only step Foundry cares about)
-node build/_chk.mjs             # sanity check: extract each pack back out, print doc counts
+npm run verify                  # THE GATE: every invariant, origin-agnostic (see below)
+node build/_chk.mjs             # lighter check: extract each pack back out, print doc counts
 python3 build/validate_wip.py   # report incomplete/duplicate WIP statblocks (read-only, needs intermediate/)
 ```
 
@@ -108,6 +109,33 @@ a rebuild is a real regression check.
 **A failed build is destructive.** Every builder deletes its whole output directory *before*
 writing, so a crash mid-build leaves `src/<pack>/` gutted (this is how the v1.4.0 folder-document
 regression wiped 433 actor files). Commit before rebuilding; `git checkout -- src/` is the recovery.
+
+## The validator is the safety net, not determinism
+
+`npm run verify` (`build/verify.py`) is the gate. It matters because the module mixes generated and
+hand-maintained content, and *only* generated content gets determinism as a regression test
+("rebuild, `git status` clean"). Every check works identically on hand-authored documents, which is
+what makes editing the class content by hand safe.
+
+Each check corresponds to a bug that actually shipped or was caught late, and most of these fail
+**silently in Foundry** — no error, no prompt, just nothing happening:
+
+- internal `Compendium.wc5e-bestiary.*` references all resolve (a broken `ItemGrant` is a no-op)
+- no surviving `wc5e-ccc` references, no duplicate `_id` inside a pack, `_key` present and shaped
+- every `modules/wc5e-bestiary/…` asset exists on disk
+- `flags.dnd5e.spellLists` is present, every entry resolves to a page of type `spells`, **and every
+  page in the pack is registered** (an unregistered list is inert)
+- every `ItemChoice(spell)` restriction names a *registered* list identifier, and has either a list
+  or a pool
+- advancement on non-class items isn't keyed above level 1 (flows run 0..current)
+- no document cites a URL as its source book; every source is declared in `flags.dnd5e.sourceBooks`
+- every spell we ship is reachable from at least one class list
+- `download` matches `version`, `manifest` is the `releases/latest` form
+
+It is fault-injection tested: removing the spellLists flag, putting a URL in a source book,
+duplicating an advancement id, pointing an `ItemGrant` at a missing document, and mismatching
+version/download are all caught. **If you add a check, break something on purpose and confirm it
+fires** — a validator that only ever passes is worthless.
 
 ## Pipeline architecture
 
