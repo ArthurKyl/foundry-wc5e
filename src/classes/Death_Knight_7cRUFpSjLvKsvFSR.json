@@ -316,6 +316,32 @@
         "hint": ""
       },
       {
+        "_id": "cTywx4oJ4ruQAPkV",
+        "type": "ItemGrant",
+        "title": "",
+        "hint": "",
+        "configuration": {
+          "items": [
+            {
+              "uuid": "Compendium.wc5e-bestiary.class-features.Item.GuFKaQRWhSHD81pB",
+              "optional": false
+            }
+          ],
+          "optional": false,
+          "spell": {
+            "ability": [],
+            "preparation": "",
+            "uses": {
+              "max": "",
+              "per": ""
+            }
+          }
+        },
+        "value": {},
+        "level": 10,
+        "classRestriction": ""
+      },
+      {
         "_id": "uMK0QJXzdCEobQRo",
         "type": "ItemChoice",
         "title": "Spells Known",
