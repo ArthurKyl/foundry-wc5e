@@ -1,8 +1,8 @@
 {
   "id": "wc5e-bestiary",
-  "title": "Warcraft 5e (WC5E)",
-  "description": "Compendium content for playing Warcraft on the dnd5e system, converted from the community Warcraft 5e (WC5E) project: 420 monsters, 101 spells, items, plus player options — 12 classes, 36 subclasses, 28 races, class features and feats with dnd5e advancement configured. Fan work; not affiliated with Blizzard Entertainment or the WC5E team.",
-  "version": "1.15.0",
+  "title": "Warcraft 5e (WC5E) — Unofficial Beta",
+  "description": "<p><strong>Unofficial community build, in active development.</strong> This is not an official WC5E release and is not published by the Warcraft 5e team — it's a work-in-progress conversion being tested before the content moves to the WC5E project's own repository.</p><p>Compendium content for playing Warcraft on the dnd5e system: 420 monsters, 101 spells, items, and full player options — 12 classes, 36 subclasses, 28 races, backgrounds, class features and feats with dnd5e advancement configured.</p><p><strong>Please report anything broken</strong> via the Report Bug link or <a href=\"https://github.com/ArthurKyl/foundry-wc5e/issues\">GitHub issues</a> — that's the fastest way to get it fixed. Fan work; not affiliated with Blizzard Entertainment.</p>",
+  "version": "1.16.0",
   "authors": [
     {
       "name": "ArthurKyl",
@@ -216,7 +216,7 @@
   ],
   "url": "https://github.com/ArthurKyl/foundry-wc5e",
   "manifest": "https://github.com/ArthurKyl/foundry-wc5e/releases/latest/download/module.json",
-  "download": "https://github.com/ArthurKyl/foundry-wc5e/releases/download/v1.15.0/module.zip",
+  "download": "https://github.com/ArthurKyl/foundry-wc5e/releases/download/v1.16.0/module.zip",
   "flags": {
     "dnd5e": {
       "spellLists": [
@@ -238,5 +238,9 @@
         "Warcraft 5e - Manual of Monsters (WIP)": "Warcraft 5e — Manual of Monsters (WIP)"
       }
     }
-  }
+  },
+  "bugs": "https://github.com/ArthurKyl/foundry-wc5e/issues",
+  "readme": "https://github.com/ArthurKyl/foundry-wc5e#readme",
+  "changelog": "https://github.com/ArthurKyl/foundry-wc5e/releases",
+  "license": "https://github.com/ArthurKyl/foundry-wc5e/blob/main/LICENSE.md"
 }

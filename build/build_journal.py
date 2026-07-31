@@ -17,7 +17,14 @@ def mkid(*p):
 STATS = {"systemId": "dnd5e", "systemVersion": "5.3.3"}
 
 WELCOME = """
-<h2>Warcraft 5e (WC5E)</h2>
+<h2>Warcraft 5e (WC5E) — Unofficial Beta</h2>
+<p><strong>This is an unofficial community build, in active development.</strong> It is
+not an official WC5E release and is not published by the Warcraft 5e team &mdash; the
+content is being tested here before it moves to the WC5E project's own repository.</p>
+<p>If something is broken or missing, please
+<a href="https://github.com/ArthurKyl/foundry-wc5e/issues">open an issue on GitHub</a>.
+Being specific about which monster, spell or class, and what you expected to happen,
+makes it much quicker to fix &mdash; many of these problems produce no error at all.</p>
 <p>An unofficial, fan-made Foundry VTT module for playing in the world of
 <strong>Warcraft</strong> using the community <strong>Warcraft 5e (WC5E)</strong>
 conversion on the <strong>dnd5e</strong> system.</p>

@@ -1,4 +1,14 @@
-# Warcraft 5e (WC5E) — Foundry VTT module
+# Warcraft 5e (WC5E) — Unofficial Beta
+
+> ### ⚠️ Unofficial community build, in active development
+>
+> **This is not an official WC5E release** and is not published by the Warcraft 5e
+> team. It's a work-in-progress conversion being tested before the content moves
+> to the WC5E project's own repository, which will become the single source of
+> truth. Expect rough edges.
+>
+> **Found a problem? [Open an issue](https://github.com/ArthurKyl/foundry-wc5e/issues).**
+> That's the fastest way to get it fixed, and it means nothing gets lost in chat.
 
 Compendium content for playing in the world of **Warcraft** on Foundry VTT,
 converted from the community
