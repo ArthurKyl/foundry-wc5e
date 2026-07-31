@@ -138,7 +138,7 @@ conversion **as a sibling directory**:
 ```bash
 git clone https://github.com/WC5E/Warcraft-5e-Conversion ../Warcraft-5e-Conversion
 npm install          # installs the Foundry CLI (only dependency)
-npm run build        # parse → actors → items → spells → journal → pack
+npm run build        # parse → spells → actors → items → journal → pack
 ```
 
 The parsers read `Manual of Monsters, Main File.txt`, `WIP Manual of Monsters/`
@@ -149,11 +149,15 @@ item/journal builders **without** the upstream clone.
 | Command             | What it does                                                        |
 |---------------------|---------------------------------------------------------------------|
 | `npm run parse`     | `build/parse.py`: statblocks → `intermediate/monsters.json` + `monsters_wip.json` |
+| `npm run spells`    | `build/extract_spells.py` + `build/build_spells.py`: WC5E custom spells → `src/spells/*.json` |
 | `npm run actors`    | `build/build_actors.py`: intermediate → `src/monsters/*.json` (main + net-new WIP, deduped, spells embedded) |
 | `npm run items`     | `build/build_items.py`: authors `src/items/*.json` (hand-transcribed gear tables) |
-| `npm run spells`    | `build/extract_spells.py` + `build/build_spells.py`: WC5E custom spells → `src/spells/*.json` |
 | `npm run journal`   | `build/build_journal.py`: the in-module guide → `src/journals/*.json` |
 | `npm run pack`      | `build/pack.mjs`: `src/*` → LevelDB packs under `packs/` |
+
+`spells` must run before `actors`: caster monsters get their spells embedded from
+`src/spells/`, so building actors first bakes in stale spell data. Rebuilds are
+deterministic — identical inputs give byte-identical output.
 
 `node build/_chk.mjs` extracts the compiled packs back out and prints document
 counts as a sanity check. `python3 build/validate_wip.py` reports incomplete or

@@ -35,20 +35,25 @@ builders **without** the upstream clone.
 
 ```bash
 npm install                     # Foundry CLI (only dependency); node_modules/ is not present by default
-npm run build                   # full pipeline: parse → actors → items → spells → journal → pack
+npm run build                   # full pipeline: parse → spells → actors → items → journal → pack
 npm run pack                    # src/**/*.json → packs/** LevelDB (the only step Foundry cares about)
 node build/_chk.mjs             # sanity check: extract each pack back out, print doc counts
 python3 build/validate_wip.py   # report incomplete/duplicate WIP statblocks (read-only, needs intermediate/)
 ```
 
-Individual stages: `npm run parse`, `npm run actors`, `npm run items`, `npm run spells`,
+Individual stages: `npm run parse`, `npm run spells`, `npm run actors`, `npm run items`,
 `npm run journal`. There is no test suite and no linter — `_chk.mjs` plus loading the module in
 Foundry is the verification loop.
 
-**Build-order gotcha:** `npm run build` runs `actors` *before* `spells`, but `spell_embed.py`
-indexes `src/spells/*.json` to embed spells onto casters. If you change spell output, run
-`npm run spells && npm run actors && npm run pack` (or `npm run build` twice) or the casters will
-carry the previous run's spell data.
+**`spells` must run before `actors`** — `spell_embed.py` indexes `src/spells/*.json` to embed
+spells onto casters, so building actors first bakes in the *previous* run's spell data. The `build`
+script orders them correctly; keep it that way if you add stages. `items` and `journal` have no
+dependencies. Rebuilding either stage is deterministic: identical inputs produce byte-identical
+output, so `git status` after a rebuild is a real regression check.
+
+**A failed build is destructive.** Every builder deletes its whole output directory *before*
+writing, so a crash mid-build leaves `src/<pack>/` gutted (this is how the v1.4.0 folder-document
+regression wiped 433 actor files). Commit before rebuilding; `git checkout -- src/` is the recovery.
 
 ## Pipeline architecture
 
