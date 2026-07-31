@@ -6,3 +6,7 @@ node_modules/
 packs/**/LOCK
 packs/**/LOG
 packs/**/LOG.old
+
+# Python bytecode cache
+__pycache__/
+*.pyc

@@ -60,7 +60,9 @@ def load_indexes():
         return _CUSTOM, _SRD
     _CUSTOM = {}
     for fn in os.listdir(os.path.join(REPO, "src", "spells")):
-        if fn.endswith(".json"):
+        # "_folder-*.json" are compendium folder documents, not spells: they have
+        # no img/system and would blow up the index.
+        if fn.endswith(".json") and not fn.startswith("_folder-"):
             d = json.load(open(os.path.join(REPO, "src", "spells", fn), encoding="utf-8"))
             _CUSTOM[_norm(d["name"])] = {"name": d["name"], "img": d["img"],
                                          "system": d["system"], "src": "custom"}
