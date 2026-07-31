@@ -10,3 +10,6 @@ packs/**/LOG.old
 # Python bytecode cache
 __pycache__/
 *.pyc
+
+# Release artifacts (built by npm run release)
+dist/

@@ -26,30 +26,34 @@ In Foundry: **Add-on Modules → Install Module**, paste this into the *Manifest
 URL* box at the bottom, and click **Install**:
 
 ```
-https://raw.githubusercontent.com/ArthurKyl/foundry-wc5e/main/module.json
+https://github.com/ArthurKyl/foundry-wc5e/releases/latest/download/module.json
 ```
 
 Then in your world: **Game Settings → Manage Modules** → enable
 **Warcraft 5e (WC5E)**.
 
-Installing from the manifest always pulls the current `main`, and Foundry will
-offer an update whenever the module version here is bumped.
+This installs the latest tagged release and Foundry will offer an update
+whenever a new one is published. Each release ships a fixed `module.zip`, so a
+given version number always means the same content.
 
 ### Option B — Manual install
 
-1. Download the repo as a ZIP (**Code → Download ZIP**) and extract it.
-2. **Rename the extracted folder to `wc5e-bestiary`.** This matters: the module
-   id is `wc5e-bestiary`, and monster token art is referenced as
-   `modules/wc5e-bestiary/assets/…`. A folder named `foundry-wc5e-main` will
-   load but every token will show a broken image.
+1. Download `module.zip` from the
+   [latest release](https://github.com/ArthurKyl/foundry-wc5e/releases/latest)
+   and extract it.
+2. **Put the contents in a folder named `wc5e-bestiary`.** This matters: the
+   module id is `wc5e-bestiary`, and monster token art is referenced as
+   `modules/wc5e-bestiary/assets/…`, so a differently-named folder will load but
+   show a broken image on every token.
 3. Move it into your Foundry data modules folder:
    - **Windows:** `%localappdata%/FoundryVTT/Data/modules/`
    - **macOS:** `~/Library/Application Support/FoundryVTT/Data/modules/`
    - **Linux:** `~/.local/share/FoundryVTT/Data/modules/`
 4. Restart Foundry, then enable the module under **Manage Modules**.
 
-Only `module.json`, `packs/` and `assets/` are needed to play — `build/` and
-`src/` are just for rebuilding.
+The release zip contains only what's needed to play (`module.json`, `packs/`,
+`assets/`). Cloning the repo instead also works, but brings the `build/` and
+`src/` trees, which exist purely to regenerate the packs.
 
 ### Using it
 

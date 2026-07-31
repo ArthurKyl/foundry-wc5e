@@ -95,6 +95,29 @@ Three stages, each writing plain JSON so every step is inspectable:
   literals in all builders plus `module.json` `relationships`.
 - **Bump `module.json` `version`** whenever packs change, or Foundry won't pull the update for
   users (see commit `3cc6182`).
+- **`download` must be version-pinned to a release asset**, never a branch. It previously pointed
+  at `archive/refs/heads/main.zip`, which made version numbers meaningless — every installer got
+  whatever `main` happened to be, regardless of the version in the manifest. `release.mjs` refuses
+  to build if `download` doesn't end with `/releases/download/v<version>/module.zip`.
+
+## Cutting a release
+
+`manifest` points at `releases/latest/download/module.json` (so Foundry can always find the newest
+manifest) while `download` points at a specific tag's asset. Both URLs only resolve once the
+release exists and has **both** files attached — `module.json` must be uploaded as its own asset,
+not just committed.
+
+```bash
+# 1. bump module.json "version" AND the version inside "download"  (release.mjs checks this)
+# 2. rebuild + repack if content changed, then commit everything
+npm run release                              # -> dist/module.zip + dist/module.json
+gh release create v<version> dist/module.zip dist/module.json --title "v<version>" --notes "..."
+```
+
+`release.mjs` builds the zip with `git archive` from `HEAD`, so it can only ever contain committed
+content, and it aborts on a dirty tree, a version/URL mismatch, or a pack with no compiled `.ldb`.
+The zip holds `module.json`, `packs/`, `assets/`, `LICENSE.md`, `README.md` at the archive root —
+no wrapper directory, which is what Foundry's installer expects. `dist/` is gitignored.
 
 ### dnd5e conversion conventions in use
 

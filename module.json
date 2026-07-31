@@ -2,7 +2,7 @@
   "id": "wc5e-bestiary",
   "title": "Warcraft 5e (WC5E)",
   "description": "Compendium content for playing Warcraft on the dnd5e system, converted from the community Warcraft 5e (WC5E) project: monsters, items and spells today, with races, classes, backgrounds and feats planned. Fan work; not affiliated with Blizzard Entertainment or the WC5E team.",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "authors": [
     {
       "name": "ArthurKyl",
@@ -87,6 +87,6 @@
     }
   ],
   "url": "https://github.com/ArthurKyl/foundry-wc5e",
-  "manifest": "https://raw.githubusercontent.com/ArthurKyl/foundry-wc5e/main/module.json",
-  "download": "https://github.com/ArthurKyl/foundry-wc5e/archive/refs/heads/main.zip"
+  "manifest": "https://github.com/ArthurKyl/foundry-wc5e/releases/latest/download/module.json",
+  "download": "https://github.com/ArthurKyl/foundry-wc5e/releases/download/v1.5.1/module.zip"
 }
