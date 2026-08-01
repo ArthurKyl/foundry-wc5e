@@ -214,6 +214,64 @@ def check_spell_coverage(packs, list_identifiers):
     notes.append(f"{len(ours) - len(orphans)}/{len(ours)} spells reachable from a class list")
 
 
+def check_missing_manifest(packs):
+    """The auto-assign manifest must point at documents that still exist.
+
+    It is generated, so a stale entry means a builder and the manifest have
+    drifted -- and a stale entry is invisible in play: the tool would simply
+    skip that monster.
+    """
+    path = os.path.join(REPO, "assets", "missing-spells.json")
+    if not os.path.exists(path):
+        fail("missing", "assets/missing-spells.json not found -- run npm run build")
+        return
+    try:
+        data = json.load(open(path, encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        fail("missing", f"assets/missing-spells.json is not valid JSON: {e}")
+        return
+    if data.get("version") != 1:
+        fail("missing", f"unknown manifest version {data.get('version')!r}, expected 1")
+        return
+    if not data.get("aliases"):
+        fail("missing", "manifest has no aliases -- the runtime normaliser would drift")
+
+    actor_ids = {d["_id"] for _, d in packs.get("monsters", []) if d.get("_id")}
+    pages = set()
+    for _, d in packs.get("spell-lists", []):
+        for p in d.get("pages", []):
+            pages.add(f"{d['_id']}.{p['_id']}")
+
+    n_spells = 0
+    for aid, rec in data.get("monsters", {}).items():
+        if aid not in actor_ids:
+            fail("missing", f"manifest names monster {aid} ({rec.get('name')}) "
+                            "which is not in src/monsters")
+        n_spells += len(rec.get("spells", []))
+        for s in rec.get("spells", []):
+            if not s.get("name") or not s.get("key"):
+                fail("missing", f"monster {rec.get('name')} has a spell record "
+                                f"with an empty name/key: {s!r}")
+            if s.get("prep") not in ("prepared", "atwill", "innate"):
+                fail("missing", f"monster {rec.get('name')} spell {s.get('name')!r} "
+                                f"has an unknown prep {s.get('prep')!r}")
+
+    n_entries = 0
+    for key, rec in data.get("spellLists", {}).items():
+        if key not in pages:
+            fail("missing", f"manifest names spell-list page {key} "
+                            f"({rec.get('name')}) which does not exist")
+        n_entries += len(rec.get("spells", []))
+        for s in rec.get("spells", []):
+            if not s.get("name") or not s.get("key"):
+                fail("missing", f"spell list {rec.get('name')} has a record "
+                                f"with an empty name/key: {s!r}")
+
+    notes.append(f"auto-assign manifest: {len(data.get('monsters', {}))} monsters "
+                 f"({n_spells} refs), {len(data.get('spellLists', {}))} spell-list "
+                 f"pages ({n_entries} entries)")
+
+
 def check_release_shape(manifest):
     v = manifest.get("version")
     dl = manifest.get("download", "")
@@ -233,6 +291,7 @@ def main():
     check_advancement(packs, idents)
     check_sources(manifest, packs)
     check_spell_coverage(packs, idents)
+    check_missing_manifest(packs)
     check_release_shape(manifest)
 
     total = sum(len(d) for d in packs.values())
