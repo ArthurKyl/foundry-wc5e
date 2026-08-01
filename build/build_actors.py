@@ -652,6 +652,13 @@ def main():
         top = ", ".join(f"{n}(x{c})" for n, c in un_counts.most_common(20))
         print(f"  unresolved (stay as text): {top}")
 
+    if spell_embed.DROPPED:
+        print(f"  {len(spell_embed.DROPPED)} mis-split statblock fragment(s) dropped "
+              "(a pact-magic header HEADER cannot parse; the spells inside them are "
+              "not embedded and not in the manifest):")
+        for frag in sorted(set(spell_embed.DROPPED)):
+            print(f"      {frag}")
+
     # The auto-assign tool searches the GM's own compendiums for these at runtime.
     records = {}
     for actor_id, name, _matched, unmatched in SPELL_REPORT:

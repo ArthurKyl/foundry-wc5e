@@ -111,10 +111,12 @@ export async function collectState({ manifest, targets, destination, deps = live
  *
  * One getIndex() per distinct pack rather than one fromUuid() per entry: a
  * class spell list can hold 150+ links and this runs on every scan. A uuid
- * whose pack is unavailable is simply absent from the result, which makes the
- * caller treat that entry as unknown rather than as satisfied -- the safe way
- * round, since the worst case is re-planning a write the apply step then
- * skips as a duplicate.
+ * whose pack is unavailable is simply absent from the result, so the caller
+ * treats that entry as unknown rather than as satisfied. That is the safe way
+ * round for monsters, where applyPlan would skip the duplicate anyway. For
+ * lists it can mean re-linking the same spell under a second uuid, since
+ * applyPlan dedupes list entries by uuid -- only reachable when a pack the
+ * list already points into has gone missing.
  *
  * @param {string[]} uuids
  * @returns {Promise<Map<string, string>>}

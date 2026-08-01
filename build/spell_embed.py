@@ -84,6 +84,9 @@ def _norm(n):
     return ALIAS.get(n, n)
 
 
+# Mis-split statblock fragments seen during this build; reported by build_actors.
+DROPPED = []
+
 _CUSTOM = None
 _SRD = None
 
@@ -151,6 +154,14 @@ def parse_spellcasting(text):
         names = [(raw, key) for raw, key in pairs
                  if 3 <= len(key) <= 45 and ":" not in key
                  and not any(w in key for w in BAD)]
+        # A colon means the source line was mis-split across two statblock
+        # groups. Those must not reach the manifest, but they must not vanish
+        # silently either: the fragment usually hides a real spell name (the
+        # known case buries "arms of hadar"), and the underlying cause is a
+        # pact-magic header HEADER cannot match. Collected for the build report.
+        DROPPED.extend(key for _raw, key in pairs
+                       if ":" in key and 3 <= len(key) <= 45
+                       and not any(w in key for w in BAD))
         if not names:
             continue
         if mm.group("cantrip"):
