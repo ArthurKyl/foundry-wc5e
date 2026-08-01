@@ -20,6 +20,8 @@
     </ul>
   {{/if}}
 
+  {{> wc5eAutoAssignNotFound}}
+
   {{#if applied.length}}
     <section class="wc5e-aa-card">
       <h3>{{localize "WC5E.AutoAssign.AssignedHeading"}}</h3>
@@ -37,7 +39,6 @@
     </section>
   {{/if}}
 
-  {{> wc5eAutoAssignNotFound}}
 
   <p class="wc5e-aa-hint">{{localize "WC5E.AutoAssign.UpdateCaveat"}}</p>
 </section>

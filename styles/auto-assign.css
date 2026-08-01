@@ -324,12 +324,25 @@
 
 /* ---------------------------------------------------------------- results -- */
 
-#wc5e-auto-assign .wc5e-aa-writes,
 #wc5e-auto-assign .wc5e-aa-notfound,
 #wc5e-auto-assign .wc5e-aa-failures {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+/* The assign list is the long one -- 50+ monsters is normal -- and it sits
+ * below the not-found block, which is what the GM has to act on. Capping it
+ * keeps the actionable part reachable without scrolling the whole window past
+ * a wall of successful writes. The not-found list above is deliberately NOT
+ * capped: it is short, and stacking two scrollers is what made this awkward
+ * the first time. */
+#wc5e-auto-assign .wc5e-aa-writes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 15rem;
+  overflow-y: auto;
 }
 
 #wc5e-auto-assign .wc5e-aa-writes > li {

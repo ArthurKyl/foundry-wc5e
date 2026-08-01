@@ -25,6 +25,8 @@
     </p>
   {{/if}}
 
+  {{> wc5eAutoAssignNotFound}}
+
   {{#if writes.length}}
     <section class="wc5e-aa-card">
       <h3>{{localize "WC5E.AutoAssign.WillAssignHeading"}}</h3>
@@ -44,5 +46,4 @@
     <p class="wc5e-aa-empty">{{localize "WC5E.AutoAssign.NothingToAssign"}}</p>
   {{/if}}
 
-  {{> wc5eAutoAssignNotFound}}
 </section>
