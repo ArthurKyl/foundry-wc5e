@@ -22,13 +22,16 @@ export function normaliseName(raw, aliases = {}) {
   n = n.replace(/\^[a-z]+\^/g, "");
   n = n.replace(/✦/g, "").replace(/\*/g, "");
   n = n.replace(/\([^)]*\)/g, "");
-  n = n.replace(/<\/?br>/g, "");
+  n = n.replace(/<\/?br\s*\/?>/g, "");
   // Strip zero-width characters (BOM, ZWSP, ZWNJ, ZWJ) that survive from
   // Homebrewery/GMBinder/PDF extraction. JS's \s matches U+FEFF but Python's
   // re \s does not (and neither matches U+200B/C/D), so this is an explicit
   // strip on both sides rather than relying on differing \s semantics --
   // keep build/spell_embed.py's _norm() in step with this.
   n = n.replace(/[﻿​‌‍]/g, "");
+  // Python's re \s matches these, JS's does not -- normalise to a plain space
+  // on both sides so the two engines cannot disagree.
+  n = n.replace(/[\u0085\u001C-\u001F]/g, " ");
   // Collapse first, then strip -- Task 2 reordered these two steps in
   // spell_embed._norm() (stripping first leaves a trailing space behind a
   // newline). This port must stay in the same order.

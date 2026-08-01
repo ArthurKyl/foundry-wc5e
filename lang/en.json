@@ -45,5 +45,6 @@
   "WC5E.AutoAssign.NothingToShow": "Nothing to show.",
   "WC5E.AutoAssign.ProgressScan": "Searching {done}/{total} — {what}",
   "WC5E.AutoAssign.ProgressApply": "Writing {done}/{total} — {what}",
-  "WC5E.AutoAssign.ProgressReading": "reading current state"
+  "WC5E.AutoAssign.ProgressReading": "reading current state",
+  "WC5E.AutoAssign.AssignedHeading": "Assigned"
 }

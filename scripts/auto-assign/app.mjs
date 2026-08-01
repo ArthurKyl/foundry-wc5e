@@ -210,9 +210,20 @@ export class AutoAssignApp extends HandlebarsApplicationMixin(ApplicationV2) {
   }
 
   #reportContext() {
+    const failed = new Set((this.#result?.failures ?? []).map(f => f.target));
     return {
       ...this.#notFoundContext(),
       result: this.#result,
+      // What actually landed, grouped by target with the pack each spell came
+      // from, so a wrong match is visible rather than silent.
+      applied: this.#plan.writes.filter(w => !failed.has(w.targetName)).map(w => ({
+        targetName: w.targetName,
+        scopeLabel: w.kind === "list"
+          ? game.i18n.localize("WC5E.AutoAssign.ScopeList")
+          : game.i18n.localize(w.scope === "pack"
+            ? "WC5E.AutoAssign.ScopePack" : "WC5E.AutoAssign.ScopeWorld"),
+        spells: w.spells,
+      })),
       buttons: [{ type: "button", action: "back", icon: "fa-solid fa-arrow-left",
                   label: "WC5E.AutoAssign.Done" }],
     };
@@ -260,12 +271,16 @@ export class AutoAssignApp extends HandlebarsApplicationMixin(ApplicationV2) {
     return null;
   }
 
-  #onToggleNode(ev) {
+  async #onToggleNode(ev) {
     const node = this.#findNode(ev.currentTarget.dataset.nodeId);
     if ( !node ) return;
     const ids = packIdsUnder(node);
     if ( ev.currentTarget.checked ) ids.forEach(id => this.#checked.add(id));
     else ids.forEach(id => this.#checked.delete(id));
+    // Persist on change, like the target and destination controls -- otherwise
+    // closing the window without pressing Scan silently discards the selection.
+    await game.settings.set(MODULE_ID, SETTINGS.packs,
+      selectedPackIds(this.#tree, this.#checked));
     this.render();
   }
 

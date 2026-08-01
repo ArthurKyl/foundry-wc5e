@@ -4,6 +4,20 @@
     <p class="notification error">{{localize "WC5E.AutoAssign.ReportFailures"}}</p>
     <ul>{{#each result.failures}}<li>{{this.target}}: {{this.error}}</li>{{/each}}</ul>
   {{/if}}
+  {{#if applied.length}}
+    <h3>{{localize "WC5E.AutoAssign.AssignedHeading"}}</h3>
+    <ol class="wc5e-aa-writes">
+      {{#each applied}}
+        <li><strong>{{this.targetName}}</strong>
+          <span class="notes">{{this.scopeLabel}}</span>
+          <ul>{{#each this.spells}}
+            <li>{{this.name}} <span class="notes">{{this.match.packLabel}}</span></li>
+          {{/each}}</ul>
+        </li>
+      {{/each}}
+    </ol>
+  {{/if}}
+
   {{> wc5eAutoAssignNotFound}}
   <p class="notes hint">{{localize "WC5E.AutoAssign.UpdateCaveat"}}</p>
 </section>
