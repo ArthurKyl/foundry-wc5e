@@ -27,7 +27,7 @@
         "type": "class",
         "grouping": "level",
         "description": {
-          "value": "<p>The following spells appear on this class's WC5E spell list but are not included in this module, because they come from non-SRD official sourcebooks that cannot be redistributed. If your world has them, add them to the list manually.</p><ul><li>Absorb Elements <em>(XGE)</em></li><li>Cause Fear <em>(XGE)</em></li><li>Compelled Duel <em>(not in SRD)</em></li><li>Prot. from Evil and Good <em>(not in SRD)</em></li><li>Thunderous Smite <em>(not in SRD)</em></li><li>Wrathful Smite <em>(not in SRD)</em></li><li>Crown of Madness <em>(not in SRD)</em></li><li>Snilloc's Snowball Swarm <em>(XGE)</em></li><li>Enemies Abound <em>(XGE)</em></li><li>Feign Death <em>(not in SRD)</em></li><li>Life Transference <em>(XGE)</em></li><li>Find Greater Steed <em>(XGE)</em></li><li>Sickening Radiance <em>(XGE)</em></li><li>Staggering Smite <em>(not in SRD)</em></li><li>Banishing Smite <em>(not in SRD)</em></li><li>Circle of Power <em>(not in SRD)</em></li><li>Danse Macabre <em>(XGE)</em></li><li>Enervation <em>(XGE)</em></li><li>Negative Energy Flood <em>(XGE)</em></li></ul>"
+          "value": "<p>The following spells appear on this class's WC5E spell list but are not included in this module, because they come from non-SRD official sourcebooks that cannot be redistributed. If your world has them, add them to the list manually.</p><ul><li>Absorb Elements <em>(XGE)</em></li><li>Cause Fear <em>(XGE)</em></li><li>Compelled Duel <em>(not in SRD)</em></li><li>Thunderous Smite <em>(not in SRD)</em></li><li>Wrathful Smite <em>(not in SRD)</em></li><li>Crown of Madness <em>(not in SRD)</em></li><li>Snilloc's Snowball Swarm <em>(XGE)</em></li><li>Enemies Abound <em>(XGE)</em></li><li>Feign Death <em>(not in SRD)</em></li><li>Life Transference <em>(XGE)</em></li><li>Find Greater Steed <em>(XGE)</em></li><li>Sickening Radiance <em>(XGE)</em></li><li>Staggering Smite <em>(not in SRD)</em></li><li>Banishing Smite <em>(not in SRD)</em></li><li>Circle of Power <em>(not in SRD)</em></li><li>Danse Macabre <em>(XGE)</em></li><li>Enervation <em>(XGE)</em></li><li>Negative Energy Flood <em>(XGE)</em></li></ul>"
         },
         "unlinkedSpells": [],
         "spells": [
@@ -44,6 +44,7 @@
           "Compendium.dnd5e.spells.Item.ge3Saet9zPTDyaoL",
           "Compendium.dnd5e.spells24.Item.phbsplIceKnife00",
           "Compendium.wc5e-bestiary.spells.Item.qpWqCchXcUwvBQI5",
+          "Compendium.dnd5e.spells.Item.xmDBqZhRVrtLP8h2",
           "Compendium.dnd5e.spells24.Item.phbsplRayofSickn",
           "Compendium.wc5e-bestiary.spells.Item.jtR5XiWQPhbAtK4G",
           "Compendium.dnd5e.spells.Item.4v2H3hHb3Ph9XLNd",
@@ -456,7 +457,7 @@
         "type": "class",
         "grouping": "level",
         "description": {
-          "value": "<p>The following spells appear on this class's WC5E spell list but are not included in this module, because they come from non-SRD official sourcebooks that cannot be redistributed. If your world has them, add them to the list manually.</p><ul><li>Ceremony <em>(XGE)</em></li><li>Compelled Duel <em>(not in SRD)</em></li><li>Prot. from Evil and Good <em>(not in SRD)</em></li><li>Thunderous Smite <em>(not in SRD)</em></li><li>Wrathful Smite <em>(not in SRD)</em></li><li>Aura of Vitality <em>(not in SRD)</em></li><li>Blinding Smite <em>(not in SRD)</em></li><li>Crusader's Mantle <em>(not in SRD)</em></li><li>Life Transference <em>(XGE)</em></li><li>Aura of Purity <em>(not in SRD)</em></li><li>Find Greater Steed <em>(XGE)</em></li><li>Staggering Smite <em>(not in SRD)</em></li><li>Banishing Smite <em>(not in SRD)</em></li><li>Circle of Power <em>(not in SRD)</em></li><li>Destructive Wave <em>(not in SRD)</em></li><li>Holy Weapon <em>(XGE)</em></li><li>Wall of Light <em>(XGE)</em></li></ul>"
+          "value": "<p>The following spells appear on this class's WC5E spell list but are not included in this module, because they come from non-SRD official sourcebooks that cannot be redistributed. If your world has them, add them to the list manually.</p><ul><li>Ceremony <em>(XGE)</em></li><li>Compelled Duel <em>(not in SRD)</em></li><li>Thunderous Smite <em>(not in SRD)</em></li><li>Wrathful Smite <em>(not in SRD)</em></li><li>Aura of Vitality <em>(not in SRD)</em></li><li>Blinding Smite <em>(not in SRD)</em></li><li>Crusader's Mantle <em>(not in SRD)</em></li><li>Life Transference <em>(XGE)</em></li><li>Aura of Purity <em>(not in SRD)</em></li><li>Find Greater Steed <em>(XGE)</em></li><li>Staggering Smite <em>(not in SRD)</em></li><li>Banishing Smite <em>(not in SRD)</em></li><li>Circle of Power <em>(not in SRD)</em></li><li>Destructive Wave <em>(not in SRD)</em></li><li>Holy Weapon <em>(XGE)</em></li><li>Wall of Light <em>(XGE)</em></li></ul>"
         },
         "unlinkedSpells": [],
         "spells": [
@@ -468,6 +469,7 @@
           "Compendium.dnd5e.spells.Item.8MICCMeOXT3aJUy9",
           "Compendium.dnd5e.spells.Item.o8Dh7fblk1d16tnO",
           "Compendium.dnd5e.spells.Item.ge3Saet9zPTDyaoL",
+          "Compendium.dnd5e.spells.Item.xmDBqZhRVrtLP8h2",
           "Compendium.wc5e-bestiary.spells.Item.GuBrM6ywo6ltQbvy",
           "Compendium.dnd5e.spells.Item.gvdA9nPuWLck4tBl",
           "Compendium.dnd5e.spells24.Item.phbsplSearingSmi",
@@ -547,7 +549,7 @@
         "type": "class",
         "grouping": "level",
         "description": {
-          "value": "<p>The following spells appear on this class's WC5E spell list but are not included in this module, because they come from non-SRD official sourcebooks that cannot be redistributed. If your world has them, add them to the list manually.</p><ul><li>Toll the Dead <em>(XGE)</em></li><li>Word of Radiance <em>(XGE)</em></li><li>Arms of Hadar <em>(not in SRD)</em></li><li>Cause Fear <em>(XGE)</em></li><li>Ceremony <em>(XGE)</em></li><li>Prot. from Evil and Good <em>(not in SRD)</em></li><li>Crown of Madness <em>(not in SRD)</em></li><li>Gift of Gab <em>(AI)</em></li><li>Healing Spirit <em>(XGE)</em></li><li>Tasha's Mind Whip <em>(TCE)</em></li><li>Aura of Vitality <em>(not in SRD)</em></li><li>Enemies Abound <em>(XGE)</em></li><li>Fast Friends <em>(AI)</em></li><li>Feign Death <em>(not in SRD)</em></li><li>Hunger of Hadar <em>(not in SRD)</em></li><li>Intellect Fortress <em>(TCE)</em></li><li>Life Transference <em>(XGE)</em></li><li>Motivational Speech <em>(AI)</em></li><li>Aura of Purity <em>(not in SRD)</em></li><li>Raulothim's Psychic Lance <em>(FTD)</em></li><li>Shadow of Moil <em>(XGE)</em></li><li>Sickening Radiance <em>(XGE)</em></li><li>Dawn <em>(XGE)</em></li><li>Negative Energy Flood <em>(XGE)</em></li><li>Rary's Telepathic Bond <em>(not in SRD)</em></li><li>Skill Empowerment <em>(XGE)</em></li><li>Synaptic Static <em>(XGE)</em></li><li>Wall of Light <em>(XGE)</em></li><li>Mental Prison <em>(XGE)</em></li><li>Temple of the Gods <em>(XGE)</em></li><li>Abi-Dalzim's Horrid Wilting <em>(XGE)</em></li><li>Maddening Darkness <em>(XGE)</em></li><li>Psychic Scream <em>(XGE)</em></li></ul>"
+          "value": "<p>The following spells appear on this class's WC5E spell list but are not included in this module, because they come from non-SRD official sourcebooks that cannot be redistributed. If your world has them, add them to the list manually.</p><ul><li>Toll the Dead <em>(XGE)</em></li><li>Word of Radiance <em>(XGE)</em></li><li>Arms of Hadar <em>(not in SRD)</em></li><li>Cause Fear <em>(XGE)</em></li><li>Ceremony <em>(XGE)</em></li><li>Crown of Madness <em>(not in SRD)</em></li><li>Gift of Gab <em>(AI)</em></li><li>Healing Spirit <em>(XGE)</em></li><li>Tasha's Mind Whip <em>(TCE)</em></li><li>Aura of Vitality <em>(not in SRD)</em></li><li>Enemies Abound <em>(XGE)</em></li><li>Fast Friends <em>(AI)</em></li><li>Feign Death <em>(not in SRD)</em></li><li>Hunger of Hadar <em>(not in SRD)</em></li><li>Intellect Fortress <em>(TCE)</em></li><li>Life Transference <em>(XGE)</em></li><li>Motivational Speech <em>(AI)</em></li><li>Aura of Purity <em>(not in SRD)</em></li><li>Raulothim's Psychic Lance <em>(FTD)</em></li><li>Shadow of Moil <em>(XGE)</em></li><li>Sickening Radiance <em>(XGE)</em></li><li>Dawn <em>(XGE)</em></li><li>Negative Energy Flood <em>(XGE)</em></li><li>Rary's Telepathic Bond <em>(not in SRD)</em></li><li>Skill Empowerment <em>(XGE)</em></li><li>Synaptic Static <em>(XGE)</em></li><li>Wall of Light <em>(XGE)</em></li><li>Mental Prison <em>(XGE)</em></li><li>Temple of the Gods <em>(XGE)</em></li><li>Abi-Dalzim's Horrid Wilting <em>(XGE)</em></li><li>Maddening Darkness <em>(XGE)</em></li><li>Psychic Scream <em>(XGE)</em></li></ul>"
         },
         "unlinkedSpells": [],
         "spells": [
@@ -573,6 +575,7 @@
           "Compendium.wc5e-bestiary.spells.Item.0ArRCt60PcZ8eIRb",
           "Compendium.dnd5e.spells.Item.ksaaTxIbKx2sJfia",
           "Compendium.wc5e-bestiary.spells.Item.WC7zfTGIVCCzqQy6",
+          "Compendium.dnd5e.spells.Item.xmDBqZhRVrtLP8h2",
           "Compendium.dnd5e.spells.Item.Kn7K5PtYUJAKZTTp",
           "Compendium.dnd5e.spells.Item.gvdA9nPuWLck4tBl",
           "Compendium.dnd5e.spells.Item.z1mx84ONwkXKUZd7",

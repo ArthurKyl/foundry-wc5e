@@ -33,6 +33,10 @@ export class AutoAssignApp extends HandlebarsApplicationMixin(ApplicationV2) {
   static DEFAULT_OPTIONS = {
     id: "wc5e-auto-assign",
     tag: "form",
+    // Without `standard-form` there is no ancestor for core's
+    // `.standard-form .form-footer { flex-direction: row }` rule, so every
+    // footer button renders full-width and stacked (foundry2.css:5478).
+    classes: ["standard-form"],
     window: { title: "WC5E.AutoAssign.Title", icon: "fa-solid fa-wand-magic-sparkles",
               resizable: true },
     position: { width: 640, height: 720 },
@@ -47,7 +51,12 @@ export class AutoAssignApp extends HandlebarsApplicationMixin(ApplicationV2) {
   };
 
   static PARTS = {
-    body: { template: "modules/wc5e-bestiary/templates/auto-assign/configure.hbs" },
+    // `scrollable` is the only way Foundry preserves scroll position across a
+    // re-render (handlebars-application.mjs), and #onToggleNode re-renders on
+    // every tick. "" is the part root; .wc5e-aa-tree is its own scroller
+    // because the stylesheet caps its height.
+    body: { template: "modules/wc5e-bestiary/templates/auto-assign/configure.hbs",
+            scrollable: ["", ".wc5e-aa-tree"] },
     footer: { template: "templates/generic/form-footer.hbs" },
   };
 
@@ -63,6 +72,8 @@ export class AutoAssignApp extends HandlebarsApplicationMixin(ApplicationV2) {
   #busy = false;
 
   static async show() {
+    const open = foundry.applications.instances.get("wc5e-auto-assign");
+    if ( open ) return open.bringToFront?.() ?? open;
     const app = new AutoAssignApp();
     await app.render(true);
     return app;
@@ -261,6 +272,7 @@ export class AutoAssignApp extends HandlebarsApplicationMixin(ApplicationV2) {
   static async #onScan() {
     if ( this.#busy ) return;
     this.#busy = true;
+    await this.render();   // matches #onApply: disable the button while working
     try {
       const packIds = selectedPackIds(this.#tree, this.#checked);
       await game.settings.set(MODULE_ID, SETTINGS.packs, packIds);
@@ -359,13 +371,13 @@ export class AutoAssignApp extends HandlebarsApplicationMixin(ApplicationV2) {
       content: `<textarea class="wc5e-aa-textdump" readonly rows="24">`
         + foundry.utils.escapeHTML(text || empty) + `</textarea>`,
       buttons: [
-        { action: "copy", icon: "fa-solid fa-copy",
+        { action: "copy", type: "button", icon: "fa-solid fa-copy",
           label: game.i18n.localize("WC5E.AutoAssign.CopyList"),
           callback: async () => {
             await game.clipboard.copyPlainText(text);
             ui.notifications.info(game.i18n.localize("WC5E.AutoAssign.Copied"));
           } },
-        { action: "close", label: game.i18n.localize("WC5E.AutoAssign.Done"), default: true },
+        { action: "dismiss", label: game.i18n.localize("WC5E.AutoAssign.Done"), default: true },
       ],
       rejectClose: false,
     });

@@ -50,6 +50,22 @@ ALIAS = {
 }
 
 
+def _display(n):
+    """The name as a human should read it: source markup gone, case kept.
+
+    _norm() produces the lookup key and lowercases; this produces what the
+    auto-assign report shows a GM, so `*cause fear* ^XGE^` reads as
+    `cause fear` rather than being pasted into a shopping list verbatim.
+    Note the caret group is optional-closing: the source has at least one
+    unpaired marker (`Thunder Step ^XGE`).
+    """
+    n = re.sub(r"\^[A-Za-z]+\^?", "", n)
+    n = n.replace("\u2726", "").replace("*", "")
+    n = re.sub(r"</?br\s*/?>", "", n)
+    n = re.sub(r"\s+", " ", n)
+    return n.strip(" .:;-")
+
+
 def _norm(n):
     n = n.lower()
     n = re.sub(r"\^[a-z]+\^", "", n)
@@ -125,8 +141,7 @@ def parse_spellcasting(text):
         # Keep the original spelling alongside the lookup key: the key is
         # lowercased for matching, but the raw name is what a human reads in
         # the auto-assign report.
-        pairs = [(re.sub(r"\s+", " ", x).strip(" .:;-"), _norm(x))
-                 for x in re.split(r"[,;]", body)]
+        pairs = [(_display(x), _norm(x)) for x in re.split(r"[,;]", body)]
         # Only drop obvious intro-prose fragments. NOT "the "/"of" etc. — those
         # occur in real spell names (Spare the Dying, Light of the Protector).
         # Non-spell tokens simply won't match an index and fall through as

@@ -23,28 +23,28 @@
         {
           "key": "armor of agathys",
           "level": null,
-          "name": "*armor of agathys",
+          "name": "armor of agathys",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "frostbite",
           "level": null,
-          "name": "*frostbite*",
+          "name": "frostbite",
           "perDay": null,
           "prep": "atwill"
         },
         {
           "key": "shape water",
           "level": null,
-          "name": "*shape water*",
+          "name": "shape water",
           "perDay": null,
           "prep": "atwill"
         },
         {
           "key": "tidal wave",
           "level": null,
-          "name": "tidal wave*",
+          "name": "tidal wave",
           "perDay": 1,
           "prep": "innate"
         }
@@ -57,35 +57,35 @@
         {
           "key": "gust",
           "level": null,
-          "name": "*gust*",
+          "name": "gust",
           "perDay": null,
           "prep": "atwill"
         },
         {
           "key": "negative energy flood",
           "level": null,
-          "name": "*negative energy flood*",
+          "name": "negative energy flood",
           "perDay": 1,
           "prep": "innate"
         },
         {
           "key": "ray of sickness",
           "level": null,
-          "name": "*ray of sickeness*",
+          "name": "ray of sickeness",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "sickening radiance",
           "level": null,
-          "name": "*sickening radiance*",
+          "name": "sickening radiance",
           "perDay": 1,
           "prep": "innate"
         },
         {
           "key": "virtue",
           "level": null,
-          "name": "*virtue*",
+          "name": "virtue",
           "perDay": null,
           "prep": "atwill"
         }
@@ -98,7 +98,7 @@
         {
           "key": "absorb elements",
           "level": 1,
-          "name": "absorb elements*",
+          "name": "absorb elements",
           "perDay": null,
           "prep": "prepared"
         },
@@ -112,21 +112,21 @@
         {
           "key": "earth tremor",
           "level": 1,
-          "name": "*earth tremor",
+          "name": "earth tremor",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "maximilian's earthen grasp",
           "level": 2,
-          "name": "maximilian's earthen grasp**",
+          "name": "maximilian's earthen grasp",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "mold earth",
           "level": 0,
-          "name": "*mold earth",
+          "name": "mold earth",
           "perDay": null,
           "prep": "prepared"
         }
@@ -139,28 +139,28 @@
         {
           "key": "cause fear",
           "level": null,
-          "name": "*cause fear*",
+          "name": "cause fear",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "gust",
           "level": null,
-          "name": "*gust*",
+          "name": "gust",
           "perDay": null,
           "prep": "atwill"
         },
         {
           "key": "ray of sickness",
           "level": null,
-          "name": "*ray of sickness*",
+          "name": "ray of sickness",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "virtue",
           "level": null,
-          "name": "*virtue*",
+          "name": "virtue",
           "perDay": null,
           "prep": "atwill"
         }
@@ -173,7 +173,7 @@
         {
           "key": "cause fear",
           "level": null,
-          "name": "*cause fear* ^XGE^",
+          "name": "cause fear",
           "perDay": 1,
           "prep": "innate"
         }
@@ -186,28 +186,28 @@
         {
           "key": "blade ward",
           "level": 0,
-          "name": "*blade ward*",
+          "name": "blade ward",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "cause fear",
           "level": 1,
-          "name": "*cause fear* ^XGE^",
+          "name": "cause fear",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "ray of sickness",
           "level": 1,
-          "name": "*ray of sickness*",
+          "name": "ray of sickness",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "sickening radiance",
           "level": 4,
-          "name": "*sickening radiance* ^XGE^",
+          "name": "sickening radiance",
           "perDay": null,
           "prep": "prepared"
         }
@@ -220,14 +220,14 @@
         {
           "key": "absorb elements",
           "level": 1,
-          "name": "*absorb elements",
+          "name": "absorb elements",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "dust devil",
           "level": 2,
-          "name": "*dust devil",
+          "name": "dust devil",
           "perDay": null,
           "prep": "prepared"
         },
@@ -241,14 +241,14 @@
         {
           "key": "gust",
           "level": 0,
-          "name": "*gust",
+          "name": "gust",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "thunderclap",
           "level": 0,
-          "name": "thunderclap*",
+          "name": "thunderclap",
           "perDay": null,
           "prep": "prepared"
         }
@@ -261,7 +261,7 @@
         {
           "key": "absorb elements",
           "level": 1,
-          "name": "*Absorb Elements",
+          "name": "Absorb Elements",
           "perDay": null,
           "prep": "prepared"
         },
@@ -275,7 +275,7 @@
         {
           "key": "mold earth",
           "level": 0,
-          "name": "Mold Earth*",
+          "name": "Mold Earth",
           "perDay": null,
           "prep": "prepared"
         },
@@ -295,28 +295,28 @@
         {
           "key": "earth tremor",
           "level": null,
-          "name": "*earth tremor*",
+          "name": "earth tremor",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "maximilian's earthen grasp",
           "level": null,
-          "name": "*Maximilian's earthen grasp*",
+          "name": "Maximilian's earthen grasp",
           "perDay": 1,
           "prep": "innate"
         },
         {
           "key": "mold earth",
           "level": null,
-          "name": "*mold earth*",
+          "name": "mold earth",
           "perDay": null,
           "prep": "atwill"
         },
         {
           "key": "searing smite",
           "level": null,
-          "name": "*searing smite*",
+          "name": "searing smite",
           "perDay": 3,
           "prep": "innate"
         }
@@ -329,21 +329,21 @@
         {
           "key": "absorb elements",
           "level": 1,
-          "name": "*absorb elements",
+          "name": "absorb elements",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "dust devil",
           "level": 2,
-          "name": "*dust devil",
+          "name": "dust devil",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "gust",
           "level": 0,
-          "name": "gust*",
+          "name": "gust",
           "perDay": null,
           "prep": "prepared"
         }
@@ -356,7 +356,7 @@
         {
           "key": "searing smite",
           "level": null,
-          "name": "searing smite*",
+          "name": "searing smite",
           "perDay": 1,
           "prep": "innate"
         }
@@ -369,7 +369,7 @@
         {
           "key": "blade ward",
           "level": 0,
-          "name": "*blade ward*",
+          "name": "blade ward",
           "perDay": null,
           "prep": "prepared"
         }
@@ -382,7 +382,7 @@
         {
           "key": "searing smite",
           "level": null,
-          "name": "searing smite*",
+          "name": "searing smite",
           "perDay": 1,
           "prep": "innate"
         }
@@ -395,7 +395,7 @@
         {
           "key": "control flames",
           "level": null,
-          "name": "*control flames*",
+          "name": "control flames",
           "perDay": null,
           "prep": "atwill"
         }
@@ -408,7 +408,7 @@
         {
           "key": "cause fear",
           "level": null,
-          "name": "*cause fear*",
+          "name": "cause fear",
           "perDay": 3,
           "prep": "innate"
         }
@@ -421,14 +421,14 @@
         {
           "key": "absorb elements",
           "level": 1,
-          "name": "*absorb elements",
+          "name": "absorb elements",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "toll the dead",
           "level": 0,
-          "name": "toll the dead*",
+          "name": "toll the dead",
           "perDay": null,
           "prep": "prepared"
         }
@@ -441,7 +441,7 @@
         {
           "key": "hex",
           "level": null,
-          "name": "*hex*",
+          "name": "hex",
           "perDay": 3,
           "prep": "innate"
         }
@@ -454,7 +454,7 @@
         {
           "key": "armor of agathys",
           "level": 1,
-          "name": "*armor of agathys",
+          "name": "armor of agathys",
           "perDay": null,
           "prep": "prepared"
         },
@@ -481,14 +481,14 @@
         {
           "key": "hex",
           "level": null,
-          "name": "*hex*",
+          "name": "hex",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "witch bolt",
           "level": null,
-          "name": "*witch bolt*",
+          "name": "witch bolt",
           "perDay": 3,
           "prep": "innate"
         }
@@ -501,14 +501,14 @@
         {
           "key": "absorb elements",
           "level": 1,
-          "name": "*absorb elements",
+          "name": "absorb elements",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "toll the dead",
           "level": 0,
-          "name": "toll the dead*",
+          "name": "toll the dead",
           "perDay": null,
           "prep": "prepared"
         }
@@ -521,7 +521,7 @@
         {
           "key": "ray of sickness",
           "level": null,
-          "name": "*ray of sickness*",
+          "name": "ray of sickness",
           "perDay": 3,
           "prep": "innate"
         }
@@ -534,21 +534,21 @@
         {
           "key": "earth tremor",
           "level": null,
-          "name": "*earth tremor*",
+          "name": "earth tremor",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "maximilian's earthen grasp",
           "level": null,
-          "name": "*Maximilian's Earthen Grasp*",
+          "name": "Maximilian's Earthen Grasp",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "mold earth",
           "level": null,
-          "name": "*mold earth*",
+          "name": "mold earth",
           "perDay": null,
           "prep": "atwill"
         }
@@ -561,7 +561,7 @@
         {
           "key": "cause fear",
           "level": 1,
-          "name": "*cause fear",
+          "name": "cause fear",
           "perDay": null,
           "prep": "prepared"
         },
@@ -582,7 +582,7 @@
         {
           "key": "enervation",
           "level": 5,
-          "name": "enervation*",
+          "name": "enervation",
           "perDay": null,
           "prep": "prepared"
         },
@@ -610,7 +610,7 @@
         {
           "key": "summon undead",
           "level": 3,
-          "name": "summon undead*",
+          "name": "summon undead",
           "perDay": null,
           "prep": "prepared"
         }
@@ -630,21 +630,21 @@
         {
           "key": "shape water",
           "level": 0,
-          "name": "*shape water",
+          "name": "shape water",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "tidal wave",
           "level": 3,
-          "name": "tidal wave*",
+          "name": "tidal wave",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "warding wind",
           "level": 2,
-          "name": "warding wind*",
+          "name": "warding wind",
           "perDay": null,
           "prep": "prepared"
         }
@@ -657,14 +657,14 @@
         {
           "key": "shadow of moil",
           "level": null,
-          "name": "*shadow of moil* ^XGE^",
+          "name": "shadow of moil",
           "perDay": 1,
           "prep": "innate"
         },
         {
           "key": "shape water",
           "level": null,
-          "name": "*shape water* ^XGE^",
+          "name": "shape water",
           "perDay": null,
           "prep": "atwill"
         }
@@ -677,7 +677,7 @@
         {
           "key": "cause fear",
           "level": null,
-          "name": "*cause fear*",
+          "name": "cause fear",
           "perDay": 1,
           "prep": "innate"
         }
@@ -690,21 +690,21 @@
         {
           "key": "earth tremor",
           "level": null,
-          "name": "*earth tremor*",
+          "name": "earth tremor",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "erupting earth",
           "level": null,
-          "name": "*erupting earth*",
+          "name": "erupting earth",
           "perDay": 1,
           "prep": "innate"
         },
         {
           "key": "mold earth",
           "level": null,
-          "name": "*mold earth*",
+          "name": "mold earth",
           "perDay": null,
           "prep": "atwill"
         }
@@ -717,7 +717,7 @@
         {
           "key": "thorn whip",
           "level": 0,
-          "name": "thorn whip*",
+          "name": "thorn whip",
           "perDay": null,
           "prep": "prepared"
         }
@@ -730,7 +730,7 @@
         {
           "key": "armor of agathys",
           "level": 1,
-          "name": "*armor of Agathys",
+          "name": "armor of Agathys",
           "perDay": null,
           "prep": "prepared"
         },
@@ -744,7 +744,7 @@
         {
           "key": "ice knife",
           "level": 1,
-          "name": "ice knife*",
+          "name": "ice knife",
           "perDay": null,
           "prep": "prepared"
         }
@@ -757,7 +757,7 @@
         {
           "key": "searing smite",
           "level": null,
-          "name": "searing smite*",
+          "name": "searing smite",
           "perDay": 1,
           "prep": "innate"
         }
@@ -770,7 +770,7 @@
         {
           "key": "summon greater demon",
           "level": null,
-          "name": "*summon greater demon*",
+          "name": "summon greater demon",
           "perDay": 1,
           "prep": "innate"
         }
@@ -790,14 +790,14 @@
         {
           "key": "maximilian's earthen grasp",
           "level": 2,
-          "name": "maximilian's earthen grasp*",
+          "name": "maximilian's earthen grasp",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "mold earth",
           "level": 0,
-          "name": "mold earth*",
+          "name": "mold earth",
           "perDay": null,
           "prep": "prepared"
         }
@@ -810,28 +810,28 @@
         {
           "key": "cause fear",
           "level": null,
-          "name": "*cause fear*",
+          "name": "cause fear",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "control flames",
           "level": null,
-          "name": "*control flames*",
+          "name": "control flames",
           "perDay": null,
           "prep": "atwill"
         },
         {
           "key": "mold earth",
           "level": null,
-          "name": "*mold earth*",
+          "name": "mold earth",
           "perDay": null,
           "prep": "atwill"
         },
         {
           "key": "shape water",
           "level": null,
-          "name": "*shape water*",
+          "name": "shape water",
           "perDay": null,
           "prep": "atwill"
         }
@@ -844,21 +844,21 @@
         {
           "key": "skywrite",
           "level": 2,
-          "name": "skywrite*",
+          "name": "skywrite",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "thorn whip",
           "level": 0,
-          "name": "thorn whip*",
+          "name": "thorn whip",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "wrath of nature",
           "level": 5,
-          "name": "wrath of nature*",
+          "name": "wrath of nature",
           "perDay": null,
           "prep": "prepared"
         }
@@ -871,35 +871,35 @@
         {
           "key": "grasping vine",
           "level": 4,
-          "name": "*grasping vine*",
+          "name": "grasping vine",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "guardian of nature",
           "level": 4,
-          "name": "*guardian of nature*",
+          "name": "guardian of nature",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "shape water",
           "level": 0,
-          "name": "*shape water* ^XGE^",
+          "name": "shape water",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "whirlwind",
           "level": 7,
-          "name": "*whirlwind* ^XGE^",
+          "name": "whirlwind",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "wrath of nature",
           "level": 5,
-          "name": "*wrath of nature* ^XGE^",
+          "name": "wrath of nature",
           "perDay": null,
           "prep": "prepared"
         }
@@ -912,7 +912,7 @@
         {
           "key": "word of radiance",
           "level": 0,
-          "name": "*word of radiance* ^XGE^",
+          "name": "word of radiance",
           "perDay": null,
           "prep": "prepared"
         }
@@ -925,35 +925,35 @@
         {
           "key": "cause fear",
           "level": null,
-          "name": "*cause fear*",
+          "name": "cause fear",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "control flames",
           "level": null,
-          "name": "*control flames*",
+          "name": "control flames",
           "perDay": null,
           "prep": "atwill"
         },
         {
           "key": "mold earth",
           "level": null,
-          "name": "*mold earth*",
+          "name": "mold earth",
           "perDay": null,
           "prep": "atwill"
         },
         {
           "key": "shape water",
           "level": null,
-          "name": "*shape water*",
+          "name": "shape water",
           "perDay": null,
           "prep": "atwill"
         },
         {
           "key": "warding wind",
           "level": null,
-          "name": "*warding wind*",
+          "name": "warding wind",
           "perDay": 3,
           "prep": "innate"
         }
@@ -966,14 +966,14 @@
         {
           "key": "armor of agathys",
           "level": null,
-          "name": "*Armor of Agathys*",
+          "name": "Armor of Agathys",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "shape water",
           "level": null,
-          "name": "*shape water*",
+          "name": "shape water",
           "perDay": null,
           "prep": "atwill"
         }
@@ -986,14 +986,14 @@
         {
           "key": "shadow of moil",
           "level": null,
-          "name": "*shadow of moil* ^XGE^",
+          "name": "shadow of moil",
           "perDay": 1,
           "prep": "innate"
         },
         {
           "key": "shape water",
           "level": null,
-          "name": "*shape water* ^XGE^",
+          "name": "shape water",
           "perDay": null,
           "prep": "atwill"
         }
@@ -1006,14 +1006,14 @@
         {
           "key": "enemies abound",
           "level": 3,
-          "name": "enemies abound*",
+          "name": "enemies abound",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "hex",
           "level": 1,
-          "name": "*hex",
+          "name": "hex",
           "perDay": null,
           "prep": "prepared"
         },
@@ -1033,21 +1033,21 @@
         {
           "key": "earth tremor",
           "level": null,
-          "name": "*earth tremor*",
+          "name": "earth tremor",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "gust",
           "level": null,
-          "name": "*gust*",
+          "name": "gust",
           "perDay": null,
           "prep": "atwill"
         },
         {
           "key": "mold earth",
           "level": null,
-          "name": "*mold earth*",
+          "name": "mold earth",
           "perDay": null,
           "prep": "atwill"
         }
@@ -1067,7 +1067,7 @@
         {
           "key": "toll the dead",
           "level": null,
-          "name": "toll the dead*",
+          "name": "toll the dead",
           "perDay": null,
           "prep": "atwill"
         }
@@ -1080,21 +1080,21 @@
         {
           "key": "enemies abound",
           "level": null,
-          "name": "*enemies abound*",
+          "name": "enemies abound",
           "perDay": 1,
           "prep": "innate"
         },
         {
           "key": "hunger of hadar",
           "level": null,
-          "name": "*hunger of Hadar*",
+          "name": "hunger of Hadar",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "sickening radiance",
           "level": null,
-          "name": "*sickening radiance*",
+          "name": "sickening radiance",
           "perDay": 1,
           "prep": "innate"
         }
@@ -1107,7 +1107,7 @@
         {
           "key": "shape water",
           "level": null,
-          "name": "*shape water* ^XGE^",
+          "name": "shape water",
           "perDay": null,
           "prep": "atwill"
         }
@@ -1120,14 +1120,14 @@
         {
           "key": "armor of agathys",
           "level": null,
-          "name": "*Armor of Agathys*",
+          "name": "Armor of Agathys",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "shape water",
           "level": null,
-          "name": "*shape water*",
+          "name": "shape water",
           "perDay": null,
           "prep": "atwill"
         }
@@ -1153,7 +1153,7 @@
         {
           "key": "ray of sickness",
           "level": null,
-          "name": "*ray of sickness*",
+          "name": "ray of sickness",
           "perDay": 3,
           "prep": "innate"
         }
@@ -1166,28 +1166,28 @@
         {
           "key": "control winds",
           "level": null,
-          "name": "*control winds*",
+          "name": "control winds",
           "perDay": 1,
           "prep": "innate"
         },
         {
           "key": "healing spirit",
           "level": null,
-          "name": "*healing spirit*",
+          "name": "healing spirit",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "storm sphere",
           "level": null,
-          "name": "*storm sphere*",
+          "name": "storm sphere",
           "perDay": 1,
           "prep": "innate"
         },
         {
           "key": "thunderclap",
           "level": null,
-          "name": "*thunderclap*",
+          "name": "thunderclap",
           "perDay": null,
           "prep": "atwill"
         }
@@ -1200,21 +1200,21 @@
         {
           "key": "crown of madness",
           "level": null,
-          "name": "*crown of madness",
+          "name": "crown of madness",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "mind spike",
           "level": null,
-          "name": "*mind spike*",
+          "name": "mind spike",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "phantasmal force",
           "level": null,
-          "name": "*phantasmal force*",
+          "name": "phantasmal force",
           "perDay": null,
           "prep": "atwill"
         }
@@ -1227,7 +1227,7 @@
         {
           "key": "blade ward",
           "level": null,
-          "name": "*blade ward",
+          "name": "blade ward",
           "perDay": null,
           "prep": "atwill"
         }
@@ -1240,7 +1240,7 @@
         {
           "key": "cause fear",
           "level": null,
-          "name": "*cause fear*",
+          "name": "cause fear",
           "perDay": 2,
           "prep": "innate"
         }
@@ -1253,7 +1253,7 @@
         {
           "key": "cause fear",
           "level": 1,
-          "name": "*cause fear* ^XGE^",
+          "name": "cause fear",
           "perDay": null,
           "prep": "prepared"
         }
@@ -1266,14 +1266,14 @@
         {
           "key": "blade ward",
           "level": 0,
-          "name": "*blade ward",
+          "name": "blade ward",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "ice knife",
           "level": 1,
-          "name": "*ice knife",
+          "name": "ice knife",
           "perDay": null,
           "prep": "prepared"
         }
@@ -1286,14 +1286,14 @@
         {
           "key": "beast bond",
           "level": 1,
-          "name": "*beast bond",
+          "name": "beast bond",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "beast sense",
           "level": 2,
-          "name": "*beast sense",
+          "name": "beast sense",
           "perDay": null,
           "prep": "prepared"
         },
@@ -1307,14 +1307,14 @@
         {
           "key": "guardian of nature",
           "level": 4,
-          "name": "guardian of nature*",
+          "name": "guardian of nature",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "wrath of nature",
           "level": 5,
-          "name": "wrath of nature*",
+          "name": "wrath of nature",
           "perDay": null,
           "prep": "prepared"
         }
@@ -1327,7 +1327,7 @@
         {
           "key": "mold earth",
           "level": null,
-          "name": "*mold earth*",
+          "name": "mold earth",
           "perDay": null,
           "prep": "atwill"
         }
@@ -1340,14 +1340,14 @@
         {
           "key": "cause fear",
           "level": null,
-          "name": "*cause fear*",
+          "name": "cause fear",
           "perDay": 3,
           "prep": "innate"
         },
         {
           "key": "negative energy flood",
           "level": null,
-          "name": "*negative energy flood*",
+          "name": "negative energy flood",
           "perDay": 1,
           "prep": "innate"
         }
@@ -1360,7 +1360,7 @@
         {
           "key": "searing smite",
           "level": null,
-          "name": "searing smite*",
+          "name": "searing smite",
           "perDay": 1,
           "prep": "innate"
         }
@@ -1373,14 +1373,14 @@
         {
           "key": "thunderclap",
           "level": null,
-          "name": "*thunderclap*",
+          "name": "thunderclap",
           "perDay": null,
           "prep": "atwill"
         },
         {
           "key": "warding wind",
           "level": null,
-          "name": "*warding wind*",
+          "name": "warding wind",
           "perDay": 1,
           "prep": "innate"
         }
@@ -1393,7 +1393,7 @@
         {
           "key": "shape water",
           "level": null,
-          "name": "*shape water*",
+          "name": "shape water",
           "perDay": null,
           "prep": "atwill"
         }
@@ -1406,21 +1406,21 @@
         {
           "key": "cause fear",
           "level": 1,
-          "name": "*cause fear*",
+          "name": "cause fear",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "friends",
           "level": 0,
-          "name": "*friends*",
+          "name": "friends",
           "perDay": null,
           "prep": "prepared"
         },
         {
           "key": "hex",
           "level": 1,
-          "name": "*hex*",
+          "name": "hex",
           "perDay": null,
           "prep": "prepared"
         }
@@ -1433,21 +1433,21 @@
         {
           "key": "earth tremor",
           "level": null,
-          "name": "*earth tremor*",
+          "name": "earth tremor",
           "perDay": 2,
           "prep": "innate"
         },
         {
           "key": "gust",
           "level": null,
-          "name": "*gust*",
+          "name": "gust",
           "perDay": null,
           "prep": "atwill"
         },
         {
           "key": "mold earth",
           "level": null,
-          "name": "*mold earth*",
+          "name": "mold earth",
           "perDay": null,
           "prep": "atwill"
         }
@@ -1519,11 +1519,6 @@
           "key": "life transference",
           "name": "Life Transference",
           "source": "XGE"
-        },
-        {
-          "key": "protection from evil and good",
-          "name": "Prot. from Evil and Good",
-          "source": "not in SRD"
         },
         {
           "key": "staggering smite",
@@ -1674,7 +1669,7 @@
         },
         {
           "key": "thunder step",
-          "name": "Thunder Step ^XGE",
+          "name": "Thunder Step",
           "source": "not in SRD"
         },
         {
@@ -1783,11 +1778,6 @@
           "key": "negative energy flood",
           "name": "Negative Energy Flood",
           "source": "XGE"
-        },
-        {
-          "key": "protection from evil and good",
-          "name": "Prot. from Evil and Good",
-          "source": "not in SRD"
         },
         {
           "key": "sickening radiance",
@@ -2531,11 +2521,6 @@
           "key": "negative energy flood",
           "name": "Negative Energy Flood",
           "source": "XGE"
-        },
-        {
-          "key": "protection from evil and good",
-          "name": "Prot. from Evil and Good",
-          "source": "not in SRD"
         },
         {
           "key": "psychic scream",

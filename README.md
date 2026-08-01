@@ -46,7 +46,7 @@ which version is canonical, please say so in an issue.
 | **Warlock "Demons Known"** | not modelled | The PDF has a column for it with no equivalent in the repo. |
 | **Enhancement, Path of Feral** | no spell-selection prompts | Each *replaces* its parent class's progression, and dnd5e advancement can't be made conditional on subclass — adding their tables would double-grant on top of the class's prompts. Spell slots are still correct. |
 | **Life Tap, Extra Attack (2)** | uses don't scale automatically | The feature text states the progression; wiring it risks resolving to zero uses silently. |
-| **~130 monster spell references** | listed as text, not embedded | Non-SRD spells (Xanathar's/Tasha's) that can't legally be bundled. Each caster's Spellcasting entry names them. |
+| **153 monster spell references** | listed as text, not embedded | Non-SRD spells (Xanathar's/Tasha's) that can't legally be bundled. Each caster's Spellcasting entry names them. **Auto-Assign Spells** (above) will fill these in from your own compendiums. |
 | **Backgrounds** | 4, from the Heroes' Handbook | That's all that exist upstream. A "hooded cloak" has no dnd5e item, so it stays in the description. |
 
 ---

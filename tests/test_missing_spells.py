@@ -85,10 +85,6 @@ class TestSectionIsolation(TempManifest):
         self.assertEqual(sorted(missing_spells.load()["spellLists"]), ["JA.p3", "JAB.p2"])
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 import spell_embed
 
 
@@ -139,3 +135,7 @@ class TestUnmatchedRecords(unittest.TestCase):
         keys = [k for g in parsed["groups"] for _, k in g["names"]]
         self.assertNotIn("shadow bolt 1st-5th level : arms of hadar", keys)
         self.assertIn("hex", keys)
+
+
+if __name__ == "__main__":
+    unittest.main()

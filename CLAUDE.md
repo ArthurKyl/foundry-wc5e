@@ -303,7 +303,7 @@ regressions after a parser change.
 
 ## The auto-assign tool (the only runtime JavaScript)
 
-Non-SRD spells can't be bundled, so 154 monster spell references and 224 spell-list entries ship
+Non-SRD spells can't be bundled, so 153 monster spell references and 221 spell-list entries ship
 blank. `scripts/auto-assign/` is a GM-facing tool that searches compendiums the GM ticks, assigns
 what it finds, and reports what it doesn't. Only *names* are in the repo; the spell documents come
 from the user's own content.

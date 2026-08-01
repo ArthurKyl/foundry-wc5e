@@ -55,6 +55,10 @@ ALIAS = {
     "shadowyappriations": "shadowyapparitions",
     "summonvoidfiend": "summonvoidbeing",
     "thunderwave": "thunderwave",
+    # Source abbreviates a real SRD spell; without this, the Death Knight,
+    # Paladin and Priest lists omit it and the manifest mislabels it
+    # "not in SRD", sending the GM shopping for something dnd5e already ships.
+    "protfromevilandgood": "protectionfromevilandgood",
 }
 
 # Spells this module ships that the Chapter 6 class tables never list, normally
@@ -271,7 +275,7 @@ def main():
                 "identifier": ident,
                 "pack": "spell-lists",
                 "spells": sorted(
-                    ({"name": n, "key": spell_embed._norm(n), "source": m}
+                    ({"name": spell_embed._display(n), "key": spell_embed._norm(n), "source": m}
                      for n, m in missing),
                     key=lambda s: s["key"]),
             }

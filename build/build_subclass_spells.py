@@ -294,7 +294,7 @@ def main():
                     "identifier": ident,
                     "pack": "spell-lists",
                     "spells": sorted(
-                        ({"name": n, "key": spell_embed._norm(n), "source": ""}
+                        ({"name": spell_embed._display(n), "key": spell_embed._norm(n), "source": ""}
                          for n in missing),
                         key=lambda s: s["key"]),
                 }

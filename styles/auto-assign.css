@@ -110,3 +110,18 @@
   text-overflow: ellipsis;
   max-width: 22rem;
 }
+
+/* The report/preview action row. Core only lays buttons out in a row inside
+ * `.standard-form .form-footer`; this div is neither, so without a rule of its
+ * own its three buttons stack full-width. */
+#wc5e-auto-assign .wc5e-aa-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+#wc5e-auto-assign .wc5e-aa-actions button {
+  flex: 0 1 auto;
+  width: auto;
+}

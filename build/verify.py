@@ -235,12 +235,35 @@ def check_missing_manifest(packs):
         return
     if not data.get("aliases"):
         fail("missing", "manifest has no aliases -- the runtime normaliser would drift")
+    # Three builders each own a section. A section that vanished means one of
+    # them stopped contributing, which ships an inert tool with no other signal.
+    for section in ("monsters", "spellLists"):
+        if not data.get(section):
+            fail("missing", f"manifest section '{section}' is empty -- a builder "
+                            "did not contribute; the tool would silently do nothing there")
 
     actor_ids = {d["_id"] for _, d in packs.get("monsters", []) if d.get("_id")}
     pages = set()
     for _, d in packs.get("spell-lists", []):
         for p in d.get("pages", []):
             pages.add(f"{d['_id']}.{p['_id']}")
+
+    # The contract the whole feature rests on: the runtime finds a record by
+    # normalising the user's spell name and matching it against `key`. Pinned
+    # from the JS side by tests/normalise.test.mjs; pinned here from Python's,
+    # so a change to _norm() that forgets to regenerate the manifest is caught.
+    sys.path.insert(0, os.path.join(REPO, "build"))
+    import spell_embed
+    for section in ("monsters", "spellLists"):
+        for rec in data.get(section, {}).values():
+            if not rec.get("name"):
+                fail("missing", f"a {section} record has no name: {rec!r}")
+            for s_ in rec.get("spells", []):
+                want = spell_embed._norm(s_.get("name", ""))
+                if s_.get("key") != want:
+                    fail("missing", f"{rec.get('name')}: key {s_.get('key')!r} != "
+                                    f"_norm({s_.get('name')!r}) = {want!r} -- "
+                                    "manifest is stale, rebuild")
 
     n_spells = 0
     for aid, rec in data.get("monsters", {}).items():
