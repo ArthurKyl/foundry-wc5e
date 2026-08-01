@@ -37,7 +37,33 @@ ALIAS = {
     "ray of sickeness": "ray of sickness",
     "maximilians earthen grasp": "maximilian's earthen grasp",
     "crusaders mantle": "crusader's mantle",
+    # Found by running the auto-assign tool against a real collection: these
+    # five looked unshippable purely because the source spells them oddly.
+    # The first two are SRD, so aliasing them means they now embed at build
+    # time and ship to everyone instead of needing the runtime tool.
+    "thunder wave": "thunderwave",
+    "prot. from evil and good": "protection from evil and good",
+    # Non-SRD, so still runtime-only -- but now under a name that matches.
+    "thunder step ^xge": "thunder step",      # unpaired ^ marker in the source
+    "summon shadow- spawn": "summon shadowspawn",   # line-break hyphen
+    "tasha's otherworldy guise": "tasha's otherworldly guise",   # source typo
 }
+
+
+def _display(n):
+    """The name as a human should read it: source markup gone, case kept.
+
+    _norm() produces the lookup key and lowercases; this produces what the
+    auto-assign report shows a GM, so `*cause fear* ^XGE^` reads as
+    `cause fear` rather than being pasted into a shopping list verbatim.
+    Note the caret group is optional-closing: the source has at least one
+    unpaired marker (`Thunder Step ^XGE`).
+    """
+    n = re.sub(r"\^[A-Za-z]+\^?", "", n)
+    n = n.replace("\u2726", "").replace("*", "")
+    n = re.sub(r"</?br\s*/?>", "", n)
+    n = re.sub(r"\s+", " ", n)
+    return n.strip(" .:;-")
 
 
 def _norm(n):
@@ -45,11 +71,21 @@ def _norm(n):
     n = re.sub(r"\^[a-z]+\^", "", n)
     n = n.replace("✦", "").replace("*", "")
     n = re.sub(r"\([^)]*\)", "", n)
-    n = re.sub(r"</?br>", "", n)
-    n = n.strip(" .:;-")
+    n = re.sub(r"</?br\s*/?>", "", n)
+    # Strip zero-width characters (BOM, ZWSP, ZWNJ, ZWJ) that survive from
+    # Homebrewery/GMBinder/PDF extraction. JS's \s matches U+FEFF but Python's
+    # re \s does not (and neither matches U+200B/C/D), so this is an explicit
+    # strip on both sides rather than relying on differing \s semantics --
+    # keep scripts/auto-assign/manifest.mjs's normaliseName() in step with
+    # this.
+    n = re.sub(r"[﻿​‌‍]", "", n)
     n = re.sub(r"\s+", " ", n)
+    n = n.strip(" .:;-")
     return ALIAS.get(n, n)
 
+
+# Mis-split statblock fragments seen during this build; reported by build_actors.
+DROPPED = []
 
 _CUSTOM = None
 _SRD = None
@@ -105,14 +141,27 @@ def parse_spellcasting(text):
         start = mm.end()
         end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
         body = text[start:end]
-        names = [_norm(x) for x in re.split(r"[,;]", body)]
+        # Keep the original spelling alongside the lookup key: the key is
+        # lowercased for matching, but the raw name is what a human reads in
+        # the auto-assign report.
+        pairs = [(_display(x), _norm(x)) for x in re.split(r"[,;]", body)]
         # Only drop obvious intro-prose fragments. NOT "the "/"of" etc. — those
         # occur in real spell names (Spare the Dying, Light of the Protector).
         # Non-spell tokens simply won't match an index and fall through as
-        # unresolved, so the filter can stay minimal.
+        # unresolved, so the filter can stay minimal. A colon means the source
+        # line was mis-split and the fragment spans two statblock groups.
         BAD = ("spellcast", "following", "innately", "material component")
-        names = [x for x in names if 3 <= len(x) <= 45
-                 and not any(w in x for w in BAD)]
+        names = [(raw, key) for raw, key in pairs
+                 if 3 <= len(key) <= 45 and ":" not in key
+                 and not any(w in key for w in BAD)]
+        # A colon means the source line was mis-split across two statblock
+        # groups. Those must not reach the manifest, but they must not vanish
+        # silently either: the fragment usually hides a real spell name (the
+        # known case buries "arms of hadar"), and the underlying cause is a
+        # pact-magic header HEADER cannot match. Collected for the build report.
+        DROPPED.extend(key for _raw, key in pairs
+                       if ":" in key and 3 <= len(key) <= 45
+                       and not any(w in key for w in BAD))
         if not names:
             continue
         if mm.group("cantrip"):
@@ -152,7 +201,7 @@ def _embed_item(actor_id, entry, prep, per_day, sort):
 
 
 def embed_spellcasting(actor, mon, actor_id, prof, ability_mod_fn):
-    """Mutate `actor` in place. Returns (matched:int, unmatched:list[str])."""
+    """Mutate `actor` in place. Returns (matched:int, unmatched:list[dict])."""
     trait_text = None
     for t in mon["traits"]:
         if "spellcasting" in t["name"].lower():
@@ -189,13 +238,15 @@ def embed_spellcasting(actor, mon, actor_id, prof, ability_mod_fn):
     matched, unmatched, seen = 0, [], set()
     sort = 200000
     for g in parsed["groups"]:
-        for nm in g["names"]:
+        for raw, nm in g["names"]:
             if nm in seen:
                 continue
             seen.add(nm)
             entry = custom.get(nm) or srd.get(nm)
             if not entry:
-                unmatched.append(nm)
+                unmatched.append({"name": raw, "key": nm, "prep": g["prep"],
+                                  "level": g.get("level"),
+                                  "perDay": g.get("per_day")})
                 continue
             per_day = g.get("per_day")
             actor["items"].append(

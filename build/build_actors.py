@@ -26,6 +26,7 @@ import hashlib
 
 import spell_embed
 import folders
+import missing_spells
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
@@ -580,7 +581,7 @@ def build_actor(mon):
     matched, unmatched = spell_embed.embed_spellcasting(
         actor, mon, actor_id, pb, ability_mod)
     if matched or unmatched:
-        SPELL_REPORT.append((mon["name"], matched, unmatched))
+        SPELL_REPORT.append((actor_id, mon["name"], matched, unmatched))
 
     return actor
 
@@ -641,15 +642,37 @@ def main():
           f"in {len(USED_MONSTER_FOLDERS)} folders")
 
     # spellcasting report
-    total_m = sum(m for _, m, _ in SPELL_REPORT)
-    all_un = [u for _, _, un in SPELL_REPORT for u in un]
+    total_m = sum(m for _, _, m, _ in SPELL_REPORT)
+    all_un = [u for _, _, _, un in SPELL_REPORT for u in un]
     from collections import Counter
-    un_counts = Counter(all_un)
+    un_counts = Counter(u["key"] for u in all_un)
     print(f"\nSpellcasting: {len(SPELL_REPORT)} casters | {total_m} spells embedded"
           f" | {len(all_un)} references unresolved ({len(un_counts)} distinct)")
     if un_counts:
         top = ", ".join(f"{n}(x{c})" for n, c in un_counts.most_common(20))
         print(f"  unresolved (stay as text): {top}")
+
+    if spell_embed.DROPPED:
+        print(f"  {len(spell_embed.DROPPED)} mis-split statblock fragment(s) dropped "
+              "(a pact-magic header HEADER cannot parse; the spells inside them are "
+              "not embedded and not in the manifest):")
+        for frag in sorted(set(spell_embed.DROPPED)):
+            print(f"      {frag}")
+
+    # The auto-assign tool searches the GM's own compendiums for these at runtime.
+    records = {}
+    for actor_id, name, _matched, unmatched in SPELL_REPORT:
+        if not unmatched:
+            continue
+        records[actor_id] = {
+            "name": name,
+            "pack": "monsters",
+            "spells": sorted(unmatched, key=lambda u: u["key"]),
+        }
+    missing_spells.set_aliases(spell_embed.ALIAS)
+    missing_spells.set_monsters(records)
+    print(f"  auto-assign manifest: {len(records)} monsters, "
+          f"{sum(len(r['spells']) for r in records.values())} spell references")
 
 
 if __name__ == "__main__":

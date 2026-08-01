@@ -61,7 +61,6 @@ rather than misbehaving):
 ```json
 {
   "version": 1,
-  "moduleVersion": "1.17.0",
   "aliases": { "call lighting": "call lightning" },
   "monsters": {
     "<actorId>": {
@@ -83,6 +82,10 @@ rather than misbehaving):
   }
 }
 ```
+
+There is deliberately no module-version field: it would make the manifest change on every
+version bump and turn a bump into a mandatory rebuild. The runtime reads the version from
+`game.modules.get("wc5e-bestiary").version`.
 
 `aliases` is the existing `spell_embed.ALIAS` table, serialised so the JS normaliser cannot drift
 from the Python one. `key` is the pre-normalised lookup key; `name` is the original spelling, used

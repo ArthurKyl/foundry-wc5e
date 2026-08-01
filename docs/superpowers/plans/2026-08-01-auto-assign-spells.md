@@ -257,10 +257,13 @@ Expected: PASS, 7 tests.
 In `package.json`, add to `scripts` (keep the existing entries):
 
 ```json
-    "test": "python3 -m unittest discover -s tests -p 'test_*.py' && node --test tests/"
+    "test": "python3 -m unittest discover -s tests -p 'test_*.py' && node --test 'tests/**/*.test.mjs'"
 ```
 
-`node --test tests/` currently matches nothing, which exits 0. It picks up the `*.test.mjs` files added from Task 4 onwards.
+The glob is required and must stay quoted. On Node 22, `node --test tests/` hands the bare
+directory to the CJS resolver and dies with `MODULE_NOT_FOUND`; the glob form matches top-level
+`tests/*.test.mjs` as well as any subdirectory, and exits 0 when nothing matches yet. The
+`*.test.mjs` files arrive from Task 5 onwards.
 
 Run: `npm test`
 Expected: the Python tests pass, node reports 0 tests, exit 0.
@@ -964,8 +967,11 @@ export function normaliseName(raw, aliases = {}) {
   n = n.replace(/✦/g, "").replace(/\*/g, "");
   n = n.replace(/\([^)]*\)/g, "");
   n = n.replace(/<\/?br>/g, "");
-  n = n.replace(/^[ .:;-]+/, "").replace(/[ .:;-]+$/, "");
+  // Collapse first, then strip -- Task 2 reordered these two steps in
+  // spell_embed._norm() (stripping first leaves a trailing space behind a
+  // newline). This port must stay in the same order.
   n = n.replace(/\s+/g, " ");
+  n = n.replace(/^[ .:;-]+/, "").replace(/[ .:;-]+$/, "");
   return Object.prototype.hasOwnProperty.call(aliases, n) ? aliases[n] : n;
 }
 
@@ -1404,13 +1410,17 @@ export async function buildSearchIndex(packIds, {
 
   for ( const packId of packIds ) {
     const pack = getPack(packId);
-    if ( !pack ) {
-      failed.push({ packId, error: "compendium not found" });
-      done++;
-      continue;
-    }
-    const label = pack.metadata?.label ?? packId;
+    // Every path out of this loop body must reach the `finally`, including the
+    // unresolvable-pack one -- a caller driving a progress bar off (done, total)
+    // would otherwise stall and never see done === total when a ticked
+    // compendium has gone missing since the picker was built.
+    let label = packId;
     try {
+      if ( !pack ) {
+        failed.push({ packId, error: "compendium not found" });
+        continue;
+      }
+      label = pack.metadata?.label ?? packId;
       if ( pack.documentName !== "Item" ) continue;
       const entries = await pack.getIndex({ fields: ["type"] });
       for ( const e of entries ) {

@@ -36,6 +36,9 @@ import os
 import re
 import hashlib
 
+import missing_spells
+import spell_embed
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 HHB = os.path.join(os.path.dirname(REPO), "Warcraft-5e-Conversion",
@@ -281,10 +284,22 @@ def main():
     # one journal entry holding the expanded (choosable) subclass lists
     if expanded:
         jid = make_id("journal", "wc5e-subclass-spell-lists")
-        pages, sort = [], 100000
+        pages, sort, missing_records = [], 100000, {}
         for name, ident, uuids, missing in expanded:
-            pages.append(page(jid, name, ident, uuids, missing, sort))
+            pg = page(jid, name, ident, uuids, missing, sort)
+            pages.append(pg)
+            if missing:
+                missing_records[f"{jid}.{pg['_id']}"] = {
+                    "name": pg["name"],
+                    "identifier": ident,
+                    "pack": "spell-lists",
+                    "spells": sorted(
+                        ({"name": spell_embed._display(n), "key": spell_embed._norm(n), "source": ""}
+                         for n in missing),
+                        key=lambda s: s["key"]),
+                }
             sort += 100000
+        missing_spells.set_spell_lists(jid, missing_records)
         entry = {
             "_id": jid, "name": "WC5E Subclass Spell Lists", "pages": pages,
             "folder": None, "sort": 100000, "ownership": {"default": 0}, "flags": {},

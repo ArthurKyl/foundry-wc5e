@@ -6,8 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 `wc5e-bestiary` — a **Foundry VTT v13–v14 compendium module** for the **dnd5e 5.3.3** system,
 generated from the community [Warcraft 5e Conversion](https://github.com/WC5E/Warcraft-5e-Conversion)
-markdown. There is no runtime JavaScript: the module ships only `module.json`, `assets/`, and
-compiled LevelDB packs. Everything else in the repo is build tooling.
+markdown. The module ships `module.json`, `assets/`, `lang/`, compiled LevelDB packs, and one
+runtime feature — the **auto-assign tool** (`scripts/`, `templates/`). Everything else in the repo
+is build tooling.
 
 Current packs (12, 1232 documents): **monsters** (420 NPC actors), **spells** (101), **items** (21),
 **journals** (guide), **spell-lists** (7 class spell lists), **backgrounds** (4 + their features),
@@ -135,6 +136,16 @@ derive from spell *names*, a renamed spell silently breaks both. The `build` scr
 correctly; keep it that way if you add stages. `items` and `journal` have no dependencies.
 Rebuilding is deterministic: identical inputs produce byte-identical output, so `git status` after
 a rebuild is a real regression check.
+
+**Never commit `packs/` written by a running Foundry.** If the repo is symlinked into
+`Data/modules/` for testing, Foundry opens the compiled packs and writes to them in place -- and
+the auto-assign tool, pointed at the compendium destination, copies the tester's own spell
+documents into `packs/monsters`. `release.mjs` ships from `git archive HEAD`, so committing that
+would distribute non-SRD content. It happened once, via a careless `git add -A` mid-testing; the
+branch was unpushed, so `packs/` was stripped from every commit and rebuilt. `npm run verify`
+now fails if any pack is not a fresh compile -- the tell is the LevelDB file numbering, since
+`pack.mjs` `rm -rf`s the destination and a real compile always yields exactly `000005.ldb` +
+`MANIFEST-000002`. Close Foundry, `npm run pack`, then commit.
 
 **A failed build is destructive.** Every builder deletes its whole output directory *before*
 writing, so a crash mid-build leaves `src/<pack>/` gutted (this is how the v1.4.0 folder-document
@@ -289,6 +300,41 @@ Rather than patching `src/`, add to the small curated tables:
 `build_actors.py` prints a spellcasting report at the end (embedded count + unresolved spell
 names by frequency) and `build_spells.py` prints the activity-kind histogram — use these to spot
 regressions after a parser change.
+
+## The auto-assign tool (the only runtime JavaScript)
+
+Non-SRD spells can't be bundled, so 153 monster spell references and 221 spell-list entries ship
+blank. `scripts/auto-assign/` is a GM-facing tool that searches compendiums the GM ticks, assigns
+what it finds, and reports what it doesn't. Only *names* are in the repo; the spell documents come
+from the user's own content.
+
+`assets/missing-spells.json` is the contract between the build and the runtime, written by
+`build/missing_spells.py`. **Three builders contribute to it at different points in the build**
+(`build_actors.py` for monsters, `build_spell_lists.py` and `build_subclass_spells.py` for the two
+list journals), so each replaces only its own section — the same class of hazard the two list
+builders guard against for `flags.dnd5e.spellLists` (see "Subclass spells" below): a latent bug
+where whichever builder ran second would silently overwrite the other's registration, caught and
+fixed before it ever shipped.
+
+- `manifest.mjs`'s `normaliseName()` is a **port of `spell_embed._norm()`**. If they drift, every
+  lookup misses and the tool silently finds nothing. Both sides explicitly strip zero-width
+  characters (U+FEFF, U+200B, U+200C, U+200D) before collapsing whitespace, because JavaScript's
+  `\s` matches U+FEFF and Python's does not, so a name carrying one would normalise differently on
+  each side and the lookup would miss silently — no record in the real manifest ever triggered it;
+  differential testing caught the gap before it could, and `tests/normalise.test.mjs` now pins it
+  by running the JS normaliser over every record in the real manifest and asserting it reproduces
+  the key Python wrote. Keep that test passing.
+- `plan.mjs` is pure, which is what makes "additive and idempotent" testable: a second run must
+  plan zero writes. Never let it read from `game` directly.
+- Spell lists exist only in the compendium, so the *Class spell lists* target is unavailable for
+  the world-only destination. This is enforced in `listsAvailable()` **and** disabled in the UI.
+- **A module update replaces `packs/`**, so compendium-side assignments are lost on upgrade. The
+  first-run prompt re-fires once per module version to say so.
+
+`npm test` runs both suites: `python3 -m unittest` for the build side, `node --test` for the
+runtime. Both are stdlib — no test dependencies. The Foundry-coupled parts (`app.mjs`, and the
+pack writes in `apply.mjs`) can't be tested headlessly; the checklist for those is in
+`docs/superpowers/plans/2026-08-01-auto-assign-spells.md`.
 
 ## Backgrounds
 

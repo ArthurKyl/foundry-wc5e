@@ -214,6 +214,121 @@ def check_spell_coverage(packs, list_identifiers):
     notes.append(f"{len(ours) - len(orphans)}/{len(ours)} spells reachable from a class list")
 
 
+def check_missing_manifest(packs):
+    """The auto-assign manifest must point at documents that still exist.
+
+    It is generated, so a stale entry means a builder and the manifest have
+    drifted -- and a stale entry is invisible in play: the tool would simply
+    skip that monster.
+    """
+    path = os.path.join(REPO, "assets", "missing-spells.json")
+    if not os.path.exists(path):
+        fail("missing", "assets/missing-spells.json not found -- run npm run build")
+        return
+    try:
+        data = json.load(open(path, encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        fail("missing", f"assets/missing-spells.json is not valid JSON: {e}")
+        return
+    if data.get("version") != 1:
+        fail("missing", f"unknown manifest version {data.get('version')!r}, expected 1")
+        return
+    if not data.get("aliases"):
+        fail("missing", "manifest has no aliases -- the runtime normaliser would drift")
+    # Three builders each own a section. A section that vanished means one of
+    # them stopped contributing, which ships an inert tool with no other signal.
+    for section in ("monsters", "spellLists"):
+        if not data.get(section):
+            fail("missing", f"manifest section '{section}' is empty -- a builder "
+                            "did not contribute; the tool would silently do nothing there")
+
+    actor_ids = {d["_id"] for _, d in packs.get("monsters", []) if d.get("_id")}
+    pages = set()
+    for _, d in packs.get("spell-lists", []):
+        for p in d.get("pages", []):
+            pages.add(f"{d['_id']}.{p['_id']}")
+
+    # The contract the whole feature rests on: the runtime finds a record by
+    # normalising the user's spell name and matching it against `key`. Pinned
+    # from the JS side by tests/normalise.test.mjs; pinned here from Python's,
+    # so a change to _norm() that forgets to regenerate the manifest is caught.
+    sys.path.insert(0, os.path.join(REPO, "build"))
+    import spell_embed
+    for section in ("monsters", "spellLists"):
+        for rec in data.get(section, {}).values():
+            if not rec.get("name"):
+                fail("missing", f"a {section} record has no name: {rec!r}")
+            for s_ in rec.get("spells", []):
+                want = spell_embed._norm(s_.get("name", ""))
+                if s_.get("key") != want:
+                    fail("missing", f"{rec.get('name')}: key {s_.get('key')!r} != "
+                                    f"_norm({s_.get('name')!r}) = {want!r} -- "
+                                    "manifest is stale, rebuild")
+
+    n_spells = 0
+    for aid, rec in data.get("monsters", {}).items():
+        if aid not in actor_ids:
+            fail("missing", f"manifest names monster {aid} ({rec.get('name')}) "
+                            "which is not in src/monsters")
+        n_spells += len(rec.get("spells", []))
+        for s in rec.get("spells", []):
+            if not s.get("name") or not s.get("key"):
+                fail("missing", f"monster {rec.get('name')} has a spell record "
+                                f"with an empty name/key: {s!r}")
+            if s.get("prep") not in ("prepared", "atwill", "innate"):
+                fail("missing", f"monster {rec.get('name')} spell {s.get('name')!r} "
+                                f"has an unknown prep {s.get('prep')!r}")
+
+    n_entries = 0
+    for key, rec in data.get("spellLists", {}).items():
+        if key not in pages:
+            fail("missing", f"manifest names spell-list page {key} "
+                            f"({rec.get('name')}) which does not exist")
+        n_entries += len(rec.get("spells", []))
+        for s in rec.get("spells", []):
+            if not s.get("name") or not s.get("key"):
+                fail("missing", f"spell list {rec.get('name')} has a record "
+                                f"with an empty name/key: {s!r}")
+
+    notes.append(f"auto-assign manifest: {len(data.get('monsters', {}))} monsters "
+                 f"({n_spells} refs), {len(data.get('spellLists', {}))} spell-list "
+                 f"pages ({n_entries} entries)")
+
+
+def check_packs_are_builds(manifest):
+    """A compiled pack must be a build of src/, not a captured live database.
+
+    Symlink this repo in as the installed module, let the auto-assign tool write
+    to a compendium, and Foundry mutates packs/ in place. Committing that puts
+    the tester's own non-SRD spell documents into the repo, and release.mjs
+    ships from `git archive HEAD`. This happened once; hence the check.
+
+    The test is file naming. pack.mjs rm -rf's the destination before compiling,
+    so a fresh compile of every pack in this module produces exactly
+    000005.ldb + MANIFEST-000002. Any other numbering means the LevelDB kept
+    running -- i.e. something opened it and wrote.
+
+    Counting `compendiumSource` markers in the .ldb would be the more direct
+    test and is deliberately NOT used: LevelDB compresses its blocks, so a raw
+    byte scan finds only a fraction (10 against the ~870 the same documents
+    show in src/), which makes any threshold meaningless. Opening the database
+    properly is not an option here either -- Foundry may hold it locked.
+    """
+    EXPECTED = {"000005.ldb", "MANIFEST-000002"}
+    for entry in manifest["packs"]:
+        d = os.path.join(REPO, entry["path"])
+        if not os.path.isdir(d):
+            continue
+        actual = {fn for fn in os.listdir(d)
+                  if fn.endswith(".ldb") or fn.startswith("MANIFEST-")}
+        if actual and actual != EXPECTED:
+            fail("packs", f"{entry['name']} is not a fresh compile "
+                          f"({', '.join(sorted(actual))}) -- a running Foundry wrote to it. "
+                          "Close Foundry, run npm run pack, and never commit packs/ "
+                          "captured from a live world")
+    notes.append(f"{len(manifest['packs'])} packs are fresh compiles")
+
+
 def check_release_shape(manifest):
     v = manifest.get("version")
     dl = manifest.get("download", "")
@@ -233,6 +348,8 @@ def main():
     check_advancement(packs, idents)
     check_sources(manifest, packs)
     check_spell_coverage(packs, idents)
+    check_missing_manifest(packs)
+    check_packs_are_builds(manifest)
     check_release_shape(manifest)
 
     total = sum(len(d) for d in packs.values())
