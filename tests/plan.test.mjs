@@ -179,3 +179,69 @@ test("an empty index puts everything in not-found and plans nothing", () => {
   assert.equal(p.writes.length, 0);
   assert.equal(p.counts.notFound, 4);
 });
+
+test("a not-found spell is still reported even when the monster already has it", () => {
+  const p = buildPlan({ manifest: MANIFEST, index, targets: ALL,
+                        destination: DESTINATIONS.BOTH,
+                        state: state({ have: { m1: ["shape water"] } }) });
+  assert.ok(p.notFound.some(n => n.key === "shape water"));
+});
+
+test("a not-found spell is still reported even when the monster's scope is excluded", () => {
+  const p = buildPlan({ manifest: MANIFEST, index, targets: ALL,
+                        destination: DESTINATIONS.COMPENDIUM,
+                        state: state({ scopes: { m1: "world", m2: "pack" } }) });
+  assert.ok(p.notFound.some(n => n.key === "shape water"));
+});
+
+test("a found spell the monster already has is skipped silently, never reported not-found", () => {
+  const p = buildPlan({ manifest: MANIFEST, index, targets: ALL,
+                        destination: DESTINATIONS.BOTH,
+                        state: state({ have: { m1: ["ice knife"] } }) });
+  assert.ok(!p.notFound.some(n => n.key === "ice knife"));
+});
+
+test("a duplicated spell key within a monster record produces one entry, not two", () => {
+  const manifest = {
+    aliases: {},
+    monsters: {
+      m3: { name: "Doubled Ghoul", pack: "monsters", spells: [
+        { name: "Hex", key: "hex", prep: "innate", level: 1, perDay: 2 },
+        { name: "Hex", key: "hex", prep: "innate", level: 1, perDay: 2 },
+      ] },
+    },
+    spellLists: {},
+  };
+  const s = {
+    monsters: [{ id: "m3", name: "Doubled Ghoul", scope: "pack",
+                 uuid: "Compendium.wc5e-bestiary.monsters.Actor.m3", haveKeys: new Set() }],
+    lists: [],
+  };
+  const p = buildPlan({ manifest, index, targets: ALL, destination: DESTINATIONS.BOTH, state: s });
+  const w = p.writes.find(w => w.targetName === "Doubled Ghoul");
+  assert.equal(w.spells.length, 1);
+  assert.equal(p.counts.spells, 1);
+});
+
+test("a duplicated spell key within a list record produces one entry, not two", () => {
+  const manifest = {
+    aliases: {},
+    monsters: {},
+    spellLists: {
+      "j.p2": { name: "Doubled List", identifier: "wc5e-x", pack: "spell-lists", spells: [
+        { name: "Ice Knife", key: "ice knife", source: "XGE" },
+        { name: "Ice Knife", key: "ice knife", source: "XGE" },
+      ] },
+    },
+  };
+  const s = {
+    monsters: [],
+    lists: [{ pageKey: "j.p2", name: "Doubled List",
+              uuid: "Compendium.wc5e-bestiary.spell-lists.JournalEntry.j.JournalEntryPage.p2",
+              haveUuids: new Set() }],
+  };
+  const p = buildPlan({ manifest, index, targets: ALL, destination: DESTINATIONS.BOTH, state: s });
+  const w = p.writes.find(w => w.targetName === "Doubled List");
+  assert.equal(w.spells.length, 1);
+  assert.equal(p.counts.listEntries, 1);
+});

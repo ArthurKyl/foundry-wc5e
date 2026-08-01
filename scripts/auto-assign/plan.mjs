@@ -45,7 +45,10 @@ export function buildPlan({ manifest, index, targets, destination, state }) {
       const record = manifest.monsters[mon.id];
       if ( !record ) continue;
       const spells = [];
+      const seen = new Set();   // dedupe a key appearing twice in one record; keep the first
       for ( const s of record.spells ) {
+        if ( seen.has(s.key) ) continue;
+        seen.add(s.key);
         const match = index.get(s.key);
         if ( !match ) {
           miss(s, mon.name);
@@ -67,7 +70,10 @@ export function buildPlan({ manifest, index, targets, destination, state }) {
       const record = manifest.spellLists[list.pageKey];
       if ( !record ) continue;
       const spells = [];
+      const seen = new Set();   // dedupe a key appearing twice in one record; keep the first
       for ( const s of record.spells ) {
+        if ( seen.has(s.key) ) continue;
+        seen.add(s.key);
         const match = index.get(s.key);
         if ( !match ) {
           miss(s, list.name);
