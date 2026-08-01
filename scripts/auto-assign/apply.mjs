@@ -1,0 +1,170 @@
+import { normaliseName } from "./manifest.mjs";
+import { TARGETS, DESTINATIONS, listsAvailable } from "./plan.mjs";
+
+export const MODULE_ID = "wc5e-bestiary";
+
+const liveDeps = () => ({
+  getPack: id => game.packs.get(id),
+  getWorldActors: () => game.actors.contents,
+  resolveUuid: uuid => fromUuid(uuid),
+});
+
+/**
+ * The embedded item payload for a spell found in the GM's own compendium.
+ * Mirrors what spell_embed._embed_item() does at build time.
+ */
+export function spellItemData(sourceDoc, { prep, perDay }) {
+  const data = sourceDoc.toObject();
+  delete data._id;
+  data.system = data.system ?? {};
+  data.system.preparation = { mode: prep, prepared: prep === "prepared" };
+  if ( prep === "innate" && perDay ) {
+    data.system.uses = { max: String(perDay), spent: 0,
+                         recovery: [{ period: "day", type: "recoverAll" }] };
+  }
+  return data;
+}
+
+function sourceIdOf(actor) {
+  return actor?._stats?.compendiumSource ?? actor?.flags?.core?.sourceId ?? null;
+}
+
+/**
+ * Gather what already exists, so the planner can be additive.
+ * @returns {Promise<{monsters: object[], lists: object[]}>}
+ */
+export async function collectState({ manifest, targets, destination, deps = liveDeps() }) {
+  const monsters = [];
+  const lists = [];
+
+  if ( targets.includes(TARGETS.MONSTERS) ) {
+    const wantPack = destination !== DESTINATIONS.WORLD;
+    const wantWorld = destination !== DESTINATIONS.COMPENDIUM;
+
+    if ( wantPack ) {
+      const pack = deps.getPack(`${MODULE_ID}.monsters`);
+      const docs = pack ? await pack.getDocuments() : [];
+      for ( const actor of docs ) {
+        if ( !manifest.monsters[actor.id] ) continue;
+        monsters.push({
+          id: actor.id, name: actor.name ?? manifest.monsters[actor.id].name,
+          scope: "pack", uuid: actor.uuid, haveKeys: spellKeys(actor, manifest.aliases),
+        });
+      }
+    }
+
+    if ( wantWorld ) {
+      const prefix = `Compendium.${MODULE_ID}.monsters.Actor.`;
+      for ( const actor of deps.getWorldActors() ) {
+        const src = sourceIdOf(actor);
+        if ( !src?.startsWith(prefix) ) continue;
+        const id = src.slice(prefix.length);
+        if ( !manifest.monsters[id] ) continue;
+        monsters.push({
+          id, name: actor.name ?? manifest.monsters[id].name,
+          scope: "world", uuid: actor.uuid, haveKeys: spellKeys(actor, manifest.aliases),
+        });
+      }
+    }
+  }
+
+  if ( targets.includes(TARGETS.LISTS) && listsAvailable(destination) ) {
+    const pack = deps.getPack(`${MODULE_ID}.spell-lists`);
+    const journals = pack ? await pack.getDocuments() : [];
+    for ( const journal of journals ) {
+      for ( const page of journal.pages ?? [] ) {
+        const key = `${journal.id}.${page.id}`;
+        if ( !manifest.spellLists[key] ) continue;
+        lists.push({
+          pageKey: key, name: page.name, uuid: page.uuid,
+          haveUuids: new Set(page.system?.spells ?? []),
+        });
+      }
+    }
+  }
+
+  return { monsters, lists };
+}
+
+function spellKeys(actor, aliases) {
+  const keys = new Set();
+  for ( const item of actor.items ?? [] ) {
+    if ( item.type === "spell" ) keys.add(normaliseName(item.name, aliases));
+  }
+  return keys;
+}
+
+/**
+ * Execute a plan. Additive only: every write is a create or an append.
+ * @returns {Promise<{added: number, entriesAdded: number, failures: object[]}>}
+ */
+export async function applyPlan(plan, { deps = liveDeps(), onProgress = null } = {}) {
+  const failures = [];
+  let added = 0;
+  let entriesAdded = 0;
+  const unlocked = new Map();
+
+  // Unlock everything up front. If a pack refuses, abort before writing
+  // anything -- otherwise every write to it fails identically and the report
+  // becomes dozens of rows of the same error.
+  const packIds = new Set();
+  for ( const write of plan.writes ) {
+    const m = /^Compendium\.([^.]+\.[^.]+)\./.exec(write.uuid);
+    if ( m ) packIds.add(m[1]);
+  }
+  for ( const packId of packIds ) {
+    const pack = deps.getPack(packId);
+    if ( !pack || !pack.locked ) continue;
+    try {
+      await pack.configure({ locked: false });
+      unlocked.set(packId, pack);
+    }
+    catch ( err ) {
+      for ( const p of unlocked.values() ) await p.configure({ locked: true }).catch(() => {});
+      throw new Error(`Could not unlock ${packId}: ${err.message ?? err}`);
+    }
+  }
+
+  try {
+    let done = 0;
+    for ( const write of plan.writes ) {
+      try {
+        const target = await deps.resolveUuid(write.uuid);
+        if ( !target ) throw new Error("target document not found");
+
+        if ( write.kind === "monster" ) {
+          const data = [];
+          for ( const s of write.spells ) {
+            const src = await deps.resolveUuid(s.match.uuid);
+            if ( !src ) throw new Error(`spell not found: ${s.name}`);
+            data.push(spellItemData(src, s));
+          }
+          await target.createEmbeddedDocuments("Item", data);
+          added += data.length;
+        }
+        else {
+          const have = new Set(target.system?.spells ?? []);
+          for ( const s of write.spells ) have.add(s.match.uuid);
+          await target.update({ "system.spells": [...have] });
+          entriesAdded += write.spells.length;
+        }
+      }
+      catch ( err ) {
+        failures.push({ target: write.targetName, error: err.message ?? String(err) });
+      }
+      finally {
+        onProgress?.(++done, plan.writes.length, write.targetName);
+      }
+    }
+  }
+  finally {
+    // Re-lock whatever we unlocked, even if the run threw. Leaving a module
+    // pack unlocked invites accidental edits that a module update then wipes.
+    for ( const pack of unlocked.values() ) {
+      try { await pack.configure({ locked: true }); }
+      catch { /* nothing useful to do; the report already reflects the writes */ }
+    }
+  }
+
+  return { added, entriesAdded, failures };
+}
