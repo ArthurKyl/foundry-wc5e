@@ -10,7 +10,7 @@ so two gaps are baked into every install:
 
 | Target | Gap |
 |---|---|
-| Monster actors | 155 unresolved spell references across **61** of the 88 caster monsters, **55** distinct names |
+| Monster actors | 154 unresolved spell references across **61** of the 88 caster monsters, **54** distinct names |
 | Class spell lists | **224** omitted entries across the 10 spell-list pages, **138** distinct names |
 
 Today those names survive only as prose — inside the monster's Spellcasting trait text, and in each
