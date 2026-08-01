@@ -301,15 +301,19 @@ from the user's own content.
 `assets/missing-spells.json` is the contract between the build and the runtime, written by
 `build/missing_spells.py`. **Three builders contribute to it at different points in the build**
 (`build_actors.py` for monsters, `build_spell_lists.py` and `build_subclass_spells.py` for the two
-list journals), so each replaces only its own section — the same hazard that once made the two list
-builders overwrite each other's `flags.dnd5e.spellLists`.
+list journals), so each replaces only its own section — the same class of hazard the two list
+builders guard against for `flags.dnd5e.spellLists` (see "Subclass spells" below): a latent bug
+where whichever builder ran second would silently overwrite the other's registration, caught and
+fixed before it ever shipped.
 
 - `manifest.mjs`'s `normaliseName()` is a **port of `spell_embed._norm()`**. If they drift, every
   lookup misses and the tool silently finds nothing. Both sides explicitly strip zero-width
-  characters (U+FEFF, U+200B, U+200C, U+200D) before collapsing whitespace — JavaScript's `\s`
-  matches U+FEFF and Python's does not, and that divergence alone made every lookup miss silently
-  during implementation. `tests/normalise.test.mjs` runs the JS normaliser over every record in the
-  real manifest and asserts it reproduces the key Python wrote. Keep that test passing.
+  characters (U+FEFF, U+200B, U+200C, U+200D) before collapsing whitespace, because JavaScript's
+  `\s` matches U+FEFF and Python's does not, so a name carrying one would normalise differently on
+  each side and the lookup would miss silently — no record in the real manifest ever triggered it;
+  differential testing caught the gap before it could, and `tests/normalise.test.mjs` now pins it
+  by running the JS normaliser over every record in the real manifest and asserting it reproduces
+  the key Python wrote. Keep that test passing.
 - `plan.mjs` is pure, which is what makes "additive and idempotent" testable: a second run must
   plan zero writes. Never let it read from `game` directly.
 - Spell lists exist only in the compendium, so the *Class spell lists* target is unavailable for
