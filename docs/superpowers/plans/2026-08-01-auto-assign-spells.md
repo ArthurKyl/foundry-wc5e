@@ -257,10 +257,13 @@ Expected: PASS, 7 tests.
 In `package.json`, add to `scripts` (keep the existing entries):
 
 ```json
-    "test": "python3 -m unittest discover -s tests -p 'test_*.py' && node --test tests/"
+    "test": "python3 -m unittest discover -s tests -p 'test_*.py' && node --test 'tests/**/*.test.mjs'"
 ```
 
-`node --test tests/` currently matches nothing, which exits 0. It picks up the `*.test.mjs` files added from Task 4 onwards.
+The glob is required and must stay quoted. On Node 22, `node --test tests/` hands the bare
+directory to the CJS resolver and dies with `MODULE_NOT_FOUND`; the glob form matches top-level
+`tests/*.test.mjs` as well as any subdirectory, and exits 0 when nothing matches yet. The
+`*.test.mjs` files arrive from Task 5 onwards.
 
 Run: `npm test`
 Expected: the Python tests pass, node reports 0 tests, exit 0.
