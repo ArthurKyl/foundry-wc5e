@@ -46,8 +46,8 @@ def _norm(n):
     n = n.replace("✦", "").replace("*", "")
     n = re.sub(r"\([^)]*\)", "", n)
     n = re.sub(r"</?br>", "", n)
-    n = n.strip(" .:;-")
     n = re.sub(r"\s+", " ", n)
+    n = n.strip(" .:;-")
     return ALIAS.get(n, n)
 
 
@@ -105,14 +105,20 @@ def parse_spellcasting(text):
         start = mm.end()
         end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
         body = text[start:end]
-        names = [_norm(x) for x in re.split(r"[,;]", body)]
+        # Keep the original spelling alongside the lookup key: the key is
+        # lowercased for matching, but the raw name is what a human reads in
+        # the auto-assign report.
+        pairs = [(re.sub(r"\s+", " ", x).strip(" .:;-"), _norm(x))
+                 for x in re.split(r"[,;]", body)]
         # Only drop obvious intro-prose fragments. NOT "the "/"of" etc. — those
         # occur in real spell names (Spare the Dying, Light of the Protector).
         # Non-spell tokens simply won't match an index and fall through as
-        # unresolved, so the filter can stay minimal.
+        # unresolved, so the filter can stay minimal. A colon means the source
+        # line was mis-split and the fragment spans two statblock groups.
         BAD = ("spellcast", "following", "innately", "material component")
-        names = [x for x in names if 3 <= len(x) <= 45
-                 and not any(w in x for w in BAD)]
+        names = [(raw, key) for raw, key in pairs
+                 if 3 <= len(key) <= 45 and ":" not in key
+                 and not any(w in key for w in BAD)]
         if not names:
             continue
         if mm.group("cantrip"):
@@ -152,7 +158,7 @@ def _embed_item(actor_id, entry, prep, per_day, sort):
 
 
 def embed_spellcasting(actor, mon, actor_id, prof, ability_mod_fn):
-    """Mutate `actor` in place. Returns (matched:int, unmatched:list[str])."""
+    """Mutate `actor` in place. Returns (matched:int, unmatched:list[dict])."""
     trait_text = None
     for t in mon["traits"]:
         if "spellcasting" in t["name"].lower():
@@ -189,13 +195,15 @@ def embed_spellcasting(actor, mon, actor_id, prof, ability_mod_fn):
     matched, unmatched, seen = 0, [], set()
     sort = 200000
     for g in parsed["groups"]:
-        for nm in g["names"]:
+        for raw, nm in g["names"]:
             if nm in seen:
                 continue
             seen.add(nm)
             entry = custom.get(nm) or srd.get(nm)
             if not entry:
-                unmatched.append(nm)
+                unmatched.append({"name": raw, "key": nm, "prep": g["prep"],
+                                  "level": g.get("level"),
+                                  "perDay": g.get("per_day")})
                 continue
             per_day = g.get("per_day")
             actor["items"].append(

@@ -87,3 +87,55 @@ class TestSectionIsolation(TempManifest):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+import spell_embed
+
+
+class TestUnmatchedRecords(unittest.TestCase):
+    TRAIT = ("The mage is a 5th-level spellcaster. Its spellcasting ability is Intelligence "
+             "(spell save DC 14). It has the following spells prepared:\n"
+             "Cantrips (at will): fire bolt, shape water\n"
+             "1st level (4 slots): magic missile, ice knife\n")
+
+    INNATE = ("Its innate spellcasting ability is Charisma (spell save DC 13).\n"
+              "At will: blade ward\n"
+              "2/day each: hex\n")
+
+    def test_parse_keeps_raw_and_normalised_names(self):
+        parsed = spell_embed.parse_spellcasting(self.TRAIT)
+        pairs = [p for g in parsed["groups"] for p in g["names"]]
+        self.assertIn(("shape water", "shape water"), pairs)
+        self.assertTrue(all(isinstance(p, tuple) and len(p) == 2 for p in pairs))
+
+    def test_unmatched_records_carry_preparation_context(self):
+        actor = {"system": {"attributes": {}, "spells": {}}, "items": []}
+        mon = {"traits": [{"name": "Spellcasting", "text": self.TRAIT}],
+               "abilities": {"int": 16}}
+        _, unmatched = spell_embed.embed_spellcasting(
+            actor, mon, "actor1", 3, lambda s: (s - 10) // 2)
+        by_key = {u["key"]: u for u in unmatched}
+        self.assertIn("shape water", by_key)
+        self.assertEqual(by_key["shape water"]["prep"], "prepared")
+        self.assertEqual(by_key["shape water"]["level"], 0)
+        self.assertIsNone(by_key["shape water"]["perDay"])
+
+    def test_innate_records_carry_per_day(self):
+        actor = {"system": {"attributes": {}, "spells": {}}, "items": []}
+        mon = {"traits": [{"name": "Innate Spellcasting", "text": self.INNATE}],
+               "abilities": {"cha": 16}}
+        _, unmatched = spell_embed.embed_spellcasting(
+            actor, mon, "actor2", 3, lambda s: (s - 10) // 2)
+        by_key = {u["key"]: u for u in unmatched}
+        self.assertEqual(by_key["blade ward"]["prep"], "atwill")
+        self.assertEqual(by_key["hex"]["prep"], "innate")
+        self.assertEqual(by_key["hex"]["perDay"], 2)
+
+    def test_statblock_fragments_are_dropped(self):
+        """'shadow bolt 1st-5th level : arms of hadar' is a mis-split line, not a spell."""
+        parsed = spell_embed.parse_spellcasting(
+            "Its spellcasting ability is Charisma (spell save DC 13).\n"
+            "1st level (4 slots): shadow bolt 1st-5th level : arms of hadar, hex\n")
+        keys = [k for g in parsed["groups"] for _, k in g["names"]]
+        self.assertNotIn("shadow bolt 1st-5th level : arms of hadar", keys)
+        self.assertIn("hex", keys)
