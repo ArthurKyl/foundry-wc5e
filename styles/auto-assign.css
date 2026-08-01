@@ -43,6 +43,22 @@
   padding-right: 0.25rem;
 }
 
+/* Flex items shrink by default. In a column that means a tall card is squeezed
+ * below its content height and, since cards are overflow:visible, the content
+ * paints straight over whatever follows it -- which is what happened to the
+ * "not found" list on the report. Nothing here may shrink; the section is the
+ * scroller. */
+#wc5e-auto-assign .window-content > section > * {
+  flex: 0 0 auto;
+}
+
+/* The exception: the tree card is meant to absorb the leftover height on the
+ * configure stage, and clips so its own inner list scrolls. */
+#wc5e-auto-assign .window-content > section > .wc5e-aa-card--tree {
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
 #wc5e-auto-assign .window-content > footer {
   flex: 0 0 auto;
   border-top: 1px solid var(--wc5e-rule);
@@ -112,6 +128,7 @@
  * unstyled next to Foundry's own panels. */
 
 #wc5e-auto-assign .wc5e-aa-card {
+  overflow: hidden;
   border: 1px solid var(--wc5e-rule);
   border-radius: 4px;
   padding: 0.6rem 0.7rem;
@@ -129,10 +146,6 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--wc5e-dim);
-}
-
-#wc5e-auto-assign .wc5e-aa-card--tree {
-  flex: 1 1 auto;
 }
 
 #wc5e-auto-assign .wc5e-aa-card--missing {
@@ -238,7 +251,6 @@
 #wc5e-auto-assign .wc5e-aa-tree {
   flex: 1 1 auto;
   min-height: 6rem;
-  max-height: 22rem;
   overflow-y: auto;
   list-style: none;
   margin: 0;
@@ -318,8 +330,6 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  max-height: 18rem;
-  overflow-y: auto;
 }
 
 #wc5e-auto-assign .wc5e-aa-writes > li {
