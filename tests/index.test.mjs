@@ -85,3 +85,50 @@ test("reads only the packs it is given", async () => {
   await buildSearchIndex(["a.spells"], { getPack: spy });
   assert.deepEqual(read, ["a.spells"]);
 });
+
+test("onProgress is called for a normal Item pack", async () => {
+  const calls = [];
+  const onProgress = (done, total, label) => calls.push({ done, total, label });
+  await buildSearchIndex(["a.spells"], { getPack, onProgress });
+  assert.equal(calls.length, 1);
+  assert.deepEqual(calls[0], { done: 1, total: 1, label: "A Spells" });
+});
+
+test("onProgress is called for a non-Item pack", async () => {
+  const calls = [];
+  const onProgress = (done, total, label) => calls.push({ done, total, label });
+  await buildSearchIndex(["c.actors"], { getPack, onProgress });
+  assert.equal(calls.length, 1);
+  assert.deepEqual(calls[0], { done: 1, total: 1, label: "C Actors" });
+});
+
+test("onProgress is called for a pack whose getIndex throws", async () => {
+  const calls = [];
+  const onProgress = (done, total, label) => calls.push({ done, total, label });
+  await buildSearchIndex(["d.broken"], { getPack, onProgress });
+  assert.equal(calls.length, 1);
+  assert.deepEqual(calls[0], { done: 1, total: 1, label: "D Broken" });
+});
+
+test("onProgress is called for an unresolvable pack", async () => {
+  const calls = [];
+  const onProgress = (done, total, label) => calls.push({ done, total, label });
+  await buildSearchIndex(["nope"], { getPack, onProgress });
+  assert.equal(calls.length, 1);
+  assert.deepEqual(calls[0], { done: 1, total: 1, label: "nope" });
+});
+
+test("onProgress receives the (done, total) sequence for multiple packs", async () => {
+  const calls = [];
+  const onProgress = (done, total, label) => calls.push({ done, total });
+  await buildSearchIndex(["a.spells", "d.broken", "c.actors", "nope"], {
+    getPack, onProgress,
+  });
+  assert.equal(calls.length, 4);
+  assert.deepEqual(calls, [
+    { done: 1, total: 4 },
+    { done: 2, total: 4 },
+    { done: 3, total: 4 },
+    { done: 4, total: 4 },
+  ]);
+});
