@@ -1,42 +1,44 @@
 <section class="wc5e-aa-configure">
-  <p class="notes">{{localize "WC5E.AutoAssign.Intro"}}</p>
+  {{> wc5eAutoAssignStages}}
+
+  <p class="wc5e-aa-intro">{{localize "WC5E.AutoAssign.Intro"}}</p>
 
   <div class="wc5e-aa-progress" hidden>
     <progress value="0" max="1"></progress>
     <span class="wc5e-aa-progress-label"></span>
   </div>
 
-  <fieldset>
-    <legend>{{localize "WC5E.AutoAssign.TargetsLegend"}}</legend>
-    <label class="checkbox">
+  <section class="wc5e-aa-card">
+    <h3>{{localize "WC5E.AutoAssign.TargetsLegend"}}</h3>
+    <label class="wc5e-aa-option">
       <input type="checkbox" name="target-monsters" {{checked targets.monsters}}>
-      {{localize "WC5E.AutoAssign.TargetMonsters"}}
-      <span class="notes">({{totals.monsters}} / {{totals.monsterSpells}})</span>
+      <span class="wc5e-aa-option-label">{{localize "WC5E.AutoAssign.TargetMonsters"}}</span>
+      <span class="wc5e-aa-count">{{totals.monsterSpells}}</span>
     </label>
-    <label class="checkbox {{#unless listsAvailable}}disabled{{/unless}}">
+    <label class="wc5e-aa-option {{#unless listsAvailable}}is-disabled{{/unless}}">
       <input type="checkbox" name="target-lists" {{checked targets.lists}}
              {{disabled (wc5eNot listsAvailable)}}>
-      {{localize "WC5E.AutoAssign.TargetLists"}}
-      <span class="notes">({{totals.lists}} / {{totals.listSpells}})</span>
+      <span class="wc5e-aa-option-label">{{localize "WC5E.AutoAssign.TargetLists"}}</span>
+      <span class="wc5e-aa-count">{{totals.listSpells}}</span>
     </label>
     {{#unless listsAvailable}}
-      <p class="notes hint">{{localize "WC5E.AutoAssign.ListsNeedCompendium"}}</p>
+      <p class="wc5e-aa-hint">{{localize "WC5E.AutoAssign.ListsNeedCompendium"}}</p>
     {{/unless}}
-  </fieldset>
+  </section>
 
-  <fieldset>
-    <legend>{{localize "WC5E.AutoAssign.DestinationLegend"}}</legend>
+  <section class="wc5e-aa-card">
+    <h3>{{localize "WC5E.AutoAssign.DestinationLegend"}}</h3>
     <select name="destination">
       {{#each destinations}}
         <option value="{{this.value}}" {{#if this.chosen}}selected{{/if}}>{{this.label}}</option>
       {{/each}}
     </select>
-    <p class="notes hint">{{localize "WC5E.AutoAssign.UpdateCaveat"}}</p>
-  </fieldset>
+    <p class="wc5e-aa-hint">{{localize "WC5E.AutoAssign.UpdateCaveat"}}</p>
+  </section>
 
-  <fieldset>
-    <legend>{{localize "WC5E.AutoAssign.SearchLegend"}}</legend>
-    <p class="notes">{{localize "WC5E.AutoAssign.SearchHint"}}</p>
+  <section class="wc5e-aa-card wc5e-aa-card--tree">
+    <h3>{{localize "WC5E.AutoAssign.SearchLegend"}}</h3>
+    <p class="wc5e-aa-hint">{{localize "WC5E.AutoAssign.SearchHint"}}</p>
     <ol class="wc5e-aa-tree">{{> wc5eAutoAssignNodes nodes=tree}}</ol>
-  </fieldset>
+  </section>
 </section>

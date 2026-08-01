@@ -30,8 +30,6 @@
   "WC5E.AutoAssign.ScopePack": "compendium",
   "WC5E.AutoAssign.ScopeWorld": "world actor",
   "WC5E.AutoAssign.ScopeList": "spell list",
-  "WC5E.AutoAssign.PreviewSummary": "Will add {spells} spells to {monsters} monsters, and {entries} entries to {lists} spell lists.",
-  "WC5E.AutoAssign.ReportSummary": "Added {added} spells and {entries} spell-list entries.",
   "WC5E.AutoAssign.ReportFailures": "Some writes failed:",
   "WC5E.AutoAssign.NotFoundHeading": "Not found ({count})",
   "WC5E.AutoAssign.NotFoundHint": "These are not in the compendiums you searched. If you own them, import them and run this again.",
@@ -46,5 +44,17 @@
   "WC5E.AutoAssign.ProgressScan": "Searching {done}/{total} — {what}",
   "WC5E.AutoAssign.ProgressApply": "Writing {done}/{total} — {what}",
   "WC5E.AutoAssign.ProgressReading": "reading current state",
-  "WC5E.AutoAssign.AssignedHeading": "Assigned"
+  "WC5E.AutoAssign.AssignedHeading": "Assigned",
+  "WC5E.AutoAssign.StagesLabel": "Progress",
+  "WC5E.AutoAssign.StageConfigure": "Choose",
+  "WC5E.AutoAssign.StagePreview": "Review",
+  "WC5E.AutoAssign.StageReport": "Done",
+  "WC5E.AutoAssign.StatSpells": "spells for {count} monsters",
+  "WC5E.AutoAssign.StatEntries": "entries on {count} lists",
+  "WC5E.AutoAssign.StatNotFound": "not found",
+  "WC5E.AutoAssign.StatAdded": "spells added",
+  "WC5E.AutoAssign.StatListEntries": "list entries added",
+  "WC5E.AutoAssign.WillAssignHeading": "Will assign",
+  "WC5E.AutoAssign.NothingToAssign": "Nothing new to assign. Anything found is already in place.",
+  "WC5E.AutoAssign.ToggleFolder": "Expand or collapse"
 }

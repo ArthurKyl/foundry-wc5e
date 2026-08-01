@@ -17,10 +17,13 @@ export const SETTINGS = {
 /** Registered once; the tree template recurses through this partial. */
 export async function registerTemplates() {
   const path = "modules/wc5e-bestiary/templates/auto-assign/nodes.hbs";
-  const [nodes, notFound] = await foundry.applications.handlebars.loadTemplates([
-    path, "modules/wc5e-bestiary/templates/auto-assign/notfound.hbs"]);
+  const [nodes, notFound, stages] = await foundry.applications.handlebars.loadTemplates([
+    path,
+    "modules/wc5e-bestiary/templates/auto-assign/notfound.hbs",
+    "modules/wc5e-bestiary/templates/auto-assign/stages.hbs"]);
   Handlebars.registerPartial("wc5eAutoAssignNodes", nodes);
   Handlebars.registerPartial("wc5eAutoAssignNotFound", notFound);
+  Handlebars.registerPartial("wc5eAutoAssignStages", stages);
 }
 
 export function registerHelpers() {
