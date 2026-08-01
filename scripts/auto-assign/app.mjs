@@ -39,6 +39,8 @@ export class AutoAssignApp extends HandlebarsApplicationMixin(ApplicationV2) {
       apply: AutoAssignApp.#onApply,
       back: AutoAssignApp.#onBack,
       copy: AutoAssignApp.#onCopy,
+      listSpells: AutoAssignApp.#onListSpells,
+      listByTarget: AutoAssignApp.#onListByTarget,
     },
   };
 
@@ -259,8 +261,12 @@ export class AutoAssignApp extends HandlebarsApplicationMixin(ApplicationV2) {
         return;
       }
 
-      const index = await buildSearchIndex(packIds, { aliases: this.#manifest.aliases });
+      const progress = this.#progressReporter("WC5E.AutoAssign.ProgressScan");
+      const index = await buildSearchIndex(packIds, {
+        aliases: this.#manifest.aliases, onProgress: progress });
       this.#indexFailures = index.failed;
+      progress(packIds.length, packIds.length,
+        game.i18n.localize("WC5E.AutoAssign.ProgressReading"));
       const state = await collectState({ manifest: this.#manifest, targets,
                                          destination: this.#destination });
       this.#plan = buildPlan({ manifest: this.#manifest, index, targets,
@@ -280,9 +286,10 @@ export class AutoAssignApp extends HandlebarsApplicationMixin(ApplicationV2) {
   static async #onApply() {
     if ( this.#busy ) return;
     this.#busy = true;
-    this.render();
+    await this.render();   // awaited: #progressReporter reads the fresh DOM
     try {
-      this.#result = await applyPlan(this.#plan);
+      this.#result = await applyPlan(this.#plan, {
+        onProgress: this.#progressReporter("WC5E.AutoAssign.ProgressApply") });
       this.#stage = "report";
     }
     catch ( err ) {
@@ -304,5 +311,71 @@ export class AutoAssignApp extends HandlebarsApplicationMixin(ApplicationV2) {
     const text = this.#plan.notFound.map(n => n.name).join("\n");
     await game.clipboard.copyPlainText(text);
     ui.notifications.info(game.i18n.localize("WC5E.AutoAssign.Copied"));
+  }
+
+  /** Just the names, deduplicated -- a shopping list to import, then re-run. */
+  static async #onListSpells() {
+    const names = [...new Set(this.#plan.notFound.map(n => n.name))]
+      .sort((a, b) => a.localeCompare(b));
+    return AutoAssignApp.#textDialog("WC5E.AutoAssign.ShowSpellList", names.join("\n"));
+  }
+
+  /** Grouped by the monster or spell list that wanted each name. */
+  static async #onListByTarget() {
+    const byTarget = new Map();
+    for ( const n of this.#plan.notFound ) {
+      for ( const who of n.wantedBy ) {
+        if ( !byTarget.has(who) ) byTarget.set(who, []);
+        byTarget.get(who).push(n.name);
+      }
+    }
+    const text = [...byTarget.entries()]
+      .sort((a, b) => a[0].localeCompare(b[0]))
+      .map(([who, spells]) =>
+        `${who}\n${spells.sort((a, b) => a.localeCompare(b)).map(s => `    ${s}`).join("\n")}`)
+      .join("\n\n");
+    return AutoAssignApp.#textDialog("WC5E.AutoAssign.ShowByTarget", text);
+  }
+
+  /** A scrollable, selectable, copyable block of plain text. */
+  static async #textDialog(titleKey, text) {
+    const empty = game.i18n.localize("WC5E.AutoAssign.NothingToShow");
+    return foundry.applications.api.DialogV2.wait({
+      window: { title: game.i18n.localize(titleKey), resizable: true },
+      position: { width: 520, height: 600 },
+      content: `<textarea class="wc5e-aa-textdump" readonly rows="24">`
+        + foundry.utils.escapeHTML(text || empty) + `</textarea>`,
+      buttons: [
+        { action: "copy", icon: "fa-solid fa-copy",
+          label: game.i18n.localize("WC5E.AutoAssign.CopyList"),
+          callback: async () => {
+            await game.clipboard.copyPlainText(text);
+            ui.notifications.info(game.i18n.localize("WC5E.AutoAssign.Copied"));
+          } },
+        { action: "close", label: game.i18n.localize("WC5E.AutoAssign.Done"), default: true },
+      ],
+      rejectClose: false,
+    });
+  }
+
+  /**
+   * A callback that drives the progress bar by writing to the DOM directly.
+   * Re-rendering per pack would rebuild the whole tree hundreds of times.
+   */
+  #progressReporter(labelKey) {
+    const bar = this.element?.querySelector(".wc5e-aa-progress");
+    const meter = bar?.querySelector("progress");
+    const label = bar?.querySelector(".wc5e-aa-progress-label");
+    if ( bar ) bar.hidden = false;
+    return (done, total, what) => {
+      if ( meter ) {
+        meter.max = total || 1;
+        meter.value = done;
+      }
+      if ( label ) {
+        label.textContent = game.i18n.format(labelKey,
+          { done, total, what: what ?? "" });
+      }
+    };
   }
 }

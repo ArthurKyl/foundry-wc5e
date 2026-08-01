@@ -15,9 +15,17 @@
         {{/each}}
       </ul>
     {{/each}}
-    <button type="button" data-action="copy">
-      <i class="fa-solid fa-copy"></i> {{localize "WC5E.AutoAssign.CopyList"}}
-    </button>
+    <div class="wc5e-aa-actions">
+      <button type="button" data-action="copy">
+        <i class="fa-solid fa-copy"></i> {{localize "WC5E.AutoAssign.CopyList"}}
+      </button>
+      <button type="button" data-action="listSpells">
+        <i class="fa-solid fa-list"></i> {{localize "WC5E.AutoAssign.ShowSpellList"}}
+      </button>
+      <button type="button" data-action="listByTarget">
+        <i class="fa-solid fa-dragon"></i> {{localize "WC5E.AutoAssign.ShowByTarget"}}
+      </button>
+    </div>
   {{/if}}
   <p class="notes hint">{{localize "WC5E.AutoAssign.UpdateCaveat"}}</p>
 </section>

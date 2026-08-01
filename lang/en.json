@@ -40,5 +40,11 @@
   "WC5E.AutoAssign.PromptBody": "Some spells WC5E references cannot be shipped with this module, so {monsterSpells} monster spells and {listSpells} spell-list entries are currently blank. If you own that content, Auto-Assign Spells can find it in your compendiums and fill them in.",
   "WC5E.AutoAssign.PromptRun": "Run it now",
   "WC5E.AutoAssign.PromptLater": "Later",
-  "WC5E.AutoAssign.PromptNever": "Don't show again"
+  "WC5E.AutoAssign.PromptNever": "Don't show again",
+  "WC5E.AutoAssign.ShowSpellList": "Show missing spells",
+  "WC5E.AutoAssign.ShowByTarget": "Show by monster / list",
+  "WC5E.AutoAssign.NothingToShow": "Nothing to show.",
+  "WC5E.AutoAssign.ProgressScan": "Searching {done}/{total} — {what}",
+  "WC5E.AutoAssign.ProgressApply": "Writing {done}/{total} — {what}",
+  "WC5E.AutoAssign.ProgressReading": "reading current state"
 }

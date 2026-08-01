@@ -1,0 +1,112 @@
+/* Auto-Assign Spells dialog.
+ *
+ * The lists this window shows are unbounded -- a full compendium tree, one row
+ * per planned write, one row per spell not found. Without an explicit scroll
+ * container the content pushes the footer off the bottom of the window and the
+ * Apply button becomes unreachable, which is exactly what happened in testing.
+ * So: the window content is a flex column, the body scrolls, the footer does
+ * not. */
+
+#wc5e-auto-assign .window-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow: hidden;          /* the body owns the scrolling, not this */
+  padding: 0.5rem;
+}
+
+/* The body part. Grows to fill, scrolls internally. */
+#wc5e-auto-assign .window-content > section {
+  flex: 1 1 auto;
+  min-height: 0;             /* without this, flex refuses to shrink and the
+                                child's overflow never engages */
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+/* The footer part. Never scrolls away. */
+#wc5e-auto-assign .window-content > footer {
+  flex: 0 0 auto;
+  border-top: 1px solid var(--color-border-light-tertiary, #7a7971);
+  padding-top: 0.5rem;
+}
+
+#wc5e-auto-assign fieldset {
+  margin-bottom: 0.75rem;
+}
+
+/* Long inner lists get their own cap so one huge section cannot crowd out the
+ * others -- the pack tree in particular can run to hundreds of rows. */
+#wc5e-auto-assign .wc5e-aa-tree,
+#wc5e-auto-assign .wc5e-aa-writes,
+#wc5e-auto-assign .wc5e-aa-notfound {
+  max-height: 22rem;
+  overflow-y: auto;
+  margin: 0;
+}
+
+#wc5e-auto-assign .wc5e-aa-tree,
+#wc5e-auto-assign .wc5e-aa-tree ol {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+#wc5e-auto-assign .wc5e-aa-tree > li {
+  padding-left: 0;
+}
+
+#wc5e-auto-assign .wc5e-aa-node label.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+}
+
+#wc5e-auto-assign .wc5e-aa-toggle {
+  width: 1.1rem;
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+#wc5e-auto-assign .wc5e-aa-writes ul {
+  list-style: none;
+  padding-left: 1.25rem;
+}
+
+#wc5e-auto-assign .notes {
+  font-size: var(--font-size-12, 0.75rem);
+  opacity: 0.8;
+}
+
+#wc5e-auto-assign .hint {
+  font-style: italic;
+}
+
+/* Scan / apply progress. Hidden until a run starts; updated by direct DOM
+ * writes rather than a re-render, so a 300-pack scan does not rebuild the
+ * whole tree once per pack. */
+#wc5e-auto-assign .wc5e-aa-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+}
+
+#wc5e-auto-assign .wc5e-aa-progress[hidden] {
+  display: none;
+}
+
+#wc5e-auto-assign .wc5e-aa-progress progress {
+  flex: 1 1 auto;
+  height: 0.9rem;
+}
+
+#wc5e-auto-assign .wc5e-aa-progress-label {
+  flex: 0 0 auto;
+  font-size: var(--font-size-12, 0.75rem);
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 22rem;
+}

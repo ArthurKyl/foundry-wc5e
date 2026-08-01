@@ -37,6 +37,16 @@ ALIAS = {
     "ray of sickeness": "ray of sickness",
     "maximilians earthen grasp": "maximilian's earthen grasp",
     "crusaders mantle": "crusader's mantle",
+    # Found by running the auto-assign tool against a real collection: these
+    # five looked unshippable purely because the source spells them oddly.
+    # The first two are SRD, so aliasing them means they now embed at build
+    # time and ship to everyone instead of needing the runtime tool.
+    "thunder wave": "thunderwave",
+    "prot. from evil and good": "protection from evil and good",
+    # Non-SRD, so still runtime-only -- but now under a name that matches.
+    "thunder step ^xge": "thunder step",      # unpaired ^ marker in the source
+    "summon shadow- spawn": "summon shadowspawn",   # line-break hyphen
+    "tasha's otherworldy guise": "tasha's otherworldly guise",   # source typo
 }
 
 

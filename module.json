@@ -252,5 +252,8 @@
   "bugs": "https://github.com/ArthurKyl/foundry-wc5e/issues",
   "readme": "https://github.com/ArthurKyl/foundry-wc5e#readme",
   "changelog": "https://github.com/ArthurKyl/foundry-wc5e/releases",
-  "license": "https://github.com/ArthurKyl/foundry-wc5e/blob/main/LICENSE.md"
+  "license": "https://github.com/ArthurKyl/foundry-wc5e/blob/main/LICENSE.md",
+  "styles": [
+    "styles/auto-assign.css"
+  ]
 }

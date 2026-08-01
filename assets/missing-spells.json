@@ -8,7 +8,12 @@
     "maximilians earthen grasp": "maximilian's earthen grasp",
     "produce flame": "produce flame",
     "produce flames": "produce flame",
-    "ray of sickeness": "ray of sickness"
+    "prot. from evil and good": "protection from evil and good",
+    "ray of sickeness": "ray of sickness",
+    "summon shadow- spawn": "summon shadowspawn",
+    "tasha's otherworldy guise": "tasha's otherworldly guise",
+    "thunder step ^xge": "thunder step",
+    "thunder wave": "thunderwave"
   },
   "monsters": {
     "0by0s9Npy8ws60NB": {
@@ -1366,13 +1371,6 @@
       "pack": "monsters",
       "spells": [
         {
-          "key": "thunder wave",
-          "level": null,
-          "name": "*thunder wave*",
-          "perDay": 3,
-          "prep": "innate"
-        },
-        {
           "key": "thunderclap",
           "level": null,
           "name": "*thunderclap*",
@@ -1523,7 +1521,7 @@
           "source": "XGE"
         },
         {
-          "key": "prot. from evil and good",
+          "key": "protection from evil and good",
           "name": "Prot. from Evil and Good",
           "source": "not in SRD"
         },
@@ -1675,7 +1673,7 @@
           "source": "XGE"
         },
         {
-          "key": "thunder step ^xge",
+          "key": "thunder step",
           "name": "Thunder Step ^XGE",
           "source": "not in SRD"
         },
@@ -1787,7 +1785,7 @@
           "source": "XGE"
         },
         {
-          "key": "prot. from evil and good",
+          "key": "protection from evil and good",
           "name": "Prot. from Evil and Good",
           "source": "not in SRD"
         },
@@ -2256,7 +2254,7 @@
           "source": "XGE"
         },
         {
-          "key": "summon shadow- spawn",
+          "key": "summon shadowspawn",
           "name": "Summon Shadow- spawn",
           "source": "TCE"
         },
@@ -2286,7 +2284,7 @@
           "source": "TCE"
         },
         {
-          "key": "tasha's otherworldy guise",
+          "key": "tasha's otherworldly guise",
           "name": "Tasha's Otherworldy Guise",
           "source": "TCE"
         },
@@ -2535,7 +2533,7 @@
           "source": "XGE"
         },
         {
-          "key": "prot. from evil and good",
+          "key": "protection from evil and good",
           "name": "Prot. from Evil and Good",
           "source": "not in SRD"
         },
