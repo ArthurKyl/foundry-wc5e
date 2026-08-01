@@ -77,6 +77,13 @@ class TestSectionIsolation(TempManifest):
                                                           "pack": "spell-lists", "spells": []}})
         self.assertEqual(sorted(missing_spells.load()["spellLists"]), ["JA.p1", "JAB.p2"])
 
+        # Exposing direction: re-set the *shorter* id after the *longer* one already
+        # holds data. A buggy `prefix = journal_id` (missing the dot) would match
+        # "JAB.p2" as well and wipe it here.
+        missing_spells.set_spell_lists("JA", {"JA.p3": {"name": "a3", "identifier": "i",
+                                                        "pack": "spell-lists", "spells": []}})
+        self.assertEqual(sorted(missing_spells.load()["spellLists"]), ["JA.p3", "JAB.p2"])
+
 
 if __name__ == "__main__":
     unittest.main()
