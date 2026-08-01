@@ -111,6 +111,17 @@ For player characters, drag a class and a race onto a blank sheet — dnd5e's
 advancement prompts will walk you through levelling. Start with the **WC5E
 Guide** journal for a short in-module orientation.
 
+### Auto-assign spells you already own
+
+Some spells WC5E references come from sourcebooks that can't be redistributed, so they ship as
+text only. If you own that content, **Settings → Module Settings → Auto-Assign Spells** will search
+compendiums you pick, add the spells it finds to the WC5E monsters and class spell lists, and show
+you a list of anything it couldn't find. Nothing is ever removed or overwritten, and it's safe to
+run twice.
+
+Updating the module replaces its compendiums, so run it again after an update — your compendium
+selection is remembered.
+
 ---
 
 ## What's inside

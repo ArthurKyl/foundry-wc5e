@@ -55,9 +55,11 @@ full set of player options are in, including backgrounds and class spell lists
   <li>Spellcasters have a <strong>class spell list</strong> (see <em>WC5E Class
     Spell Lists</em>). If you use a guided character-builder module, point its
     spell-list setting at that compendium.</li>
-  <li>Some monster spells and abilities reference <em>non-SRD</em> spells
-    (Tasha's/Xanathar's) that can't be bundled — those stay listed as text; drag
-    them from your own content if you own it.</li>
+  <li>Some monster spells and abilities reference <em>non-SRD</em> spells that
+    can't be bundled — those stay listed as text. If you own that content,
+    <strong>Settings → Module Settings → Auto-Assign Spells</strong> will find it
+    in your own compendiums and fill it in for you, and tell you what it
+    couldn't find.</li>
 </ul>
 """
 
@@ -79,11 +81,11 @@ ROADMAP = """
   <li>&#9745; Spell selection prompts on level-up (Cantrips/Spells Known)</li>
   <li>&#9745; The 4 Heroes' Handbook backgrounds</li>
   <li>&#9745; Compendium folders &amp; this guide</li>
+  <li>&#9745; Auto-assign non-SRD spells from your own compendiums</li>
 </ul>
 <p><strong>Planned</strong></p>
 <ul>
   <li>&#9744; Per-monster / creature token art</li>
-  <li>&#9744; Wire the remaining non-SRD spells (needs official content)</li>
 </ul>
 """
 
