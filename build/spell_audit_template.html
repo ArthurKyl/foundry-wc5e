@@ -1,0 +1,227 @@
+<title>WC5E Spell Implementation Audit</title>
+
+<style>
+  :root {
+    /* Continuity with the module itself: dnd5e's own gold as accent and its
+       healing/damage pair as the semantic colours, on a cool-biased neutral. */
+    --gold: #8a7442;
+    --ground: #f1f2f4;
+    --panel: #ffffff;
+    --ink: #16191f;
+    --ink-2: #4e545e;
+    --ink-3: #858b95;
+    --rule: #dcdee3;
+    --wired: #3c7f58;
+    --gap: #9c5b47;
+    --serif: Iowan Old Style, Palatino Linotype, Palatino, Georgia, serif;
+    --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --gold: #d8c08a; --ground: #14171c; --panel: #1b1f26; --ink: #e8eaee;
+      --ink-2: #a8afba; --ink-3: #767d88; --rule: #2b313a;
+      --wired: #6fb98a; --gap: #d08a72;
+    }
+  }
+  :root[data-theme="dark"] {
+    --gold: #d8c08a; --ground: #14171c; --panel: #1b1f26; --ink: #e8eaee;
+    --ink-2: #a8afba; --ink-3: #767d88; --rule: #2b313a;
+    --wired: #6fb98a; --gap: #d08a72;
+  }
+  :root[data-theme="light"] {
+    --gold: #8a7442; --ground: #f1f2f4; --panel: #ffffff; --ink: #16191f;
+    --ink-2: #4e545e; --ink-3: #858b95; --rule: #dcdee3;
+    --wired: #3c7f58; --gap: #9c5b47;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: var(--sans); font-size: 15px; line-height: 1.5;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 2rem 1.25rem 5rem; }
+
+  header h1 {
+    font-family: var(--serif); font-weight: 600; font-size: clamp(1.6rem, 4vw, 2.2rem);
+    margin: 0 0 .3rem; text-wrap: balance; letter-spacing: -0.01em;
+  }
+  header p { margin: 0; color: var(--ink-2); max-width: 62ch; }
+
+  /* Summary first: the shape of the work before any individual spell. */
+  .tally { display: grid; grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+           gap: .5rem; margin: 1.5rem 0; }
+  .tally div { background: var(--panel); border: 1px solid var(--rule); border-radius: 5px;
+               padding: .7rem .6rem; text-align: center; }
+  .tally b { display: block; font-size: 1.5rem; font-variant-numeric: tabular-nums;
+             font-weight: 600; line-height: 1.1; }
+  .tally span { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em;
+                color: var(--ink-3); }
+  .tally .t-gap b { color: var(--gap); }
+  .tally .t-all b { color: var(--gold); }
+
+  .controls { position: sticky; top: 0; z-index: 5; background: var(--ground);
+              padding: .75rem 0; border-bottom: 1px solid var(--rule);
+              display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+  .controls input[type=search] {
+    flex: 1 1 220px; min-width: 0; padding: .45rem .6rem; font: inherit;
+    background: var(--panel); color: var(--ink);
+    border: 1px solid var(--rule); border-radius: 5px;
+  }
+  .controls button {
+    font: inherit; font-size: .82rem; padding: .35rem .7rem; cursor: pointer;
+    background: var(--panel); color: var(--ink-2);
+    border: 1px solid var(--rule); border-radius: 999px;
+  }
+  .controls button[aria-pressed="true"] {
+    background: var(--gold); border-color: var(--gold); color: var(--ground);
+    font-weight: 600;
+  }
+  .count { font-size: .8rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+  .lvl { font-family: var(--serif); font-size: .95rem; color: var(--ink-3);
+         text-transform: uppercase; letter-spacing: .12em; margin: 2rem 0 .6rem; }
+
+  .spell { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px;
+           margin-bottom: .5rem; overflow: hidden; }
+  .spell.has-gap { border-left: 3px solid var(--gap); }
+  .spell > summary { cursor: pointer; padding: .7rem .9rem; display: grid;
+                     grid-template-columns: 1fr auto; gap: .4rem 1rem; align-items: center; }
+  .spell > summary::-webkit-details-marker { display: none; }
+  .spell > summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+  .name { font-family: var(--serif); font-size: 1.08rem; font-weight: 600; }
+  .meta { font-size: .78rem; color: var(--ink-3); }
+  .meta em { font-style: normal; color: var(--ink-2); }
+
+  /* The scan line: six fixed slots, filled or hollow, same order on every row,
+     so the shape of what is missing reads down the page without reading. */
+  .chips { display: flex; gap: .25rem; }
+  .chip { font-family: var(--mono); font-size: .62rem; letter-spacing: .04em;
+          text-transform: uppercase; padding: .18rem .38rem; border-radius: 3px;
+          border: 1px solid var(--rule); color: var(--ink-3); white-space: nowrap; }
+  .chip.on { border-color: var(--wired); color: var(--wired); font-weight: 700; }
+
+  .body { padding: 0 .9rem .9rem; display: grid; gap: .9rem;
+          border-top: 1px solid var(--rule); padding-top: .9rem; }
+  .props { display: flex; flex-wrap: wrap; gap: .15rem 1.1rem; font-size: .82rem;
+           color: var(--ink-2); }
+  .props b { color: var(--ink-3); font-weight: 500; }
+  .text { font-family: var(--serif); font-size: .95rem; line-height: 1.62;
+          white-space: pre-wrap; max-width: 68ch; }
+  h4 { margin: 0 0 .3rem; font-size: .7rem; text-transform: uppercase;
+       letter-spacing: .1em; color: var(--ink-3); font-weight: 700; }
+  .acts { display: grid; gap: .45rem; }
+  .act { border-left: 2px solid var(--gold); padding-left: .6rem; }
+  .act .kind { font-family: var(--mono); font-size: .7rem; text-transform: uppercase;
+               letter-spacing: .06em; color: var(--gold); }
+  .act ul { margin: .15rem 0 0; padding-left: 1rem; font-family: var(--mono);
+            font-size: .78rem; color: var(--ink-2); }
+  .gaps { background: color-mix(in srgb, var(--gap) 9%, transparent);
+          border: 1px solid color-mix(in srgb, var(--gap) 35%, transparent);
+          border-radius: 5px; padding: .55rem .7rem; }
+  .gaps h4 { color: var(--gap); }
+  .gaps ul { margin: 0; padding-left: 1.05rem; font-size: .85rem; }
+  .none { text-align: center; padding: 3rem 1rem; color: var(--ink-3); }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>WC5E spell implementation audit</h1>
+    <p>Every spell this module ships, its rules text, and what the dnd5e sheet can
+      actually <em>do</em> with it. Flagged gaps are heuristics read off the prose —
+      a to-do list to review, not a verdict.</p>
+  </header>
+
+  <div class="tally" id="tally"></div>
+
+  <div class="controls">
+    <input type="search" id="q" placeholder="Search name or text…" aria-label="Search spells">
+    <button data-f="all" aria-pressed="true">All</button>
+    <button data-f="gaps" aria-pressed="false">Needs work</button>
+    <button data-f="clean" aria-pressed="false">Fully wired</button>
+    <button data-f="noact" aria-pressed="false">Nothing rollable</button>
+    <span class="count" id="count"></span>
+  </div>
+
+  <div id="list"></div>
+</div>
+
+<script>
+  const SPELLS = /*DATA*/;
+  const TALLY = /*TALLY*/;
+  const CAPS = [["attack","atk"],["damage","dmg"],["save","save"],
+                ["heal","heal"],["area","area"],["effects","fx"]];
+  const ORD = ["Cantrip","1st","2nd","3rd","4th","5th","6th","7th","8th","9th"];
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  document.getElementById("tally").innerHTML = [
+    ["t-all", TALLY.total, "spells"], ["", TALLY.attack, "attack roll"],
+    ["", TALLY.damage, "damage"], ["", TALLY.save, "saving throw"],
+    ["", TALLY.area, "area template"], ["", TALLY.effects, "active effect"],
+    ["t-gap", TALLY.withGaps, "need work"],
+  ].map(([c, n, l]) => `<div class="${c}"><b>${n ?? 0}</b><span>${l}</span></div>`).join("");
+
+  function card(s) {
+    const gaps = s.gaps.length;
+    const chips = CAPS.map(([k, label]) =>
+      `<span class="chip ${s.wired[k] ? "on" : ""}">${label}</span>`).join("");
+    const props = [["Casting", s.castingTime], ["Range", s.range],
+                   ["Duration", s.duration], ["Area", s.area],
+                   ["Components", (s.components || []).join(", ")], ["Source", s.source]]
+      .filter(([, v]) => v).map(([k, v]) => `<span><b>${k}</b> ${esc(v)}</span>`).join("");
+    const acts = s.activities.length ? s.activities.map(a => `
+      <div class="act"><div class="kind">${esc(a.kind)}${a.name ? " — " + esc(a.name) : ""}</div>
+      ${a.detail.length ? `<ul>${a.detail.map(d => `<li>${esc(d)}</li>`).join("")}</ul>` : ""}</div>`
+    ).join("") : `<p class="meta">No activities — nothing is rollable from the sheet.</p>`;
+
+    return `<details class="spell ${gaps ? "has-gap" : ""}">
+      <summary>
+        <span><span class="name">${esc(s.name)}</span>
+          <div class="meta">${ORD[s.level] || s.level} · <em>${esc(s.school)}</em>
+            · ${esc(s.castingTime)} · ${esc(s.range)}</div></span>
+        <span class="chips">${chips}</span>
+      </summary>
+      <div class="body">
+        <div class="props">${props}</div>
+        ${gaps ? `<div class="gaps"><h4>${gaps} thing${gaps > 1 ? "s" : ""} to look at</h4>
+          <ul>${s.gaps.map(g => `<li>${esc(g)}</li>`).join("")}</ul></div>` : ""}
+        <div><h4>Wired up</h4><div class="acts">${acts}</div></div>
+        <div><h4>Rules text</h4><div class="text">${esc(s.text)}</div></div>
+      </div></details>`;
+  }
+
+  let filter = "all", query = "";
+  function render() {
+    const q = query.trim().toLowerCase();
+    const hits = SPELLS.filter(s => {
+      if (filter === "gaps" && !s.gaps.length) return false;
+      if (filter === "clean" && s.gaps.length) return false;
+      if (filter === "noact" && s.activities.length) return false;
+      if (!q) return true;
+      return s.name.toLowerCase().includes(q) || s.text.toLowerCase().includes(q);
+    });
+    let out = "", lvl = null;
+    for (const s of hits) {
+      if (s.level !== lvl) { lvl = s.level; out += `<h2 class="lvl">${ORD[lvl] || lvl} level</h2>`; }
+      out += card(s);
+    }
+    document.getElementById("list").innerHTML =
+      out || `<p class="none">No spells match. Try a different search or filter.</p>`;
+    document.getElementById("count").textContent =
+      `${hits.length} of ${SPELLS.length}`;
+  }
+
+  document.getElementById("q").addEventListener("input", e => { query = e.target.value; render(); });
+  for (const b of document.querySelectorAll(".controls button")) {
+    b.addEventListener("click", () => {
+      filter = b.dataset.f;
+      document.querySelectorAll(".controls button").forEach(x =>
+        x.setAttribute("aria-pressed", String(x === b)));
+      render();
+    });
+  }
+  render();
+</script>
