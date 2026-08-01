@@ -29,6 +29,9 @@ import os
 import re
 import hashlib
 
+import missing_spells
+import spell_embed
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 SRC = os.path.join(os.path.dirname(REPO), "Warcraft-5e-Conversion",
@@ -237,7 +240,7 @@ def main():
     idents = class_identifiers()
 
     jid = make_id("journal", "wc5e-spell-lists")
-    pages, report = [], []
+    pages, report, missing_records = [], [], {}
     sort = 100000
     for cls in sorted(lists):
         ident = idents.get(cls)
@@ -260,7 +263,18 @@ def main():
                     uuids.append(uuid)
                 else:
                     missing.append((name, kind if kind != "srd" else "not in SRD"))
-        pages.append(page(jid, cls, ident, uuids, missing, sort))
+        pg = page(jid, cls, ident, uuids, missing, sort)
+        pages.append(pg)
+        if missing:
+            missing_records[f"{jid}.{pg['_id']}"] = {
+                "name": pg["name"],
+                "identifier": ident,
+                "pack": "spell-lists",
+                "spells": sorted(
+                    ({"name": n, "key": spell_embed._norm(n), "source": m}
+                     for n, m in missing),
+                    key=lambda s: s["key"]),
+            }
         sort += 100000
         report.append((cls, ident, len(uuids), len(missing), [m[0] for m in missing]))
 
@@ -285,6 +299,7 @@ def main():
         json.dump(entry, f, indent=2, ensure_ascii=False)
 
     register_in_manifest(jid, pages)
+    missing_spells.set_spell_lists(jid, missing_records)
 
     tot_res = sum(r[2] for r in report)
     tot_mis = sum(r[3] for r in report)

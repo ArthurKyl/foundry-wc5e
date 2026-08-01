@@ -1456,6 +1456,1190 @@
       ]
     }
   },
-  "spellLists": {},
+  "spellLists": {
+    "wFvFb4VAZnwjzV5z.40fAMeWhsvNOiSKQ": {
+      "identifier": "wc5e-paladin",
+      "name": "Paladin Spells",
+      "pack": "spell-lists",
+      "spells": [
+        {
+          "key": "aura of purity",
+          "name": "Aura of Purity",
+          "source": "not in SRD"
+        },
+        {
+          "key": "aura of vitality",
+          "name": "Aura of Vitality",
+          "source": "not in SRD"
+        },
+        {
+          "key": "banishing smite",
+          "name": "Banishing Smite",
+          "source": "not in SRD"
+        },
+        {
+          "key": "blinding smite",
+          "name": "Blinding Smite",
+          "source": "not in SRD"
+        },
+        {
+          "key": "ceremony",
+          "name": "Ceremony",
+          "source": "XGE"
+        },
+        {
+          "key": "circle of power",
+          "name": "Circle of Power",
+          "source": "not in SRD"
+        },
+        {
+          "key": "compelled duel",
+          "name": "Compelled Duel",
+          "source": "not in SRD"
+        },
+        {
+          "key": "crusader's mantle",
+          "name": "Crusader's Mantle",
+          "source": "not in SRD"
+        },
+        {
+          "key": "destructive wave",
+          "name": "Destructive Wave",
+          "source": "not in SRD"
+        },
+        {
+          "key": "find greater steed",
+          "name": "Find Greater Steed",
+          "source": "XGE"
+        },
+        {
+          "key": "holy weapon",
+          "name": "Holy Weapon",
+          "source": "XGE"
+        },
+        {
+          "key": "life transference",
+          "name": "Life Transference",
+          "source": "XGE"
+        },
+        {
+          "key": "prot. from evil and good",
+          "name": "Prot. from Evil and Good",
+          "source": "not in SRD"
+        },
+        {
+          "key": "staggering smite",
+          "name": "Staggering Smite",
+          "source": "not in SRD"
+        },
+        {
+          "key": "thunderous smite",
+          "name": "Thunderous Smite",
+          "source": "not in SRD"
+        },
+        {
+          "key": "wall of light",
+          "name": "Wall of Light",
+          "source": "XGE"
+        },
+        {
+          "key": "wrathful smite",
+          "name": "Wrathful Smite",
+          "source": "not in SRD"
+        }
+      ]
+    },
+    "wFvFb4VAZnwjzV5z.BO6rmBOC5ynJQt3E": {
+      "identifier": "wc5e-shaman",
+      "name": "Shaman Spells",
+      "pack": "spell-lists",
+      "spells": [
+        {
+          "key": "absorb elements",
+          "name": "Absorb Elements",
+          "source": "XGE"
+        },
+        {
+          "key": "bones of the earth",
+          "name": "Bones of the Earth",
+          "source": "XGE"
+        },
+        {
+          "key": "booming blade",
+          "name": "Booming Blade",
+          "source": "TCE"
+        },
+        {
+          "key": "control flames",
+          "name": "Control Flames",
+          "source": "XGE"
+        },
+        {
+          "key": "control winds",
+          "name": "Control Winds",
+          "source": "XGE"
+        },
+        {
+          "key": "create bonfire",
+          "name": "Create Bonfire",
+          "source": "XGE"
+        },
+        {
+          "key": "dust devil",
+          "name": "Dust Devil",
+          "source": "XGE"
+        },
+        {
+          "key": "earth tremor",
+          "name": "Earth Tremor",
+          "source": "XGE"
+        },
+        {
+          "key": "elemental bane",
+          "name": "Elemental Bane",
+          "source": "XGE"
+        },
+        {
+          "key": "erupting earth",
+          "name": "Erupting Earth",
+          "source": "XGE"
+        },
+        {
+          "key": "frostbite",
+          "name": "Frostbite",
+          "source": "XGE"
+        },
+        {
+          "key": "gust",
+          "name": "Gust",
+          "source": "XGE"
+        },
+        {
+          "key": "healing spirit",
+          "name": "Healing Spirit",
+          "source": "XGE"
+        },
+        {
+          "key": "investiture of stone",
+          "name": "Investiture of Stone",
+          "source": "XGE"
+        },
+        {
+          "key": "investiture of wind",
+          "name": "Investiture of Wind",
+          "source": "XGE"
+        },
+        {
+          "key": "lightning lure",
+          "name": "Lightning Lure",
+          "source": "TCE"
+        },
+        {
+          "key": "maelstrom",
+          "name": "Maelstrom",
+          "source": "XGE"
+        },
+        {
+          "key": "maximilian's earthen grasp",
+          "name": "Maximilian's Earthen Grasp",
+          "source": "XGE"
+        },
+        {
+          "key": "mold earth",
+          "name": "Mold Earth",
+          "source": "XGE"
+        },
+        {
+          "key": "primordial ward",
+          "name": "Primordial Ward",
+          "source": "XGE"
+        },
+        {
+          "key": "shape water",
+          "name": "Shape Water",
+          "source": "XGE"
+        },
+        {
+          "key": "skywrite",
+          "name": "Skywrite",
+          "source": "XGE"
+        },
+        {
+          "key": "steel wind strike",
+          "name": "Steel Wind Strike",
+          "source": "XGE"
+        },
+        {
+          "key": "storm sphere",
+          "name": "Storm Sphere",
+          "source": "XGE"
+        },
+        {
+          "key": "thunder step ^xge",
+          "name": "Thunder Step ^XGE",
+          "source": "not in SRD"
+        },
+        {
+          "key": "thunderclap",
+          "name": "Thunderclap",
+          "source": "XGE"
+        },
+        {
+          "key": "thunderous smite",
+          "name": "Thunderous Smite",
+          "source": "not in SRD"
+        },
+        {
+          "key": "tidal wave",
+          "name": "Tidal Wave",
+          "source": "XGE"
+        },
+        {
+          "key": "wall of water",
+          "name": "Wall of Water",
+          "source": "XGE"
+        },
+        {
+          "key": "warding wind",
+          "name": "Warding Wind",
+          "source": "XGE"
+        },
+        {
+          "key": "watery sphere",
+          "name": "Watery Sphere",
+          "source": "XGE"
+        },
+        {
+          "key": "whirlwind",
+          "name": "Whirlwind",
+          "source": "XGE"
+        }
+      ]
+    },
+    "wFvFb4VAZnwjzV5z.HPCxluH2K7JSMQMo": {
+      "identifier": "wc5e-death-knight",
+      "name": "Death Knight Spells",
+      "pack": "spell-lists",
+      "spells": [
+        {
+          "key": "absorb elements",
+          "name": "Absorb Elements",
+          "source": "XGE"
+        },
+        {
+          "key": "banishing smite",
+          "name": "Banishing Smite",
+          "source": "not in SRD"
+        },
+        {
+          "key": "cause fear",
+          "name": "Cause Fear",
+          "source": "XGE"
+        },
+        {
+          "key": "circle of power",
+          "name": "Circle of Power",
+          "source": "not in SRD"
+        },
+        {
+          "key": "compelled duel",
+          "name": "Compelled Duel",
+          "source": "not in SRD"
+        },
+        {
+          "key": "crown of madness",
+          "name": "Crown of Madness",
+          "source": "not in SRD"
+        },
+        {
+          "key": "danse macabre",
+          "name": "Danse Macabre",
+          "source": "XGE"
+        },
+        {
+          "key": "enemies abound",
+          "name": "Enemies Abound",
+          "source": "XGE"
+        },
+        {
+          "key": "enervation",
+          "name": "Enervation",
+          "source": "XGE"
+        },
+        {
+          "key": "feign death",
+          "name": "Feign Death",
+          "source": "not in SRD"
+        },
+        {
+          "key": "find greater steed",
+          "name": "Find Greater Steed",
+          "source": "XGE"
+        },
+        {
+          "key": "life transference",
+          "name": "Life Transference",
+          "source": "XGE"
+        },
+        {
+          "key": "negative energy flood",
+          "name": "Negative Energy Flood",
+          "source": "XGE"
+        },
+        {
+          "key": "prot. from evil and good",
+          "name": "Prot. from Evil and Good",
+          "source": "not in SRD"
+        },
+        {
+          "key": "sickening radiance",
+          "name": "Sickening Radiance",
+          "source": "XGE"
+        },
+        {
+          "key": "snilloc's snowball swarm",
+          "name": "Snilloc's Snowball Swarm",
+          "source": "XGE"
+        },
+        {
+          "key": "staggering smite",
+          "name": "Staggering Smite",
+          "source": "not in SRD"
+        },
+        {
+          "key": "thunderous smite",
+          "name": "Thunderous Smite",
+          "source": "not in SRD"
+        },
+        {
+          "key": "wrathful smite",
+          "name": "Wrathful Smite",
+          "source": "not in SRD"
+        }
+      ]
+    },
+    "wFvFb4VAZnwjzV5z.Jw7wyg5VjIaZPlR0": {
+      "identifier": "wc5e-mage",
+      "name": "Mage Spells",
+      "pack": "spell-lists",
+      "spells": [
+        {
+          "key": "aganazzar's scorcher",
+          "name": "Aganazzar's Scorcher",
+          "source": "XGE"
+        },
+        {
+          "key": "arcane gate",
+          "name": "Arcane Gate",
+          "source": "not in SRD"
+        },
+        {
+          "key": "armor of agathys",
+          "name": "Armor of Agathys",
+          "source": "not in SRD"
+        },
+        {
+          "key": "bigby's hand",
+          "name": "Bigby's Hand",
+          "source": "not in SRD"
+        },
+        {
+          "key": "blade of disaster",
+          "name": "Blade of Disaster",
+          "source": "TCE"
+        },
+        {
+          "key": "blade ward",
+          "name": "Blade Ward",
+          "source": "not in SRD"
+        },
+        {
+          "key": "catnap",
+          "name": "Catnap",
+          "source": "XGE"
+        },
+        {
+          "key": "cloud of daggers",
+          "name": "Cloud of Daggers",
+          "source": "not in SRD"
+        },
+        {
+          "key": "control flames",
+          "name": "Control Flames",
+          "source": "XGE"
+        },
+        {
+          "key": "create bonfire",
+          "name": "Create Bonfire",
+          "source": "XGE"
+        },
+        {
+          "key": "far step",
+          "name": "Far Step",
+          "source": "XGE"
+        },
+        {
+          "key": "feign death",
+          "name": "Feign Death",
+          "source": "not in SRD"
+        },
+        {
+          "key": "frostbite",
+          "name": "Frostbite",
+          "source": "XGE"
+        },
+        {
+          "key": "illusory dragon",
+          "name": "Illusory Dragon",
+          "source": "XGE"
+        },
+        {
+          "key": "immolation",
+          "name": "Immolation",
+          "source": "XGE"
+        },
+        {
+          "key": "intellect fortress",
+          "name": "Intellect Fortress",
+          "source": "TCE"
+        },
+        {
+          "key": "investiture of flame",
+          "name": "Investiture of Flame",
+          "source": "XGE"
+        },
+        {
+          "key": "investiture of ice",
+          "name": "Investiture of Ice",
+          "source": "XGE"
+        },
+        {
+          "key": "invulnerability",
+          "name": "Invulnerability",
+          "source": "XGE"
+        },
+        {
+          "key": "leomund's secret chest",
+          "name": "Leomund's Secret Chest",
+          "source": "not in SRD"
+        },
+        {
+          "key": "mass polymorph",
+          "name": "Mass Polymorph",
+          "source": "XGE"
+        },
+        {
+          "key": "mental prison",
+          "name": "Mental Prison",
+          "source": "XGE"
+        },
+        {
+          "key": "mordenkainen's magnificent mansion",
+          "name": "Mordenkainen's Magnificent Mansion",
+          "source": "not in SRD"
+        },
+        {
+          "key": "mordenkainen's private sanctum",
+          "name": "Mordenkainen's Private Sanctum",
+          "source": "not in SRD"
+        },
+        {
+          "key": "nystul's magic aura",
+          "name": "Nystul's Magic Aura",
+          "source": "not in SRD"
+        },
+        {
+          "key": "otiluke's freezing sphere",
+          "name": "Otiluke's Freezing Sphere",
+          "source": "not in SRD"
+        },
+        {
+          "key": "otiluke's resilient sphere",
+          "name": "Otiluke's Resilient Sphere",
+          "source": "not in SRD"
+        },
+        {
+          "key": "pyrotechnics",
+          "name": "Pyrotechnics",
+          "source": "XGE"
+        },
+        {
+          "key": "scatter",
+          "name": "Scatter",
+          "source": "XGE"
+        },
+        {
+          "key": "shape water",
+          "name": "Shape Water",
+          "source": "XGE"
+        },
+        {
+          "key": "skill empowerment",
+          "name": "Skill Empowerment",
+          "source": "XGE"
+        },
+        {
+          "key": "skywrite",
+          "name": "Skywrite",
+          "source": "not in SRD"
+        },
+        {
+          "key": "snare",
+          "name": "Snare",
+          "source": "XGE"
+        },
+        {
+          "key": "snilloc's snowball swarm",
+          "name": "Snilloc's Snowball Swarm",
+          "source": "XGE"
+        },
+        {
+          "key": "summon elemental",
+          "name": "Summon Elemental",
+          "source": "TCE"
+        },
+        {
+          "key": "synaptic static",
+          "name": "Synaptic Static",
+          "source": "XGE"
+        },
+        {
+          "key": "tenser's floating disk",
+          "name": "Tenser's Floating Disk",
+          "source": "not in SRD"
+        },
+        {
+          "key": "tidal wave",
+          "name": "Tidal Wave",
+          "source": "XGE"
+        },
+        {
+          "key": "tiny servant",
+          "name": "Tiny Servant",
+          "source": "XGE"
+        }
+      ]
+    },
+    "wFvFb4VAZnwjzV5z.PAL54scDSQtxW3Jr": {
+      "identifier": "wc5e-warlock",
+      "name": "Warlock Spells",
+      "pack": "spell-lists",
+      "spells": [
+        {
+          "key": "abi-dalzim's horrid wilting",
+          "name": "Abi-Dalzim's Horrid Wilting",
+          "source": "XGE"
+        },
+        {
+          "key": "aganazzar's scorcher",
+          "name": "Aganazzar's Scorcher",
+          "source": "XGE"
+        },
+        {
+          "key": "arcane gate",
+          "name": "Arcane Gate",
+          "source": "not in SRD"
+        },
+        {
+          "key": "arms of hadar",
+          "name": "Arms of Hadar",
+          "source": "not in SRD"
+        },
+        {
+          "key": "blade of disaster",
+          "name": "Blade of Disaster",
+          "source": "TCE"
+        },
+        {
+          "key": "blade ward",
+          "name": "Blade Ward",
+          "source": "not in SRD"
+        },
+        {
+          "key": "cause fear",
+          "name": "Cause Fear",
+          "source": "XGE"
+        },
+        {
+          "key": "cloud of daggers",
+          "name": "Cloud of Daggers",
+          "source": "not in SRD"
+        },
+        {
+          "key": "create bonfire",
+          "name": "Create Bonfire",
+          "source": "XGE"
+        },
+        {
+          "key": "crown of madness",
+          "name": "Crown of Madness",
+          "source": "not in SRD"
+        },
+        {
+          "key": "danse macabre",
+          "name": "Danse Macabre",
+          "source": "XGE"
+        },
+        {
+          "key": "drawmij's instant summons",
+          "name": "Drawmij's Instant Summons",
+          "source": "not in SRD"
+        },
+        {
+          "key": "elemental weapon",
+          "name": "Elemental Weapon",
+          "source": "not in SRD"
+        },
+        {
+          "key": "enemies abound",
+          "name": "Enemies Abound",
+          "source": "XGE"
+        },
+        {
+          "key": "enervation",
+          "name": "Enervation",
+          "source": "XGE"
+        },
+        {
+          "key": "evard's black tentacles",
+          "name": "Evard's Black Tentacles",
+          "source": "not in SRD"
+        },
+        {
+          "key": "far step",
+          "name": "Far Step",
+          "source": "XGE"
+        },
+        {
+          "key": "find greater steed",
+          "name": "Find Greater Steed",
+          "source": "XGE"
+        },
+        {
+          "key": "friends",
+          "name": "Friends",
+          "source": "not in SRD"
+        },
+        {
+          "key": "green-flame blade",
+          "name": "Green-Flame Blade",
+          "source": "TCE"
+        },
+        {
+          "key": "hunger of hadar",
+          "name": "Hunger of Hadar",
+          "source": "not in SRD"
+        },
+        {
+          "key": "immolation",
+          "name": "Immolation",
+          "source": "XGE"
+        },
+        {
+          "key": "investiture of flame",
+          "name": "Investiture of Flame",
+          "source": "XGE"
+        },
+        {
+          "key": "leomund's secret chest",
+          "name": "Leomund's Secret Chest",
+          "source": "not in SRD"
+        },
+        {
+          "key": "life transference",
+          "name": "Life Transference",
+          "source": "XGE"
+        },
+        {
+          "key": "maddening darkness",
+          "name": "Maddening Darkness",
+          "source": "XGE"
+        },
+        {
+          "key": "melf's acid arrow",
+          "name": "Melf's Acid Arrow",
+          "source": "not in SRD"
+        },
+        {
+          "key": "melf's minute meteors",
+          "name": "Melf's Minute Meteors",
+          "source": "not in SRD"
+        },
+        {
+          "key": "mental prison",
+          "name": "Mental Prison",
+          "source": "XGE"
+        },
+        {
+          "key": "mordenkainen's faithful hound",
+          "name": "Mordenkainen's Faithful Hound",
+          "source": "not in SRD"
+        },
+        {
+          "key": "mordenkainen's sword",
+          "name": "Mordenkainen's Sword",
+          "source": "not in SRD"
+        },
+        {
+          "key": "negative energy flood",
+          "name": "Negative Energy Flood",
+          "source": "XGE"
+        },
+        {
+          "key": "otiluke's resilient sphere",
+          "name": "Otiluke's Resilient Sphere",
+          "source": "not in SRD"
+        },
+        {
+          "key": "otto's irresistible dance",
+          "name": "Otto's Irresistible Dance",
+          "source": "not in SRD"
+        },
+        {
+          "key": "psychic scream",
+          "name": "Psychic Scream",
+          "source": "XGE"
+        },
+        {
+          "key": "pyrotechnics",
+          "name": "Pyrotechnics",
+          "source": "XGE"
+        },
+        {
+          "key": "rary's telepathic bond",
+          "name": "Rary's Telepathic Bond",
+          "source": "not in SRD"
+        },
+        {
+          "key": "scatter",
+          "name": "Scatter",
+          "source": "XGE"
+        },
+        {
+          "key": "shadow blade",
+          "name": "Shadow Blade",
+          "source": "XGE"
+        },
+        {
+          "key": "shadow of moil",
+          "name": "Shadow of Moil",
+          "source": "XGE"
+        },
+        {
+          "key": "sickening radiance",
+          "name": "Sickening Radiance",
+          "source": "XGE"
+        },
+        {
+          "key": "soul cage",
+          "name": "Soul Cage",
+          "source": "XGE"
+        },
+        {
+          "key": "summon aberration",
+          "name": "Summon Aberration",
+          "source": "TCE"
+        },
+        {
+          "key": "summon fiend",
+          "name": "Summon Fiend",
+          "source": "TCE"
+        },
+        {
+          "key": "summon greater demon",
+          "name": "Summon Greater Demon",
+          "source": "XGE"
+        },
+        {
+          "key": "summon lesser demons",
+          "name": "Summon Lesser Demons",
+          "source": "XGE"
+        },
+        {
+          "key": "summon shadow- spawn",
+          "name": "Summon Shadow- spawn",
+          "source": "TCE"
+        },
+        {
+          "key": "summon undead",
+          "name": "Summon Undead",
+          "source": "TCE"
+        },
+        {
+          "key": "synaptic static",
+          "name": "Synaptic Static",
+          "source": "XGE"
+        },
+        {
+          "key": "tasha's caustic brew",
+          "name": "Tasha's Caustic Brew",
+          "source": "TCE"
+        },
+        {
+          "key": "tasha's hideous laughter",
+          "name": "Tasha's Hideous Laughter",
+          "source": "not in SRD"
+        },
+        {
+          "key": "tasha's mind whip",
+          "name": "Tasha's Mind Whip",
+          "source": "TCE"
+        },
+        {
+          "key": "tasha's otherworldy guise",
+          "name": "Tasha's Otherworldy Guise",
+          "source": "TCE"
+        },
+        {
+          "key": "telepathy",
+          "name": "Telepathy",
+          "source": "not in SRD"
+        },
+        {
+          "key": "tiny servant",
+          "name": "Tiny Servant",
+          "source": "XGE"
+        },
+        {
+          "key": "toll the dead",
+          "name": "Toll the Dead",
+          "source": "XGE"
+        },
+        {
+          "key": "witch bolt",
+          "name": "Witch Bolt",
+          "source": "not in SRD"
+        }
+      ]
+    },
+    "wFvFb4VAZnwjzV5z.nZ8kZKdatqaxNnrp": {
+      "identifier": "wc5e-druid",
+      "name": "Druid Spells",
+      "pack": "spell-lists",
+      "spells": [
+        {
+          "key": "beast bond",
+          "name": "Beast Bond",
+          "source": "XGE"
+        },
+        {
+          "key": "beast sense",
+          "name": "Beast Sense",
+          "source": "not in SRD"
+        },
+        {
+          "key": "catnap",
+          "name": "Catnap",
+          "source": "XGE"
+        },
+        {
+          "key": "control winds",
+          "name": "Control Winds",
+          "source": "XGE"
+        },
+        {
+          "key": "crown of stars",
+          "name": "Crown of Stars",
+          "source": "XGE"
+        },
+        {
+          "key": "dawn",
+          "name": "Dawn",
+          "source": "XGE"
+        },
+        {
+          "key": "druid grove",
+          "name": "Druid Grove",
+          "source": "XGE"
+        },
+        {
+          "key": "dust devil",
+          "name": "Dust Devil",
+          "source": "XGE"
+        },
+        {
+          "key": "earth tremor",
+          "name": "Earth Tremor",
+          "source": "XGE"
+        },
+        {
+          "key": "feign death",
+          "name": "Feign Death",
+          "source": "not in SRD"
+        },
+        {
+          "key": "grasping vine",
+          "name": "Grasping Vine",
+          "source": "not in SRD"
+        },
+        {
+          "key": "guardian of nature",
+          "name": "Guardian of Nature",
+          "source": "not in SRD"
+        },
+        {
+          "key": "investiture of wind",
+          "name": "Investiture of Wind",
+          "source": "XGE"
+        },
+        {
+          "key": "primal savagery",
+          "name": "Primal Savagery",
+          "source": "XGE"
+        },
+        {
+          "key": "shape water",
+          "name": "Shape Water",
+          "source": "XGE"
+        },
+        {
+          "key": "skywrite",
+          "name": "Skywrite",
+          "source": "XGE"
+        },
+        {
+          "key": "snare",
+          "name": "Snare",
+          "source": "XGE"
+        },
+        {
+          "key": "thorn whip",
+          "name": "Thorn Whip",
+          "source": "not in SRD"
+        },
+        {
+          "key": "warding wind",
+          "name": "Warding Wind",
+          "source": "XGE"
+        },
+        {
+          "key": "watery sphere",
+          "name": "Watery Sphere",
+          "source": "XGE"
+        },
+        {
+          "key": "whirlwind",
+          "name": "Whirlwind",
+          "source": "XGE"
+        },
+        {
+          "key": "wrath of nature",
+          "name": "Wrath of Nature",
+          "source": "XGE"
+        }
+      ]
+    },
+    "wFvFb4VAZnwjzV5z.tJysFr1LYBbIFD3j": {
+      "identifier": "wc5e-priest",
+      "name": "Priest Spells",
+      "pack": "spell-lists",
+      "spells": [
+        {
+          "key": "abi-dalzim's horrid wilting",
+          "name": "Abi-Dalzim's Horrid Wilting",
+          "source": "XGE"
+        },
+        {
+          "key": "arms of hadar",
+          "name": "Arms of Hadar",
+          "source": "not in SRD"
+        },
+        {
+          "key": "aura of purity",
+          "name": "Aura of Purity",
+          "source": "not in SRD"
+        },
+        {
+          "key": "aura of vitality",
+          "name": "Aura of Vitality",
+          "source": "not in SRD"
+        },
+        {
+          "key": "cause fear",
+          "name": "Cause Fear",
+          "source": "XGE"
+        },
+        {
+          "key": "ceremony",
+          "name": "Ceremony",
+          "source": "XGE"
+        },
+        {
+          "key": "crown of madness",
+          "name": "Crown of Madness",
+          "source": "not in SRD"
+        },
+        {
+          "key": "dawn",
+          "name": "Dawn",
+          "source": "XGE"
+        },
+        {
+          "key": "enemies abound",
+          "name": "Enemies Abound",
+          "source": "XGE"
+        },
+        {
+          "key": "fast friends",
+          "name": "Fast Friends",
+          "source": "AI"
+        },
+        {
+          "key": "feign death",
+          "name": "Feign Death",
+          "source": "not in SRD"
+        },
+        {
+          "key": "gift of gab",
+          "name": "Gift of Gab",
+          "source": "AI"
+        },
+        {
+          "key": "healing spirit",
+          "name": "Healing Spirit",
+          "source": "XGE"
+        },
+        {
+          "key": "hunger of hadar",
+          "name": "Hunger of Hadar",
+          "source": "not in SRD"
+        },
+        {
+          "key": "intellect fortress",
+          "name": "Intellect Fortress",
+          "source": "TCE"
+        },
+        {
+          "key": "life transference",
+          "name": "Life Transference",
+          "source": "XGE"
+        },
+        {
+          "key": "maddening darkness",
+          "name": "Maddening Darkness",
+          "source": "XGE"
+        },
+        {
+          "key": "mental prison",
+          "name": "Mental Prison",
+          "source": "XGE"
+        },
+        {
+          "key": "motivational speech",
+          "name": "Motivational Speech",
+          "source": "AI"
+        },
+        {
+          "key": "negative energy flood",
+          "name": "Negative Energy Flood",
+          "source": "XGE"
+        },
+        {
+          "key": "prot. from evil and good",
+          "name": "Prot. from Evil and Good",
+          "source": "not in SRD"
+        },
+        {
+          "key": "psychic scream",
+          "name": "Psychic Scream",
+          "source": "XGE"
+        },
+        {
+          "key": "rary's telepathic bond",
+          "name": "Rary's Telepathic Bond",
+          "source": "not in SRD"
+        },
+        {
+          "key": "raulothim's psychic lance",
+          "name": "Raulothim's Psychic Lance",
+          "source": "FTD"
+        },
+        {
+          "key": "shadow of moil",
+          "name": "Shadow of Moil",
+          "source": "XGE"
+        },
+        {
+          "key": "sickening radiance",
+          "name": "Sickening Radiance",
+          "source": "XGE"
+        },
+        {
+          "key": "skill empowerment",
+          "name": "Skill Empowerment",
+          "source": "XGE"
+        },
+        {
+          "key": "synaptic static",
+          "name": "Synaptic Static",
+          "source": "XGE"
+        },
+        {
+          "key": "tasha's mind whip",
+          "name": "Tasha's Mind Whip",
+          "source": "TCE"
+        },
+        {
+          "key": "temple of the gods",
+          "name": "Temple of the Gods",
+          "source": "XGE"
+        },
+        {
+          "key": "toll the dead",
+          "name": "Toll the Dead",
+          "source": "XGE"
+        },
+        {
+          "key": "wall of light",
+          "name": "Wall of Light",
+          "source": "XGE"
+        },
+        {
+          "key": "word of radiance",
+          "name": "Word of Radiance",
+          "source": "XGE"
+        }
+      ]
+    },
+    "wMO33QXvlTSiiz9I.cwrtQNmODVllEk0L": {
+      "identifier": "destruction",
+      "name": "Study of Destruction Spells",
+      "pack": "spell-lists",
+      "spells": [
+        {
+          "key": "aganazzar's scorcher",
+          "name": "aganazzar's scorcher",
+          "source": ""
+        },
+        {
+          "key": "erupting earth",
+          "name": "erupting earth",
+          "source": ""
+        },
+        {
+          "key": "flame arrows",
+          "name": "flame arrows",
+          "source": ""
+        },
+        {
+          "key": "witch bolt",
+          "name": "witch bolt",
+          "source": ""
+        }
+      ]
+    },
+    "wMO33QXvlTSiiz9I.r9z71q99U0IwKxBB": {
+      "identifier": "demonology",
+      "name": "Study of Demonology Spells",
+      "pack": "spell-lists",
+      "spells": [
+        {
+          "key": "sudden awakening",
+          "name": "sudden awakening",
+          "source": ""
+        }
+      ]
+    }
+  },
   "version": 1
 }
