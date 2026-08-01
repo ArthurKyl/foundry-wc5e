@@ -22,7 +22,8 @@ const repo = path.dirname(__dirname);
 const git = (...args) => execFileSync("git", args, { cwd: repo, encoding: "utf8" }).trim();
 
 // Files that ship to players. Anything not listed stays out of the zip.
-const RUNTIME = ["module.json", "packs", "assets", "LICENSE.md", "README.md"];
+const RUNTIME = ["module.json", "packs", "assets", "scripts", "templates", "lang",
+                 "LICENSE.md", "README.md"];
 
 const manifest = JSON.parse(fs.readFileSync(path.join(repo, "module.json"), "utf8"));
 const { version } = manifest;

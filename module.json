@@ -30,6 +30,16 @@
       }
     ]
   },
+  "esmodules": [
+    "scripts/wc5e.mjs"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
   "packs": [
     {
       "name": "monsters",
