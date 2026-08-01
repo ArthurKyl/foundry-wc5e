@@ -64,23 +64,6 @@ export class AutoAssignApp extends HandlebarsApplicationMixin(ApplicationV2) {
     return app;
   }
 
-  /**
-   * ApplicationV2 awaits this before the first render, which is what lets the
-   * settings menu instantiate this class directly instead of needing a shim.
-   */
-  async _preFirstRender(context, options) {
-    await super._preFirstRender(context, options);
-    try {
-      await this.#init();
-    }
-    catch ( err ) {
-      console.error("wc5e-bestiary | could not open auto-assign", err);
-      ui.notifications.error(game.i18n.format("WC5E.AutoAssign.LoadFailed",
-        { error: err.message ?? String(err) }));
-      throw err;   // don't open a half-built window
-    }
-  }
-
   async #init() {
     this.#manifest = await loadManifest();
     this.#tree = buildPackTree({
@@ -110,7 +93,26 @@ export class AutoAssignApp extends HandlebarsApplicationMixin(ApplicationV2) {
     return parts;
   }
 
+  /**
+   * ApplicationV2 awaits _prepareContext (application.mjs ~line 532) before
+   * _preFirstRender (~line 537), so the async load has to happen here, guarded
+   * to run only once -- following UIConfig._prepareContext's isFirstRender
+   * pattern (client/applications/settings/menus/ui-config.mjs). Doing it in
+   * _preFirstRender instead runs it too late: the first _prepareContext call
+   * would already be reading this.#manifest while it's still null.
+   */
   async _prepareContext(options) {
+    if ( options.isFirstRender ) {
+      try {
+        await this.#init();
+      }
+      catch ( err ) {
+        console.error("wc5e-bestiary | could not open auto-assign", err);
+        ui.notifications.error(game.i18n.format("WC5E.AutoAssign.LoadFailed",
+          { error: err.message ?? String(err) }));
+        throw err;   // don't open a half-built window
+      }
+    }
     const context = await super._prepareContext(options);
     context.stage = this.#stage;
     if ( this.#stage === "configure" ) return Object.assign(context, this.#configureContext());

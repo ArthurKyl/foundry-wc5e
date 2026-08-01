@@ -23,7 +23,7 @@
     <legend>{{localize "WC5E.AutoAssign.DestinationLegend"}}</legend>
     <select name="destination">
       {{#each destinations}}
-        <option value="{{this.value}}" {{selected this.chosen}}>{{this.label}}</option>
+        <option value="{{this.value}}" {{#if this.chosen}}selected{{/if}}>{{this.label}}</option>
       {{/each}}
     </select>
     <p class="notes hint">{{localize "WC5E.AutoAssign.UpdateCaveat"}}</p>
