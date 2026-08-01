@@ -1410,13 +1410,17 @@ export async function buildSearchIndex(packIds, {
 
   for ( const packId of packIds ) {
     const pack = getPack(packId);
-    if ( !pack ) {
-      failed.push({ packId, error: "compendium not found" });
-      done++;
-      continue;
-    }
-    const label = pack.metadata?.label ?? packId;
+    // Every path out of this loop body must reach the `finally`, including the
+    // unresolvable-pack one -- a caller driving a progress bar off (done, total)
+    // would otherwise stall and never see done === total when a ticked
+    // compendium has gone missing since the picker was built.
+    let label = packId;
     try {
+      if ( !pack ) {
+        failed.push({ packId, error: "compendium not found" });
+        continue;
+      }
+      label = pack.metadata?.label ?? packId;
       if ( pack.documentName !== "Item" ) continue;
       const entries = await pack.getIndex({ fields: ["type"] });
       for ( const e of entries ) {
