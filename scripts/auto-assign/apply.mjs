@@ -17,7 +17,17 @@ export function spellItemData(sourceDoc, { prep, perDay }) {
   const data = sourceDoc.toObject();
   delete data._id;
   data.system = data.system ?? {};
-  data.system.preparation = { mode: prep, prepared: prep === "prepared" };
+  // dnd5e 5.1 replaced `system.preparation` with `system.method` +
+  // `system.prepared`. A compatibility shim still migrates the old shape, but
+  // only when the new fields are ABSENT -- and toObject() on a 5.x spell always
+  // emits them, because `method`/`prepared` are `required` with an `initial`,
+  // so SchemaField cleaning fills them in. Writing `preparation` here would
+  // therefore be silently discarded and every assigned spell would arrive as
+  // method:"" -- at-will and innate spells missing from their sheet sections,
+  // prepared ones showing unprepared. Mapping mirrors SpellData.#migratePreparation.
+  delete data.system.preparation;
+  data.system.method = prep === "prepared" ? "spell" : prep;
+  data.system.prepared = prep === "prepared" ? 1 : 0;
   if ( prep === "innate" && perDay ) {
     data.system.uses = { max: String(perDay), spent: 0,
                          recovery: [{ period: "day", type: "recoverAll" }] };

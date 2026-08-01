@@ -9,21 +9,40 @@ const SOURCE = {
                      system: { level: 1, preparation: { mode: "prepared", prepared: false } } }),
 };
 
-test("spellItemData strips the source id and sets the preparation mode", () => {
+// dnd5e 5.1 replaced system.preparation with system.method + system.prepared.
+// The back-compat shim only fires when the new fields are absent, and
+// toObject() on a 5.x spell always emits them -- so writing `preparation`
+// would be silently dropped and every assigned spell would land as method:"".
+test("spellItemData strips the source id and sets the dnd5e 5.x method fields", () => {
   const d = spellItemData(SOURCE, { prep: "atwill", perDay: null });
   assert.equal(d._id, undefined);
-  assert.equal(d.system.preparation.mode, "atwill");
-  assert.equal(d.system.preparation.prepared, false);
+  assert.equal(d.system.method, "atwill");
+  assert.equal(d.system.prepared, 0);
+  assert.equal(d.system.preparation, undefined, "the removed 5.0 field must not be written");
 });
 
-test("spellItemData marks prepared spells prepared", () => {
+test("spellItemData maps prepared to method 'spell'", () => {
   const d = spellItemData(SOURCE, { prep: "prepared", perDay: null });
-  assert.equal(d.system.preparation.prepared, true);
+  assert.equal(d.system.method, "spell");
+  assert.equal(d.system.prepared, 1);
+});
+
+test("spellItemData maps innate to its own method", () => {
+  const d = spellItemData(SOURCE, { prep: "innate", perDay: 2 });
+  assert.equal(d.system.method, "innate");
+  assert.equal(d.system.prepared, 0);
+});
+
+test("spellItemData overwrites a method the source document already carried", () => {
+  const src = { toObject: () => ({ _id: "x", name: "Hex", type: "spell",
+    system: { level: 1, method: "", prepared: 0 } }) };
+  const d = spellItemData(src, { prep: "atwill", perDay: null });
+  assert.equal(d.system.method, "atwill");
 });
 
 test("spellItemData sets per-day uses for innate casting", () => {
-  const d = spellItemData(SOURCE, { prep: "innate", perDay: 2 });
-  assert.deepEqual(d.system.uses,
+  const d2 = spellItemData(SOURCE, { prep: "innate", perDay: 2 });
+  assert.deepEqual(d2.system.uses,
     { max: "2", spent: 0, recovery: [{ period: "day", type: "recoverAll" }] });
 });
 
@@ -72,7 +91,7 @@ test("creates the embedded spell on the target actor", async () => {
   const res = await applyPlan({ writes: [MONSTER_WRITE] }, { deps: h.deps });
   assert.equal(res.added, 1);
   assert.equal(h.actor.created[0].name, "Hex");
-  assert.equal(h.actor.created[0].system.preparation.mode, "innate");
+  assert.equal(h.actor.created[0].system.method, "innate");
 });
 
 test("unlocks a locked pack and re-locks it afterwards", async () => {
