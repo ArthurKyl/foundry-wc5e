@@ -34,6 +34,51 @@ test("tolerates null and undefined", () => {
   assert.equal(normaliseName(undefined), "");
 });
 
+// Adversarial cases for zero-width and whitespace-adjacent characters that
+// have historically survived from Homebrewery/GMBinder/PDF extraction into
+// spell names. Each expected value below was verified against Python's
+// spell_embed._norm() directly, not assumed -- see task-5 fix report.
+// JS's \s matches U+FEFF (BOM) but Python's re \s does not, and neither
+// matches U+200B/C/D, so both sides strip these explicitly before the
+// whitespace collapse rather than relying on \s semantics to agree.
+
+test("strips a byte-order mark embedded in the name", () => {
+  assert.equal(normaliseName("na﻿me"), "name");
+});
+
+test("strips a zero-width space", () => {
+  assert.equal(normaliseName("na​me"), "name");
+});
+
+test("strips zero-width non-joiner and joiner", () => {
+  assert.equal(normaliseName("na‌me"), "name");
+  assert.equal(normaliseName("na‍me"), "name");
+});
+
+test("collapses a non-breaking space like ordinary whitespace", () => {
+  assert.equal(normaliseName("na me"), "na me");
+});
+
+test("collapses a tab like ordinary whitespace", () => {
+  assert.equal(normaliseName("na\tme"), "na me");
+});
+
+test("collapses an embedded newline like ordinary whitespace", () => {
+  assert.equal(normaliseName("na\nme"), "na me");
+});
+
+test("reduces a punctuation-only name to the empty string", () => {
+  assert.equal(normaliseName("-.:; "), "");
+});
+
+test("passes the empty string through unchanged", () => {
+  assert.equal(normaliseName(""), "");
+});
+
+test("reduces a whitespace-only name to the empty string", () => {
+  assert.equal(normaliseName("   \t\n  "), "");
+});
+
 test("matches the keys Python wrote, for every record in the real manifest", () => {
   const m = JSON.parse(fs.readFileSync("assets/missing-spells.json", "utf8"));
   const records = [

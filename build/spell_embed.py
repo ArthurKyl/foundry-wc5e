@@ -46,6 +46,13 @@ def _norm(n):
     n = n.replace("✦", "").replace("*", "")
     n = re.sub(r"\([^)]*\)", "", n)
     n = re.sub(r"</?br>", "", n)
+    # Strip zero-width characters (BOM, ZWSP, ZWNJ, ZWJ) that survive from
+    # Homebrewery/GMBinder/PDF extraction. JS's \s matches U+FEFF but Python's
+    # re \s does not (and neither matches U+200B/C/D), so this is an explicit
+    # strip on both sides rather than relying on differing \s semantics --
+    # keep scripts/auto-assign/manifest.mjs's normaliseName() in step with
+    # this.
+    n = re.sub(r"[﻿​‌‍]", "", n)
     n = re.sub(r"\s+", " ", n)
     n = n.strip(" .:;-")
     return ALIAS.get(n, n)
