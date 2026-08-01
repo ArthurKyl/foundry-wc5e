@@ -28,7 +28,8 @@ const MATCHES = {
 };
 const index = { get: k => MATCHES[k], size: 2, failed: [] };
 
-function state({ have = {}, listHave = [], scopes = { m1: "pack", m2: "pack" } } = {}) {
+function state({ have = {}, listHave = [], listHaveKeys = [],
+                 scopes = { m1: "pack", m2: "pack" } } = {}) {
   return {
     monsters: Object.keys(MANIFEST.monsters).map(id => ({
       id, name: MANIFEST.monsters[id].name, scope: scopes[id],
@@ -37,7 +38,7 @@ function state({ have = {}, listHave = [], scopes = { m1: "pack", m2: "pack" } }
     })),
     lists: [{ pageKey: "j.p1", name: "Mage Spells",
               uuid: "Compendium.wc5e-bestiary.spell-lists.JournalEntry.j.JournalEntryPage.p1",
-              haveUuids: new Set(listHave) }],
+              haveUuids: new Set(listHave), haveKeys: new Set(listHaveKeys) }],
   };
 }
 
@@ -180,18 +181,51 @@ test("an empty index puts everything in not-found and plans nothing", () => {
   assert.equal(p.counts.notFound, 4);
 });
 
-test("a not-found spell is still reported even when the monster already has it", () => {
+// "Not found" means "you are still missing this", NOT "this wasn't in the packs
+// you happened to tick on this run". These two started out asserting the
+// opposite; a GM who assigned everything, imported three more spells and then
+// re-scanned with only the new compendium ticked got 144 false "missing" rows
+// for spells already sitting on their monsters.
+test("a spell the monster already has is not reported, even when absent from the index", () => {
   const p = buildPlan({ manifest: MANIFEST, index, targets: ALL,
                         destination: DESTINATIONS.BOTH,
                         state: state({ have: { m1: ["shape water"] } }) });
-  assert.ok(p.notFound.some(n => n.key === "shape water"));
+  assert.ok(!p.notFound.some(n => n.key === "shape water"));
 });
 
-test("a not-found spell is still reported even when the monster's scope is excluded", () => {
+test("a narrow re-scan reports only what is genuinely still absent", () => {
+  // Everything already assigned except "shape water", and an index that holds
+  // only a freshly imported spell -- the exact shape of the bug.
+  const narrow = { get: k => (k === "hex" ? MATCHES.hex : undefined), size: 1, failed: [] };
+  const p = buildPlan({
+    manifest: MANIFEST, index: narrow, targets: ALL, destination: DESTINATIONS.BOTH,
+    // haveKeys mirrors haveUuids, because collectState derives one from the other.
+    state: state({ have: { m1: ["ice knife"], m2: ["hex"] },
+                   listHave: ["Compendium.x.Item.1", "Compendium.x.Item.7"],
+                   listHaveKeys: ["ice knife", "synaptic static"] }),
+  });
+  assert.deepEqual(p.notFound.map(n => n.key), ["shape water"]);
+  assert.equal(p.writes.length, 0);
+});
+
+test("an out-of-scope monster is neither written nor reported", () => {
   const p = buildPlan({ manifest: MANIFEST, index, targets: ALL,
                         destination: DESTINATIONS.COMPENDIUM,
                         state: state({ scopes: { m1: "world", m2: "pack" } }) });
-  assert.ok(p.notFound.some(n => n.key === "shape water"));
+  assert.ok(!p.notFound.some(n => n.key === "shape water"));
+  assert.ok(!p.writes.some(w => w.targetName === "Frost Revenant"));
+});
+
+test("a spell already on a list is matched by name, not just by uuid", () => {
+  // The GM re-imported Ice Knife into a different compendium, so the list's
+  // existing link has a different uuid than this run's match. Linking again
+  // would put the same spell on the list twice.
+  const p = buildPlan({ manifest: MANIFEST, index, targets: ALL,
+                        destination: DESTINATIONS.BOTH,
+                        state: state({ listHave: ["Compendium.OLD.Item.99"],
+                                       listHaveKeys: ["ice knife"] }) });
+  assert.equal(p.counts.listEntries, 0);
+  assert.ok(!p.notFound.some(n => n.key === "ice knife"));
 });
 
 test("a found spell the monster already has is skipped silently, never reported not-found", () => {

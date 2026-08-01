@@ -44,18 +44,26 @@ export function buildPlan({ manifest, index, targets, destination, state }) {
     for ( const mon of state.monsters ) {
       const record = manifest.monsters[mon.id];
       if ( !record ) continue;
+      // Out of scope for this destination: not this run's business at all, so
+      // neither written nor reported.
+      if ( !wantsScope(destination, mon.scope) ) continue;
       const spells = [];
       const seen = new Set();   // dedupe a key appearing twice in one record; keep the first
       for ( const s of record.spells ) {
         if ( seen.has(s.key) ) continue;
         seen.add(s.key);
+        // Already satisfied -- by an earlier run, or by hand. Nothing to write
+        // and nothing to report: "not found" has to mean "you are still
+        // missing this", not "this wasn't in the packs you ticked this time".
+        // Checking this before the index lookup is what makes a narrow re-scan
+        // (one freshly imported compendium, say) report only what is genuinely
+        // still absent, instead of every spell the earlier run already placed.
+        if ( mon.haveKeys.has(s.key) ) continue;
         const match = index.get(s.key);
         if ( !match ) {
           miss(s, mon.name);
           continue;
         }
-        if ( mon.haveKeys.has(s.key) ) continue;   // additive only
-        if ( !wantsScope(destination, mon.scope) ) continue;
         spells.push({ name: s.name, key: s.key, prep: s.prep, perDay: s.perDay ?? null, match });
       }
       if ( spells.length ) {
@@ -74,6 +82,10 @@ export function buildPlan({ manifest, index, targets, destination, state }) {
       for ( const s of record.spells ) {
         if ( seen.has(s.key) ) continue;
         seen.add(s.key);
+        // Satisfied by name, not by uuid: an earlier run may have linked a copy
+        // of this spell from a different compendium, and re-linking a second
+        // copy under a new uuid would put the same spell on the list twice.
+        if ( list.haveKeys?.has(s.key) ) continue;
         const match = index.get(s.key);
         if ( !match ) {
           miss(s, list.name);
