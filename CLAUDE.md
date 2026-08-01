@@ -137,6 +137,16 @@ correctly; keep it that way if you add stages. `items` and `journal` have no dep
 Rebuilding is deterministic: identical inputs produce byte-identical output, so `git status` after
 a rebuild is a real regression check.
 
+**Never commit `packs/` written by a running Foundry.** If the repo is symlinked into
+`Data/modules/` for testing, Foundry opens the compiled packs and writes to them in place -- and
+the auto-assign tool, pointed at the compendium destination, copies the tester's own spell
+documents into `packs/monsters`. `release.mjs` ships from `git archive HEAD`, so committing that
+would distribute non-SRD content. It happened once, via a careless `git add -A` mid-testing; the
+branch was unpushed, so `packs/` was stripped from every commit and rebuilt. `npm run verify`
+now fails if any pack is not a fresh compile -- the tell is the LevelDB file numbering, since
+`pack.mjs` `rm -rf`s the destination and a real compile always yields exactly `000005.ldb` +
+`MANIFEST-000002`. Close Foundry, `npm run pack`, then commit.
+
 **A failed build is destructive.** Every builder deletes its whole output directory *before*
 writing, so a crash mid-build leaves `src/<pack>/` gutted (this is how the v1.4.0 folder-document
 regression wiped 433 actor files). Commit before rebuilding; `git checkout -- src/` is the recovery.

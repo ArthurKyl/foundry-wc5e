@@ -272,6 +272,40 @@ def check_missing_manifest(packs):
                  f"pages ({n_entries} entries)")
 
 
+def check_packs_are_builds(manifest):
+    """A compiled pack must be a build of src/, not a captured live database.
+
+    Symlink this repo in as the installed module, let the auto-assign tool write
+    to a compendium, and Foundry mutates packs/ in place. Committing that puts
+    the tester's own non-SRD spell documents into the repo, and release.mjs
+    ships from `git archive HEAD`. This happened once; hence the check.
+
+    The test is file naming. pack.mjs rm -rf's the destination before compiling,
+    so a fresh compile of every pack in this module produces exactly
+    000005.ldb + MANIFEST-000002. Any other numbering means the LevelDB kept
+    running -- i.e. something opened it and wrote.
+
+    Counting `compendiumSource` markers in the .ldb would be the more direct
+    test and is deliberately NOT used: LevelDB compresses its blocks, so a raw
+    byte scan finds only a fraction (10 against the ~870 the same documents
+    show in src/), which makes any threshold meaningless. Opening the database
+    properly is not an option here either -- Foundry may hold it locked.
+    """
+    EXPECTED = {"000005.ldb", "MANIFEST-000002"}
+    for entry in manifest["packs"]:
+        d = os.path.join(REPO, entry["path"])
+        if not os.path.isdir(d):
+            continue
+        actual = {fn for fn in os.listdir(d)
+                  if fn.endswith(".ldb") or fn.startswith("MANIFEST-")}
+        if actual and actual != EXPECTED:
+            fail("packs", f"{entry['name']} is not a fresh compile "
+                          f"({', '.join(sorted(actual))}) -- a running Foundry wrote to it. "
+                          "Close Foundry, run npm run pack, and never commit packs/ "
+                          "captured from a live world")
+    notes.append(f"{len(manifest['packs'])} packs are fresh compiles")
+
+
 def check_release_shape(manifest):
     v = manifest.get("version")
     dl = manifest.get("download", "")
@@ -292,6 +326,7 @@ def main():
     check_sources(manifest, packs)
     check_spell_coverage(packs, idents)
     check_missing_manifest(packs)
+    check_packs_are_builds(manifest)
     check_release_shape(manifest)
 
     total = sum(len(d) for d in packs.values())
