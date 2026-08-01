@@ -967,8 +967,11 @@ export function normaliseName(raw, aliases = {}) {
   n = n.replace(/✦/g, "").replace(/\*/g, "");
   n = n.replace(/\([^)]*\)/g, "");
   n = n.replace(/<\/?br>/g, "");
-  n = n.replace(/^[ .:;-]+/, "").replace(/[ .:;-]+$/, "");
+  // Collapse first, then strip -- Task 2 reordered these two steps in
+  // spell_embed._norm() (stripping first leaves a trailing space behind a
+  // newline). This port must stay in the same order.
   n = n.replace(/\s+/g, " ");
+  n = n.replace(/^[ .:;-]+/, "").replace(/[ .:;-]+$/, "");
   return Object.prototype.hasOwnProperty.call(aliases, n) ? aliases[n] : n;
 }
 
