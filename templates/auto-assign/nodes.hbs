@@ -1,0 +1,17 @@
+{{#each nodes}}
+  <li class="wc5e-aa-node {{this.type}}" data-node-id="{{this.id}}">
+    <label class="checkbox">
+      {{#if (wc5eEq this.type "folder")}}
+        <a class="wc5e-aa-toggle" data-node-id="{{this.id}}">
+          <i class="fa-solid {{#if this.expanded}}fa-folder-open{{else}}fa-folder{{/if}}"></i>
+        </a>
+      {{/if}}
+      <input type="checkbox" class="wc5e-aa-check" data-node-id="{{this.id}}"
+             {{checked (wc5eEq this.state "checked")}}>
+      {{this.name}}
+    </label>
+    {{#if (wc5eAnd (wc5eEq this.type "folder") this.expanded)}}
+      <ol>{{> wc5eAutoAssignNodes nodes=this.children}}</ol>
+    {{/if}}
+  </li>
+{{/each}}

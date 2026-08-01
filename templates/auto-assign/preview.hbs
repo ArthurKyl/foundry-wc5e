@@ -1,0 +1,23 @@
+<section class="wc5e-aa-preview">
+  <p>{{localize "WC5E.AutoAssign.PreviewSummary" spells=counts.spells monsters=counts.monsters
+        entries=counts.listEntries lists=counts.lists}}</p>
+  {{#if counts.notFound}}
+    <p class="notes">{{localize "WC5E.AutoAssign.PreviewNotFound" count=counts.notFound}}</p>
+  {{/if}}
+  {{#if indexFailures.length}}
+    <p class="notification warning">
+      {{localize "WC5E.AutoAssign.IndexFailures"}}
+      {{#each indexFailures}}<br>{{this.packId}}: {{this.error}}{{/each}}
+    </p>
+  {{/if}}
+  <ol class="wc5e-aa-writes">
+    {{#each writes}}
+      <li><strong>{{this.targetName}}</strong>
+        <span class="notes">{{this.scopeLabel}}</span>
+        <ul>{{#each this.spells}}
+          <li>{{this.name}} <span class="notes">{{this.match.packLabel}}</span></li>
+        {{/each}}</ul>
+      </li>
+    {{/each}}
+  </ol>
+</section>

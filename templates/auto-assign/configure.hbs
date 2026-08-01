@@ -1,0 +1,37 @@
+<section class="wc5e-aa-configure">
+  <p class="notes">{{localize "WC5E.AutoAssign.Intro"}}</p>
+
+  <fieldset>
+    <legend>{{localize "WC5E.AutoAssign.TargetsLegend"}}</legend>
+    <label class="checkbox">
+      <input type="checkbox" name="target-monsters" {{checked targets.monsters}}>
+      {{localize "WC5E.AutoAssign.TargetMonsters"}}
+      <span class="notes">({{totals.monsters}} / {{totals.monsterSpells}})</span>
+    </label>
+    <label class="checkbox {{#unless listsAvailable}}disabled{{/unless}}">
+      <input type="checkbox" name="target-lists" {{checked targets.lists}}
+             {{disabled (wc5eNot listsAvailable)}}>
+      {{localize "WC5E.AutoAssign.TargetLists"}}
+      <span class="notes">({{totals.lists}} / {{totals.listSpells}})</span>
+    </label>
+    {{#unless listsAvailable}}
+      <p class="notes hint">{{localize "WC5E.AutoAssign.ListsNeedCompendium"}}</p>
+    {{/unless}}
+  </fieldset>
+
+  <fieldset>
+    <legend>{{localize "WC5E.AutoAssign.DestinationLegend"}}</legend>
+    <select name="destination">
+      {{#each destinations}}
+        <option value="{{this.value}}" {{selected this.chosen}}>{{this.label}}</option>
+      {{/each}}
+    </select>
+    <p class="notes hint">{{localize "WC5E.AutoAssign.UpdateCaveat"}}</p>
+  </fieldset>
+
+  <fieldset>
+    <legend>{{localize "WC5E.AutoAssign.SearchLegend"}}</legend>
+    <p class="notes">{{localize "WC5E.AutoAssign.SearchHint"}}</p>
+    <ol class="wc5e-aa-tree">{{> wc5eAutoAssignNodes nodes=tree}}</ol>
+  </fieldset>
+</section>
