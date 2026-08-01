@@ -105,6 +105,32 @@ test("aborts without writing when a pack cannot be unlocked", async () => {
   assert.equal(h.actor.created.length, 0);
 });
 
+test("re-lock failure is reported, not swallowed", async () => {
+  const h = harness({ locked: true });
+  h.pack.configure = async c => {
+    h.pack.configured.push(c);
+    if ( c.locked === true ) throw new Error("network blip");
+  };
+  const res = await applyPlan({ writes: [MONSTER_WRITE] }, { deps: h.deps });
+  assert.equal(res.added, 1);
+  assert.equal(res.failures.length, 1);
+  assert.equal(res.failures[0].target, `${MODULE_ID}.monsters`);
+  assert.match(res.failures[0].error, /re-lock/);
+});
+
+test("a re-lock failure and a write failure are both reported", async () => {
+  const h = harness({ locked: true, failOn: "Compendium.x.Item.2" });
+  h.pack.configure = async c => {
+    h.pack.configured.push(c);
+    if ( c.locked === true ) throw new Error("network blip");
+  };
+  const res = await applyPlan({ writes: [MONSTER_WRITE] }, { deps: h.deps });
+  assert.equal(res.added, 0);
+  assert.equal(res.failures.length, 2);
+  assert.ok(res.failures.some(f => f.target === MONSTER_WRITE.targetName));
+  assert.ok(res.failures.some(f => f.target === `${MODULE_ID}.monsters` && /re-lock/.test(f.error)));
+});
+
 test("appends to a spell list without dropping what is already there", async () => {
   const h = harness();
   const write = { kind: "list", uuid: "page1", targetName: "Mage Spells",

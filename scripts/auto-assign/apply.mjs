@@ -160,9 +160,13 @@ export async function applyPlan(plan, { deps = liveDeps(), onProgress = null } =
   finally {
     // Re-lock whatever we unlocked, even if the run threw. Leaving a module
     // pack unlocked invites accidental edits that a module update then wipes.
-    for ( const pack of unlocked.values() ) {
+    for ( const [packId, pack] of unlocked.entries() ) {
       try { await pack.configure({ locked: true }); }
-      catch { /* nothing useful to do; the report already reflects the writes */ }
+      catch ( err ) {
+        const message = `could not re-lock: ${err.message ?? err}`;
+        failures.push({ target: packId, error: message });
+        console.warn(`wc5e-bestiary | ${packId}: ${message}`);
+      }
     }
   }
 
