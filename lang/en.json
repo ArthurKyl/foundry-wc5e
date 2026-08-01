@@ -31,7 +31,6 @@
   "WC5E.AutoAssign.ScopeWorld": "world actor",
   "WC5E.AutoAssign.ScopeList": "spell list",
   "WC5E.AutoAssign.PreviewSummary": "Will add {spells} spells to {monsters} monsters, and {entries} entries to {lists} spell lists.",
-  "WC5E.AutoAssign.PreviewNotFound": "{count} spells were not found in the compendiums you selected.",
   "WC5E.AutoAssign.ReportSummary": "Added {added} spells and {entries} spell-list entries.",
   "WC5E.AutoAssign.ReportFailures": "Some writes failed:",
   "WC5E.AutoAssign.NotFoundHeading": "Not found ({count})",

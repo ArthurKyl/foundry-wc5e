@@ -17,8 +17,10 @@ export const SETTINGS = {
 /** Registered once; the tree template recurses through this partial. */
 export async function registerTemplates() {
   const path = "modules/wc5e-bestiary/templates/auto-assign/nodes.hbs";
-  const [tpl] = await foundry.applications.handlebars.loadTemplates([path]);
-  Handlebars.registerPartial("wc5eAutoAssignNodes", tpl);
+  const [nodes, notFound] = await foundry.applications.handlebars.loadTemplates([
+    path, "modules/wc5e-bestiary/templates/auto-assign/notfound.hbs"]);
+  Handlebars.registerPartial("wc5eAutoAssignNodes", nodes);
+  Handlebars.registerPartial("wc5eAutoAssignNotFound", notFound);
 }
 
 export function registerHelpers() {
@@ -149,6 +151,7 @@ export class AutoAssignApp extends HandlebarsApplicationMixin(ApplicationV2) {
 
   #previewContext() {
     return {
+      ...this.#notFoundContext(),
       counts: this.#plan.counts,
       indexFailures: this.#indexFailures,
       writes: this.#plan.writes.map(w => ({
@@ -168,10 +171,14 @@ export class AutoAssignApp extends HandlebarsApplicationMixin(ApplicationV2) {
     };
   }
 
-  #reportContext() {
-    // Grouped by source book so a GM can tell "I'm missing a whole book" from
-    // "I'm missing three spells". Monster records carry no source, so those
-    // land in the unknown bucket.
+  /**
+   * The not-found block, grouped by source book so a GM can tell "I'm missing
+   * a whole book" from "I'm missing three spells". Monster records carry no
+   * source, so those land in the unknown bucket. Shared by preview and report:
+   * with nothing to write, Apply is disabled and report is unreachable, so the
+   * preview has to carry the list too.
+   */
+  #notFoundContext() {
     const groups = new Map();
     for ( const n of this.#plan.notFound ) {
       const key = n.source || "";
@@ -184,11 +191,17 @@ export class AutoAssignApp extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     const label = k => k || game.i18n.localize("WC5E.AutoAssign.SourceUnknown");
     return {
-      result: this.#result,
       notFoundCount: this.#plan.notFound.length,
       notFoundGroups: [...groups.entries()]
         .sort((a, b) => label(a[0]).localeCompare(label(b[0])))
         .map(([source, spells]) => ({ label: label(source), spells })),
+    };
+  }
+
+  #reportContext() {
+    return {
+      ...this.#notFoundContext(),
+      result: this.#result,
       buttons: [{ type: "button", action: "back", icon: "fa-solid fa-arrow-left",
                   label: "WC5E.AutoAssign.Done" }],
     };

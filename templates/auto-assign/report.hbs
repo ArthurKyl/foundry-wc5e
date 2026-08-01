@@ -4,28 +4,6 @@
     <p class="notification error">{{localize "WC5E.AutoAssign.ReportFailures"}}</p>
     <ul>{{#each result.failures}}<li>{{this.target}}: {{this.error}}</li>{{/each}}</ul>
   {{/if}}
-  {{#if notFoundCount}}
-    <h3>{{localize "WC5E.AutoAssign.NotFoundHeading" count=notFoundCount}}</h3>
-    <p class="notes">{{localize "WC5E.AutoAssign.NotFoundHint"}}</p>
-    {{#each notFoundGroups}}
-      <h4>{{this.label}}</h4>
-      <ul class="wc5e-aa-notfound">
-        {{#each this.spells}}
-          <li>{{this.name}} <span class="notes">{{this.wantedByLabel}}</span></li>
-        {{/each}}
-      </ul>
-    {{/each}}
-    <div class="wc5e-aa-actions">
-      <button type="button" data-action="copy">
-        <i class="fa-solid fa-copy"></i> {{localize "WC5E.AutoAssign.CopyList"}}
-      </button>
-      <button type="button" data-action="listSpells">
-        <i class="fa-solid fa-list"></i> {{localize "WC5E.AutoAssign.ShowSpellList"}}
-      </button>
-      <button type="button" data-action="listByTarget">
-        <i class="fa-solid fa-dragon"></i> {{localize "WC5E.AutoAssign.ShowByTarget"}}
-      </button>
-    </div>
-  {{/if}}
+  {{> wc5eAutoAssignNotFound}}
   <p class="notes hint">{{localize "WC5E.AutoAssign.UpdateCaveat"}}</p>
 </section>
