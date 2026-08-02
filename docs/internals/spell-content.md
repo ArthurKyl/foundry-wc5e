@@ -112,15 +112,21 @@ It does **not** stop the same spell being picked at two levels. dnd5e computes a
 all writes, never passed to the template — and `apply()` rejects nothing. Only a runtime hook could
 prevent it; the decision was to leave it to the players.
 
-**Spells Known and Spellbook carry an explicit `pool`; Cantrips Known does not.** `restriction.level`
-takes `""`, `"available"` or one exact level, and `"available"` sets only a *maximum* — so a cantrip
-passes it and can be "learned" as a spell. A Death Knight, whose cantrips come from Profane Warrior
-rather than from this advancement, could re-pick them at every spell level. There is no "1 to max"
-option, so the pool is the only way to say "these, not cantrips". `build_spell_lists.py` emits it to
-`intermediate/class_spell_pools.json` (it is the only stage that knows each entry's spell level, from
-the `##### Nth Level` headings) and this stage reads it, which is why it must run after. `allowDrops`
-stays on and the browser is still filtered to the class list, so a spell added later — by the
-auto-assign tool, say — remains reachable despite not being in the snapshot.
+**`pool` must stay empty.** It is tempting to fill it — `restriction.level` takes `""`,
+`"available"` or one exact level, and `"available"` sets only a *maximum*, so a cantrip passes it and
+can be "learned" as a spell. There is no "1 to max" option, and a pool is the only config that can
+express "these, not cantrips". v1.18.2 shipped exactly that and it had to come straight back out.
+
+A pool is a **build-time snapshot**. `restriction.list` is resolved **live**, through
+`dnd5e.registry.spellLists.forType()` against the class's spell-list page — the same page the
+auto-assign tool fills with the GM's own copies of the non-SRD spells we cannot ship. A pool cannot
+see any of that. The Shaman's level 1 choice collapsed from "every 1st-level spell on the list you
+actually own" to the nine that happen to resolve at build time. The whole point of the auto-assign
+feature is that the GM brings content we can't; anything that bypasses the live list defeats it.
+
+So cantrips do appear in a Spells Known choice, and a Death Knight — whose cantrips come from
+Profane Warrior rather than this advancement — can re-pick them. That is accepted, alongside dnd5e
+letting you take the same spell at two levels. Both are player discipline, not data problems.
 
 Table sources, best first: `WIP 3.0 Classes/<Class>` (extensionless for some classes) then the
 Heroes Handbook section. A candidate that yields no column must **fall through**, not end the

@@ -160,30 +160,6 @@ def deltas(by_level):
 TITLES = {"cantrip": "Cantrips Known", "spell": "Spells Known", "spellbook": "Spellbook"}
 
 
-def load_pools():
-    """identifier -> [uuid] of every non-cantrip spell on that class's list.
-
-    Written by build_spell_lists.py, which runs first and is the only place that
-    knows each entry's spell level (it parses the "##### Nth Level" headings).
-
-    Needed because dnd5e cannot express "any level you can cast, but not
-    cantrips". `restriction.level` is "" (anything), "available" (a *maximum* of
-    your highest slot -- so level 0 passes) or one exact level. Left on
-    "available", a Death Knight could "learn" the two cantrips Profane Warrior
-    already gave them, at every level that grants a spell, and finish holding
-    duplicates. An explicit pool is the only way to say "these, and not cantrips".
-
-    The compendium-browser button stays available (`allowDrops`), still filtered
-    to the class list, so a spell added later -- by the auto-assign tool, say --
-    is reachable even though it is not in this snapshot.
-    """
-    p = os.path.join(REPO, "intermediate", "class_spell_pools.json")
-    if not os.path.exists(p):
-        raise SystemExit(f"missing {p} -- run `npm run spell-lists` first")
-    return json.load(open(p, encoding="utf-8"))
-
-
-POOLS = {}
 
 
 def item_choice(cls, ident, kind, picks):
@@ -237,10 +213,15 @@ def item_choice(cls, ident, kind, picks):
             # ever added to.
             ("choices", {str(lv): {"count": n, "replacement": kind == "spell"}
                          for lv, n in sorted(picks.items())}),
-            # Cantrips choose from the whole list by level restriction; the others
-            # need an explicit pool to exclude cantrips -- see POOLS.
-            ("pool", [] if kind == "cantrip"
-                     else [{"uuid": u} for u in POOLS.get(ident, [])]),
+            # Always empty. An explicit pool was tried in v1.18.2 to keep cantrips
+            # out of Spells Known and had to come straight back out: a pool is a
+            # build-time snapshot, while `restriction.list` is resolved live
+            # through dnd5e.registry.spellLists against the class's spell-list
+            # page -- the page the auto-assign tool fills with the GM's own
+            # non-SRD spells. The pool could never see those, so the Shaman's
+            # level 1 choice fell to the nine 1st-level spells that happen to
+            # resolve at build time. Leave this empty; the live list is the point.
+            ("pool", []),
             # "0" restricts to cantrips; "available" lets the player pick any spell
             # level they currently have slots for, which is what "Spells Known"
             # means. Note "available" sets only a maximum, so it does not exclude
@@ -259,7 +240,6 @@ def item_choice(cls, ident, kind, picks):
 def main():
     if not os.path.isdir(UPSTREAM):
         raise SystemExit(f"upstream source not found: {UPSTREAM}")
-    POOLS.update(load_pools())
 
     # class name -> (file path, identifier, doc)
     docs = {}
