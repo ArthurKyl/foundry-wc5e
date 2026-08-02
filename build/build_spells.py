@@ -639,7 +639,7 @@ EXTRA_ACTIVITIES = {
     "Shadowy Apparitions": {
         "summon": {"kind": "summon", "sort": 10, "name": "Create three apparitions",
                    "profiles": [{"name": "Shadowy Apparition", "count": "3",
-                                 "uuid": SUMMON["Shadowy Appriations"]}]},
+                                 "uuid": SUMMON["Shadowy Apparition"]}]},
     },
     "Summon Void Being": {
         "summon": {"kind": "summon", "sort": 10, "name": "Summon the void being",
@@ -650,6 +650,25 @@ EXTRA_ACTIVITIES = {
                         "uuid": SUMMON["Void Being (Psyfiend)"]},
                        {"name": "Shadowfiend", "count": "1",
                         "uuid": SUMMON["Void Being (Shadowfiend)"]}]},
+    },
+    "Ice Nova": {
+        # A tracker, not a creature: the ice has AC 10 and 40 hp, and breaking it is
+        # how a restrained creature gets out. Count stays 1 and the DM clicks again
+        # per restrained target -- no formula can know how many saves failed.
+        "ice": {"kind": "summon", "sort": 10, "name": "Encase a creature in ice",
+                "match": False,
+                "profiles": [{"name": "Encasing Ice", "count": "1",
+                              "uuid": SUMMON["Encasing Ice"]}],
+                "flavor": "AC 10, 40 hit points. The restrained creature can instead "
+                          "use its action for a Strength check against your spell DC."},
+    },
+    "Jaina's Flying Ship": {
+        # The ship already exists in the fiction; this places a sheet so the party
+        # can track its hit points and what they have loaded onto it.
+        "ship": {"kind": "summon", "sort": 10, "name": "Place the ship's sheet",
+                 "match": False,
+                 "profiles": [{"name": "Enchanted Flying Ship", "count": "1",
+                               "uuid": SUMMON["Enchanted Flying Ship"]}]},
     },
     "Conjure Undead": {
         # CR mode, so the player chooses any undead at or below the cap from the
@@ -677,6 +696,55 @@ EXTRA_ACTIVITIES = {
 }
 
 
+# Spells shipped as several documents rather than one.
+#
+# dnd5e has no "which version are you casting?" prompt outside summon profiles, so
+# a spell whose variants *target differently* would otherwise put three templates
+# and three damage sets on one chat card, and placing the wrong one is a real
+# misplay. Splitting costs a spell-list entry each -- see ALIAS and EXTRA_ENTRIES
+# in build_spell_lists.py, which keep all three reachable -- so it is reserved for
+# that case. Variants that differ only in numbers or in which effect lands stay as
+# named activities on one document.
+SPLIT = {
+    "Deathwyrm's Fury": [
+        {"suffix": "Emberwyrm", "keep": "Emberwyrm.",
+         "tpl": ("cone", "60", None, None),
+         "dmg": [(5, 8, "fire", None), (5, 8, "necrotic", None)]},
+        {"suffix": "Frostwyrm", "keep": "Frostwyrm.",
+         "tpl": ("sphere", "20", None, None),
+         "dmg": [(5, 8, "cold", None), (5, 8, "necrotic", None)]},
+        {"suffix": "Vilewyrm", "keep": "Vilewyrm",
+         "tpl": ("line", "120", "10", None),
+         "dmg": [(5, 8, "acid", None), (5, 8, "necrotic", None)]},
+    ],
+}
+
+# The paragraph describing each variant, so a split document carries only its own.
+VARIANT_RE = re.compile(r"<p>(?:<[^>]+>)*(Emberwyrm|Frostwyrm|Vilewyrm)\b.*?</p>", re.S)
+
+
+def split_variants(src):
+    """One source record -> the several records it should ship as."""
+    specs = SPLIT.get(src["name"])
+    if not specs:
+        return [src]
+    desc = src["description"]
+    shared = VARIANT_RE.sub("", desc)
+    paras = {m.group(1): m.group(0) for m in VARIANT_RE.finditer(desc)}
+    out = []
+    for spec in specs:
+        para = paras.get(spec["suffix"], "")
+        if not para:
+            raise SystemExit(f"split: no paragraph for {src['name']} / {spec['suffix']}"
+                             " -- upstream wording changed, fix SPLIT")
+        rec = dict(src)
+        rec["name"] = f"{src['name']} ({spec['suffix']})"
+        rec["description"] = shared + para
+        rec["_split"] = {"tpl": spec["tpl"], "dmg": spec["dmg"]}
+        out.append(rec)
+    return out
+
+
 def build_extra_activities(spell_id, name, activation):
     out = {}
     for key, spec in (EXTRA_ACTIVITIES.get(name) or {}).items():
@@ -692,7 +760,7 @@ def build_spell(src):
     # correct, so fixing one spell's template doesn't mean restating its damage and
     # then having the two drift apart. Overrides that change the activity kind must
     # say so explicitly.
-    mech = {**auto_detect(desc), **OVERRIDES.get(name.lower(), {})}
+    mech = {**auto_detect(desc), **OVERRIDES.get(name.lower(), {}), **src.get("_split", {})}
     activation = src["activation"]
 
     tpl = None if name in NO_TEMPLATE else mech.get("tpl")
@@ -778,6 +846,7 @@ def main():
             os.remove(os.path.join(out_dir, fn))
     from collections import Counter
     kinds = Counter()
+    src = [rec for s in src for rec in split_variants(s)]
     for s in src:
         item, kind = build_spell(s)
         kinds[kind] += 1

@@ -59,6 +59,11 @@ ALIAS = {
     # Paladin and Priest lists omit it and the manifest mislabels it
     # "not in SRD", sending the GM shopping for something dnd5e already ships.
     "protfromevilandgood": "protectionfromevilandgood",
+    # Deathwyrm's Fury ships as three documents, one per breath weapon, because
+    # their areas differ (cone / sphere / line) and one chat card cannot ask which
+    # you meant. The tables name it once, so that entry points at the first and the
+    # other two are added through EXTRA_ENTRIES below.
+    "deathwyrmsfury": "deathwyrmsfuryemberwyrm",
 }
 
 # Spells this module ships that the Chapter 6 class tables never list, normally
@@ -66,6 +71,12 @@ ALIAS = {
 # unreachable: present in the spells compendium but on no class's list.
 EXTRA_ENTRIES = {
     "wc5e-shaman": [("Feral Spirits", 3)],
+    # The two Deathwyrm's Fury variants the tables cannot name, on both lists that
+    # carry the spell. Drop these and verify fails: three shipped spells on no list.
+    "wc5e-death-knight": [("Deathwyrm's Fury (Frostwyrm)", 5),
+                          ("Deathwyrm's Fury (Vilewyrm)", 5)],
+    "wc5e-warlock": [("Deathwyrm's Fury (Frostwyrm)", 5),
+                     ("Deathwyrm's Fury (Vilewyrm)", 5)],
 }
 
 LEVEL_RE = re.compile(r"^#{4,5}\s*(?:Cantrips?\s*\(0\s*Level\)|(\d)(?:st|nd|rd|th)\s+Level)",
