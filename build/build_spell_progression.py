@@ -188,14 +188,24 @@ def item_choice(cls, ident, kind, picks):
     advancement's `choices` map, which is what that field is for -- "specify how
     many choices are allowed at each level".
 
-    This matters for more than tidiness. dnd5e hides spells you already took from
-    later choices, but it does that by reading `value.added` for the *earlier
-    levels of the same advancement* (ItemChoiceFlow builds `previouslySelected`
-    from `Array.fromRange(this.level)`). One advancement per level gives each its
-    own empty `value.added`, so nothing knows what the others picked and the same
-    spell can be chosen again at every level -- which is exactly what happened:
-    a Death Knight could re-pick their level 2 spells at 3, 5, 7 and so on, and
-    end up holding duplicates.
+    Two things this buys, and one it does not.
+
+    It shows the player what they already picked: ItemChoiceFlow builds
+    `context.sections` from `value.added` for every earlier level *of the same
+    advancement*, so with one advancement the level 2 picks appear above the level
+    3 choice. Split across ten advancements each has its own empty `value.added`
+    and every level looks like the first.
+
+    It also makes "you can replace one of the spells you know" work. `value.replaced`
+    points at a level within the same advancement, so with one advancement per
+    level there is nothing earlier to swap out.
+
+    It does NOT stop the same spell being picked twice. dnd5e computes a
+    `previouslySelected` set in that flow and then never reads it -- three
+    references in the whole system, all writes, and it is not passed to the
+    template. Nothing in `apply()` rejects a duplicate either. Preventing it needs
+    a runtime hook; the pool below cannot, being static build-time data that knows
+    nothing about a particular character.
 
     The advancement keeps the id of its FIRST level so existing characters do not
     lose the picks they have already recorded against it.
