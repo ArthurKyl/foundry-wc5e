@@ -121,7 +121,7 @@
         "healing": {
           "number": 2,
           "denomination": 6,
-          "bonus": "@mod",
+          "bonus": "",
           "types": [
             "healing"
           ],
@@ -130,8 +130,8 @@
             "formula": ""
           },
           "scaling": {
-            "mode": "",
-            "number": null,
+            "mode": "half",
+            "number": 1,
             "formula": ""
           }
         }

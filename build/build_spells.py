@@ -49,11 +49,21 @@ ABBR = {"strength": "str", "dexterity": "dex", "constitution": "con",
         "intelligence": "int", "wisdom": "wis", "charisma": "cha"}
 
 
-def dpart(n, d, types, scale=None, bonus=""):
-    tl = [] if not types else ([types] if isinstance(types, str) else types)
+def dpart(n, d, types, scale=None, bonus="", mode="whole"):
+    """One damage (or healing) part.
+
+    `types` may be a list, and when it holds more than one the damage roll dialog
+    renders a dropdown to pick which applies -- that is how a "choose acid, cold,
+    fire, lightning or thunder" spell stays one button instead of five.
+
+    `mode` is the scaling mode: "whole" adds `scale` dice per slot level, "half"
+    adds them every *other* level, which is what "for every two slot levels above"
+    means and what auto_detect deliberately refuses to guess.
+    """
+    tl = [] if not types else ([types] if isinstance(types, str) else list(types))
     return {"number": n, "denomination": d, "bonus": bonus, "types": tl,
             "custom": {"enabled": False, "formula": ""},
-            "scaling": {"mode": "whole" if scale else "", "number": scale,
+            "scaling": {"mode": mode if scale else "", "number": scale,
                         "formula": ""}}
 
 
@@ -187,7 +197,10 @@ OVERRIDES = {
     # "within 15 feet of you".
     "divine star": {"tpl": ("line", "30", "5", None)},
     "starsurge": {"tpl": ("line", "100", "5", None)},
-    "halo": {"tpl": ("radius", "60", None, None)},
+    # Named because a second, differently-named activity sits beside it: an unnamed
+    # button reads as "the spell" rather than as one of its two halves.
+    "halo": {"tpl": ("radius", "60", None, None), "name": "Light — Damage"},
+    "apotheosis": {"name": "Aura (creature enters or ends its turn within 10 ft)"},
     "luminous barrier": {"tpl": ("radius", "30", None, None)},
     # Emanations whose "you" reads before the distance rather than after it, so the
     # sphere-vs-emanation test in auto_detect cannot see it.
@@ -207,6 +220,31 @@ OVERRIDES = {
     "lava burst": {"dmg": [(3, 6, "fire", 1), (3, 6, "bludgeoning", 1)]},
     "devouring plague": {"dmg": [(2, 8, "necrotic", 1)]},
     "exorcism": {"dmg": [(3, 8, "radiant", 1)]},
+    # "+1d6 for every two slot levels above 5th" is Half mode, and the detector's
+    # generic "regains NdM hit points" reading tacked on a spellcasting modifier
+    # this spell never mentions.
+    "healing rain": {"heal": (2, 6, "", 1), "healmode": "half"},
+
+    # -- spells that rolled nothing at all --------------------------------------
+    # Each of these describes a save, an attack or a heal in its text, but came out
+    # of auto_detect as a bare utility -- casting them produced a chat card with no
+    # button on it. Lunar Strike was the worst case: a damage cantrip that rolled
+    # no damage.
+    "lunar strike": {"kind": "save", "save": "dex", "onsave": "none",
+                     "dmg": [(1, 6, "force", 1)]},
+    "light of the protector": {"kind": "heal", "heal": (5, 12, "30", None)},
+    "freezing touch": {"kind": "attack", "atk": "melee", "dmg": []},
+    # One damage part carrying every option, so the roll dialog offers a dropdown
+    # to pick the type rather than the spell needing one button per element.
+    "elemental shock": {"kind": "save", "save": "dex", "onsave": "half",
+                        "dmg": [(3, 8, ["acid", "cold", "fire", "lightning",
+                                        "thunder"], 1)]},
+    "touch of chaos": {"dmg": [(1, 8, ["acid", "cold", "fire", "force", "lightning",
+                                       "poison", "psychic", "thunder"], 1)]},
+    # "increases by 1d4 per shard when you reach 5th level" -- the words between the
+    # dice and "when you reach" are enough to lose the cantrip-scaling pattern, so
+    # the first shard scaled while the other two did not.
+    "flurry": {"dmg": [(1, 4, "cold", 1)]},
 }
 
 
@@ -305,35 +343,79 @@ def base_act(aid, kind, activation):
     }
 
 
-def build_activity(spell_id, mech, activation):
-    aid = make_id(spell_id, "act")
+def tpl_target(tpl):
+    ttype, size, width, height = tpl
+    return {"affects": {"type": "", "count": "", "choice": False, "special": ""},
+            "template": {"count": "", "contiguous": False, "type": ttype, "size": size,
+                         "width": width or "", "height": height or "", "units": "ft"}}
+
+
+def make_activity(aid, mech, activation):
+    """Build one activity of any kind from a mech spec.
+
+    The primary activity and every extra one go through here, so an "extra" is
+    just another mech dict -- there is no second, thinner code path that quietly
+    supports fewer fields than the first. `name`, `flavor`, `sort` and a
+    per-activity `tpl` are the only things extras add.
+    """
     kind = mech["kind"]
+    parts = [dpart(*p) for p in mech.get("dmg", [])]
+    for bonus, t in mech.get("flat", []):
+        parts.append(dpart(None, None, t, None, bonus=bonus))
+
     if kind == "attack":
         a = base_act(aid, "attack", activation)
         a["attack"] = {"ability": "", "bonus": "", "critical": {"threshold": None},
                        "flat": False,
                        "type": {"value": mech.get("atk", "ranged"), "classification": ""}}
-        a["damage"] = {"critical": {"bonus": ""}, "includeBase": True,
-                       "parts": [dpart(*p) for p in mech["dmg"]]}
-        return {aid: a}
-    if kind == "save":
+        a["damage"] = {"critical": {"bonus": ""}, "includeBase": True, "parts": parts}
+    elif kind == "save":
         a = base_act(aid, "save", activation)
-        parts = [dpart(*p) for p in mech.get("dmg", [])]
-        for bonus, t in mech.get("flat", []):
-            parts.append(dpart(None, None, t, None, bonus=bonus))
         a["save"] = {"ability": [mech["save"]],
                      "dc": {"calculation": "spellcasting", "formula": ""}}
         a["damage"] = {"onSave": mech.get("onsave", "half" if parts else "none"),
                        "parts": parts}
-        return {aid: a}
-    if kind == "heal":
+    elif kind == "damage":
+        # No attack roll and no save -- a damage button the player clicks when the
+        # condition in the text applies (Exorcism against a fiend, Starfire under
+        # a clear moon). Rolling it through an activity keeps resistance and
+        # immunity honest, which a hand-rolled die does not.
+        a = base_act(aid, "damage", activation)
+        a["damage"] = {"critical": {"bonus": ""}, "parts": parts}
+    elif kind == "heal":
         a = base_act(aid, "heal", activation)
-        n, d, bonus, scale = mech["heal"]
-        a["healing"] = dpart(n, d, "healing", scale, bonus=bonus)
-        return {aid: a}
-    a = base_act(aid, "utility", activation)
-    a["roll"] = {"formula": "", "name": "", "prompt": False, "visible": False}
+        n, d, bonus, scale = mech["heal"][:4]
+        htype = mech["heal"][4] if len(mech["heal"]) > 4 else "healing"
+        a["healing"] = dpart(n, d, htype, scale, bonus=bonus,
+                             mode=mech.get("healmode", "whole"))
+    elif kind == "check":
+        a = base_act(aid, "check", activation)
+        a["check"] = {"ability": mech.get("ability", "spellcasting"),
+                      "associated": [],
+                      "dc": {"calculation": mech.get("dccalc", ""),
+                             "formula": mech.get("dc", ""), "visible": True}}
+    else:
+        a = base_act(aid, "utility", activation)
+        a["roll"] = {"formula": "", "name": "", "prompt": False, "visible": False}
+
+    if mech.get("name"):
+        a["name"] = mech["name"]
+    if mech.get("flavor"):
+        a["description"] = {"chatFlavor": mech["flavor"]}
+    if mech.get("sort"):
+        a["sort"] = mech["sort"]
+    if mech.get("tpl"):
+        # override=True, or the activity silently inherits the item's area instead
+        # of the one it was given.
+        a["target"] = {**tpl_target(mech["tpl"]), "prompt": True, "override": True}
     return {aid: a}
+
+
+def build_activity(spell_id, mech, activation):
+    # The primary activity inherits the item's area, so it must not carry its own
+    # copy -- two templates describing the same circle drift the moment one is
+    # corrected. Only extras, which differ from the item, override.
+    return make_activity(make_id(spell_id, "act"), {**mech, "tpl": None}, activation)
 
 
 # Optional alternative modes that auto_detect can't express: a second activity the
@@ -342,7 +424,10 @@ def build_activity(spell_id, mech, activation):
 # consumption types don't verifiably cover paying hit points, and a malformed
 # consumption block is worse than a line of text the player acts on.
 ALT_ACTIVITIES = {
+    # Shadow Bolt's alternative mode. Keyed "alt" so its id predates the general
+    # table below and stays stable for worlds that already reference it.
     "Shadow Bolt": {
+        "kind": "attack", "sort": 100,
         "name": "Empowered (take 1 psychic damage)",
         "dmg": [(1, 12, "necrotic", 1)],
         "flavor": "You take 1 point of psychic damage (3 at 5th level, 5 at 11th) "
@@ -355,16 +440,159 @@ def build_alt_activity(spell_id, name, activation):
     spec = ALT_ACTIVITIES.get(name)
     if not spec:
         return {}
-    aid = make_id(spell_id, "act", "alt")
-    a = base_act(aid, "attack", activation)
-    a["name"] = spec["name"]
-    a["attack"] = {"ability": "", "bonus": "", "critical": {"threshold": None},
-                   "flat": False, "type": {"value": "ranged", "classification": ""}}
-    a["damage"] = {"critical": {"bonus": ""}, "includeBase": True,
-                   "parts": [dpart(*p) for p in spec["dmg"]]}
-    a["description"] = {"chatFlavor": spec["flavor"]}
-    a["sort"] = 100
-    return {aid: a}
+    return make_activity(make_id(spell_id, "act", "alt"), spec, activation)
+
+
+# Additional clickable activities. dnd5e renders one button per activity and shows
+# them all at once, so this is how a spell offers a conditional damage roll, a
+# healing half, or a second mode -- there is no "which version are you casting?"
+# prompt to hang them off instead.
+#
+# Ids derive from the spell name plus the key, so adding an entry never disturbs
+# the ids of the ones already there.
+EXTRA_ACTIVITIES = {
+    # -- healing that shares a cast with damage --------------------------------
+    "Divine Star": {
+        "heal": {"kind": "heal", "name": "Healing (allies in the line)", "sort": 10,
+                 "heal": (2, 8, "", 1), "tpl": ("line", "30", "5", None)},
+    },
+    "Holy Nova": {
+        "heal": {"kind": "heal", "name": "Healing (allies)", "sort": 10,
+                 "heal": (3, 6, "", 1), "tpl": ("radius", "15", None, None)},
+    },
+    "Holy Prism": {
+        "heal": {"kind": "heal", "name": "Heal (1d4 + spellcasting modifier)", "sort": 10,
+                 "heal": (1, 4, "@attributes.spell.mod", 1)},
+    },
+    "Halo": {
+        "lightheal": {"kind": "heal", "name": "Light — Healing (allies)", "sort": 10,
+                      "heal": (6, 6, "", None), "tpl": ("radius", "60", None, None)},
+        "shadow": {"kind": "save", "name": "Shadow — Damage", "sort": 20, "save": "con",
+                   "onsave": "half", "tpl": ("radius", "60", None, None),
+                   "dmg": [(6, 6, "necrotic", None), (6, 6, "psychic", None)],
+                   "flavor": "A creature 50 feet or more away makes the save with "
+                             "disadvantage."},
+    },
+
+    # -- conditional extra damage ----------------------------------------------
+    "Exorcism": {
+        "vs": {"kind": "damage", "sort": 10,
+               "name": "Vs. Aberration, Fiend or Undead (+2d8)",
+               "dmg": [(2, 8, "radiant", None)]},
+    },
+    "Starfire": {
+        "moon": {"kind": "damage", "sort": 10, "name": "Clear view of the moon (+1d6)",
+                 "dmg": [(1, 6, "radiant", None)]},
+    },
+    "Starfall": {
+        "moon": {"kind": "damage", "sort": 10, "name": "Clear view of the moon (+2d6)",
+                 "dmg": [(2, 6, "radiant", None)]},
+    },
+    "Starsurge": {
+        "moon": {"kind": "damage", "sort": 10, "name": "Clear view of the moon (+2d6)",
+                 "dmg": [(2, 6, "radiant", None)]},
+    },
+    "Lightning Blast": {
+        "metal": {"kind": "attack", "sort": 10, "name": "Vs. metal armor (1d12)",
+                  "dmg": [(1, 12, "lightning", 1)]},
+    },
+    "Shadow Bolt": {
+        "self": {"kind": "damage", "sort": 110, "name": "Self-damage (psychic)",
+                 "flat": [("1", "psychic")],
+                 "flavor": "Target yourself. 1 point at 1st level, 3 at 5th, 5 at "
+                           "11th, 7 at 17th."},
+    },
+
+    # -- second halves the text describes but nothing rolled --------------------
+    "Cataclysm": {
+        "aflame": {"kind": "damage", "sort": 10, "name": "Aflame (start of turn)",
+                   "dmg": [(2, 6, "fire", None)]},
+        "douse": {"kind": "damage", "sort": 20, "name": "Putting out the flames",
+                  "dmg": [(1, 6, "fire", None)]},
+        "ground": {"kind": "damage", "sort": 30, "name": "Entering the scorched ground",
+                   "dmg": [(1, 6, "fire", None)]},
+    },
+    "Living Bomb": {
+        "boom": {"kind": "save", "sort": 10, "name": "Explosion (when the spell ends)",
+                 "save": "dex", "onsave": "half", "dmg": [(2, 6, "fire", 1)],
+                 "tpl": ("sphere", "10", None, None)},
+    },
+    "Drain Life": {
+        # "for every two slot levels" is Half mode -- the reason auto_detect skips
+        # this spell's scaling entirely rather than guessing Whole.
+        "bonus": {"kind": "damage", "sort": 10, "name": "Bonus action drain (1d8)",
+                  "dmg": [(1, 8, "necrotic", 1, "", "half")],
+                  "flavor": "You regain hit points equal to half the damage dealt, and "
+                            "the target's hit point maximum drops by the same amount."},
+    },
+    "Lightning Shield": {
+        "retaliate": {"kind": "damage", "sort": 10,
+                      "name": "Retaliate (creature hits you in melee)",
+                      "dmg": [(1, 4, "lightning", 1)]},
+    },
+    "Unholy Weapon": {
+        "torrent": {"kind": "save", "sort": 10, "name": "Dismiss — Torrent of Shadows",
+                    "save": "con", "onsave": "half", "dmg": [(4, 8, "necrotic", None)],
+                    "tpl": ("sphere", "30", None, None),
+                    "flavor": "Bonus action. A creature that fails is also blinded for "
+                              "1 minute, repeating the save at the end of each turn."},
+    },
+    "Apotheosis": {
+        "line": {"kind": "save", "sort": 10, "name": "Holy radiance (30 ft line)",
+                 "save": "con", "onsave": "half", "dmg": [(8, 8, "radiant", None)],
+                 "tpl": ("line", "30", "10", None)},
+        "touch": {"kind": "heal", "sort": 20, "name": "Healing light (touch)",
+                  "heal": (8, 8, "", None)},
+    },
+
+    # -- checks the text describes in prose -------------------------------------
+    "Mass Dispel": {
+        "check": {"kind": "check", "sort": 10, "name": "Dispel check (4th level or higher)",
+                  "ability": "spellcasting", "dccalc": "custom", "dc": "10 + @item.level",
+                  "flavor": "DC is 10 + the level of the spell you are trying to end."},
+    },
+    "Spellsteal": {
+        "check": {"kind": "check", "sort": 10, "name": "Steal check (2nd level or higher)",
+                  "ability": "spellcasting", "dccalc": "custom", "dc": "10 + @item.level",
+                  "flavor": "DC is 10 + the level of the spell you are trying to steal."},
+    },
+    "Cyclone": {
+        "escape": {"kind": "check", "sort": 10, "name": "Escape (Strength vs your DC)",
+                   "ability": "str", "dccalc": "spellcasting"},
+    },
+    "Lunar Strike": {
+        # "instead deals 1d8" -- an alternative, not an addition, so it is a full
+        # save activity rather than a bolt-on damage button.
+        "moon": {"kind": "save", "sort": 10, "name": "Clear view of the moon (1d8 instead)",
+                 "save": "dex", "onsave": "none", "dmg": [(1, 8, "force", 1)]},
+    },
+    "Flurry": {
+        # Three separate attack rolls that may be aimed at different targets, which
+        # one activity cannot express.
+        "shard2": {"kind": "attack", "sort": 10, "name": "Second shard",
+                   "dmg": [(1, 4, "cold", 1)]},
+        "shard3": {"kind": "attack", "sort": 20, "name": "Third shard",
+                   "dmg": [(1, 4, "cold", 1)]},
+    },
+    "Touch of Chaos": {
+        "beam2": {"kind": "attack", "sort": 10, "name": "Second beam (5th level)",
+                  "dmg": [(1, 8, ["acid", "cold", "fire", "force", "lightning",
+                                  "poison", "psychic", "thunder"], 1)]},
+        "beam3": {"kind": "attack", "sort": 20, "name": "Third beam (11th level)",
+                  "dmg": [(1, 8, ["acid", "cold", "fire", "force", "lightning",
+                                  "poison", "psychic", "thunder"], 1)]},
+        "beam4": {"kind": "attack", "sort": 30, "name": "Fourth beam (17th level)",
+                  "dmg": [(1, 8, ["acid", "cold", "fire", "force", "lightning",
+                                  "poison", "psychic", "thunder"], 1)]},
+    },
+}
+
+
+def build_extra_activities(spell_id, name, activation):
+    out = {}
+    for key, spec in (EXTRA_ACTIVITIES.get(name) or {}).items():
+        out.update(make_activity(make_id(spell_id, "act", key), spec, activation))
+    return out
 
 
 def build_spell(src):
@@ -408,7 +636,8 @@ def build_spell(src):
         "preparation": {"mode": "prepared", "prepared": False},
         "properties": src["properties"],
         "activities": {**build_activity(spell_id, mech, activation),
-                       **build_alt_activity(spell_id, name, activation)},
+                       **build_alt_activity(spell_id, name, activation),
+                       **build_extra_activities(spell_id, name, activation)},
         "identifier": slugify(name),
     }
     fname = _level_folder(src["level"])

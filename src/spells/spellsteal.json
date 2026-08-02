@@ -122,6 +122,64 @@
           "prompt": false,
           "visible": false
         }
+      },
+      "nIaM5N0kLEUBpy4c": {
+        "_id": "nIaM5N0kLEUBpy4c",
+        "type": "check",
+        "sort": 10,
+        "name": "Steal check (2nd level or higher)",
+        "img": "",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": "DC is 10 + the level of the spell you are trying to steal."
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "check": {
+          "ability": "spellcasting",
+          "associated": [],
+          "dc": {
+            "calculation": "custom",
+            "formula": "10 + @item.level",
+            "visible": true
+          }
+        }
       }
     },
     "identifier": "spellsteal"

@@ -26,8 +26,8 @@
     },
     "target": {
       "affects": {
-        "type": "",
-        "count": "",
+        "type": "creature",
+        "count": "1",
         "choice": false,
         "special": ""
       },
@@ -70,7 +70,7 @@
     "activities": {
       "IY2ldLiMthy4x1Ig": {
         "_id": "IY2ldLiMthy4x1Ig",
-        "type": "utility",
+        "type": "heal",
         "sort": 0,
         "name": "",
         "img": "",
@@ -116,11 +116,22 @@
           "recovery": [],
           "max": ""
         },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
+        "healing": {
+          "number": 5,
+          "denomination": 12,
+          "bonus": "30",
+          "types": [
+            "healing"
+          ],
+          "custom": {
+            "enabled": false,
+            "formula": ""
+          },
+          "scaling": {
+            "mode": "",
+            "number": null,
+            "formula": ""
+          }
         }
       }
     },
