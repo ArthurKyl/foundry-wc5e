@@ -34,10 +34,10 @@
       "template": {
         "count": "",
         "contiguous": false,
-        "type": "sphere",
+        "type": "cylinder",
         "size": "20",
         "width": "",
-        "height": "",
+        "height": "40",
         "units": "ft"
       }
     },

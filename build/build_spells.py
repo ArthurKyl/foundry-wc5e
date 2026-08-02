@@ -121,21 +121,42 @@ def auto_detect(desc_html):
         for p in dmg:
             p[3] = scale
 
-    # AoE template
+    # AoE template.
+    #
+    # Cylinders are written radius-first -- "a 20-foot-radius, 40-foot-high
+    # cylinder" -- so a plain radius pattern wins the race and the height is lost.
+    # Look for the cylinder wording first and pull both numbers out of it.
     tpl = None
-    for pat, kind in [(r"(\d+)[- ]foot[- ]radius", "sphere"),
-                      (r"(\d+)[- ]foot[- ](?:tall |high )?cylinder", "cylinder"),
-                      (r"(\d+)[- ]foot[- ]cone", "cone"),
-                      (r"(\d+)[- ]foot .{0,8}line", "line")]:
-        mm = re.search(pat, tl)
-        if mm:
-            tpl = (kind, mm.group(1), "5" if kind == "line" else None)
-            break
+    cyl = re.search(r"(\d+)[- ]foot[- ]radius,?\s*(\d+)[- ]foot[- ](?:tall|high)"
+                    r"|(\d+)[- ]foot[- ](?:tall|high)[^.]{0,30}?(\d+)[- ]foot radius", tl)
+    if cyl:
+        radius, height = ((cyl.group(1), cyl.group(2)) if cyl.group(1)
+                          else (cyl.group(4), cyl.group(3)))
+        tpl = ("cylinder", radius, None, height)
+    else:
+        for pat, kind in [(r"(\d+)[- ]foot[- ]radius", "sphere"),
+                          (r"(\d+)[- ]foot[- ](?:tall |high )?cylinder", "cylinder"),
+                          (r"(\d+)[- ]foot[- ]cone", "cone"),
+                          (r"(\d+)[- ]foot .{0,8}line", "line")]:
+            mm = re.search(pat, tl)
+            if mm:
+                # dnd5e distinguishes a sphere centred on a point from an emanation
+                # centred on the caster, and the difference is visible at the table:
+                # an emanation is placed on your own token instead of being aimed.
+                if kind == "sphere" and re.search(
+                        r"radius[^.]{0,40}\b(?:of|around|from|centered on)\s+you\b", tl):
+                    kind = "radius"
+                tpl = (kind, mm.group(1), "5" if kind == "line" else None, None)
+                break
 
     atk = ATK_RE.search(tl)
     sv = SAVE_RE.search(tl)
+    # `tpl` rides on every kind, not just saves. An attack spell can still carry an
+    # area (Starsurge's line), and so can a heal (Healing Rain's radius); returning
+    # it only from the save branch is why most of the area-tagged spells shipped
+    # with no template to place.
     if atk and dmg:
-        return {"kind": "attack", "atk": atk.group(1), "dmg": dmg}
+        return {"kind": "attack", "atk": atk.group(1), "dmg": dmg, "tpl": tpl}
     if sv:
         onsave = "half" if re.search(r"half as much|half the|half damage", tl) else "none"
         return {"kind": "save", "save": ABBR[sv.group(1).lower()], "dmg": dmg,
@@ -143,16 +164,77 @@ def auto_detect(desc_html):
     if re.search(r"regains?\b.{0,40}hit points", tl) and not dmg:
         hm = re.search(r"(\d+)d(\d+)", t)
         if hm:
-            return {"kind": "heal",
+            return {"kind": "heal", "tpl": tpl,
                     "heal": (int(hm.group(1)), int(hm.group(2)), "@mod", scale)}
-    return {"kind": "utility"}
+    return {"kind": "utility", "tpl": tpl}
 
 
 # Overrides where the detector can't be exact (flat damage, weird scaling, etc.)
+#
+# Glacial Spike reads "Dexterity saving throw ... 8d8 + 40 cold damage" with no
+# scaling clause at all. The first version of this entry disagreed with the text
+# on every axis -- con instead of dex, 7d8 with invented per-2-level scaling, and
+# a flat 30 of *bludgeoning* -- which is exactly the failure mode an override
+# table invites, since nothing cross-checks it against the description. Keep
+# these honest against the source text.
 OVERRIDES = {
-    "glacial spike": {"kind": "save", "save": "con", "onsave": "half",
-                      "dmg": [(7, 8, "cold", 2)], "flat": [("30", "bludgeoning")]},
+    "glacial spike": {"kind": "save", "save": "dex", "onsave": "half",
+                      "dmg": [(8, 8, "cold", None)], "flat": [("40", "cold")]},
+
+    # -- areas the wording hides ------------------------------------------------
+    # The detector keys off "N-foot radius/cone/line". These spells measure the
+    # same shapes in prose the pattern cannot see: "30 feet long and 5 feet wide",
+    # "within 15 feet of you".
+    "divine star": {"tpl": ("line", "30", "5", None)},
+    "starsurge": {"tpl": ("line", "100", "5", None)},
+    "halo": {"tpl": ("radius", "60", None, None)},
+    "luminous barrier": {"tpl": ("radius", "30", None, None)},
+    # Emanations whose "you" reads before the distance rather than after it, so the
+    # sphere-vs-emanation test in auto_detect cannot see it.
+    "mantle of the fallen crusader": {"tpl": ("radius", "30", None, None)},
+    "salvation": {"tpl": ("radius", "60", None, None)},
+    "shadowy apparitions": {"dmg": [(8, 6, "psychic", 1)]},
+
+    # -- scaling the detector skipped or invented -------------------------------
+    # "for every two slot levels" is Half mode, which auto_detect deliberately
+    # refuses to guess; and Living Bomb scales only its explosion, not the initial
+    # tick, so the whole-level scaling it picked up is wrong in the other direction.
+    "living bomb": {"dmg": [(1, 10, "fire", None)]},
+    "rain of fire": {"dmg": [(3, 6, "bludgeoning", None), (3, 6, "fire", 2)]},
+    "starfire": {"dmg": [(3, 6, "radiant", 1)]},
+    "blood boil": {"tpl": ("radius", "15", None, None),
+                   "dmg": [(2, 4, "fire", 1), (2, 4, "necrotic", 1)]},
+    "lava burst": {"dmg": [(3, 6, "fire", 1), (3, 6, "bludgeoning", 1)]},
+    "devouring plague": {"dmg": [(2, 8, "necrotic", 1)]},
+    "exorcism": {"dmg": [(3, 8, "radiant", 1)]},
 }
+
+
+# Statblocks that upstream lays out inside a spell's column. extract_spells.py
+# takes everything up to the next "####", so a sidebar creature lands in whichever
+# spell it happens to follow -- the Shambling Horde belongs to Army of the Dead but
+# sits between Archangel and it in the markdown, so Archangel absorbed the whole
+# thing, and with it a spurious "DC 15 Constitution saving throw" that auto_detect
+# turned into a save activity on a self-buff. We ship these creatures as real
+# actors in the summons pack, so the transcribed block is redundant as well as
+# misplaced. Match a paragraph that opens a blockquote heading and cut to the end.
+# Spells whose only "N-foot radius" is a light or darkness radius, not an area
+# anything is measured against. Placing a template for those puts a circle on the
+# map that no creature is ever checked against, which reads as a bug.
+# Apotheosis and Unholy Weapon do have real areas -- a 30-foot line and a 30-foot
+# torrent -- but they belong to specific activities, wired per spell rather than
+# guessed from the first distance in the text.
+NO_TEMPLATE = {"Apotheosis", "Diabolism", "Solar Wrath"}
+
+STATBLOCK_RE = re.compile(r"<p>>\s*##\s.*$", re.S)
+STRIPPED_STATBLOCKS = []
+
+
+def strip_statblock(name, desc):
+    out = STATBLOCK_RE.sub("", desc)
+    if out != desc:
+        STRIPPED_STATBLOCKS.append(name)
+    return out
 
 # Active Effects for duration buffs, so the bonus applies to rolls automatically
 # instead of the player remembering it.
@@ -288,15 +370,21 @@ def build_alt_activity(spell_id, name, activation):
 def build_spell(src):
     name = src["name"]
     spell_id = make_id("spell", name)
-    mech = OVERRIDES.get(name.lower()) or auto_detect(src["description"])
+    desc = strip_statblock(name, src["description"])
+    # Patch semantics, not replacement: an override names only the keys it wants to
+    # correct, so fixing one spell's template doesn't mean restating its damage and
+    # then having the two drift apart. Overrides that change the activity kind must
+    # say so explicitly.
+    mech = {**auto_detect(desc), **OVERRIDES.get(name.lower(), {})}
     activation = src["activation"]
 
-    tpl = mech.get("tpl")
+    tpl = None if name in NO_TEMPLATE else mech.get("tpl")
     if tpl:
-        ttype, size, width = tpl
+        ttype, size, width, height = tpl
         target = {"affects": {"type": "", "count": "", "choice": False, "special": ""},
                   "template": {"count": "", "contiguous": False, "type": ttype,
-                               "size": size, "width": width or "", "height": "", "units": "ft"}}
+                               "size": size, "width": width or "", "height": height or "",
+                               "units": "ft"}}
     else:
         aff = "creature" if mech["kind"] in ("attack", "save", "heal") else ""
         target = {"affects": {"type": aff, "count": "1" if aff else "", "choice": False, "special": ""},
@@ -305,7 +393,7 @@ def build_spell(src):
 
     rng = src["range"]
     system = {
-        "description": {"value": src["description"], "chat": ""},
+        "description": {"value": desc, "chat": ""},
         "source": SRC,
         "activation": {"type": activation["type"], "condition": activation.get("condition", ""),
                        "value": activation["value"]},
@@ -385,6 +473,8 @@ def main():
             json.dump(doc, f, indent=2, ensure_ascii=False)
     print(f"Wrote {len(src)} spell items to {out_dir}")
     print("  activity kinds:", dict(kinds))
+    if STRIPPED_STATBLOCKS:
+        print("  stripped misplaced statblocks from:", ", ".join(STRIPPED_STATBLOCKS))
 
 
 if __name__ == "__main__":

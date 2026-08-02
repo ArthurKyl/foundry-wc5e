@@ -34,11 +34,11 @@
       "template": {
         "count": "",
         "contiguous": false,
-        "type": "",
-        "size": "",
+        "type": "radius",
+        "size": "60",
         "width": "",
         "height": "",
-        "units": ""
+        "units": "ft"
       }
     },
     "range": {

@@ -26,19 +26,19 @@
     },
     "target": {
       "affects": {
-        "type": "creature",
-        "count": "1",
+        "type": "",
+        "count": "",
         "choice": false,
         "special": ""
       },
       "template": {
         "count": "",
         "contiguous": false,
-        "type": "",
-        "size": "",
-        "width": "",
+        "type": "line",
+        "size": "30",
+        "width": "5",
         "height": "",
-        "units": ""
+        "units": "ft"
       }
     },
     "range": {

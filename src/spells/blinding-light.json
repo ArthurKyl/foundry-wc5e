@@ -34,7 +34,7 @@
       "template": {
         "count": "",
         "contiguous": false,
-        "type": "sphere",
+        "type": "radius",
         "size": "30",
         "width": "",
         "height": "",
