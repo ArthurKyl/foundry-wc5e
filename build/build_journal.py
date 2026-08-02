@@ -22,6 +22,9 @@ WELCOME = """
 project as <strong>wc5e-foundryvtt</strong>.</p>
 <p>Install the new one with this manifest URL, then uninstall this module:</p>
 <p><code>https://github.com/WC5E/wc5e-foundryvtt/releases/latest/download/module.json</code></p>
+<p>If that URL does not resolve yet, the new module's first release is still being cut &mdash;
+check <a href="https://github.com/WC5E/wc5e-foundryvtt">the repository</a>. Nothing is lost
+meanwhile: this module keeps working exactly as it does now.</p>
 <p>Foundry treats it as a separate module, so there is no automatic upgrade. The content is
 the same. Anything you already dragged into a world came from <em>this</em> module and keeps
 working, but re-drag it from the new compendiums to stay on the maintained one.</p>
