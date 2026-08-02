@@ -2,7 +2,7 @@
   "id": "wc5e-bestiary",
   "title": "Warcraft 5e (WC5E) — Unofficial Beta",
   "description": "<p><strong>Unofficial community build, in active development.</strong> This is not an official WC5E release and is not published by the Warcraft 5e team — it's a work-in-progress conversion being tested before the content moves to the WC5E project's own repository.</p><p>Compendium content for playing Warcraft on the dnd5e system: 420 monsters, 101 spells, items, and full player options — 12 classes, 36 subclasses, 28 races, backgrounds, class features and feats with dnd5e advancement configured.</p><p><strong>Please report anything broken</strong> via the Report Bug link or <a href=\"https://github.com/ArthurKyl/foundry-wc5e/issues\">GitHub issues</a> — that's the fastest way to get it fixed. Fan work; not affiliated with Blizzard Entertainment.</p>",
-  "version": "1.17.0",
+  "version": "1.18.0",
   "authors": [
     {
       "name": "ArthurKyl",
@@ -226,7 +226,7 @@
   ],
   "url": "https://github.com/ArthurKyl/foundry-wc5e",
   "manifest": "https://github.com/ArthurKyl/foundry-wc5e/releases/latest/download/module.json",
-  "download": "https://github.com/ArthurKyl/foundry-wc5e/releases/download/v1.17.0/module.zip",
+  "download": "https://github.com/ArthurKyl/foundry-wc5e/releases/download/v1.18.0/module.zip",
   "flags": {
     "dnd5e": {
       "spellLists": [

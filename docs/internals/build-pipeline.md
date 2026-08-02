@@ -62,6 +62,30 @@ Rather than patching `src/`, add to the small curated tables:
   "spend 1 psychic for a d12"). The self-cost is chat flavour rather than `consumption`: dnd5e's
   consumption types don't verifiably cover paying hit points, and a malformed consumption block
   fails worse than a line of text.
+- `build_spells.EXTRA_ACTIVITIES` — any number of further activities, of any kind, keyed by spell
+  name then a short key that the activity id derives from (so adding one never disturbs the
+  others). This is how a spell offers a conditional damage roll, a healing half, a summon or an
+  ability check: **dnd5e shows one button per activity and shows them all at once — there is no
+  "which version are you casting?" prompt** outside a summon activity's profile picker.
+- `build_spells.SPLIT` — spells shipped as several documents instead of one, reserved for variants
+  that *target differently* (Deathwyrm's Fury: cone / sphere / line). Splitting renames, renaming
+  changes the name-derived `_id`, and anything linking the old name breaks — so a split also needs
+  `build_spell_lists.ALIAS` to redirect the tables' single entry and `EXTRA_ENTRIES` to add the
+  rest, or `verify` fails with shipped spells reachable from no class list. `split_variants()`
+  raises rather than emitting an empty variant if upstream rewords the paragraphs.
+- `build_spells.NO_TEMPLATE` — spells whose only "N-foot radius" is a *light* radius. A template
+  there puts a circle on the map that nothing is ever checked against, which reads as a bug.
+- `build_spells.STATBLOCK_RE` — upstream lays sidebar statblocks inside a spell's column and
+  `extract_spells.py` takes everything up to the next heading, so a creature lands in whichever
+  spell it happens to follow. The Shambling Horde belongs to Army of the Dead but sat between
+  Archangel and it, and Archangel absorbed the block *and* a "DC 15 Constitution saving throw"
+  that `auto_detect` turned into a save activity on a self-buff. The builder logs what it strips.
+
+An **Active Effect is inert unless an activity names it** — dnd5e renders the apply button from
+`activity.effects`, not from the item's effect list. Dread Favor shipped for months with its
++1d4 unreachable for exactly this reason. `build_activity()` wires the link; don't add an
+`EFFECTS` entry without it. Effect changes may name their own mode: `2` adds, `5` overrides, and
+adding to an AC *calculation* is meaningless, so AC overrides need `5`.
 - `build/data/extra_spells.json` — spells that appear in the WC5E spell *tables* but never get a
   definition block in Chapter 6, so `extract_spells.py` cannot produce them even though class
   features reference them (currently *Anti-Magic Shell* and *Feral Spirits*, transcribed by

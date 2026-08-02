@@ -145,7 +145,7 @@ firearm/ammunition properties, 3 shields, firearm ammunition, 2 explosives
 SRD-standard equipment is intentionally left out since the dnd5e system already
 ships it.
 
-**WC5E Spells** — the complete WC5E custom spell list (101 spells) as real dnd5e
+**WC5E Spells** — the complete WC5E custom spell list (103 spells) as real dnd5e
 spell items, foldered by level: correct level/school/components/duration, with
 rollable attack / save / heal activities and slot scaling derived from each
 spell's rules text (Solar Wrath, Pyroblast, Death and Decay, Chain Heal,
@@ -204,7 +204,7 @@ roadmap and credits.
 - [x] Monster spellcasting embedded (~79% of references)
 - [x] Weapons, firearms, shields, ammunition
 - [x] Explosives & adventuring gear
-- [x] Full WC5E custom spell list (101 spells), foldered by level
+- [x] Full WC5E custom spell list (103 spells), foldered by level
 - [x] Compendium folders + in-module guide journal
 
 **Planned**
