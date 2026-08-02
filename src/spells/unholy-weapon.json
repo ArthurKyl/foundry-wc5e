@@ -71,7 +71,7 @@
     "activities": {
       "hmmKkeSDKRC0dMBF": {
         "_id": "hmmKkeSDKRC0dMBF",
-        "type": "save",
+        "type": "utility",
         "sort": 0,
         "name": "",
         "img": "",
@@ -117,17 +117,65 @@
           "recovery": [],
           "max": ""
         },
-        "save": {
-          "ability": [
-            "con"
-          ],
-          "dc": {
-            "calculation": "spellcasting",
-            "formula": ""
-          }
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        }
+      },
+      "P1jXgHsLD8o0aXFf": {
+        "_id": "P1jXgHsLD8o0aXFf",
+        "type": "damage",
+        "sort": 5,
+        "name": "Weapon hit (+2d8 necrotic)",
+        "img": "",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
         },
         "damage": {
-          "onSave": "half",
+          "critical": {
+            "bonus": ""
+          },
           "parts": [
             {
               "number": 2,

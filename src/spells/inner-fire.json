@@ -96,7 +96,11 @@
           "concentration": false,
           "override": false
         },
-        "effects": [],
+        "effects": [
+          {
+            "_id": "IU10042JuXsRjO4y"
+          }
+        ],
         "range": {
           "override": false
         },
@@ -126,7 +130,50 @@
     },
     "identifier": "inner-fire"
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "IU10042JuXsRjO4y",
+      "name": "Inner Fire",
+      "img": "icons/svg/daze.svg",
+      "type": "base",
+      "changes": [
+        {
+          "key": "system.attributes.ac.calc",
+          "mode": 5,
+          "value": "custom",
+          "priority": 20
+        },
+        {
+          "key": "system.attributes.ac.formula",
+          "mode": 5,
+          "value": "11 + @attributes.spell.mod",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 28800,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>While unarmored, AC becomes 11 + your spellcasting modifier. You also have advantage on saves to avoid or end being frightened, which is not automated.</p>",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "_key": "!items.effects!0ArRCt60PcZ8eIRb.IU10042JuXsRjO4y"
+    }
+  ],
   "folder": "1498WIsHveILx958",
   "sort": 0,
   "ownership": {

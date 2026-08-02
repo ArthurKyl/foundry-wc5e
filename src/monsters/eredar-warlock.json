@@ -1059,7 +1059,11 @@
               "concentration": false,
               "override": false
             },
-            "effects": [],
+            "effects": [
+              {
+                "_id": "gi680RZIowZB3jZC"
+              }
+            ],
             "range": {
               "override": false
             },
@@ -1084,6 +1088,72 @@
               "name": "",
               "prompt": false,
               "visible": false
+            }
+          },
+          "cUT0z2rJ8RTbb1Td": {
+            "_id": "cUT0z2rJ8RTbb1Td",
+            "type": "heal",
+            "sort": 10,
+            "name": "Fel vigor (+3 hit points)",
+            "img": "",
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": "Your maximum already rose from the effect; this is the matching gain to your current hit points."
+            },
+            "duration": {
+              "units": "inst",
+              "concentration": false,
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft"
+              },
+              "affects": {
+                "choice": false
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": ""
+            },
+            "healing": {
+              "number": null,
+              "denomination": null,
+              "bonus": "3 + (3 * (@item.level - 1))",
+              "types": [
+                "healing"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "",
+                "number": null,
+                "formula": ""
+              }
             }
           }
         },

@@ -89,7 +89,7 @@
           "spellSlot": true
         },
         "description": {
-          "chatFlavor": ""
+          "chatFlavor": "The next ability check the target makes adds <strong>+[[lookup @attributes.spell.mod]]</strong>, then the spell ends."
         },
         "duration": {
           "units": "inst",

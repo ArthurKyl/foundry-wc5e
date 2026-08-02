@@ -90,7 +90,7 @@
           "spellSlot": true
         },
         "description": {
-          "chatFlavor": ""
+          "chatFlavor": "Whenever you restore hit points with a spell slot, the marked creature regains <strong>[[lookup @attributes.spell.mod]]</strong> hit points."
         },
         "duration": {
           "units": "inst",

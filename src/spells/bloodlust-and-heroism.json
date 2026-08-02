@@ -90,14 +90,18 @@
           "spellSlot": true
         },
         "description": {
-          "chatFlavor": ""
+          "chatFlavor": "Each target gains <strong>[[lookup @attributes.spell.mod]]</strong> temporary hit points at the start of its turn."
         },
         "duration": {
           "units": "inst",
           "concentration": false,
           "override": false
         },
-        "effects": [],
+        "effects": [
+          {
+            "_id": "fHEmBfvrJsutqMUE"
+          }
+        ],
         "range": {
           "override": false
         },
@@ -127,7 +131,74 @@
     },
     "identifier": "bloodlust-and-heroism"
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "fHEmBfvrJsutqMUE",
+      "name": "Bloodlust and Heroism",
+      "img": "icons/svg/daze.svg",
+      "type": "base",
+      "changes": [
+        {
+          "key": "system.bonuses.mwak.attack",
+          "mode": 2,
+          "value": "1d4",
+          "priority": 20
+        },
+        {
+          "key": "system.bonuses.rwak.attack",
+          "mode": 2,
+          "value": "1d4",
+          "priority": 20
+        },
+        {
+          "key": "system.bonuses.msak.attack",
+          "mode": 2,
+          "value": "1d4",
+          "priority": 20
+        },
+        {
+          "key": "system.bonuses.rsak.attack",
+          "mode": 2,
+          "value": "1d4",
+          "priority": 20
+        },
+        {
+          "key": "system.bonuses.abilities.save",
+          "mode": 2,
+          "value": "1d4",
+          "priority": 20
+        },
+        {
+          "key": "system.traits.ci.value",
+          "mode": 2,
+          "value": "frightened",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 60,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>Immune to frightened, and +1d4 on attack rolls and saving throws. Temporary hit points equal to your spellcasting modifier at the start of each turn are tracked by the player.</p>",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "_key": "!items.effects!u1RVhYUDvxPytIqA.fHEmBfvrJsutqMUE"
+    }
+  ],
   "folder": "0Ru3UjLe4N0ddVMr",
   "sort": 0,
   "ownership": {

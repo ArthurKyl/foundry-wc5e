@@ -97,7 +97,11 @@
           "concentration": false,
           "override": false
         },
-        "effects": [],
+        "effects": [
+          {
+            "_id": "gi680RZIowZB3jZC"
+          }
+        ],
         "range": {
           "override": false
         },
@@ -123,11 +127,126 @@
           "prompt": false,
           "visible": false
         }
+      },
+      "cUT0z2rJ8RTbb1Td": {
+        "_id": "cUT0z2rJ8RTbb1Td",
+        "type": "heal",
+        "sort": 10,
+        "name": "Fel vigor (+3 hit points)",
+        "img": "",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": "Your maximum already rose from the effect; this is the matching gain to your current hit points."
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "healing": {
+          "number": null,
+          "denomination": null,
+          "bonus": "3 + (3 * (@item.level - 1))",
+          "types": [
+            "healing"
+          ],
+          "custom": {
+            "enabled": false,
+            "formula": ""
+          },
+          "scaling": {
+            "mode": "",
+            "number": null,
+            "formula": ""
+          }
+        }
       }
     },
     "identifier": "demon-skin"
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "gi680RZIowZB3jZC",
+      "name": "Demon Skin",
+      "img": "icons/svg/daze.svg",
+      "type": "base",
+      "changes": [
+        {
+          "key": "system.attributes.ac.calc",
+          "mode": 5,
+          "value": "custom",
+          "priority": 20
+        },
+        {
+          "key": "system.attributes.ac.formula",
+          "mode": 5,
+          "value": "11 + @attributes.spell.mod",
+          "priority": 20
+        },
+        {
+          "key": "system.attributes.hp.tempmax",
+          "mode": 2,
+          "value": "3",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 28800,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>While unarmored, AC becomes 11 + your spellcasting modifier. Maximum hit points rise by 3 (+3 per slot above 1st) and drop back when this ends. Remove this effect from the Effects tab when the spell ends.</p>",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "systemId": "dnd5e",
+        "systemVersion": "5.3.3"
+      },
+      "_key": "!items.effects!VJSQKxn4CLd5XmTV.gi680RZIowZB3jZC"
+    }
+  ],
   "folder": "1498WIsHveILx958",
   "sort": 0,
   "ownership": {

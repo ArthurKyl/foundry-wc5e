@@ -97,7 +97,11 @@
           "concentration": false,
           "override": false
         },
-        "effects": [],
+        "effects": [
+          {
+            "_id": "0NJuI8i1br0HR65P"
+          }
+        ],
         "range": {
           "override": false
         },

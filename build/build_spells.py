@@ -245,6 +245,36 @@ OVERRIDES = {
     # dice and "when you reach" are enough to lose the cantrip-scaling pattern, so
     # the first shard scaled while the other two did not.
     "flurry": {"dmg": [(1, 4, "cold", 1)]},
+
+    # -- print the modifier rather than automating it ---------------------------
+    # [[lookup @attributes.spell.mod]] resolves against the caster's roll data, so
+    # the card shows the actual number instead of the words. These buff someone else
+    # until a condition nothing can detect -- the next ability check, the next
+    # Wisdom save that would have failed -- and an Active Effect for that would sit
+    # on the sheet through an hour of game time that never passes out of combat.
+    # Flavour on the primary activity, not a second button: the spell has one thing
+    # to say and one button to say it on.
+    "inner focus": {
+        "flavor": "The next ability check the target makes adds "
+                  "<strong>+[[lookup @attributes.spell.mod]]</strong>, then the "
+                  "spell ends."},
+    "inner will": {
+        "flavor": "Wisdom saving throws add "
+                  "<strong>+[[lookup @attributes.spell.mod]]</strong> until the "
+                  "target passes one it would otherwise have failed."},
+    "beacon of light": {
+        "flavor": "Whenever you restore hit points with a spell slot, the marked "
+                  "creature regains <strong>[[lookup @attributes.spell.mod]]</strong> "
+                  "hit points."},
+    "bloodlust and heroism": {
+        "flavor": "Each target gains "
+                  "<strong>[[lookup @attributes.spell.mod]]</strong> temporary hit "
+                  "points at the start of its turn."},
+    # The detector read the weapon rider's 2d8 as the spell's own save damage, so
+    # the primary button rolled a Constitution save nothing in the text asks for.
+    # The rider is a damage button and the torrent is the save; the cast itself
+    # rolls nothing.
+    "unholy weapon": {"kind": "utility"},
 }
 
 
@@ -309,12 +339,69 @@ def strip_statblock(name, desc):
 # effect, which is worse than not automating it -- dnd5e has no once-per-hit
 # expiry. Unholy Weapon buffs one specific weapon, which needs the enchantment
 # system rather than an actor-wide bonus.
+#
+# Every effect here must be findable and removable by hand. The character sheet's
+# Effects tab groups them and shows a Source column naming the spell, so anything
+# we put on the actor shows up there -- but Foundry's clock only advances in the
+# combat tracker, so a duration is useless out of combat and the Effects tab is the
+# real removal path. 14 of these spells are concentration, which dnd5e drops by
+# itself; the rest sit until deleted, which is why the set is kept small.
 EFFECTS = {
     "Dread Favor": {
         "seconds": 60,
         "changes": [("system.bonuses.mwak.damage", "1d4"),
                     ("system.bonuses.rwak.damage", "1d4")],
         "hint": "Weapon attacks deal +1d4 necrotic while this is active.",
+    },
+    # AC overrides. "While unarmored" cannot be a condition on an effect, so the
+    # hint carries it -- the alternative is not automating AC at all, and these two
+    # spells exist to change AC.
+    "Demon Skin": {
+        "seconds": 28800,
+        "changes": [("system.attributes.ac.calc", "custom", 5),
+                    ("system.attributes.ac.formula", "11 + @attributes.spell.mod", 5),
+                    ("system.attributes.hp.tempmax", "3")],
+        "hint": "While unarmored, AC becomes 11 + your spellcasting modifier. "
+                "Maximum hit points rise by 3 (+3 per slot above 1st) and drop back "
+                "when this ends. Remove this effect from the Effects tab when the "
+                "spell ends.",
+    },
+    "Inner Fire": {
+        "seconds": 28800,
+        "changes": [("system.attributes.ac.calc", "custom", 5),
+                    ("system.attributes.ac.formula", "11 + @attributes.spell.mod", 5)],
+        "hint": "While unarmored, AC becomes 11 + your spellcasting modifier. You "
+                "also have advantage on saves to avoid or end being frightened, "
+                "which is not automated.",
+    },
+    "Lightning Shield": {
+        "seconds": 600,
+        "changes": [("system.attributes.ac.bonus", "1")],
+        "hint": "+1 AC. Use the Retaliate activity when a creature hits you in melee.",
+    },
+    "Reincarnation": {
+        "seconds": 864000,
+        "changes": [("system.bonuses.mwak.attack", "-4"),
+                    ("system.bonuses.rwak.attack", "-4"),
+                    ("system.bonuses.msak.attack", "-4"),
+                    ("system.bonuses.rsak.attack", "-4"),
+                    ("system.bonuses.abilities.save", "-4"),
+                    ("system.bonuses.abilities.check", "-4")],
+        "hint": "The -4 penalty for coming back from the dead. It reduces by 1 after "
+                "each long rest -- edit the values here, and delete the effect when "
+                "it reaches 0.",
+    },
+    "Bloodlust and Heroism": {
+        "seconds": 60,
+        "changes": [("system.bonuses.mwak.attack", "1d4"),
+                    ("system.bonuses.rwak.attack", "1d4"),
+                    ("system.bonuses.msak.attack", "1d4"),
+                    ("system.bonuses.rsak.attack", "1d4"),
+                    ("system.bonuses.abilities.save", "1d4"),
+                    ("system.traits.ci.value", "frightened")],
+        "hint": "Immune to frightened, and +1d4 on attack rolls and saving throws. "
+                "Temporary hit points equal to your spellcasting modifier at the "
+                "start of each turn are tracked by the player.",
     },
 }
 
@@ -329,8 +416,12 @@ def build_effects(item_id, name):
         "name": name,
         "img": IMG,
         "type": "base",
-        "changes": [{"key": k, "mode": 2, "value": v, "priority": 20}
-                    for k, v in spec["changes"]],
+        # A 3-tuple names its own mode: 2 is ADD (dnd5e's FormulaField joins with an
+        # operator, so "1d4" then "1d6" stacks as "1d4 + 1d6"), 5 is OVERRIDE, which
+        # is what an AC formula needs -- adding to a calculation is meaningless.
+        "changes": [{"key": c[0], "mode": c[2] if len(c) > 2 else 2,
+                     "value": c[1], "priority": 20}
+                    for c in spec["changes"]],
         "disabled": False,
         "duration": {"startTime": None, "seconds": spec["seconds"], "combat": None,
                      "rounds": None, "turns": None, "startRound": None,
@@ -339,7 +430,7 @@ def build_effects(item_id, name):
         "origin": None,
         "tint": "#ffffff",
         "transfer": False,       # applied when the spell is cast, not while merely known
-        "statuses": [],
+        "statuses": spec.get("statuses", []),
         "sort": 0,
         "flags": {},
         "_stats": {"systemId": "dnd5e", "systemVersion": "5.3.3"},
@@ -455,11 +546,19 @@ def make_activity(aid, mech, activation):
     return {aid: a}
 
 
-def build_activity(spell_id, mech, activation):
+def build_activity(spell_id, mech, activation, name=None):
     # The primary activity inherits the item's area, so it must not carry its own
     # copy -- two templates describing the same circle drift the moment one is
     # corrected. Only extras, which differ from the item, override.
-    return make_activity(make_id(spell_id, "act"), {**mech, "tpl": None}, activation)
+    acts = make_activity(make_id(spell_id, "act"), {**mech, "tpl": None}, activation)
+    # An effect sitting on the item is inert unless an activity names it: dnd5e
+    # renders the "apply effect" button from activity.effects, not from the item's
+    # effect list. Dread Favor shipped with its Active Effect unreachable for
+    # exactly this reason -- the bonus existed and nothing could ever apply it.
+    if name in EFFECTS:
+        for a in acts.values():
+            a["effects"] = [{"_id": make_id("effect", name)}]
+    return acts
 
 
 # Optional alternative modes that auto_detect can't express: a second activity the
@@ -575,6 +674,15 @@ EXTRA_ACTIVITIES = {
                       "dmg": [(1, 4, "lightning", 1)]},
     },
     "Unholy Weapon": {
+        # This wants dnd5e's enchantment system -- it buffs one weapon, and an
+        # actor-wide system.bonuses.mwak.damage would buff every weapon the caster
+        # owns. Enchantment changes live under effect.system.changes with string
+        # types ("add"/"upgrade"/"override"), a shape none of the SRD spells use for
+        # damage, so getting it right needs testing in Foundry rather than guessing.
+        # A damage button is honest in the meantime: it rolls, and resistance
+        # resolves.
+        "rider": {"kind": "damage", "sort": 5, "name": "Weapon hit (+2d8 necrotic)",
+                  "dmg": [(2, 8, "necrotic", None)]},
         "torrent": {"kind": "save", "sort": 10, "name": "Dismiss — Torrent of Shadows",
                     "save": "con", "onsave": "half", "dmg": [(4, 8, "necrotic", None)],
                     "tpl": ("sphere", "30", None, None),
@@ -650,6 +758,33 @@ EXTRA_ACTIVITIES = {
                         "uuid": SUMMON["Void Being (Psyfiend)"]},
                        {"name": "Shadowfiend", "count": "1",
                         "uuid": SUMMON["Void Being (Shadowfiend)"]}]},
+    },
+    # -- print the modifier rather than automating it ---------------------------
+    # [[lookup @attributes.spell.mod]] resolves against the caster's roll data, so
+    # the card shows the actual number. These spells buff someone else until a
+    # condition nothing can detect -- the next ability check, the next Wisdom save
+    # that would have failed -- and an Active Effect for that would linger on the
+    # sheet through an hour of game time that never passes out of combat.
+    "Amplify or Dampen Magic": {
+        "atk": {"kind": "attack", "sort": 5, "atk": "melee",
+                "name": "Melee spell attack (unwilling target)"},
+        "amplify": {"kind": "utility", "sort": 10, "name": "Amplify",
+                    "flavor": "The target takes, deals and restores "
+                              "<strong>[[lookup @attributes.spell.mod]]</strong> more "
+                              "with spells."},
+        "dampen": {"kind": "utility", "sort": 20, "name": "Dampen",
+                   "flavor": "The target takes, deals and restores "
+                             "<strong>[[lookup @attributes.spell.mod]]</strong> less "
+                             "with spells."},
+    },
+    "Demon Skin": {
+        # The effect raises maximum hit points; nothing in dnd5e can raise *current*
+        # ones, so the spell's "your current hit points and maximum each increase"
+        # needs this button alongside it.
+        "vigor": {"kind": "heal", "sort": 10, "name": "Fel vigor (+3 hit points)",
+                  "heal": (None, None, "3 + (3 * (@item.level - 1))", None),
+                  "flavor": "Your maximum already rose from the effect; this is the "
+                            "matching gain to your current hit points."},
     },
     "Ice Nova": {
         # A tracker, not a creature: the ice has AC 10 and 40 hp, and breaking it is
@@ -792,7 +927,7 @@ def build_spell(src):
         "materials": {"value": src["material"], "consumed": False, "cost": 0, "supply": 0},
         "preparation": {"mode": "prepared", "prepared": False},
         "properties": src["properties"],
-        "activities": {**build_activity(spell_id, mech, activation),
+        "activities": {**build_activity(spell_id, mech, activation, name),
                        **build_alt_activity(spell_id, name, activation),
                        **build_extra_activities(spell_id, name, activation)},
         "identifier": slugify(name),
