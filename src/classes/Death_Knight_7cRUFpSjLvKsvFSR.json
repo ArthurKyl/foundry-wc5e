@@ -345,349 +345,239 @@
         "_id": "uMK0QJXzdCEobQRo",
         "type": "ItemChoice",
         "title": "Spells Known",
-        "hint": "Learn 2 new spells from the Death Knight spell list (you know 2 in total).",
+        "hint": "Learn new spells from the Death Knight spell list as you gain levels (11 in total by 20th).",
         "configuration": {
           "allowDrops": true,
           "choices": {
             "2": {
               "count": 2,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-death-knight"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "UivQLTVXZWZoobq9",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Death Knight spell list (you know 3 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "3": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-death-knight"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "loWsRILl74dfPtoD",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Death Knight spell list (you know 4 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "5": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-death-knight"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "pncNcGd4PreazhjM",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Death Knight spell list (you know 5 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "7": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-death-knight"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "Dh6Zlm1q81JeTyAr",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Death Knight spell list (you know 6 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "9": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-death-knight"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "bq8G1tAgLRbQN9SW",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Death Knight spell list (you know 7 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "11": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-death-knight"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "VVd1W3WESwadUDc0",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Death Knight spell list (you know 8 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "13": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-death-knight"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "ho9MhT5McOCxWgfB",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Death Knight spell list (you know 9 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "15": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-death-knight"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "PPLhogkYAsyK8cWJ",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Death Knight spell list (you know 10 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "17": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-death-knight"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "6aNcgjOk88eUmkXw",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Death Knight spell list (you know 11 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "19": {
               "count": 1,
               "replacement": true
             }
           },
-          "pool": [],
+          "pool": [
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.95K2aUhAGV9qXjnf"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.LjKQj30skv4T2mOQ"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.arzCrMRgcNiQuh43"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.eWXbgMIUIKQOd7Ia"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.38yb1WdiF3GG3t1g"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.Mzh95utKDPIrjiH8"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ghXTfe7sgCbgf1Q8"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.2skfDtglk1mGrb3l"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.cWGTC6vhwrjamc89"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.IBJmWjzbQGu7M4UX"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ge3Saet9zPTDyaoL"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells24.Item.phbsplIceKnife00"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.qpWqCchXcUwvBQI5"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.xmDBqZhRVrtLP8h2"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells24.Item.phbsplRayofSickn"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.jtR5XiWQPhbAtK4G"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.4v2H3hHb3Ph9XLNd"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.zwGsAv6kmwzYGhh3"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.6Lgn1e2b8PultUSX"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.3MYDjS6k9IYL0aTj"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.hJ6ZiA3fpoY8v9cp"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.5eh2HFbS13078Y3H"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.n4JDcFKe5ikzYmAc"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.3Lo9boi7P2ro6QV4"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.g4oPaPivOsRv157F"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.bNbSDmHWdWL3lJ4J"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ODhLKBxLnvvLOnw1"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.5VhqFROQYjr1P9lp"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.CylBa7jR8DSbo8Z3"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.oyE5nVppa5mde5gT"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.7Stci8VgTumAbNc5"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.pO4zGe5LmFIYqJiL"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.cg50KpBkBdPK6vPL"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.15Fa6q1nH27XfbR8"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.XXUDGFELgoskdOD0"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.2IWiZAJtOGDoKjiz"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.rXnqCE0QjDwSGZxZ"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.wpx42mtoZ5BmXRs1"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.dhqBY4TvVjxVmOZd"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.I2LUSF5ogc7Bj62e"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.UfHQhA54M4323gVO"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.YBda6nLKjxdT1LbS"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ImlCJQwR1VL40Qem"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.pxpb2eOB6bv4phAf"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.pybg5MNc3lkerH4Y"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.FZpJnZD6IyielGxM"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.HrQ8p5dn4W5COrjA"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.VtCXMdyM6mAdIJZb"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.XqzXSKNR75ZdYTA9"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.ESXd952zbVFrn6q0"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.WN2LWEljYU6QqnRH"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.BYNvBJzHcF5VJhXw"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ReMbjfeOKoSj3O79"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells24.Item.phbsplVitriolicS"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.wXzkqpeFP8eWgJzK"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.LyeIy4TT5J09uuLC"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.8RzUQokDYTr8LAev"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.LCJ06EXpMA3qjpOi"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.TkJ8Wtg1L7TZtspm"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.SLxA9QhrggTz0taU"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.l9Ju5KE7bbn3WpTm"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.lfJnsL65E6bS8pCS"
+            }
+          ],
           "restriction": {
             "type": "spell",
             "subtype": "",
@@ -720,7 +610,7 @@
     "source": {
       "revision": 1,
       "rules": "2014",
-      "book": "",
+      "book": "Warcraft 5e - Heroes Handbook",
       "page": "",
       "custom": "Warcraft 5e - Heroes Handbook",
       "license": ""

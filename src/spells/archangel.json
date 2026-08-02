@@ -5,12 +5,12 @@
   "img": "icons/svg/daze.svg",
   "system": {
     "description": {
-      "value": "<p>You mutter a prayer invoking the powers of the Light or Shadow to aid your cause. You gain the following benefits until the spell ends: <em> You are immune to fire and radiant damage (Light) or psychic and necrotic damage (Shadow) </em> You are immuned to the charmed condition (Light) or the frightened condition (Shadow) <em> You grow spectral wings, gaining a fly speed of 40 feet. </em> You can add your spellcasting modifier to spells that restore hit points (Light) or spells that deal damage (Shadow). The priest also regains hit points equal to half the healing or damage done on one target of the spell's casting. * You can cast cantrips with a casting time of 1 action as a bonus action instead.</p><p>> ## Shambling Horde ><em>Gargantuan horde of Medium undead, chaotic evil</em> > ___ > - <strong>Armor Class</strong> 8 > - <strong>Hit Points</strong> 145 (10d20 + 40) > - <strong>Speed</strong> 20 ft. >___ >|STR|DEX|CON|INT|WIS|CHA| >|:---:|:---:|:---:|:---:|:---:|:---:| >|25 (+7)|6 (-2)|18 (+4)|3 (-4)|6 (-2)|5 (-3)| >___ > - <strong>Saving Throws</strong> Wis +2 > - <strong>Damage Immunities</strong> poison > - <strong>Condition Immunities</strong> blinded, charmed, deafened, exhaustion, frightened, grappled, incapacitated, paralyzed, petrified, poisoned, prone, restrained, stunned, unconscious > - <strong>Senses</strong> darkvision 60 ft., passive perception 8 > - <strong>Languages</strong> — > - <strong>Challenge</strong> 8 (3,900 XP) > ___ > <strong><em>Flesh-Eating Compulsion.</em></strong> The horde can share a space with another creature. If a creature that is not an undead or a construct share a space with the horde at the beginning of the horde's turn, the horde is incapacitated (ignoring its incapacitated immunity) and the creature is engulfed. While engulfed, the creature is restrained, and it takes 21 (6d6) piercing damage at the start of each of the horde's turns, or 10 (3d6) piercing damage if the horde has half of its hit points or fewer, and the creature must succeed on a DC 15 Constitution saving throw or become infected with the shambling death disease. > > > > &nbsp;&nbsp; A diseased creature can't regain hit points until the disease is cured. For every 24 hours that elapse, the target must repeat the saving throw, reducing its hit point maximum by 10 (3d6) on a failure. The target dies if the disease reduces its hit point maximum to 0. This reduction to the target's hit point maximum lasts until the disease is cured. &nbsp;&nbsp; Engulfed creatures can try to escape by making a DC 18 Strength check as an action. On a success, the creature escapes and enters a space of its choice within 5 feet of the shambling horde. > > <strong><em>Horde.</em></strong> The horde can occupy the space of a Large or smaller creature and vice versa, and the horde can move through any opening large enough for a Medium zombie. The horde can't regain hit points or gain temporary hit points. > > <strong><em>Undead Fortitude.</em></strong> If the horde takes damage, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the horde takes no damage instead. > > ### Actions > <strong><em>Multiattack.</em></strong> The shambling horde can make up to three Slams attacks, and each attack must be against a different target. > > <strong><em>Slams.</em></strong> <em>Melee Weapon Attack:</em> +10 to hit, reach 5 ft., one target. <em>Hit:</em> 21 (6d6) bludgeoning damage, or 10 (3d6) bludgeoning damage if the horde has half of its hit points or fewer. If the target is Large or smaller, it is also grappled (escape DC 18).</p>",
+      "value": "<p>You mutter a prayer invoking the powers of the Light or Shadow to aid your cause. You gain the following benefits until the spell ends: <em> You are immune to fire and radiant damage (Light) or psychic and necrotic damage (Shadow) </em> You are immuned to the charmed condition (Light) or the frightened condition (Shadow) <em> You grow spectral wings, gaining a fly speed of 40 feet. </em> You can add your spellcasting modifier to spells that restore hit points (Light) or spells that deal damage (Shadow). The priest also regains hit points equal to half the healing or damage done on one target of the spell's casting. * You can cast cantrips with a casting time of 1 action as a bonus action instead.</p>",
       "chat": ""
     },
     "source": {
       "custom": "Warcraft 5e - Chapter 6 Spells",
-      "book": "",
+      "book": "Warcraft 5e - Chapter 6 Spells",
       "page": "",
       "license": "",
       "rules": "2014"
@@ -26,8 +26,8 @@
     },
     "target": {
       "affects": {
-        "type": "creature",
-        "count": "1",
+        "type": "",
+        "count": "",
         "choice": false,
         "special": ""
       },
@@ -72,7 +72,7 @@
     "activities": {
       "I0sDnmJzjgfrqwNX": {
         "_id": "I0sDnmJzjgfrqwNX",
-        "type": "save",
+        "type": "utility",
         "sort": 0,
         "name": "",
         "img": "",
@@ -118,18 +118,11 @@
           "recovery": [],
           "max": ""
         },
-        "save": {
-          "ability": [
-            "con"
-          ],
-          "dc": {
-            "calculation": "spellcasting",
-            "formula": ""
-          }
-        },
-        "damage": {
-          "onSave": "none",
-          "parts": []
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
         }
       }
     },

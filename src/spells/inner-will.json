@@ -10,7 +10,7 @@
     },
     "source": {
       "custom": "Warcraft 5e - Chapter 6 Spells",
-      "book": "",
+      "book": "Warcraft 5e - Chapter 6 Spells",
       "page": "",
       "license": "",
       "rules": "2014"
@@ -89,7 +89,7 @@
           "spellSlot": true
         },
         "description": {
-          "chatFlavor": ""
+          "chatFlavor": "Wisdom saving throws add <strong>+[[lookup @attributes.spell.mod]]</strong> until the target passes one it would otherwise have failed."
         },
         "duration": {
           "units": "inst",

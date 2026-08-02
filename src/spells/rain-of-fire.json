@@ -10,7 +10,7 @@
     },
     "source": {
       "custom": "Warcraft 5e - Chapter 6 Spells",
-      "book": "",
+      "book": "Warcraft 5e - Chapter 6 Spells",
       "page": "",
       "license": "",
       "rules": "2014"
@@ -34,10 +34,10 @@
       "template": {
         "count": "",
         "contiguous": false,
-        "type": "sphere",
+        "type": "cylinder",
         "size": "15",
         "width": "",
-        "height": "",
+        "height": "30",
         "units": "ft"
       }
     },
@@ -159,8 +159,8 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "",
-                "number": null,
+                "mode": "whole",
+                "number": 2,
                 "formula": ""
               }
             }

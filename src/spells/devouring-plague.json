@@ -10,7 +10,7 @@
     },
     "source": {
       "custom": "Warcraft 5e - Chapter 6 Spells",
-      "book": "",
+      "book": "Warcraft 5e - Chapter 6 Spells",
       "page": "",
       "license": "",
       "rules": "2014"
@@ -141,8 +141,8 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "",
-                "number": null,
+                "mode": "whole",
+                "number": 1,
                 "formula": ""
               }
             }

@@ -10,7 +10,7 @@
     },
     "source": {
       "custom": "Warcraft 5e - Chapter 6 Spells",
-      "book": "",
+      "book": "Warcraft 5e - Chapter 6 Spells",
       "page": "",
       "license": "",
       "rules": "2014"
@@ -118,7 +118,7 @@
         },
         "save": {
           "ability": [
-            "con"
+            "dex"
           ],
           "dc": {
             "calculation": "spellcasting",
@@ -129,7 +129,7 @@
           "onSave": "half",
           "parts": [
             {
-              "number": 7,
+              "number": 8,
               "denomination": 8,
               "bonus": "",
               "types": [
@@ -140,17 +140,17 @@
                 "formula": ""
               },
               "scaling": {
-                "mode": "whole",
-                "number": 2,
+                "mode": "",
+                "number": null,
                 "formula": ""
               }
             },
             {
               "number": null,
               "denomination": null,
-              "bonus": "30",
+              "bonus": "40",
               "types": [
-                "bludgeoning"
+                "cold"
               ],
               "custom": {
                 "enabled": false,

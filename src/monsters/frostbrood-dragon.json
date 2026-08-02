@@ -355,7 +355,7 @@
     },
     "source": {
       "custom": "Warcraft 5e - Manual of Monsters (WIP)",
-      "book": "",
+      "book": "Warcraft 5e - Manual of Monsters (WIP)",
       "page": "",
       "license": "",
       "revision": 1,
@@ -1928,7 +1928,7 @@
         },
         "source": {
           "custom": "Warcraft 5e - Chapter 6 Spells",
-          "book": "",
+          "book": "Warcraft 5e - Chapter 6 Spells",
           "page": "",
           "license": "",
           "rules": "2014"
@@ -2068,7 +2068,7 @@
         },
         "source": {
           "custom": "Warcraft 5e - Chapter 6 Spells",
-          "book": "",
+          "book": "Warcraft 5e - Chapter 6 Spells",
           "page": "",
           "license": "",
           "rules": "2014"
@@ -2204,8 +2204,180 @@
                     "formula": ""
                   },
                   "scaling": {
-                    "mode": "",
-                    "number": null,
+                    "mode": "whole",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
+          },
+          "ctoNq5sCsnDRGIoF": {
+            "_id": "ctoNq5sCsnDRGIoF",
+            "type": "attack",
+            "sort": 10,
+            "name": "Second shard",
+            "img": "",
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "units": "inst",
+              "concentration": false,
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft"
+              },
+              "affects": {
+                "choice": false
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": ""
+            },
+            "attack": {
+              "ability": "",
+              "bonus": "",
+              "critical": {
+                "threshold": null
+              },
+              "flat": false,
+              "type": {
+                "value": "ranged",
+                "classification": ""
+              }
+            },
+            "damage": {
+              "critical": {
+                "bonus": ""
+              },
+              "includeBase": true,
+              "parts": [
+                {
+                  "number": 1,
+                  "denomination": 4,
+                  "bonus": "",
+                  "types": [
+                    "cold"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "whole",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
+          },
+          "JCU3Nvo4hzheKF5c": {
+            "_id": "JCU3Nvo4hzheKF5c",
+            "type": "attack",
+            "sort": 20,
+            "name": "Third shard",
+            "img": "",
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "units": "inst",
+              "concentration": false,
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft"
+              },
+              "affects": {
+                "choice": false
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": ""
+            },
+            "attack": {
+              "ability": "",
+              "bonus": "",
+              "critical": {
+                "threshold": null
+              },
+              "flat": false,
+              "type": {
+                "value": "ranged",
+                "classification": ""
+              }
+            },
+            "damage": {
+              "critical": {
+                "bonus": ""
+              },
+              "includeBase": true,
+              "parts": [
+                {
+                  "number": 1,
+                  "denomination": 4,
+                  "bonus": "",
+                  "types": [
+                    "cold"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "whole",
+                    "number": 1,
                     "formula": ""
                   }
                 }
@@ -2377,7 +2549,7 @@
         },
         "source": {
           "custom": "Warcraft 5e - Chapter 6 Spells",
-          "book": "",
+          "book": "Warcraft 5e - Chapter 6 Spells",
           "page": "",
           "license": "",
           "rules": "2014"
@@ -2401,10 +2573,10 @@
           "template": {
             "count": "",
             "contiguous": false,
-            "type": "sphere",
+            "type": "cylinder",
             "size": "20",
             "width": "",
-            "height": "",
+            "height": "40",
             "units": "ft"
           }
         },

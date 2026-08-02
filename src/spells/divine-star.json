@@ -10,7 +10,7 @@
     },
     "source": {
       "custom": "Warcraft 5e - Chapter 6 Spells",
-      "book": "",
+      "book": "Warcraft 5e - Chapter 6 Spells",
       "page": "",
       "license": "",
       "rules": "2014"
@@ -26,19 +26,19 @@
     },
     "target": {
       "affects": {
-        "type": "creature",
-        "count": "1",
+        "type": "",
+        "count": "",
         "choice": false,
         "special": ""
       },
       "template": {
         "count": "",
         "contiguous": false,
-        "type": "",
-        "size": "",
-        "width": "",
+        "type": "line",
+        "size": "30",
+        "width": "5",
         "height": "",
-        "units": ""
+        "units": "ft"
       }
     },
     "range": {
@@ -146,6 +146,80 @@
               }
             }
           ]
+        }
+      },
+      "X85hYppOxf1py0WN": {
+        "_id": "X85hYppOxf1py0WN",
+        "type": "heal",
+        "sort": 10,
+        "name": "Healing (allies in the line)",
+        "img": "",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "affects": {
+            "type": "",
+            "count": "",
+            "choice": false,
+            "special": ""
+          },
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "line",
+            "size": "30",
+            "width": "5",
+            "height": "",
+            "units": "ft"
+          },
+          "prompt": true,
+          "override": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "healing": {
+          "number": 2,
+          "denomination": 8,
+          "bonus": "",
+          "types": [
+            "healing"
+          ],
+          "custom": {
+            "enabled": false,
+            "formula": ""
+          },
+          "scaling": {
+            "mode": "whole",
+            "number": 1,
+            "formula": ""
+          }
         }
       }
     },

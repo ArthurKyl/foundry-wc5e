@@ -343,7 +343,7 @@
     },
     "source": {
       "custom": "Warcraft 5e - Manual of Monsters",
-      "book": "",
+      "book": "Warcraft 5e - Manual of Monsters",
       "page": "",
       "license": "",
       "revision": 1,
@@ -1067,7 +1067,7 @@
         },
         "source": {
           "custom": "Warcraft 5e - Chapter 6 Spells",
-          "book": "",
+          "book": "Warcraft 5e - Chapter 6 Spells",
           "page": "",
           "license": "",
           "rules": "2014"
@@ -1184,8 +1184,30 @@
               }
             },
             "damage": {
-              "onSave": "none",
-              "parts": []
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 3,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "acid",
+                    "cold",
+                    "fire",
+                    "lightning",
+                    "thunder"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "whole",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
             }
           }
         },
@@ -1216,7 +1238,7 @@
         },
         "source": {
           "custom": "Warcraft 5e - Chapter 6 Spells",
-          "book": "",
+          "book": "Warcraft 5e - Chapter 6 Spells",
           "page": "",
           "license": "",
           "rules": "2014"
@@ -1346,8 +1368,8 @@
                     "formula": ""
                   },
                   "scaling": {
-                    "mode": "",
-                    "number": null,
+                    "mode": "whole",
+                    "number": 1,
                     "formula": ""
                   }
                 },
@@ -1363,8 +1385,8 @@
                     "formula": ""
                   },
                   "scaling": {
-                    "mode": "",
-                    "number": null,
+                    "mode": "whole",
+                    "number": 1,
                     "formula": ""
                   }
                 }
@@ -1399,7 +1421,7 @@
         },
         "source": {
           "custom": "Warcraft 5e - Chapter 6 Spells",
-          "book": "",
+          "book": "Warcraft 5e - Chapter 6 Spells",
           "page": "",
           "license": "",
           "rules": "2014"
@@ -1423,10 +1445,10 @@
           "template": {
             "count": "",
             "contiguous": false,
-            "type": "sphere",
+            "type": "cylinder",
             "size": "5",
             "width": "",
-            "height": "",
+            "height": "15",
             "units": "ft"
           }
         },

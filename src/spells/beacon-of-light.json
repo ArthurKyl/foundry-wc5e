@@ -10,7 +10,7 @@
     },
     "source": {
       "custom": "Warcraft 5e - Chapter 6 Spells",
-      "book": "",
+      "book": "Warcraft 5e - Chapter 6 Spells",
       "page": "",
       "license": "",
       "rules": "2014"
@@ -90,7 +90,7 @@
           "spellSlot": true
         },
         "description": {
-          "chatFlavor": ""
+          "chatFlavor": "Whenever you restore hit points with a spell slot, the marked creature regains <strong>[[lookup @attributes.spell.mod]]</strong> hit points."
         },
         "duration": {
           "units": "inst",

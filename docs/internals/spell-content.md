@@ -71,8 +71,8 @@ Verify by running them in both orders and checking the count holds.
 `Enhancement` (half/wis) and `Path of Feral` (half/wis) each have their own Cantrips/Spells Known
 table upstream and are **intentionally not generated**. A subclass's `spellcasting` overrides the
 class's for *slots*, but advancement has no subclass-conditional gating — `classRestriction` only
-distinguishes primary/secondary multiclass. The Shaman class carries 19 spell-choice advancements
-that fire whatever subclass is taken, so adding Enhancement's table on top would double-grant rather
+distinguishes primary/secondary multiclass. The Shaman class's spell-choice advancements fire
+whatever subclass is taken, so adding Enhancement's table on top would double-grant rather
 than replace. Don't "fix" this by adding them.
 
 `Subtlety` is a different case: **the cloned repo is behind the class PDFs.** The repo still has an
@@ -94,10 +94,33 @@ spells from the spellbook by hand, and guided builders hardcode the progression 
 custom classes get skipped. `ItemChoice` is the supported mechanism, so this is data-driven.
 
 **It is the only generator that modifies hand-maintained documents**, so it is deliberately
-surgical: each advancement's `_id` is `make_id("spellprog", class, kind, level)`, and every run
-removes that entire candidate id set (all kinds × levels 1–20) before re-inserting. Hand-authored
-advancement is never touched, and re-running cannot duplicate. Verify with an id-uniqueness
-assertion after changing it.
+surgical: ids come from `make_id("spellprog", class, kind, level)`, and every run removes that
+entire candidate id set (all kinds × levels 1–20) before re-inserting. Hand-authored advancement is
+never touched, and re-running cannot duplicate. Verify with an id-uniqueness assertion after
+changing it.
+
+**One advancement per (class, kind), with every level in its `choices` map** — not one per level.
+That is what the field is for, and it is how dnd5e's own Magical Secrets is built. It shipped the
+other way until v1.18.2, which cost two things: the player saw no record of earlier picks
+(`context.sections` is built from `value.added` for earlier levels *of the same advancement*), and
+"you can replace one of the spells you know" was dead, because `value.replaced` points at a level
+inside the same advancement and there was never anything earlier to swap. The merged advancement
+keeps the id of its **first** level so picks already recorded against it survive.
+
+It does **not** stop the same spell being picked at two levels. dnd5e computes a
+`previouslySelected` set in `ItemChoiceFlow` and never reads it — three references in the system,
+all writes, never passed to the template — and `apply()` rejects nothing. Only a runtime hook could
+prevent it; the decision was to leave it to the players.
+
+**Spells Known and Spellbook carry an explicit `pool`; Cantrips Known does not.** `restriction.level`
+takes `""`, `"available"` or one exact level, and `"available"` sets only a *maximum* — so a cantrip
+passes it and can be "learned" as a spell. A Death Knight, whose cantrips come from Profane Warrior
+rather than from this advancement, could re-pick them at every spell level. There is no "1 to max"
+option, so the pool is the only way to say "these, not cantrips". `build_spell_lists.py` emits it to
+`intermediate/class_spell_pools.json` (it is the only stage that knows each entry's spell level, from
+the `##### Nth Level` headings) and this stage reads it, which is why it must run after. `allowDrops`
+stays on and the browser is still filtered to the class list, so a spell added later — by the
+auto-assign tool, say — remains reachable despite not being in the snapshot.
 
 Table sources, best first: `WIP 3.0 Classes/<Class>` (extensionless for some classes) then the
 Heroes Handbook section. A candidate that yields no column must **fall through**, not end the

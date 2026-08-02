@@ -10,7 +10,7 @@
     },
     "source": {
       "custom": "Warcraft 5e - Chapter 6 Spells",
-      "book": "",
+      "book": "Warcraft 5e - Chapter 6 Spells",
       "page": "",
       "license": "",
       "rules": "2014"
@@ -26,8 +26,8 @@
     },
     "target": {
       "affects": {
-        "type": "",
-        "count": "",
+        "type": "creature",
+        "count": "1",
         "choice": false,
         "special": ""
       },
@@ -71,7 +71,7 @@
     "activities": {
       "0ukAglLeZTZaLjwc": {
         "_id": "0ukAglLeZTZaLjwc",
-        "type": "utility",
+        "type": "attack",
         "sort": 0,
         "name": "",
         "img": "",
@@ -117,11 +117,24 @@
           "recovery": [],
           "max": ""
         },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
+        "attack": {
+          "ability": "",
+          "bonus": "",
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "melee",
+            "classification": ""
+          }
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": []
         }
       }
     },

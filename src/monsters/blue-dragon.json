@@ -345,7 +345,7 @@
     },
     "source": {
       "custom": "Warcraft 5e - Manual of Monsters (WIP)",
-      "book": "",
+      "book": "Warcraft 5e - Manual of Monsters (WIP)",
       "page": "",
       "license": "",
       "revision": 1,
@@ -2944,7 +2944,7 @@
         },
         "source": {
           "custom": "Warcraft 5e - Chapter 6 Spells",
-          "book": "",
+          "book": "Warcraft 5e - Chapter 6 Spells",
           "page": "",
           "license": "",
           "rules": "2014"
@@ -3080,8 +3080,180 @@
                     "formula": ""
                   },
                   "scaling": {
-                    "mode": "",
-                    "number": null,
+                    "mode": "whole",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
+          },
+          "ctoNq5sCsnDRGIoF": {
+            "_id": "ctoNq5sCsnDRGIoF",
+            "type": "attack",
+            "sort": 10,
+            "name": "Second shard",
+            "img": "",
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "units": "inst",
+              "concentration": false,
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft"
+              },
+              "affects": {
+                "choice": false
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": ""
+            },
+            "attack": {
+              "ability": "",
+              "bonus": "",
+              "critical": {
+                "threshold": null
+              },
+              "flat": false,
+              "type": {
+                "value": "ranged",
+                "classification": ""
+              }
+            },
+            "damage": {
+              "critical": {
+                "bonus": ""
+              },
+              "includeBase": true,
+              "parts": [
+                {
+                  "number": 1,
+                  "denomination": 4,
+                  "bonus": "",
+                  "types": [
+                    "cold"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "whole",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
+          },
+          "JCU3Nvo4hzheKF5c": {
+            "_id": "JCU3Nvo4hzheKF5c",
+            "type": "attack",
+            "sort": 20,
+            "name": "Third shard",
+            "img": "",
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "units": "inst",
+              "concentration": false,
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft"
+              },
+              "affects": {
+                "choice": false
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": ""
+            },
+            "attack": {
+              "ability": "",
+              "bonus": "",
+              "critical": {
+                "threshold": null
+              },
+              "flat": false,
+              "type": {
+                "value": "ranged",
+                "classification": ""
+              }
+            },
+            "damage": {
+              "critical": {
+                "bonus": ""
+              },
+              "includeBase": true,
+              "parts": [
+                {
+                  "number": 1,
+                  "denomination": 4,
+                  "bonus": "",
+                  "types": [
+                    "cold"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "whole",
+                    "number": 1,
                     "formula": ""
                   }
                 }
@@ -3770,7 +3942,7 @@
         },
         "source": {
           "custom": "Warcraft 5e - Chapter 6 Spells",
-          "book": "",
+          "book": "Warcraft 5e - Chapter 6 Spells",
           "page": "",
           "license": "",
           "rules": "2014"
@@ -3888,6 +4060,184 @@
               "prompt": false,
               "visible": false
             }
+          },
+          "uDjhPJlysAgUkYlt": {
+            "_id": "uDjhPJlysAgUkYlt",
+            "type": "attack",
+            "sort": 5,
+            "name": "Melee spell attack (unwilling target)",
+            "img": "",
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "units": "inst",
+              "concentration": false,
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft"
+              },
+              "affects": {
+                "choice": false
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": ""
+            },
+            "attack": {
+              "ability": "",
+              "bonus": "",
+              "critical": {
+                "threshold": null
+              },
+              "flat": false,
+              "type": {
+                "value": "melee",
+                "classification": ""
+              }
+            },
+            "damage": {
+              "critical": {
+                "bonus": ""
+              },
+              "includeBase": true,
+              "parts": []
+            }
+          },
+          "y8Lk5jViUrUkAGMe": {
+            "_id": "y8Lk5jViUrUkAGMe",
+            "type": "utility",
+            "sort": 10,
+            "name": "Amplify",
+            "img": "",
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": "The target takes, deals and restores <strong>[[lookup @attributes.spell.mod]]</strong> more with spells."
+            },
+            "duration": {
+              "units": "inst",
+              "concentration": false,
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft"
+              },
+              "affects": {
+                "choice": false
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": ""
+            },
+            "roll": {
+              "formula": "",
+              "name": "",
+              "prompt": false,
+              "visible": false
+            }
+          },
+          "8X4Yp1cC063f9ETp": {
+            "_id": "8X4Yp1cC063f9ETp",
+            "type": "utility",
+            "sort": 20,
+            "name": "Dampen",
+            "img": "",
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": "The target takes, deals and restores <strong>[[lookup @attributes.spell.mod]]</strong> less with spells."
+            },
+            "duration": {
+              "units": "inst",
+              "concentration": false,
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft"
+              },
+              "affects": {
+                "choice": false
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": ""
+            },
+            "roll": {
+              "formula": "",
+              "name": "",
+              "prompt": false,
+              "visible": false
+            }
           }
         },
         "identifier": "amplify-or-dampen-magic"
@@ -3917,7 +4267,7 @@
         },
         "source": {
           "custom": "Warcraft 5e - Chapter 6 Spells",
-          "book": "",
+          "book": "Warcraft 5e - Chapter 6 Spells",
           "page": "",
           "license": "",
           "rules": "2014"
@@ -4033,6 +4383,63 @@
               "name": "",
               "prompt": false,
               "visible": false
+            }
+          },
+          "nIaM5N0kLEUBpy4c": {
+            "_id": "nIaM5N0kLEUBpy4c",
+            "type": "check",
+            "sort": 10,
+            "name": "Steal check (2nd level or higher)",
+            "img": "",
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": "DC is 10 + the level of the spell you are trying to steal. That is the <em>target's</em> level, which the sheet cannot know, so the button rolls the check and the DM compares."
+            },
+            "duration": {
+              "units": "inst",
+              "concentration": false,
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft"
+              },
+              "affects": {
+                "choice": false
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": ""
+            },
+            "check": {
+              "ability": "spellcasting",
+              "associated": [],
+              "dc": {
+                "calculation": "",
+                "formula": ""
+              }
             }
           }
         },

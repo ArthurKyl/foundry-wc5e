@@ -71,6 +71,19 @@ SIZE_MAP = {"tiny": "tiny", "small": "sm", "medium": "med",
             "large": "lg", "huge": "huge", "gargantuan": "grg"}
 TOKEN_SIZE = {"tiny": 1, "sm": 1, "med": 1, "lg": 2, "huge": 3, "grg": 4}
 
+
+def _source_book(mon):
+    """The source book name, which goes in BOTH `book` and `custom`.
+
+    dnd5e derives `system.source.value` -- what the compendium browser's source
+    filter groups and matches on -- as `book || <package title>`. It never looks
+    at `custom`; that only sets the display label. So a document with a custom
+    source and an empty book falls through to the module's title, which is not one
+    of the keys in `flags.dnd5e.sourceBooks`, and the filter entry it produces
+    matches nothing.
+    """
+    return "Warcraft 5e - Manual of Monsters" + (" (WIP)" if mon.get("_wip") else "")
+
 CREATURE_TYPES = {"aberration", "beast", "celestial", "construct", "dragon",
                   "elemental", "fey", "fiend", "giant", "humanoid",
                   "monstrosity", "ooze", "plant", "undead"}
@@ -535,8 +548,7 @@ def build_actor(mon):
             "legres": {"value": 0, "max": 0},
             "lair": {"value": False, "initiative": None},
         },
-        "source": {"custom": "Warcraft 5e - Manual of Monsters"
-                   + (" (WIP)" if mon.get("_wip") else ""), "book": "",
+        "source": {"custom": _source_book(mon), "book": _source_book(mon),
                    "page": "", "license": "", "revision": 1, "rules": "2014"},
     }
 

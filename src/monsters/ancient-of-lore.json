@@ -348,7 +348,7 @@
     },
     "source": {
       "custom": "Warcraft 5e - Manual of Monsters",
-      "book": "",
+      "book": "Warcraft 5e - Manual of Monsters",
       "page": "",
       "license": "",
       "revision": 1,
@@ -1724,7 +1724,7 @@
         },
         "source": {
           "custom": "Warcraft 5e - Chapter 6 Spells",
-          "book": "",
+          "book": "Warcraft 5e - Chapter 6 Spells",
           "page": "",
           "license": "",
           "rules": "2014"
@@ -2342,7 +2342,7 @@
         },
         "source": {
           "custom": "Warcraft 5e - Chapter 6 Spells",
-          "book": "",
+          "book": "Warcraft 5e - Chapter 6 Spells",
           "page": "",
           "license": "",
           "rules": "2014"
@@ -2468,6 +2468,79 @@
               "parts": [
                 {
                   "number": 3,
+                  "denomination": 6,
+                  "bonus": "",
+                  "types": [
+                    "radiant"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "whole",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
+          },
+          "3mGmdE0zEwrKyxb2": {
+            "_id": "3mGmdE0zEwrKyxb2",
+            "type": "damage",
+            "sort": 10,
+            "name": "Clear view of the moon (+1d6)",
+            "img": "",
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "units": "inst",
+              "concentration": false,
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft"
+              },
+              "affects": {
+                "choice": false
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": ""
+            },
+            "damage": {
+              "critical": {
+                "bonus": ""
+              },
+              "parts": [
+                {
+                  "number": 1,
                   "denomination": 6,
                   "bonus": "",
                   "types": [
@@ -3189,7 +3262,7 @@
         },
         "source": {
           "custom": "Warcraft 5e - Chapter 6 Spells",
-          "book": "",
+          "book": "Warcraft 5e - Chapter 6 Spells",
           "page": "",
           "license": "",
           "rules": "2014"
@@ -3205,19 +3278,19 @@
         },
         "target": {
           "affects": {
-            "type": "creature",
-            "count": "1",
+            "type": "",
+            "count": "",
             "choice": false,
             "special": ""
           },
           "template": {
             "count": "",
             "contiguous": false,
-            "type": "",
-            "size": "",
-            "width": "",
+            "type": "line",
+            "size": "100",
+            "width": "5",
             "height": "",
-            "units": ""
+            "units": "ft"
           }
         },
         "range": {
@@ -3322,6 +3395,79 @@
                   "scaling": {
                     "mode": "whole",
                     "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
+          },
+          "qUoLTTnRhi53z4DA": {
+            "_id": "qUoLTTnRhi53z4DA",
+            "type": "damage",
+            "sort": 10,
+            "name": "Clear view of the moon (+2d6)",
+            "img": "",
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "units": "inst",
+              "concentration": false,
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft"
+              },
+              "affects": {
+                "choice": false
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": ""
+            },
+            "damage": {
+              "critical": {
+                "bonus": ""
+              },
+              "parts": [
+                {
+                  "number": 2,
+                  "denomination": 6,
+                  "bonus": "",
+                  "types": [
+                    "radiant"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": null,
                     "formula": ""
                   }
                 }
@@ -3827,7 +3973,7 @@
         },
         "source": {
           "custom": "Warcraft 5e - Chapter 6 Spells",
-          "book": "",
+          "book": "Warcraft 5e - Chapter 6 Spells",
           "page": "",
           "license": "",
           "rules": "2014"
@@ -3851,10 +3997,10 @@
           "template": {
             "count": "",
             "contiguous": false,
-            "type": "sphere",
+            "type": "cylinder",
             "size": "20",
             "width": "",
-            "height": "",
+            "height": "40",
             "units": "ft"
           }
         },
@@ -3960,6 +4106,79 @@
                   "scaling": {
                     "mode": "whole",
                     "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
+          },
+          "ibgxSJIQifv3uXpl": {
+            "_id": "ibgxSJIQifv3uXpl",
+            "type": "damage",
+            "sort": 10,
+            "name": "Clear view of the moon (+2d6)",
+            "img": "",
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "units": "inst",
+              "concentration": false,
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "override": false
+            },
+            "target": {
+              "template": {
+                "contiguous": false,
+                "units": "ft"
+              },
+              "affects": {
+                "choice": false
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "recovery": [],
+              "max": ""
+            },
+            "damage": {
+              "critical": {
+                "bonus": ""
+              },
+              "parts": [
+                {
+                  "number": 2,
+                  "denomination": 6,
+                  "bonus": "",
+                  "types": [
+                    "radiant"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "",
+                    "number": null,
                     "formula": ""
                   }
                 }

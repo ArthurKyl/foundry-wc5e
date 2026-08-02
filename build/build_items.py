@@ -43,7 +43,8 @@ WEAPON_ICON = "icons/svg/sword.svg"
 GUN_ICON = "icons/svg/sword.svg"
 SHIELD_ICON = "icons/svg/shield.svg"
 AMMO_ICON = "icons/svg/item-bag.svg"
-SRC = {"custom": "Warcraft 5e - Heroes Handbook", "book": "", "page": "",
+SRC = {"custom": "Warcraft 5e - Heroes Handbook",
+       "book": "Warcraft 5e - Heroes Handbook", "page": "",
        "license": "", "revision": 1, "rules": "2014"}
 
 EMPTY_DMG = {"number": None, "denomination": None, "bonus": "", "types": [],

@@ -231,7 +231,8 @@ def build_advancement(bg, feature_uuid):
     return adv
 
 
-SRC_META = {"custom": "Warcraft 5e - Heroes Handbook", "book": "", "page": "",
+SRC_META = {"custom": "Warcraft 5e - Heroes Handbook",
+            "book": "Warcraft 5e - Heroes Handbook", "page": "",
             "license": "", "revision": 1, "rules": "2014"}
 
 # Starting equipment, transcribed from each background's Equipment line.

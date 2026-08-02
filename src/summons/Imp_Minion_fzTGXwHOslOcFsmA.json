@@ -566,7 +566,8 @@
     "source": {
       "revision": 1,
       "rules": "2014",
-      "custom": "Warcraft 5e - Heroes Handbook"
+      "custom": "Warcraft 5e - Heroes Handbook",
+      "book": "Warcraft 5e - Heroes Handbook"
     },
     "traits": {
       "size": "sm",
