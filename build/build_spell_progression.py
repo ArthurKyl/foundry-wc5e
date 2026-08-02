@@ -46,6 +46,11 @@ SPELLBOOK = {
     "Mage": {"initial": 6, "per_level": 2},
 }
 
+# Casters that prepare from the entire class list rather than learning a fixed
+# set, so there is no Spells Known column to read and nothing for this stage to
+# generate. Priest and Druid still get cantrips; the Paladin gets neither.
+PREPARED = {"Paladin", "Priest", "Druid"}
+
 _B62 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
 def make_id(*p):
@@ -307,7 +312,14 @@ def main():
         s = ", ".join(f"L{l}+{n}" for l, n in sorted(known.items())) or "—"
         print(f"  {cls:14s} {str(origin):31s} {c[:20]:20s} {s[:24]:24s} {book or '—'}")
         if not cantrips and not known:
-            print(f"      !! nothing generated ({note})")
+            # A prepared caster has no Cantrips/Spells Known columns to find: it
+            # prepares from the whole class list, so nothing here is a bug. Saying
+            # "!!" at one invites a future session to "fix" it by inventing a
+            # progression the class does not have.
+            if cls in PREPARED:
+                print(f"      (prepared caster -- nothing to generate)")
+            else:
+                print(f"      !! nothing generated ({note})")
 
 
 if __name__ == "__main__":
