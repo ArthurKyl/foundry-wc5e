@@ -155,19 +155,63 @@ def deltas(by_level):
 TITLES = {"cantrip": "Cantrips Known", "spell": "Spells Known", "spellbook": "Spellbook"}
 
 
-def item_choice(cls, ident, kind, level, count, total):
-    """One ItemChoice advancement. `kind` is 'cantrip', 'spell' or 'spellbook'."""
-    cantrip = kind == "cantrip"
-    if cantrip:
-        hint = f"Choose {count} {'cantrip' if count == 1 else 'cantrips'} from the {cls} spell list."
+def load_pools():
+    """identifier -> [uuid] of every non-cantrip spell on that class's list.
+
+    Written by build_spell_lists.py, which runs first and is the only place that
+    knows each entry's spell level (it parses the "##### Nth Level" headings).
+
+    Needed because dnd5e cannot express "any level you can cast, but not
+    cantrips". `restriction.level` is "" (anything), "available" (a *maximum* of
+    your highest slot -- so level 0 passes) or one exact level. Left on
+    "available", a Death Knight could "learn" the two cantrips Profane Warrior
+    already gave them, at every level that grants a spell, and finish holding
+    duplicates. An explicit pool is the only way to say "these, and not cantrips".
+
+    The compendium-browser button stays available (`allowDrops`), still filtered
+    to the class list, so a spell added later -- by the auto-assign tool, say --
+    is reachable even though it is not in this snapshot.
+    """
+    p = os.path.join(REPO, "intermediate", "class_spell_pools.json")
+    if not os.path.exists(p):
+        raise SystemExit(f"missing {p} -- run `npm run spell-lists` first")
+    return json.load(open(p, encoding="utf-8"))
+
+
+POOLS = {}
+
+
+def item_choice(cls, ident, kind, picks):
+    """ONE ItemChoice advancement covering every level at which `kind` is picked.
+
+    `picks` is {class level: number gained}. All of them belong in a single
+    advancement's `choices` map, which is what that field is for -- "specify how
+    many choices are allowed at each level".
+
+    This matters for more than tidiness. dnd5e hides spells you already took from
+    later choices, but it does that by reading `value.added` for the *earlier
+    levels of the same advancement* (ItemChoiceFlow builds `previouslySelected`
+    from `Array.fromRange(this.level)`). One advancement per level gives each its
+    own empty `value.added`, so nothing knows what the others picked and the same
+    spell can be chosen again at every level -- which is exactly what happened:
+    a Death Knight could re-pick their level 2 spells at 3, 5, 7 and so on, and
+    end up holding duplicates.
+
+    The advancement keeps the id of its FIRST level so existing characters do not
+    lose the picks they have already recorded against it.
+    """
+    first = min(picks)
+    total = sum(picks.values())
+    if kind == "cantrip":
+        hint = f"Choose your cantrips from the {cls} spell list as you gain them."
     elif kind == "spellbook":
-        hint = (f"Add {count} {'spell' if count == 1 else 'spells'} of your choice to your "
-                f"spellbook from the {cls} spell list.")
+        hint = (f"Add spells of your choice to your spellbook from the {cls} spell "
+                f"list as you gain levels.")
     else:
-        hint = (f"Learn {count} new {'spell' if count == 1 else 'spells'} from the "
-                f"{cls} spell list (you know {total} in total).")
+        hint = (f"Learn new spells from the {cls} spell list as you gain levels "
+                f"({total} in total by 20th).")
     return OrderedDict([
-        ("_id", make_id("spellprog", cls, kind, level)),
+        ("_id", make_id("spellprog", cls, kind, first)),
         ("type", "ItemChoice"),
         ("title", TITLES[kind]),
         ("hint", hint),
@@ -176,12 +220,18 @@ def item_choice(cls, ident, kind, level, count, total):
             # Only known casters may swap a spell on level-up ("you can replace one
             # of the spells you know"). Cantrips are fixed, and a spellbook is only
             # ever added to.
-            ("choices", {str(level): {"count": count, "replacement": kind == "spell"}}),
-            ("pool", []),
+            ("choices", {str(lv): {"count": n, "replacement": kind == "spell"}
+                         for lv, n in sorted(picks.items())}),
+            # Cantrips choose from the whole list by level restriction; the others
+            # need an explicit pool to exclude cantrips -- see POOLS.
+            ("pool", [] if kind == "cantrip"
+                     else [{"uuid": u} for u in POOLS.get(ident, [])]),
             # "0" restricts to cantrips; "available" lets the player pick any spell
-            # level they currently have slots for, which is what "Spells Known" means.
+            # level they currently have slots for, which is what "Spells Known"
+            # means. Note "available" sets only a maximum, so it does not exclude
+            # cantrips from a Spells Known choice -- dnd5e has no "1 to max" option.
             ("restriction", {"type": "spell", "subtype": "",
-                             "level": "0" if cantrip else "available",
+                             "level": "0" if kind == "cantrip" else "available",
                              "list": [f"class:{ident}"]}),
             ("spell", {"ability": [], "preparation": "",
                        "uses": {"max": "", "per": ""}}),
@@ -194,6 +244,7 @@ def item_choice(cls, ident, kind, level, count, total):
 def main():
     if not os.path.isdir(UPSTREAM):
         raise SystemExit(f"upstream source not found: {UPSTREAM}")
+    POOLS.update(load_pools())
 
     # class name -> (file path, identifier, doc)
     docs = {}
@@ -224,22 +275,20 @@ def main():
                 for k in ("cantrip", "spell", "spellbook") for lv in range(1, 21)}
         kept = [a for a in adv if a.get("_id") not in mine]
         new = []
-        for lv, n in sorted(cantrips.items()):
-            new.append(item_choice(cls, ident, "cantrip", lv, n, cantrip_totals.get(lv, n)))
-        for lv, n in sorted(known.items()):
-            new.append(item_choice(cls, ident, "spell", lv, n, known_totals.get(lv, n)))
+        if cantrips:
+            new.append(item_choice(cls, ident, "cantrip", cantrips))
+        if known:
+            new.append(item_choice(cls, ident, "spell", known))
         book = SPELLBOOK.get(cls)
         if book:
-            running = book["initial"]
-            new.append(item_choice(cls, ident, "spellbook", 1, book["initial"], running))
-            for lv in range(2, 21):
-                running += book["per_level"]
-                new.append(item_choice(cls, ident, "spellbook", lv, book["per_level"], running))
+            new.append(item_choice(cls, ident, "spellbook",
+                                   {1: book["initial"],
+                                    **{lv: book["per_level"] for lv in range(2, 21)}}))
         doc["system"]["advancement"] = kept + new
         json.dump(doc, open(path, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
         open(path, "a", encoding="utf-8").write("\n")
         report.append((cls, origin, f"{len(kept)} kept", cantrips, known,
-                       len(new) - len(cantrips) - len(known)))
+                       1 if SPELLBOOK.get(cls) else 0))
 
     print("  class          source                          cantrip picks        spell picks              book")
     for cls, origin, note, cantrips, known, *rest in report:

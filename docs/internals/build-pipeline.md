@@ -67,12 +67,12 @@ Rather than patching `src/`, add to the small curated tables:
   others). This is how a spell offers a conditional damage roll, a healing half, a summon or an
   ability check: **dnd5e shows one button per activity and shows them all at once — there is no
   "which version are you casting?" prompt** outside a summon activity's profile picker.
-- `build_spells.SPLIT` — spells shipped as several documents instead of one, reserved for variants
-  that *target differently* (Deathwyrm's Fury: cone / sphere / line). Splitting renames, renaming
-  changes the name-derived `_id`, and anything linking the old name breaks — so a split also needs
-  `build_spell_lists.ALIAS` to redirect the tables' single entry and `EXTRA_ENTRIES` to add the
-  rest, or `verify` fails with shipped spells reachable from no class list. `split_variants()`
-  raises rather than emitting an empty variant if upstream rewords the paragraphs.
+- **Do not split a spell into several documents.** It was tried for Deathwyrm's
+  Fury, whose three breath weapons target differently, and it broke spell
+  selection: a known-caster picks a fixed number of spells, so three list entries
+  meant choosing one breath weapon permanently instead of the choice the spell
+  grants. Variants belong in `EXTRA_ACTIVITIES` as named activities with their own
+  `tpl` override, however different their areas are.
 - `build_spells.NO_TEMPLATE` — spells whose only "N-foot radius" is a *light* radius. A template
   there puts a circle on the map that nothing is ever checked against, which reads as a bug.
 - `build_spells.STATBLOCK_RE` — upstream lays sidebar statblocks inside a spell's column and

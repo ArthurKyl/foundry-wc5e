@@ -73,7 +73,7 @@ ROADMAP = """
   <li>&#9745; Monster spellcasting (embedded, ~79% of references)</li>
   <li>&#9745; Weapons, firearms, shields, ammunition</li>
   <li>&#9745; Explosives &amp; adventuring gear</li>
-  <li>&#9745; Full WC5E custom spell list (103 spells)</li>
+  <li>&#9745; Full WC5E custom spell list (101 spells)</li>
   <li>&#9745; Player options: 12 classes, 36 subclasses, 28 races, class
     features and feats, with advancement configured</li>
   <li>&#9745; Summons &amp; pets</li>

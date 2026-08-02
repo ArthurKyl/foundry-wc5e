@@ -6,7 +6,7 @@ markdown. The module ships `module.json`, `assets/`, `lang/`, compiled LevelDB p
 runtime feature — the **auto-assign tool** (`scripts/`, `templates/`). Everything else in the repo
 is build tooling.
 
-Current packs (12, 1237 documents): **monsters** (420 NPC actors), **spells** (103), **items** (21),
+Current packs (12, 1235 documents): **monsters** (420 NPC actors), **spells** (101), **items** (21),
 **journals** (guide), **spell-lists** (7 class spell lists), **backgrounds** (4 + their features),
 and the player options merged from GoC45's `wc5e-ccc`: **classes** (12 + 36 subclasses),
 **class-features** (443), **races** (28 + racials), **feats** (18), **new-equipment** (14),

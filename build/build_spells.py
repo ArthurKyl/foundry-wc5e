@@ -202,6 +202,12 @@ OVERRIDES = {
     # button reads as "the spell" rather than as one of its two halves.
     "halo": {"tpl": ("radius", "60", None, None), "name": "Light — Damage"},
     "apotheosis": {"name": "Aura (creature enters or ends its turn within 10 ft)"},
+    # Three breath weapons on one document. Splitting them into three spells was
+    # worse: a known-caster picks a fixed number of spells, so three entries meant
+    # choosing one breath weapon forever instead of the choice the spell grants.
+    "deathwyrm's fury": {"name": "Emberwyrm — fire (60 ft cone)",
+                         "tpl": ("cone", "60", None, None),
+                         "dmg": [(5, 8, "fire", None), (5, 8, "necrotic", None)]},
     "luminous barrier": {"tpl": ("radius", "30", None, None)},
     # Emanations whose "you" reads before the distance rather than after it, so the
     # sphere-vs-emanation test in auto_detect cannot see it.
@@ -794,6 +800,14 @@ EXTRA_ACTIVITIES = {
                   "flavor": "Your maximum already rose from the effect; this is the "
                             "matching gain to your current hit points."},
     },
+    "Deathwyrm's Fury": {
+        "frost": {"kind": "save", "sort": 10, "name": "Frostwyrm — cold (20 ft sphere)",
+                  "save": "dex", "onsave": "half", "tpl": ("sphere", "20", None, None),
+                  "dmg": [(5, 8, "cold", None), (5, 8, "necrotic", None)]},
+        "vile": {"kind": "save", "sort": 20, "name": "Vilewyrm — acid (120 ft line)",
+                 "save": "dex", "onsave": "half", "tpl": ("line", "120", "10", None),
+                 "dmg": [(5, 8, "acid", None), (5, 8, "necrotic", None)]},
+    },
     "Ice Nova": {
         # A tracker, not a creature: the ice has AC 10 and 40 hp, and breaking it is
         # how a restrained creature gets out. Count stays 1 and the DM clicks again
@@ -837,55 +851,6 @@ EXTRA_ACTIVITIES = {
                                   "poison", "psychic", "thunder"], 1)]},
     },
 }
-
-
-# Spells shipped as several documents rather than one.
-#
-# dnd5e has no "which version are you casting?" prompt outside summon profiles, so
-# a spell whose variants *target differently* would otherwise put three templates
-# and three damage sets on one chat card, and placing the wrong one is a real
-# misplay. Splitting costs a spell-list entry each -- see ALIAS and EXTRA_ENTRIES
-# in build_spell_lists.py, which keep all three reachable -- so it is reserved for
-# that case. Variants that differ only in numbers or in which effect lands stay as
-# named activities on one document.
-SPLIT = {
-    "Deathwyrm's Fury": [
-        {"suffix": "Emberwyrm", "keep": "Emberwyrm.",
-         "tpl": ("cone", "60", None, None),
-         "dmg": [(5, 8, "fire", None), (5, 8, "necrotic", None)]},
-        {"suffix": "Frostwyrm", "keep": "Frostwyrm.",
-         "tpl": ("sphere", "20", None, None),
-         "dmg": [(5, 8, "cold", None), (5, 8, "necrotic", None)]},
-        {"suffix": "Vilewyrm", "keep": "Vilewyrm",
-         "tpl": ("line", "120", "10", None),
-         "dmg": [(5, 8, "acid", None), (5, 8, "necrotic", None)]},
-    ],
-}
-
-# The paragraph describing each variant, so a split document carries only its own.
-VARIANT_RE = re.compile(r"<p>(?:<[^>]+>)*(Emberwyrm|Frostwyrm|Vilewyrm)\b.*?</p>", re.S)
-
-
-def split_variants(src):
-    """One source record -> the several records it should ship as."""
-    specs = SPLIT.get(src["name"])
-    if not specs:
-        return [src]
-    desc = src["description"]
-    shared = VARIANT_RE.sub("", desc)
-    paras = {m.group(1): m.group(0) for m in VARIANT_RE.finditer(desc)}
-    out = []
-    for spec in specs:
-        para = paras.get(spec["suffix"], "")
-        if not para:
-            raise SystemExit(f"split: no paragraph for {src['name']} / {spec['suffix']}"
-                             " -- upstream wording changed, fix SPLIT")
-        rec = dict(src)
-        rec["name"] = f"{src['name']} ({spec['suffix']})"
-        rec["description"] = shared + para
-        rec["_split"] = {"tpl": spec["tpl"], "dmg": spec["dmg"]}
-        out.append(rec)
-    return out
 
 
 def build_extra_activities(spell_id, name, activation):
@@ -989,7 +954,6 @@ def main():
             os.remove(os.path.join(out_dir, fn))
     from collections import Counter
     kinds = Counter()
-    src = [rec for s in src for rec in split_variants(s)]
     for s in src:
         item, kind = build_spell(s)
         kinds[kind] += 1

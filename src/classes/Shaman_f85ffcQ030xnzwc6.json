@@ -327,84 +327,18 @@
         "_id": "gxbF79iJJG2teeKf",
         "type": "ItemChoice",
         "title": "Cantrips Known",
-        "hint": "Choose 2 cantrips from the Shaman spell list.",
+        "hint": "Choose your cantrips from the Shaman spell list as you gain them.",
         "configuration": {
           "allowDrops": true,
           "choices": {
             "1": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "0",
-            "list": [
-              "class:wc5e-shaman"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "j872YrP2GqlE8hUZ",
-        "type": "ItemChoice",
-        "title": "Cantrips Known",
-        "hint": "Choose 1 cantrip from the Shaman spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "4": {
               "count": 1,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "0",
-            "list": [
-              "class:wc5e-shaman"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "Z2Pnl88Y844q0bjs",
-        "type": "ItemChoice",
-        "title": "Cantrips Known",
-        "hint": "Choose 1 cantrip from the Shaman spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "10": {
               "count": 1,
               "replacement": false
@@ -438,571 +372,278 @@
         "_id": "mMD8FHm66cljwCGo",
         "type": "ItemChoice",
         "title": "Spells Known",
-        "hint": "Learn 4 new spells from the Shaman spell list (you know 4 in total).",
+        "hint": "Learn new spells from the Shaman spell list as you gain levels (22 in total by 20th).",
         "configuration": {
           "allowDrops": true,
           "choices": {
             "1": {
               "count": 4,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-shaman"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "tsgNqEgFTgO5Hud2",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Shaman spell list (you know 5 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "2": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-shaman"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "hj1EzMMv7Vcc6Lap",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Shaman spell list (you know 6 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "3": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-shaman"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "RC2XihTpjNRTInPh",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Shaman spell list (you know 7 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "4": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-shaman"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "vo9D57vSNFjOmoMM",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Shaman spell list (you know 8 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "5": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-shaman"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "zDMWHQ9JloqCErcv",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Shaman spell list (you know 9 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "6": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-shaman"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "wGZvCyhGp7wAeW0Y",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Shaman spell list (you know 10 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "7": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-shaman"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "4vKudLQMLbQ5fFWf",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Shaman spell list (you know 11 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "8": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-shaman"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "RCTVolJvYbDBXLBp",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Shaman spell list (you know 12 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "9": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-shaman"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "cIGzYVQI2v3EPoqS",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 2 new spells from the Shaman spell list (you know 14 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "10": {
               "count": 2,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-shaman"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "07Hl39m2rCnVWgBV",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Shaman spell list (you know 15 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "11": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-shaman"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "nu3AOWO667U4c2V7",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Shaman spell list (you know 16 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "13": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-shaman"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "XwhvBfvLwpq575Yg",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 2 new spells from the Shaman spell list (you know 18 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "14": {
               "count": 2,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-shaman"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "HQ0B9xYnnDqydqSU",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Shaman spell list (you know 19 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "15": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-shaman"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "sq7bxfpXlCWBwIqC",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 1 new spell from the Shaman spell list (you know 20 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "17": {
               "count": 1,
               "replacement": true
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-shaman"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "6Dr1mCbpboSPXH13",
-        "type": "ItemChoice",
-        "title": "Spells Known",
-        "hint": "Learn 2 new spells from the Shaman spell list (you know 22 in total).",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "18": {
               "count": 2,
               "replacement": true
             }
           },
-          "pool": [],
+          "pool": [
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.a3XtAO5n2GrqiAh5"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.uUWb1wZgtMou0TVP"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ghXTfe7sgCbgf1Q8"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.2skfDtglk1mGrb3l"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.SDx0Bon3Y6MkysVA"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.IBJmWjzbQGu7M4UX"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.dTlErGjooZm9kFCY"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells24.Item.phbsplSearingSmi"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.WTbOQBsarsL1LuXJ"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.4v2H3hHb3Ph9XLNd"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.MK6gpQMeDFo0cP9f"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.FSMy6VAjDnXY9vWz"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.2yHXEcrRbadZDr5M"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.XOLy7at2qjr0Uzi7"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.F0GsG0SJzsIOacwV"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.MAxM77CDUu8dgIRQ"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.wJKpSvSTbSkTjqyb"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ehvmg9U9fcMEhE4z"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.lTXtBoL2EamQqooM"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.Ek45cBpVXvJdv1Qy"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.15Fa6q1nH27XfbR8"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.1Zpxk4itekeNljBr"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.IyikgTEOTv701jgQ"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.y8A4HfTwd93ypdEz"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.64uo4fHriHLjRUrX"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.j8NtLXOOJ3GAKF8I"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.LmRHHMtplpxr9fX6"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.uCud2s4TjMfjiXUb"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.13uVuBQP6VaiSPvC"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.YBda6nLKjxdT1LbS"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ew6GA8dJy2spQmFW"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.QSOT1CbSlMAW4jX7"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.KgEw3sDr39C6g8nY"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.7fFHlBk3UNX8gPKL"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.da0a1t2FqaTjRZGT"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.gXtzz9t1DTzJeLr4"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.04nMsTWkIFvkbXlY"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.QvGcdRUSNRKEQJlK"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ReMbjfeOKoSj3O79"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.X3DrXgxjwI2dvkD6"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.u1RVhYUDvxPytIqA"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.dp6xny4v8PDoIGjh"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.1LkZvINag7KqBmDR"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.WzvJ7G3cqvIubsLk"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.rRJIM5xi55o1yoHp"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.W4Qx5z0id6da0vqg"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.Pyzmm8R7rVsNAPsd"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.V811xns0gZhc1a8N"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.fVbCxFRaORalHB20"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.NmoRmM1mhuM3pqnY"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.QbTxN5dWIbYZ4jLU"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.kozNy29b0X6exFhY"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.yI0XWIgI0IGGsR3R"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.8PJAsHmbu6UgDHC0"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.PQuEgKyCdovOvhqN"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.eGMhwmuleAM46C6L"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.9kGrFXnLiRg3Xnbo"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.Eon0jzGzQRNluTPQ"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.Qym1NqFdGi4QQaKV"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ZPd73HtKF3At11jh"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.x5JNBSyIBBZsjcGT"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells24.Item.phbsplTsunami000"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.6HEEhLdJz32TL4Js"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ZVnL9L8v1KC9TBF4"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.Y6oItIuhOJZ0i0FC"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.7KjExw0kmuqERa7C"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.qLeEXZDbW5y4bmLY"
+            }
+          ],
           "restriction": {
             "type": "spell",
             "subtype": "",

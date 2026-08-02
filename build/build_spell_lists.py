@@ -59,11 +59,6 @@ ALIAS = {
     # Paladin and Priest lists omit it and the manifest mislabels it
     # "not in SRD", sending the GM shopping for something dnd5e already ships.
     "protfromevilandgood": "protectionfromevilandgood",
-    # Deathwyrm's Fury ships as three documents, one per breath weapon, because
-    # their areas differ (cone / sphere / line) and one chat card cannot ask which
-    # you meant. The tables name it once, so that entry points at the first and the
-    # other two are added through EXTRA_ENTRIES below.
-    "deathwyrmsfury": "deathwyrmsfuryemberwyrm",
 }
 
 # Spells this module ships that the Chapter 6 class tables never list, normally
@@ -71,12 +66,6 @@ ALIAS = {
 # unreachable: present in the spells compendium but on no class's list.
 EXTRA_ENTRIES = {
     "wc5e-shaman": [("Feral Spirits", 3)],
-    # The two Deathwyrm's Fury variants the tables cannot name, on both lists that
-    # carry the spell. Drop these and verify fails: three shipped spells on no list.
-    "wc5e-death-knight": [("Deathwyrm's Fury (Frostwyrm)", 5),
-                          ("Deathwyrm's Fury (Vilewyrm)", 5)],
-    "wc5e-warlock": [("Deathwyrm's Fury (Frostwyrm)", 5),
-                     ("Deathwyrm's Fury (Vilewyrm)", 5)],
 }
 
 LEVEL_RE = re.compile(r"^#{4,5}\s*(?:Cantrips?\s*\(0\s*Level\)|(\d)(?:st|nd|rd|th)\s+Level)",
@@ -255,7 +244,7 @@ def main():
     idents = class_identifiers()
 
     jid = make_id("journal", "wc5e-spell-lists")
-    pages, report, missing_records = [], [], {}
+    pages, report, missing_records, pools = [], [], {}, {}
     sort = 100000
     for cls in sorted(lists):
         ident = idents.get(cls)
@@ -266,6 +255,7 @@ def main():
         for name, lvl in EXTRA_ENTRIES.get(ident, []):
             entries.setdefault(lvl, []).append((name, "custom"))
         uuids, missing, seen = [], [], set()
+        leveled = []
         for level in sorted(entries):
             for name, kind in entries[level]:
                 key = squash(name)
@@ -276,8 +266,19 @@ def main():
                 uuid = idx.get(key)
                 if uuid:
                     uuids.append(uuid)
+                    if level > 0:
+                        leveled.append(uuid)
                 else:
                     missing.append((name, kind if kind != "srd" else "not in SRD"))
+        # Everything on the list except cantrips, for the Spells Known advancement.
+        # dnd5e's `restriction.level: "available"` sets only a *maximum*, so a
+        # cantrip passes it and shows up as something you can "learn" -- and a
+        # Death Knight, whose cantrips come from Profane Warrior rather than this
+        # advancement, could re-pick them and end up holding duplicates. There is no
+        # "1 to max" restriction, so the fix is an explicit pool. This is the only
+        # place the level of each entry is known: the section headings it was
+        # parsed from.
+        pools[ident] = leveled
         pg = page(jid, cls, ident, uuids, missing, sort)
         pages.append(pg)
         if missing:
@@ -304,6 +305,13 @@ def main():
         "_stats": {"systemId": "dnd5e", "systemVersion": "5.3.3"},
         "_key": f"!journal!{jid}",
     }
+
+    # Consumed by build_spell_progression.py, which runs after this stage.
+    inter = os.path.join(REPO, "intermediate")
+    os.makedirs(inter, exist_ok=True)
+    with open(os.path.join(inter, "class_spell_pools.json"), "w", encoding="utf-8") as f:
+        json.dump(pools, f, indent=2)
+        f.write("\n")
 
     out_dir = os.path.join(REPO, "src", "spell-lists")
     os.makedirs(out_dir, exist_ok=True)

@@ -415,84 +415,18 @@
         "_id": "XHfTQkZO5boa3rAA",
         "type": "ItemChoice",
         "title": "Cantrips Known",
-        "hint": "Choose 3 cantrips from the Priest spell list.",
+        "hint": "Choose your cantrips from the Priest spell list as you gain them.",
         "configuration": {
           "allowDrops": true,
           "choices": {
             "1": {
               "count": 3,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "0",
-            "list": [
-              "class:wc5e-priest"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "4Q1cnULUSJDzv3N1",
-        "type": "ItemChoice",
-        "title": "Cantrips Known",
-        "hint": "Choose 1 cantrip from the Priest spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "4": {
               "count": 1,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "0",
-            "list": [
-              "class:wc5e-priest"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "mf4U1GuE6lw3GTL3",
-        "type": "ItemChoice",
-        "title": "Cantrips Known",
-        "hint": "Choose 1 cantrip from the Priest spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "10": {
               "count": 1,
               "replacement": false

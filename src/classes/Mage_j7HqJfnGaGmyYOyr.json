@@ -281,84 +281,18 @@
         "_id": "tnwKqCPF5yjMl1Tc",
         "type": "ItemChoice",
         "title": "Cantrips Known",
-        "hint": "Choose 3 cantrips from the Mage spell list.",
+        "hint": "Choose your cantrips from the Mage spell list as you gain them.",
         "configuration": {
           "allowDrops": true,
           "choices": {
             "1": {
               "count": 3,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "0",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "1oivNbEgo5Cs8Cza",
-        "type": "ItemChoice",
-        "title": "Cantrips Known",
-        "hint": "Choose 1 cantrip from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "4": {
               "count": 1,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "0",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "Hs54TzLLTl0LyxUL",
-        "type": "ItemChoice",
-        "title": "Cantrips Known",
-        "hint": "Choose 1 cantrip from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "11": {
               "count": 1,
               "replacement": false
@@ -392,719 +326,525 @@
         "_id": "XBToyetpn9YNXnOV",
         "type": "ItemChoice",
         "title": "Spellbook",
-        "hint": "Add 6 spells of your choice to your spellbook from the Mage spell list.",
+        "hint": "Add spells of your choice to your spellbook from the Mage spell list as you gain levels.",
         "configuration": {
           "allowDrops": true,
           "choices": {
             "1": {
               "count": 6,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "2DgfdT2bIQya7TfU",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "2": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "UL94kpjqpfHI9e6A",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "3": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "sgdNtbggftuAGRWi",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "4": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "qf9zeqBEfK5BJpdG",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "5": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "UxzqmdX63IDkNaCE",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "6": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "OPVreiFXX76Wv5bv",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "7": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "C0FuoYhwv2JndD9s",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "8": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "hp9CDBdta1TgE8P4",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "9": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "ELtYd2vQFf5oqvLR",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "10": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "toJ5P6e9MQKNOlGD",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "11": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "X7DPHljFB1Z6L6Hj",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "12": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "A0BpnVQ3WoBGflDc",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "13": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "7611mgLKRfmIdgvS",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "14": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "mBGJaBnU5IHcui8e",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "15": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "9FETa2F3LBiWDch3",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "16": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "t1uDmv9Nexol8jSU",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "17": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "J408q2oYC9GWYhkc",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "18": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "2dETK3S1mlkPtUEx",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "19": {
               "count": 2,
               "replacement": false
-            }
-          },
-          "pool": [],
-          "restriction": {
-            "type": "spell",
-            "subtype": "",
-            "level": "available",
-            "list": [
-              "class:wc5e-mage"
-            ]
-          },
-          "spell": {
-            "ability": [],
-            "preparation": "",
-            "uses": {
-              "max": "",
-              "per": ""
-            }
-          },
-          "type": "spell"
-        },
-        "value": {
-          "added": {},
-          "replaced": {}
-        }
-      },
-      {
-        "_id": "YJ2cfKDOcPFFFG58",
-        "type": "ItemChoice",
-        "title": "Spellbook",
-        "hint": "Add 2 spells of your choice to your spellbook from the Mage spell list.",
-        "configuration": {
-          "allowDrops": true,
-          "choices": {
+            },
             "20": {
               "count": 2,
               "replacement": false
             }
           },
-          "pool": [],
+          "pool": [
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.7p9IuWrSWFgfyQo2"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.5SuJewoa1CRWaj1F"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.4dSvfvTy2ZIJ3K4k"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.a3XtAO5n2GrqiAh5"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ghXTfe7sgCbgf1Q8"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.A3q2gTNqG6fvNGrv"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.zPGohqJRir6MyQ3U"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.pub0OWVEB71XQx1n"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.JGT5bNqu9REL7Fuz"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.m67z8TajY4uKU3nc"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.22dPoeXfaaAv4K3h"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells24.Item.phbsplIceKnife00"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.3OZnNhunvRtPOQmH"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.82jM6qD9axLJsTrH"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ZrTc23tToJ0JpH2h"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.B0pnIcc52O6G8hi8"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.CKZTpZlxj7hjjo2H"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.41JIhpDyM9Anm7cs"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.z1mx84ONwkXKUZd7"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.BrBZdCCrJRIVg7YX"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ccduLIvutyNqvkgv"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.8RTDOt80u8aBv9qx"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.8cse7rit0oswRPUP"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.zwGsAv6kmwzYGhh3"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.UDUnlfPsOAbq2RSE"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.MK6gpQMeDFo0cP9f"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.S7VbUetIfVT7B6Eq"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.hJ6ZiA3fpoY8v9cp"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ppWAAEul0QHtm4er"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells24.Item.phbsplDragonsBre"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.WahI41a3goVUg0x1"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.Advtckpz1B733bu9"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.FjYE214HTERCRZNm"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.n4JDcFKe5ikzYmAc"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.E9XyzDmt2ajNmKLd"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.2yHXEcrRbadZDr5M"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.3Lo9boi7P2ro6QV4"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.1N8dDMMgZ1h1YJ3B"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.1nhIxh0DsJsntCfj"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.MRxldJd6C4bsBo3O"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.saVGnW0YDzKjRKGi"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.SleYkHovQ8NagmeV"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.7v06rdmUakoTk1LQ"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.Sgjrf8qqv97CCWM4"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.X4c8xCkmF8U9HUMz"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.wqfAVANuQonNBgnL"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.pRMvmknwLf2tdMTj"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells24.Item.phbPhantasmalFor"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ap4dmtshjEbwU3Ts"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.7u2obDvuvtZBkTfq"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.DQzlB5Y3k791W5bH"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.wJKpSvSTbSkTjqyb"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.5VhqFROQYjr1P9lp"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.KJRVzeMQXPj8Gtyx"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.zMAWdyc8UVb37BK4"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.fmaAjESI5V8YlNbG"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.GSvLWcdCZLQkilXT"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.qYWwlJd1zgWzEAEf"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.cg50KpBkBdPK6vPL"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.Ek45cBpVXvJdv1Qy"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.BV0mpbHh29IbbIj5"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.15Fa6q1nH27XfbR8"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ztgcdrWPshKRpFd0"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.yfbK8gZqESlaoY5t"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.pB7XVYwdGNcUG935"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.Szvk5FEVQW3uhJi5"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.6g3WLOZ2u0EbaLAd"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.y8A4HfTwd93ypdEz"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.nslx2nT3p4lNkmdp"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.aU62xVUBYkAQWIHv"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.j8NtLXOOJ3GAKF8I"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.XZhdgVK3cLoxNCQl"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.GtGjNjPBgUHxGYAD"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.dhqBY4TvVjxVmOZd"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.yqUDoxk4x0NWG5Bz"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.oWbSzKF0DaqSOJJ0"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.gopnZvS0c2jD5FP8"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ImlCJQwR1VL40Qem"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.MrqWrJdOSfPIo1wZ"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.jMCdGQy9GsyhRfqk"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.pxpb2eOB6bv4phAf"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells24.Item.phbsplCharmMonst"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.9hQXdMSmerkTsHDe"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.KgEw3sDr39C6g8nY"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.A4RsPuSvB9wFtz1j"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.avD5XUtkBPQQR97c"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.tEpDmYZNGc9f5OhJ"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.sTIkQK7KuQNOyY0C"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.bDFTgh7UWRxILc1o"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.WN2LWEljYU6QqnRH"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.gXtzz9t1DTzJeLr4"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.04nMsTWkIFvkbXlY"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.X3DrXgxjwI2dvkD6"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ATo0Eb63TDtnu6iA"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.RpKjTlYASrfqUPVA"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.1LkZvINag7KqBmDR"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.lnaGnxMzpYnbw1uU"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.91Sw6vOIaO7U8DvM"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.5e1xTohkzqFqbYH4"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.l9Ju5KE7bbn3WpTm"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.MBMaQLwoy05qzMJ3"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.d9MwcXi7Il3HROXd"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.42O2aNBW7vK90gTL"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.fVbCxFRaORalHB20"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.mbFw57uyfLkyiw5k"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.8aWtP5hcrmcEesBW"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.o9ZCvuD2B1OTcubb"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.4smlOvpF5AQHcyg1"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.HBHbOGKNVVprSlwn"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.WmQpxfjZwF3MGUby"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.yw0tYQkOMCgKZ8Ur"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.mgFqi0ev8f7Ut19y"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.5OGFdJw35QXp6mh6"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.bA2sk9eMKBeY7EPD"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.XzkJpE6XpZfKjODD"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.fzZnVKLmBMo2f5up"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.76C0FdcxlU8F9Rl2"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.AoTTjapz1FsGOIZz"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.PQuEgKyCdovOvhqN"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.J3uILDYS7MiOfmTJ"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.Y7uWUO4yqUN0JKl0"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.f38w5rd9SgdmWc6F"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.X3wTbhsYpqBxvD9e"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ERCv7yuRkQ0YjGx6"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ePhRKHXRE7l1sEoQ"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.e7JxhksofCzdKDKn"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.wvLbtemkH8gyBpdc"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.L4J89JXqbKs6puEV"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.lovJSWQvxDh9X96T"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.Eon0jzGzQRNluTPQ"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.h830iyqParFleNqR"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.xNM9CzQQr2CieM4B"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.tgja5KieNNRTywCk"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.pV04y1iXoWiom6bp"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.bllEWfm9xfEKynhv"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells24.Item.phbsplTsunami000"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.6HEEhLdJz32TL4Js"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.XbwGq5kDJNvAxNXV"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.ZVnL9L8v1KC9TBF4"
+            },
+            {
+              "uuid": "Compendium.wc5e-bestiary.spells.Item.mr3cK8DAdyWYDfrq"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.jmfu8zj4zjjzUbeh"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.mF52ldF79Cr7wfQo"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.JYuRBwxpoFhXduvD"
+            },
+            {
+              "uuid": "Compendium.dnd5e.spells.Item.QbQZKoXOgHWN06aa"
+            }
+          ],
           "restriction": {
             "type": "spell",
             "subtype": "",
