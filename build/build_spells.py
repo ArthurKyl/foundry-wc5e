@@ -35,7 +35,8 @@ def make_id(*p):
 def slugify(name):
     return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
-SRC = {"custom": "Warcraft 5e - Chapter 6 Spells", "book": "", "page": "",
+SRC = {"custom": "Warcraft 5e - Chapter 6 Spells",
+       "book": "Warcraft 5e - Chapter 6 Spells", "page": "",
        "license": "", "rules": "2014"}
 IMG = "icons/svg/daze.svg"
 

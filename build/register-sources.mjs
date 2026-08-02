@@ -4,9 +4,23 @@
  * would show up wrong in the compendium browser.
  *
  * dnd5e's compendium browser builds its source filter from each document's
- * derived `system.source.value`, labelling it with
- * `CONFIG.DND5E.sourceBooks[value] ?? value` -- and that map is only populated
- * from a manifest via `registerSourceBooks()`:
+ * derived `system.source.value` and matches on `system.source.slug`. Those come
+ * from the `book` field ONLY:
+ *
+ *     this.value = this.book || (pkg?.title ?? "");
+ *     this.slug  = formatIdentifier(this.value);
+ *
+ * `custom` never reaches them -- it only sets the display label. So every
+ * document must set `book`, not just `custom`. Ours set only `custom` until
+ * v1.18.1, which meant `value` fell through to the module's *title*: the filter
+ * offered one entry that matched nothing, while the 17 SRD-derived documents
+ * (which do set `book`) filtered correctly. There is a fallback for
+ * single-book modules -- `getModuleBook()` returns the sole key of
+ * `flags.dnd5e.sourceBooks` -- but it gives up when there is more than one, and
+ * we ship four.
+ *
+ * The label comes from `CONFIG.DND5E.sourceBooks[value] ?? value`, and that map
+ * is only populated from a manifest via `registerSourceBooks()`:
  *
  *     function registerSourceBooks(manifest) {
  *       if ( !manifest.flags.dnd5e?.sourceBooks ) return;
@@ -42,8 +56,9 @@ for ( const pack of fs.readdirSync(path.join(repo, "src")) ) {
     const doc = JSON.parse(fs.readFileSync(path.join(dir, file), "utf8"));
     const src = doc.system?.source;
     if ( !src || typeof src !== "object" ) continue;          // folders
-    // dnd5e derives `source.value` as custom || book
-    const value = (src.custom || src.book || "").trim();
+    // dnd5e derives `source.value` from `book` alone -- register what it will
+    // actually look up, not what the sheet happens to display.
+    const value = (src.book || src.custom || "").trim();
     if ( !value ) continue;
     found.set(value, (found.get(value) ?? 0) + 1);
     if ( JUNK.test(value) ) suspect.push(`${pack}/${doc.name}: ${value}`);

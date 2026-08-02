@@ -565,7 +565,8 @@
     "source": {
       "revision": 1,
       "rules": "2014",
-      "custom": "Warcraft 5e - Chapter 6 Spells"
+      "custom": "Warcraft 5e - Chapter 6 Spells",
+      "book": "Warcraft 5e - Chapter 6 Spells"
     },
     "traits": {
       "size": "med",

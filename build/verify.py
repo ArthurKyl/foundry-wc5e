@@ -185,12 +185,21 @@ def check_sources(manifest, packs):
             s = (d.get("system") or {}).get("source")
             if not isinstance(s, dict):
                 continue
-            value = (s.get("custom") or s.get("book") or "").strip()
+            book, custom = (s.get("book") or "").strip(), (s.get("custom") or "").strip()
+            value = book or custom
             if not value:
                 continue
             used[value] += 1
             if re.match(r"^(https?://|www\.)", value):
                 fail("sources", f"{pack}/{fn} cites a URL as its source book: {value}")
+            # dnd5e derives source.value -- what the compendium browser groups and
+            # filters on -- as `book || <package title>`, never from `custom`. A
+            # document with only `custom` set therefore lands under the module's
+            # title, which is not a declared source book, and the filter entry it
+            # produces selects nothing. This shipped that way through v1.18.0.
+            if custom and not book:
+                fail("sources", f"{pack}/{fn} sets source.custom but not source.book -- "
+                                f"the compendium browser's source filter will not match it")
     for value in used:
         if value not in SYSTEM and value not in declared:
             fail("sources", f"source '{value}' used by {used[value]} documents but not declared "
