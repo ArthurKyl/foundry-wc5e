@@ -1,8 +1,8 @@
 {
   "id": "wc5e-bestiary",
-  "title": "Warcraft 5e (WC5E) — Unofficial Beta",
-  "description": "<p><strong>Unofficial community build, in active development.</strong> This is not an official WC5E release and is not published by the Warcraft 5e team — it's a work-in-progress conversion being tested before the content moves to the WC5E project's own repository.</p><p>Compendium content for playing Warcraft on the dnd5e system: 420 monsters, 101 spells, items, and full player options — 12 classes, 36 subclasses, 28 races, backgrounds, class features and feats with dnd5e advancement configured.</p><p><strong>Please report anything broken</strong> via the Report Bug link or <a href=\"https://github.com/ArthurKyl/foundry-wc5e/issues\">GitHub issues</a> — that's the fastest way to get it fixed. Fan work; not affiliated with Blizzard Entertainment.</p>",
-  "version": "1.18.3",
+  "title": "Warcraft 5e (WC5E) — moved to a new module",
+  "description": "<p><strong>This module has moved and is no longer updated here.</strong> It is now published by the WC5E project as <strong>wc5e-foundryvtt</strong>.</p><p><strong>To move across:</strong> install the new module with this manifest URL — <code>https://github.com/WC5E/wc5e-foundryvtt/releases/latest/download/module.json</code> — then disable and uninstall this one.</p><p>Foundry treats the new module as a separate install, so there is no automatic upgrade. Compendium content is the same. Anything you already dragged into a world came from <em>this</em> module and keeps working, but re-drag it from the new compendiums so it stays linked to the module that is still maintained.</p><p>Content is unchanged from v1.18.3; this release exists only to tell you where the module went. <a href=\"https://github.com/WC5E/wc5e-foundryvtt\">New repository</a>.</p>",
+  "version": "1.19.0",
   "authors": [
     {
       "name": "ArthurKyl",
@@ -226,7 +226,7 @@
   ],
   "url": "https://github.com/ArthurKyl/foundry-wc5e",
   "manifest": "https://github.com/ArthurKyl/foundry-wc5e/releases/latest/download/module.json",
-  "download": "https://github.com/ArthurKyl/foundry-wc5e/releases/download/v1.18.3/module.zip",
+  "download": "https://github.com/ArthurKyl/foundry-wc5e/releases/download/v1.19.0/module.zip",
   "flags": {
     "dnd5e": {
       "spellLists": [

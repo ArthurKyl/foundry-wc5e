@@ -1,5 +1,23 @@
 # Warcraft 5e (WC5E) — Unofficial Beta
 
+> ## 📦 This module has moved
+>
+> It is now published by the WC5E project at
+> **[WC5E/wc5e-foundryvtt](https://github.com/WC5E/wc5e-foundryvtt)** and is no
+> longer developed here. This repository is archived and kept public so existing
+> installs keep resolving.
+>
+> **Install the new module** with this manifest URL, then uninstall this one:
+>
+> ```
+> https://github.com/WC5E/wc5e-foundryvtt/releases/latest/download/module.json
+> ```
+>
+> Foundry treats it as a separate module — the id changed from `wc5e-bestiary` to
+> `wc5e-foundryvtt` — so there is no automatic upgrade. The content is the same.
+> Anything already dragged into a world came from *this* module and keeps working,
+> but re-drag it from the new compendiums to stay on the maintained one.
+
 > ### ⚠️ Unofficial community build, in active development
 >
 > **This is not an official WC5E release** and is not published by the Warcraft 5e

@@ -17,6 +17,15 @@ def mkid(*p):
 STATS = {"systemId": "dnd5e", "systemVersion": "5.3.3"}
 
 WELCOME = """
+<h2>&#128230; This module has moved</h2>
+<p><strong>This module is no longer updated.</strong> It is now published by the WC5E
+project as <strong>wc5e-foundryvtt</strong>.</p>
+<p>Install the new one with this manifest URL, then uninstall this module:</p>
+<p><code>https://github.com/WC5E/wc5e-foundryvtt/releases/latest/download/module.json</code></p>
+<p>Foundry treats it as a separate module, so there is no automatic upgrade. The content is
+the same. Anything you already dragged into a world came from <em>this</em> module and keeps
+working, but re-drag it from the new compendiums to stay on the maintained one.</p>
+<hr>
 <h2>Warcraft 5e (WC5E) — Unofficial Beta</h2>
 <p><strong>This is an unofficial community build, in active development.</strong> It is
 not an official WC5E release and is not published by the Warcraft 5e team &mdash; the
