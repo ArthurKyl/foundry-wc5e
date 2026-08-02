@@ -264,6 +264,28 @@ OVERRIDES = {
 # guessed from the first distance in the text.
 NO_TEMPLATE = {"Apotheosis", "Diabolism", "Solar Wrath"}
 
+
+def _summon_uuids():
+    """name -> compendium UUID for every actor in the hand-maintained summons pack.
+
+    Read from src/summons rather than hardcoded, so a summon activity cannot end up
+    pointing at an id that no longer exists -- a broken summon profile is silent in
+    Foundry, the button simply summons nothing. Missing names fail the build here
+    instead, which is the whole point of looking them up.
+    """
+    out = {}
+    for fn in sorted(os.listdir(os.path.join(REPO, "src", "summons"))):
+        if not fn.endswith(".json") or fn.startswith("_folder"):
+            continue
+        with open(os.path.join(REPO, "src", "summons", fn), encoding="utf-8") as f:
+            doc = json.load(f)
+        if doc.get("type") == "npc":
+            out[doc["name"]] = f"Compendium.wc5e-bestiary.summons.Actor.{doc['_id']}"
+    return out
+
+
+SUMMON = _summon_uuids()
+
 STATBLOCK_RE = re.compile(r"<p>>\s*##\s.*$", re.S)
 STRIPPED_STATBLOCKS = []
 
@@ -388,6 +410,28 @@ def make_activity(aid, mech, activation):
         htype = mech["heal"][4] if len(mech["heal"]) > 4 else "healing"
         a["healing"] = dpart(n, d, htype, scale, bonus=bonus,
                              mode=mech.get("healmode", "whole"))
+    elif kind == "summon":
+        a = base_act(aid, "summon", activation)
+        a["bonuses"] = {"ac": "", "hp": "", "hd": "", "attackDamage": "",
+                        "saveDamage": "", "healing": ""}
+        a["creatureSizes"] = []
+        a["creatureTypes"] = mech.get("creatureTypes", [])
+        # Match the caster on attacks, saves and proficiency: a summon whose to-hit
+        # is frozen at the statblock's value gets worse every level, and every one
+        # of these creatures is scaled off the caster in its text.
+        a["match"] = {"attacks": mech.get("match", True), "proficiency": mech.get("match", True),
+                      "saves": mech.get("match", True), "ability": "", "disposition": True}
+        a["profiles"] = [
+            {"_id": make_id(aid, "profile", str(i)), "count": p.get("count", ""),
+             "cr": p.get("cr", ""), "level": {"min": None, "max": None},
+             "name": p.get("name", ""), "types": p.get("types", []),
+             "uuid": p.get("uuid", "")}
+            for i, p in enumerate(mech["profiles"])]
+        # "cr" mode lets the player pick any actor up to a challenge rating from
+        # their own compendiums, which is what an open-ended conjure asks for;
+        # "" is the direct mode, summoning the profile's own actor.
+        a["summon"] = {"mode": mech.get("mode", ""), "prompt": True}
+        a["tempHP"] = ""
     elif kind == "check":
         a = base_act(aid, "check", activation)
         a["check"] = {"ability": mech.get("ability", "spellcasting"),
@@ -574,6 +618,51 @@ EXTRA_ACTIVITIES = {
         "shard3": {"kind": "attack", "sort": 20, "name": "Third shard",
                    "dmg": [(1, 4, "cold", 1)]},
     },
+    # -- summons ----------------------------------------------------------------
+    # Every creature here already ships in the summons pack, so these are wiring,
+    # not new content. A profile list with more than one entry gives the player a
+    # picker before the summon lands -- the one genuine "choose a variant" prompt
+    # dnd5e has.
+    "Army of the Dead": {
+        "summon": {"kind": "summon", "sort": 10, "name": "Summon the horde",
+                   "match": False,   # you explicitly do not control it
+                   "profiles": [{"name": "Shambling Horde", "count": "1",
+                                 "uuid": SUMMON["Shambling Horde"]}],
+                   "flavor": "Roll initiative for the horde. It acts on its own and "
+                             "attacks the nearest non-undead."},
+    },
+    "Feral Spirits": {
+        "summon": {"kind": "summon", "sort": 10, "name": "Summon two ghostly wolves",
+                   "profiles": [{"name": "Feral Spirit", "count": "2",
+                                 "uuid": SUMMON["Feral Spirit"]}]},
+    },
+    "Shadowy Apparitions": {
+        "summon": {"kind": "summon", "sort": 10, "name": "Create three apparitions",
+                   "profiles": [{"name": "Shadowy Apparition", "count": "3",
+                                 "uuid": SUMMON["Shadowy Appriations"]}]},
+    },
+    "Summon Void Being": {
+        "summon": {"kind": "summon", "sort": 10, "name": "Summon the void being",
+                   "profiles": [
+                       {"name": "Mindbender", "count": "1",
+                        "uuid": SUMMON["Void Being (Mindbender)"]},
+                       {"name": "Psyfiend", "count": "1",
+                        "uuid": SUMMON["Void Being (Psyfiend)"]},
+                       {"name": "Shadowfiend", "count": "1",
+                        "uuid": SUMMON["Void Being (Shadowfiend)"]}]},
+    },
+    "Conjure Undead": {
+        # CR mode, so the player chooses any undead at or below the cap from the
+        # content they own. @item.level is the slot the spell was cast at, and the
+        # cap is CR 5 at 4th level rising by 1 per slot above.
+        "summon": {"kind": "summon", "sort": 10, "name": "Conjure an undead",
+                   "mode": "cr", "creatureTypes": ["undead"], "match": False,
+                   "profiles": [{"name": "Undead", "count": "1",
+                                 "cr": "1 + @item.level", "types": ["undead"]}],
+                   "flavor": "Challenge rating 5 or lower, rising by 1 for each slot "
+                             "level above 4th."},
+    },
+
     "Touch of Chaos": {
         "beam2": {"kind": "attack", "sort": 10, "name": "Second beam (5th level)",
                   "dmg": [(1, 8, ["acid", "cold", "fire", "force", "lightning",

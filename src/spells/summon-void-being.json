@@ -124,6 +124,115 @@
           "prompt": false,
           "visible": false
         }
+      },
+      "37iDszq5g5KvZ5A9": {
+        "_id": "37iDszq5g5KvZ5A9",
+        "type": "summon",
+        "sort": 10,
+        "name": "Summon the void being",
+        "img": "",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "bonuses": {
+          "ac": "",
+          "hp": "",
+          "hd": "",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
+        },
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "match": {
+          "attacks": true,
+          "proficiency": true,
+          "saves": true,
+          "ability": "",
+          "disposition": true
+        },
+        "profiles": [
+          {
+            "_id": "qsgOrOrCmnjAfovK",
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Mindbender",
+            "types": [],
+            "uuid": "Compendium.wc5e-bestiary.summons.Actor.yhwpJvhgfvaudzXO"
+          },
+          {
+            "_id": "16yNBSqazSYdt3jq",
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Psyfiend",
+            "types": [],
+            "uuid": "Compendium.wc5e-bestiary.summons.Actor.i65uqroAbDS5ohm2"
+          },
+          {
+            "_id": "U5ZMvjV4RzoQBnCD",
+            "count": "1",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Shadowfiend",
+            "types": [],
+            "uuid": "Compendium.wc5e-bestiary.summons.Actor.ugsVQ04ZHXbOx9CI"
+          }
+        ],
+        "summon": {
+          "mode": "",
+          "prompt": true
+        },
+        "tempHP": ""
       }
     },
     "identifier": "summon-void-being"

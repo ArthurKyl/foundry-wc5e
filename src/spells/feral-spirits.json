@@ -124,6 +124,91 @@
           "prompt": false,
           "visible": false
         }
+      },
+      "h4B6zcqtcpfyb64h": {
+        "_id": "h4B6zcqtcpfyb64h",
+        "type": "summon",
+        "sort": 10,
+        "name": "Summon two ghostly wolves",
+        "img": "",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "bonuses": {
+          "ac": "",
+          "hp": "",
+          "hd": "",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
+        },
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "match": {
+          "attacks": true,
+          "proficiency": true,
+          "saves": true,
+          "ability": "",
+          "disposition": true
+        },
+        "profiles": [
+          {
+            "_id": "28j9rZsMOZ7Nqzsi",
+            "count": "2",
+            "cr": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "name": "Feral Spirit",
+            "types": [],
+            "uuid": "Compendium.wc5e-bestiary.summons.Actor.QdkdNFfDtc71gmSA"
+          }
+        ],
+        "summon": {
+          "mode": "",
+          "prompt": true
+        },
+        "tempHP": ""
       }
     },
     "identifier": "feral-spirits"
