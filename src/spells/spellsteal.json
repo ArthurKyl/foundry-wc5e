@@ -144,7 +144,7 @@
           "spellSlot": true
         },
         "description": {
-          "chatFlavor": "DC is 10 + the level of the spell you are trying to steal."
+          "chatFlavor": "DC is 10 + the level of the spell you are trying to steal. That is the <em>target's</em> level, which the sheet cannot know, so the button rolls the check and the DM compares."
         },
         "duration": {
           "units": "inst",
@@ -175,9 +175,8 @@
           "ability": "spellcasting",
           "associated": [],
           "dc": {
-            "calculation": "custom",
-            "formula": "10 + @item.level",
-            "visible": true
+            "calculation": "",
+            "formula": ""
           }
         }
       }

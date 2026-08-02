@@ -526,10 +526,13 @@ def make_activity(aid, mech, activation):
         a["tempHP"] = ""
     elif kind == "check":
         a = base_act(aid, "check", activation)
+        # An empty dc.calculation means the DC comes from dc.formula, and an empty
+        # formula means no DC at all -- the button still rolls the check, which is
+        # the useful half when the DC depends on something the sheet cannot see.
         a["check"] = {"ability": mech.get("ability", "spellcasting"),
                       "associated": [],
                       "dc": {"calculation": mech.get("dccalc", ""),
-                             "formula": mech.get("dc", ""), "visible": True}}
+                             "formula": mech.get("dc", "")}}
     else:
         a = base_act(aid, "utility", activation)
         a["roll"] = {"formula": "", "name": "", "prompt": False, "visible": False}
@@ -701,13 +704,17 @@ EXTRA_ACTIVITIES = {
     # -- checks the text describes in prose -------------------------------------
     "Mass Dispel": {
         "check": {"kind": "check", "sort": 10, "name": "Dispel check (4th level or higher)",
-                  "ability": "spellcasting", "dccalc": "custom", "dc": "10 + @item.level",
-                  "flavor": "DC is 10 + the level of the spell you are trying to end."},
+                  "ability": "spellcasting",
+                  "flavor": "DC is 10 + the level of the spell you are trying to end. "
+                            "That is the <em>target's</em> level, which the sheet cannot "
+                            "know, so the button rolls the check and the DM compares."},
     },
     "Spellsteal": {
         "check": {"kind": "check", "sort": 10, "name": "Steal check (2nd level or higher)",
-                  "ability": "spellcasting", "dccalc": "custom", "dc": "10 + @item.level",
-                  "flavor": "DC is 10 + the level of the spell you are trying to steal."},
+                  "ability": "spellcasting",
+                  "flavor": "DC is 10 + the level of the spell you are trying to steal. "
+                            "That is the <em>target's</em> level, which the sheet cannot "
+                            "know, so the button rolls the check and the DM compares."},
     },
     "Cyclone": {
         "escape": {"kind": "check", "sort": 10, "name": "Escape (Strength vs your DC)",

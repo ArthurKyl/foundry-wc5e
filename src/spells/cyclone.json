@@ -184,8 +184,7 @@
           "associated": [],
           "dc": {
             "calculation": "spellcasting",
-            "formula": "",
-            "visible": true
+            "formula": ""
           }
         }
       }
